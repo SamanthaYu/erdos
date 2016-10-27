@@ -3,7 +3,8 @@ App.messages = App.cable.subscriptions.create('MessagesChannel', {
     $("#messages").removeClass('hidden')
     return $('#messages').append(this.renderMessage(data));
   },
+
   renderMessage: function(data) {
-    return "<p> <b>" + "gerbil" + ": </b>" + data.content + "</p>";
+    return "<p> <b>" + "maybreaklater" + ": </b>" + data.message + "</p>";
   }
 });
