@@ -21,9 +21,7 @@ class ChatroomsController < ApplicationController
       end
     else
       respond_to do |format|
-        #flash[:notice] = {error: ["a chatroom with this topic already exists"]}
         format.html { render :new }
-        format.js { render template: 'chatrooms/chatroom_error.js.erb'}
       end
     end
   end

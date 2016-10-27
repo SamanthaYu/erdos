@@ -1,12 +1,5 @@
-<div class="row col-md-8 col-md-offset-2">
-  <h1><%= @chatroom.roomname %></h1>
+<h1><%= @chatroom.roomname %></h1>
 
+<%= render partial: 'messages/message', collection: @chatroom.messages%>
 
-
-<div class="panel panel-default">
-      <%= render partial: 'messages/message', collection: @chatroom.messages%>
-</div>
-
-
-  <%= render partial: 'messages/message_form', locals: {message: @message, chatroom: @chatroom}%>
-</div>
+<%= render partial: 'messages/message_form', locals: {message: @message, chatroom: @chatroom}%>

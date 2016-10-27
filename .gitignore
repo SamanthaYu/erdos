@@ -17,3 +17,7 @@
 
 # Ignore ruby-version
 /.ruby-version
+
+/public/assets
+
+hyylookat.txt
