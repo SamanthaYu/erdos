@@ -18,6 +18,7 @@
 # Ignore ruby-version
 /.ruby-version
 
+# Ignore precompiled assets
 /public/assets
 
 hyylookat.txt
