@@ -86,6 +86,6 @@ test:
 #
 production:
   <<: *default
-  database: erdos
-  #username: ruby-getting-started
-  #password: <%= ENV['RUBY-GETTING-STARTED_DATABASE_PASSWORD'] %>
+  database: erdos_production
+  username: erdos
+  password: <%= ENV['ERDOS_PRODUCTION_DATABASE_PASSWORD'] %>
