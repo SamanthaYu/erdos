@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Login</title>
+    <style>
+        body {
+            background-color: #03a079;
+            padding: 0px;
+            margin: 0px;
+            text-align: center;
+        }
+
+        .outer {
+            display: table;
+            position: absolute;
+            height: 100%;
+            width: 100%;
+        }
+
+        .middle {
+            display: table-cell;
+            vertical-align: middle;
+        }
+
+        .inner {
+            margin-left: auto;
+            margin-right: auto;
+            width: 60%;
+        }
+
+        .overlay {
+            position:absolute;
+            background:#fff;
+            opacity:0.4;
+            width:223px;
+            height:142px;
+            left:546px;
+        }
+
+        #overlay1 {
+            top:186.5px;
+        }
+
+        #overlay2 {
+            top:330px;
+        }
+
+        #overlay1:hover, #overlay2:hover {
+            opacity:0.0;
+        }
+
+  </style>
+</head>
+
+<body>
+    <div class="outer">
+    <div class="middle">
+    <div class="inner">
+        <a id="overlay1" class="overlay" href="#"></a>
+        <a id="overlay2" class="overlay" href="#"></a>
+        <img src="/assets/login.png" alt="erdos" style="width:49.5%;height:49.5%;" usemap="#buttonmap">
+
+        <!--<map name="buttonmap" id="buttonmap">
+            <area shape="rect" coords="80,180,300,320" href="" alt="signup">
+            <area shape="rect" coords="80,320,300,460" href="" alt="login">
+        </map>-->
+
+  </div>
+  </div>
+  </div>
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js">
+
+  </script>
+</body>
+</html>
