@@ -2,6 +2,7 @@
 <html>
 <head>
     <title>Login</title>
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
     <style>
         body {
             background-color: #03a079;
@@ -28,28 +29,37 @@
             width: 60%;
         }
 
+        .inner img {
+            width: 49.5%;
+            height: 49.5%;
+        }
+
+        .inner a {
+        }
+
         .overlay {
             position:absolute;
             background:#fff;
-            opacity:0.4;
-            width:223px;
-            height:142px;
-            left:546px;
+            opacity:0.2;
+            width:230px;
+            height:147px;
+            margin: auto;
+            right: 0;
+            left: 0;
         }
 
         #overlay1 {
-            top:186.5px;
+            top:177px;
         }
 
         #overlay2 {
-            top:330px;
+            top:324px;
         }
 
         #overlay1:hover, #overlay2:hover {
             opacity:0.0;
         }
-
-  </style>
+    </style>
 </head>
 
 <body>
@@ -58,19 +68,15 @@
     <div class="inner">
         <a id="overlay1" class="overlay" href="#"></a>
         <a id="overlay2" class="overlay" href="#"></a>
-        <img src="/assets/login.png" alt="erdos" style="width:49.5%;height:49.5%;" usemap="#buttonmap">
+        <img src="/assets/login-ab29bec87a47633df2aa63f9ced2cf7a74fdaa61f07b77290405d93049380cc1.png" alt="erdos" usemap="#buttonmap">
 
         <!--<map name="buttonmap" id="buttonmap">
             <area shape="rect" coords="80,180,300,320" href="" alt="signup">
             <area shape="rect" coords="80,320,300,460" href="" alt="login">
         </map>-->
+    </div>
+    </div>
+    </div>
 
-  </div>
-  </div>
-  </div>
-
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js">
-
-  </script>
 </body>
 </html>
