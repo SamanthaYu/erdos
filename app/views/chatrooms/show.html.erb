@@ -1,8 +1,9 @@
-<h1><%= @chatroom.roomname %></h1>
+<div id="container">
+    <h1><%= @chatroom.roomname %></h1>
+    <div id="messages">
+        <%= render partial: 'messages/message', collection: @chatroom.messages%>
+    </div>
 
-<div id="messages">
-<%= render partial: 'messages/message', collection: @chatroom.messages%>
+
+    <%= render partial: 'messages/message_form', locals: {message: @message, chatroom: @chatroom}%>
 </div>
-
-
-<%= render partial: 'messages/message_form', locals: {message: @message, chatroom: @chatroom}%>
