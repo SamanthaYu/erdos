@@ -109,13 +109,20 @@
         }
 
         button:hover {
-            background-color
+            background-color: #444;
+            color: #fff;
         }
 
         hr {
             border: 1px solid #ddd;
             width: 80%;
             margin: 0.5em 0;
+        }
+
+        #returnBtn {
+            color: #000;
+            float: right;
+            cursor: pointer;
         }
     </style>
 </head>
@@ -131,6 +138,7 @@
         </div>
 
         <div class="loginForm">
+            <span id="returnBtn">&times;</span>
             <input type="text" placeholder="Username" name="uname" required>
             <input type="password" placeholder="Password" name="pword" required>
             <center><button type="submit">Login</button>
@@ -148,6 +156,11 @@
             $("#overlay2").click(function(){
                 $(".welcomePage").fadeOut("swing", function(){
                     $(".loginForm").fadeIn("swing");
+                });
+            });
+            $("#returnBtn").click(function(){
+                $(".loginForm").fadeOut("swing", function(){
+                    $(".welcomePage").fadeIn("swing");
                 });
             });
         });
