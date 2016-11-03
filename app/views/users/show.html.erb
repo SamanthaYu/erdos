@@ -2,12 +2,5 @@
 
 <h1><%= @user.username %></h1>
 
-<% (0..@user.chatrooms.size-1).each do |i| %>
-  <tr>
-    <td>
-      <% @user.chatrooms[i].roomname %>
-    </td>
-  </tr>
-  <% end %>
 
 <%= link_to 'Back', users_path %>
