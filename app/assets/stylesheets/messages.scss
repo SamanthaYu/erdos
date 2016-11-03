@@ -1,3 +1,67 @@
 // Place all the styles related to the messages controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+/*Styling placeholder text for input boxes*/
+::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+    font-style: italic;
+    letter-spacing: 2px;
+}
+::-moz-placeholder { /* Firefox 19+ */
+    font-style: italic;
+    letter-spacing: 2px;
+}
+:-ms-input-placeholder { /* IE 10+ */
+    font-style: italic;
+    letter-spacing: 2px;
+}
+:-moz-placeholder { /* Firefox 18- */
+    font-style: italic;
+    letter-spacing: 2px;
+}
+
+body {
+    padding: 0px;
+    margin: 0px;
+    overflow: hidden;
+}
+
+#container {
+    margin: 0px;
+    padding: 5px;
+    background-color: #777;
+    max-height: 100vh;
+    height: 100vh;
+}
+
+#messages {
+    position: relative;
+    max-width: 98vw;
+    padding: 5px;
+    background-color: #ccc;
+    overflow-y: scroll;
+    max-height: 65%;
+    left: 0;
+    right: 0;
+    margin: auto;
+}
+
+#inputMessage {
+    position: fixed;
+    bottom: 10px;
+    background-color: #000;
+    max-width: 98vw;
+    left: 0;
+    right: 0;
+    margin: auto;
+}
+
+.form-control {
+    max-width: 98vw;
+    margin: auto;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    resize: none;
+}
