@@ -1,0 +1,15 @@
+<div class="Sign_Form">
+
+  <%= form_for(:user, :url => {:controller => 'users', :action => 'create'}) do |f| %>
+    <p> Username:</br> <%= f.text_field :username,required: true%> </p>
+    <p> Password:</br> <%= f.password_field :password,required: true%></p>
+    <%= f.submit :Signup %>
+  <% end %>
+  <% if @user.errors.any? %>
+    <ul class="Signup_Errors">
+    <% for message_error in @user.errors.full_messages %>
+      <li>* <%= message_error %></li>
+    <% end %>
+    </ul>
+  <% end %>
+</div>
