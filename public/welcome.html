@@ -9,6 +9,7 @@
             padding: 0px;
             margin: 0px;
             text-align: center;
+            overflow: hidden;
         }
 
         .outer {
@@ -29,30 +30,32 @@
             width: 60%;
         }
 
-        .inner img {
-            width: 49.5%;
-            height: 49.5%;
-        }
-
-        .inner a {
+        #welcomeLogo {
+            max-height: 100vh;
+            z-index: 0;
+            margin: auto;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            right: 0;
         }
 
         .overlay {
             position:absolute;
             background:#fff;
             opacity:0.2;
-            width: 17.5%;
+            width: 17.75%;
             height:22%;
+            margin-left: 6.1%;
+            z-index: 1;
         }
 
         #overlay1 {
             margin-top: 13.5%;
-            margin-left: 6%;
         }
 
         #overlay2 {
-            margin-left: 6%;
-            margin-top: 24.5%;
+            margin-top: 25%;
         }
 
         #overlay1:hover, #overlay2:hover {
@@ -133,7 +136,7 @@
         <div class="welcomePage">
             <a id="overlay1" class="overlay" href="#1"></a>
             <a id="overlay2" class="overlay" href="#2"></a>
-            <img src="/assets/login-ab29bec87a47633df2aa63f9ced2cf7a74fdaa61f07b77290405d93049380cc1.png" id="welcomeLogo" alt="erdos">
+            <img src="/assets/login-ab29bec87a47633df2aa63f9ced2cf7a74fdaa61f07b77290405d93049380cc1.png" id="welcomeLogo" alt="erdos" usemap="#buttonMap">
         </div>
 
         <div class="loginForm">
