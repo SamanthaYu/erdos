@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Users</h1>
+
+
+<div id="trainerDiv">
+  <table>
+    <thead>
+      <tr>
+        <th>Username</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% @users.order("username").each do |user| %>
+        <tr>
+          <td><%= user.username %></td>
+          <td><%= link_to 'Destroy', user, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        </tr>
+        </tr>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
+
+<br>&nbsp;</br>
+
+<%= link_to 'New User', new_user_path %>
