@@ -41,3 +41,5 @@ gem 'puma'
 
 # for chat server thingy
 gem 'redis', '~> 3.0'
+
+gem 'bcrypt'

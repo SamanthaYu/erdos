@@ -2,10 +2,15 @@ Rails.application.routes.draw do
 
   mount ActionCable.server => '/cable'
 
+
+  get '/login', to: 'sessions#new'
+  post '/login', to: 'sessions#create'
+  delete '/login', to: 'sesions#destroy'
   get 'welcome/index'
   resources :chatrooms
   resources :messages
   resources :users
+  resources :sessions
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
