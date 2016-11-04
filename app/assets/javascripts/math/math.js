@@ -1,11 +1,6 @@
-function see() {
-	alert("why?");
-}
-
-function renderMath(data) {
-	alert("Hey!");
+function render(elementId) {
 	renderMathInElement(
-		document.getElementById(mathDiv),{
+		document.getElementById(elementId),{
 			delimiters: [
 				{left: "$$", right: "$$", display: true},
 				{left: "\\[", right: "\\]", display: true},
@@ -16,14 +11,14 @@ function renderMath(data) {
 	);
 }
 
-function send(data.message) {
+function send() {
 	//katex.render(userInput.value, document.getElementById('userOutput'));
-	document.getElementById('userOutput').innerHTML = data.message;
-	renderMath('userOutput');
+	document.getElementById('userOutput').innerHTML = userInput.value;
+	render('userOutput');
 }
 
 function types() {
 	//katex.render(userInput.value, document.getElementById('userTypes'));
 	document.getElementById('userTypes').innerHTML = userInput.value;
-	renderMath('userTypes');
+	render('userTypes');
 }
