@@ -1,5 +1,5 @@
 function renderMath() {
-	alert("hey!");
+	alert("what?!");
 	renderMathInElement(
 		document.getElementById("mathStatus"),{
 			delimiters: [
