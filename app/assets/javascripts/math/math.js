@@ -1,7 +1,7 @@
 function renderMath() {
 	alert("hey!");
 	renderMathInElement(
-		document.getElementById('mathStatus'),{
+		document.getElementById("mathStatus"),{
 			delimiters: [
 				{left: "$$", right: "$$", display: true},
 				{left: "\\[", right: "\\]", display: true},
