@@ -16,6 +16,7 @@ class UsersController < ApplicationController
         log_in @user
         redirect_to @user
       else
+        flash.now[:danger]="password/email is invalid"
         render 'new'
     end
   end
