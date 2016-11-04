@@ -12,13 +12,11 @@ class UsersController < ApplicationController
 
   def create
     @user = User.new(user_params)
-    respond_to do |format|
       if @user.save
-        login_url
+        log_in @user
         redirect_to @user
       else
         render 'new'
-      end
     end
   end
 
