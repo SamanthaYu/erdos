@@ -27,7 +27,7 @@
         <a href="/login"><span class="glyphicon glyphicon-home"></span> Login</a>
       </li>
       <li class="active">
-        <a href="/logout"><span class="glyphicon glyphicon-home"></span> Logout</a>
+        <%= link_to "Log out", logout_path, method: :delete %>
       </li>
   </div>
 </nav>
