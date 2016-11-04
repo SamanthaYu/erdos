@@ -5,4 +5,16 @@
 </div>
 
 
+<!--
+<p> &nbsp; ^Original &nbsp;</p>
+<div id="messages">
+  <% @chatroom.messages.each do |message| %>
+    <%= render partial: 'messages/message', object: message %>
+    <div id="message_edit">
+      <%= render partial: 'messages/editmessage_form', object: message %>
+    </div>
+  <% end %>
+</div>
+-->
+
 <%= render partial: 'messages/message_form', locals: {message: @message, chatroom: @chatroom}%>
