@@ -1,1 +1,5 @@
-<p><strong>Everyone Is Named Gerbil</strong> <%=message.content%></p>
+<% if !message.user_id.nil? %>
+  <p><strong><%= link_to User.find(message.user_id).username, user_path(message.user_id) %>: </strong> <%=message.content%></p>
+<% else %>
+  <p><strong>Guests are Called Gerbil </strong> <%=message.content%></p>
+<% end %>
