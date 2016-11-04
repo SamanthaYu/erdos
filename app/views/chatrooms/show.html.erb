@@ -1,6 +1,6 @@
 <div id="container">
     <h1><%= @chatroom.roomname %></h1>
-    <div id="messages">
+    <div id="messageContainer" class="box">
         <%= render partial: 'messages/message', collection: @chatroom.messages%>
     </div>
 
