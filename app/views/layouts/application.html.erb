@@ -29,6 +29,11 @@
       <li class="active">
         <%= link_to "Log out", logout_path, method: :delete %>
       </li>
+      <li class="active">
+        <% if !current_user.nil? %>
+          <td><%= link_to @current_user.username, @current_user %></td>
+        <% end %>
+      </li>
   </div>
 </nav>
 
