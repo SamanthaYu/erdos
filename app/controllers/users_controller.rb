@@ -15,9 +15,6 @@ class UsersController < ApplicationController
       if @user.save
         log_in @user
         redirect_to @user
-      else
-        flash.now[:danger]="password/email is invalid"
-        render 'new'
     end
   end
 
@@ -35,7 +32,7 @@ class UsersController < ApplicationController
 
   private
     def user_params
-      params.require(:user).permit(:username, :password, :password_confirmation)
+      params.require(:user).permit(:username, :password, :userType)
     end
 
 end

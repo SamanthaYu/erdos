@@ -34,6 +34,14 @@ class ChatroomsController < ApplicationController
     @message = Message.new
   end
 
+  def destroy
+    @chatroom = Chatroom.find(params[:id])
+    if @chatroom.present?
+      @chatroom.destroy
+    end
+    redirect_to chatrooms_url
+  end
+
   private
 
     def chatroom_params
