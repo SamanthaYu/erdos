@@ -1,7 +1,3 @@
-function see() {
-	alert("why?");
-}
-
 function renderMath(data) {
 	alert("Hey!");
 	renderMathInElement(
@@ -16,7 +12,7 @@ function renderMath(data) {
 	);
 }
 
-function send(data.message) {
+function send(data) {
 	//katex.render(userInput.value, document.getElementById('userOutput'));
 	document.getElementById('userOutput').innerHTML = data.message;
 	renderMath('userOutput');
