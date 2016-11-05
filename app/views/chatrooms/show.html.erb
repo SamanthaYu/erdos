@@ -1,4 +1,8 @@
-<h1><%= @chatroom.roomname %></h1>
+<% if !@chatroom.roomname.blank? %>
+  <h1><%= @chatroom.roomname %></h1>
+<% else %>
+  <h1><%= chatroom_path(@chatroom) %></h1>
+<% end %>
 
 <div id="messages">
 <%= render partial: 'messages/message', collection: @chatroom.messages%>

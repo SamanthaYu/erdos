@@ -18,20 +18,22 @@
         <a href="/"><span class="glyphicon glyphicon-home"></span> Home</a>
       </li>
       <li class="active">
-        <a href="/chatrooms"><span class="glyphicon glyphicon-home"></span> Chatrooms</a>
+        <a href="/chatrooms"> Chatrooms</a>
       </li>
       <li class="active">
-        <a href="/users"><span class="glyphicon glyphicon-home"></span> Users</a>
+        <a href="/users"> Users</a>
       </li>
       <li class="active">
-        <a href="/login"><span class="glyphicon glyphicon-home"></span> Login</a>
-      </li>
-      <li class="active">
-        <%= link_to "Log out", logout_path, method: :delete %>
+        <a href="/login"> Login</a>
       </li>
       <li class="active">
         <% if !current_user.nil? %>
-          <td><%= link_to @current_user.username, @current_user %> </td>
+          <%= link_to "Log out", logout_path, method: :delete %>
+        <% end %>
+      </li>
+      <li class="active">
+        <% if !current_user.nil? %>
+          <%= link_to @current_user.username, @current_user %>
         <% end %>
       </li>
   </div>
