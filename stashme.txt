@@ -1,0 +1,8 @@
+from app/view/users/show.html.erb (supposed to show chatrooms that users belongs to)
+<% (0..@user.chatrooms.size-1).each do |i| %>
+  <tr>
+    <td>
+      <% @user.chatrooms[i].roomname %>
+    </td>
+  </tr>
+  <% end %>

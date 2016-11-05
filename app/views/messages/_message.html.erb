@@ -1,1 +1,13 @@
-<p><strong>Everyone Is Named Gerbil</strong> <%=message.content%></p>
+<div id="message">
+    <% if !message.user_id.nil? %>
+        <div id="messageHeader"><p><strong><%= link_to User.find(message.user_id).username, user_path(message.user_id) %> </strong>
+            <span id="timeStamp"><%=message.created_at.strftime("%I:%M %p")%></span></p>
+        </div>
+        <div id="messageContent"><%=message.content%></div>
+    <% else %>
+        <div id="messageHeader"><p><strong>Gerbil </strong>
+            <span id="timeStamp"><%=message.created_at.strftime("%I:%M %p")%></span></p>
+        </div>
+        <div id="messageContent"><%=message.content%></div>
+    <% end %>
+</div>
