@@ -5,21 +5,16 @@
   <div class="col-md-6 col-md-offset-3">
     <%= form_for(@user) do |f| %>
       <%= f.label :username %>
-      <%= f.text_field :username %>
+      <%= f.text_field :username %><br>
 
       <%= f.label :password %>
-      <%= f.password_field :password %>
+      <%= f.password_field :password %><br>
 
       <%= f.label :password_confirmation, "Confirmation" %>
-      <%= f.password_field :password_confirmation %>
+      <%= f.password_field :password_confirmation %><br>
 
-<<<<<<< HEAD
-      <%= f.label :type, "Type" %>
-      <p> Type:</br> <%= f.select :userType, ['Regular','Admin'], :selected => 'Regular' %>
-=======
       <%= f.label :userType, "User Type" %>
-      <%= f.select :userType, ['Regular', 'Admin'], :selected => 'Regular' %>
->>>>>>> e5f087c678f9a8cd1ab561e3d73cfb11ff4a07d6
+      <%= f.select :userType, ['Regular', 'Admin'], :selected => 'Regular' %><br>
 
       <%= f.submit "Create my account", class: "btn btn-primary" %>
     <% end %>
