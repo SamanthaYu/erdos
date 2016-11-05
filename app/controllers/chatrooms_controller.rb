@@ -8,6 +8,13 @@ class ChatroomsController < ApplicationController
     @chatroom=Chatroom.new
   end
 
+  def destroy
+    @chatroom = Chatroom.find(params[:id])
+    if @chatroom.present?
+      @chatroom.destroy
+    end
+    redirect_to chatrooms_url
+  end
 
   def edit
   end
@@ -32,6 +39,14 @@ class ChatroomsController < ApplicationController
   def show
     @chatroom = Chatroom.find(params[:id])
     @message = Message.new
+  end
+
+  def destroy
+    @chatroom = Chatroom.find(params[:id])
+    if @chatroom.present?
+      @chatroom.destroy
+    end
+    redirect_to chatrooms_url
   end
 
   private
