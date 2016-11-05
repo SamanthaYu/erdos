@@ -1,15 +1,12 @@
 <p id="notice"><%= notice %></p>
 
 <h1><%= @user.username %></h1>
-<<<<<<< HEAD
 <% if @user.userType == 'Regular' %>
   <p> Regular </p>
 <% elsif @user.userType == 'Admin' %>
   <p> Admin </p>
 <% end %>
-=======
 <p>User Type: <%= @user.userType %></p>
->>>>>>> e5f087c678f9a8cd1ab561e3d73cfb11ff4a07d6
 
 
 <%= link_to 'Back', users_path %>
