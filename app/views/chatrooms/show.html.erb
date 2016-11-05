@@ -1,13 +1,25 @@
+<div id="sidebar">
+
+</div>
 <div id="container">
+    <div id="header" class="box">
     <% if !@chatroom.roomname.blank? %>
         <h1><%= @chatroom.roomname %></h1>
     <% else %>
         <h1><%= chatroom_path(@chatroom) %></h1>
     <% end %>
+    </div>
 
     <div id="messageContainer" class="box">
         <%= render partial: 'messages/message', collection: @chatroom.messages%>
     </div>
+
+
+    <%= render partial: 'messages/message_form', locals: {message: @message, chatroom: @chatroom}%>
+</div>
+
+
+
 <!--
 <p> &nbsp; ^Original &nbsp;</p>
 <div id="messages">
@@ -19,6 +31,3 @@
   <% end %>
 </div>
 -->
-
-    <%= render partial: 'messages/message_form', locals: {message: @message, chatroom: @chatroom}%>
-</div>
