@@ -1,6 +1,6 @@
 <div id="message">
-    <% if !message.user_id.nil? %>
-        <div id="messageHeader"><p><strong><%= link_to User.find(message.user_id).username, user_path(message.user_id) %> </strong>
+    <% if !message.user.nil? %>
+        <div id="messageHeader"><p><strong><%= link_to User.find(message.user).username, user_path(message.user) %> </strong>
             <span id="timeStamp"><%=message.created_at.strftime("%I:%M %p")%></span></p>
         </div>
         <div id="messageContent"><%=message.content%></div>
