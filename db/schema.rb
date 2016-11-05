@@ -42,11 +42,7 @@ ActiveRecord::Schema.define(version: 20161104220940) do
   create_table "users", force: :cascade do |t|
     t.string   "username"
     t.string   "password"
-<<<<<<< HEAD
-    t.string  "userType"
-=======
     t.string   "userType"
->>>>>>> e5f087c678f9a8cd1ab561e3d73cfb11ff4a07d6
     t.datetime "created_at",      null: false
     t.datetime "updated_at",      null: false
     t.string   "password_digest"
