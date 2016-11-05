@@ -1,6 +1,6 @@
 <div id="inputForm" class="box">
     <%=form_for message, remote: true, authenticity_token: true do |f|%>
-      <%= f.text_area :content, class: "form-control", data: {textarea: "message"}%>
+      <%= f.text_area :content, class: "form-control", :placeholder => "Enter Message", data: {textarea: "message"}%>
       <%= f.hidden_field :chatroom_id, value: chatroom.id %>
       <% if !current_user.nil? %>
         <%= f.hidden_field :user_id, value: current_user.id %>
