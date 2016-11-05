@@ -16,3 +16,6 @@
 //= require_tree ./channels
 //= require chatrooms
 // require_tree .
+//= require math
+//= require auto-render.min
+//= require katex.min

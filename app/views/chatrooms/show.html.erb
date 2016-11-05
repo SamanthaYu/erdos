@@ -1,10 +1,63 @@
-<h1><%= @chatroom.roomname %></h1>
+<div id="sidebar">
+    <ul class="navBar">
+        <li class="navLinks">
+            <a href="/"><span class="glyphicon glyphicon-home"></span> Home</a>
+        </li>
+        <li class="navLinks">
+            <a href="/chatrooms"> Chatrooms</a>
+        </li>
+        <li class="navLinks">
+            <a href="/users"> Users</a>
+        </li>
+        <li class="navLinks">
+            <a href="/login"> Login</a>
+        </li>
+        <li class="navLinks">
+            <% if !current_user.nil? %>
+                <%= link_to "Log out", logout_path, method: :delete %>
+                <% end %>
+        </li>
+        <li class="navLinks">
+            <% if !current_user.nil? %>
+                <%= link_to @current_user.username, @current_user %>
+            <% end %>
+        </li>
+  </ul>
+</div>
+<div id="container">
+    <div id="header" class="box">
+    <% if !@chatroom.roomname.blank? %>
+        <h1><%= @chatroom.roomname %></h1>
+    <% else %>
+        <h1><%= chatroom_path(@chatroom) %></h1>
+    <% end %>
+    </div>
 
-<div id="messages">
-<%= render partial: 'messages/message', collection: @chatroom.messages%>
+    <div id="messageContainer" class="box">
+        <%= render partial: 'messages/message', collection: @chatroom.messages%>
+    </div>
+
+
+    <%= render partial: 'messages/message_form', locals: {message: @message, chatroom: @chatroom}%>
 </div>
 
+<<<<<<< HEAD
 <%= render partial: 'messages/message_form', locals: {message: @message, chatroom: @chatroom}%>
 <div id="mathStatus">
   What
 </div>
+=======
+
+
+<!--
+<p> &nbsp; ^Original &nbsp;</p>
+<div id="messages">
+  <% @chatroom.messages.each do |message| %>
+    <%= render partial: 'messages/message', object: message %>
+    <div id="message_edit">
+      <%= render partial: 'messages/editmessage_form', object: message %>
+    </div>
+  <% end %>
+</div>
+-->
+>>>>>>> heroku/master

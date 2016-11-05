@@ -1,1 +1,5 @@
-<li><%= link_to chatroom.roomname, chatroom_path(chatroom) %></li>
+<% if !chatroom.roomname.blank? %>
+  <li><%= link_to chatroom.roomname, chatroom_path(chatroom) %></li>
+<% else %>
+  <li><%= link_to chatroom_path(chatroom), chatroom_path(chatroom) %></li>
+<% end %>
