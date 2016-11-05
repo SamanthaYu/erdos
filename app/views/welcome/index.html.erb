@@ -1,9 +1,16 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Login</title>
+    <title>Erdos</title>
     <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
     <style>
+		/*
+			green: #03a079;
+			light green: #55c6aa;
+			yellow: #fbca35;
+			dark blue: #182031;
+		*/
+
         body {
             background-color: #03a079;
             padding: 0px;
@@ -46,8 +53,9 @@
             opacity:0.2;
             width: 17.75%;
             height:22%;
-            margin-left: 6.1%;
+            margin-left: 21.1%;
             z-index: 1;
+            cursor: pointer;
         }
 
         #overlay1 {
@@ -134,9 +142,11 @@
     <div class="middle">
     <div class="inner">
         <div class="welcomePage">
-            <a id="overlay1" class="overlay" href="/users/new"></a>
-            <a id="overlay2" class="overlay" href="/login"></a>
             <img src="/assets/login-ab29bec87a47633df2aa63f9ced2cf7a74fdaa61f07b77290405d93049380cc1.png" id="welcomeLogo" alt="erdos" usemap="#buttonMap">
+            <map name="buttonmap" id="buttonmap">
+                <area shape="rect" id="button1" coords="80,180,300,320" href="/users/new" alt="signup">
+                <area shape="rect" id="button2" coords="80,320,300,460" href="#2" alt="login">
+            </map>
         </div>
 
         <div class="loginForm">
@@ -155,7 +165,7 @@
     <script>
         $(document).ready(function(){
             $(".loginForm").hide();
-            $("#overlay2").click(function(){
+            $("#button2").click(function(){
                 $(".welcomePage").fadeOut("swing", function(){
                     $(".loginForm").fadeIn("swing");
                 });
