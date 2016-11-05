@@ -3,7 +3,9 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 h1 {
-    margin: 0;
+    margin: auto;
+    top: 0;
+    bottom: 0;
 }
 
 body {
@@ -12,39 +14,61 @@ body {
     overflow: hidden;
     height: 100%;
     max-height: 100vh;
+    max-width: 100vw;
+}
+
+#sidebar {
+    float: left;
+    min-height: 100vh;
+    max-height: 100vh;
+    position: absolute;
+    width: 20%;
+    background-color: #ccc;
+    z-index: 1;
 }
 
 #container {
+    left: 20%;
     position: relative;
-    padding: 5px;
     max-height: 100vh;
     height: 100vh;
+    max-width: 100vw;
+    z-index: 0;
 }
 
 .box {
     display: block;
 }
 
+#header {
+    position: absolute;
+    height: 10%;
+    background-color: #fff;
+    min-width: 100vw;
+    max-width: 100vw;
+}
 #messageContainer {
     position: absolute;
-    max-width: 98vw;
-    background-color: #f9f9f9;
+    max-width: 100vw;
+    background-color: #fff;
     overflow-y: scroll;
-    min-height: 75vh;
-    max-height: 75vh;
+    top: 10%;
+    bottom: 15%;
     left: 0;
     right: 0;
     margin: auto;
 }
 
 #inputForm {
-    position: fixed;
-    float: bottom;
+    position: absolute;
+    background-color: #fff;
     bottom: 0;
-    max-width: 98vw;
+    height: 15%;
+    max-width: 100vw;
     left: 0;
     right: 0;
-    margin: 20px auto;
+    padding: 15px 0px;
+    margin: 20px 0 auto;
 }
 
 #message {
