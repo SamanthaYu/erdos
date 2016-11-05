@@ -1,28 +1,14 @@
 <div id="sidebar">
-    <ul class="navBar">
-        <li class="navLinks">
-            <a href="/"><span class="glyphicon glyphicon-home"></span> Home</a>
-        </li>
-        <li class="navLinks">
-            <a href="/chatrooms"> Chatrooms</a>
-        </li>
-        <li class="navLinks">
-            <a href="/users"> Users</a>
-        </li>
-        <li class="navLinks">
-            <a href="/login"> Login</a>
-        </li>
-        <li class="navLinks">
-            <% if !current_user.nil? %>
-                <%= link_to "Log out", logout_path, method: :delete %>
-                <% end %>
-        </li>
-        <li class="navLinks">
-            <% if !current_user.nil? %>
-                <%= link_to @current_user.username, @current_user %>
-            <% end %>
-        </li>
-  </ul>
+    <a href="/"><span class="glyphicon glyphicon-home"></span> Home</a>
+    <a href="/chatrooms"> Chatrooms</a>
+    <a href="/users"> Users</a>
+    <a href="/login"> Login</a>
+    <% if !current_user.nil? %>
+        <%= link_to "Log out", logout_path, method: :delete %>
+        <% end %>
+    <% if !current_user.nil? %>
+        <%= link_to @current_user.username, @current_user %>
+    <% end %>
 </div>
 <div id="container">
     <div id="header" class="box">
