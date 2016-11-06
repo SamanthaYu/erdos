@@ -15,10 +15,11 @@
 //= require turbolinks
 //= require_tree ./channels
 //= require chatrooms
-// require_tree .
 //= require math
 //= require auto-render.min
 //= require katex.min
+//= require jquery.imagemapster.min
+//= require_tree .
 
 $(document).ready(function() {
     $("#sideBarOpener").click(function(){
