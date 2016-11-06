@@ -1,5 +1,6 @@
 <h1><%= @user.username %></h1>
 
+<h3> User Type: </h3>
 <% if @user.userType == 'Regular' %>
   <p> Regular </p>
 <% elsif @user.userType == 'Admin' %>
@@ -7,5 +8,21 @@
 <% elsif @user.userType == 'Guest' %>
   <p> Guest </p>
 <% end %>
+
+<h3> You have messages in: </h3>
+<% userRooms = Array.new(@user.chatrooms.size+1)%>
+<% roomNum = 0 %>
+<% @user.chatrooms.each do |room| %>
+  <% if room != userRooms[roomNum] %>
+    <% roomNum += 1 %>
+    <% userRooms[roomNum] = room %>
+    <%= render room %>
+    <% if !current_user.nil? && current_user.userType == 'Admin' %>
+       <p>&nbsp;&nbsp; <%= link_to 'Destroy', room, method: :delete, data: { confirm: 'Are you sure?' } %> </p>
+    <% end %>
+  <% end %>
+<% end %>
+
+<p>&nbsp;</p>
 
 <%= link_to 'Back', users_path %>
