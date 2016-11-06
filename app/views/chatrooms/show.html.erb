@@ -1,8 +1,9 @@
-<div id="sidebar">
-    <a href="/"><span class="glyphicon glyphicon-home"></span> Home</a>
-    <a href="/chatrooms"> Chatrooms</a>
-    <a href="/users"> Users</a>
-    <a href="/login"> Login</a>
+<div id="sidebar" class="sideNav">
+    <a href="javascript:void(0)" id="closeBtn" onclick="closeNav()" class="closeBtn">&times;</a>
+    <a href="/">Home</a>
+    <a href="/chatrooms">Chatrooms</a>
+    <a href="/users">Users</a>
+    <a href="/login">Login</a>
     <% if !current_user.nil? %>
         <%= link_to "Log out", logout_path, method: :delete %>
         <% end %>
@@ -12,11 +13,11 @@
 </div>
 <div id="container">
     <div id="header" class="box">
-    <% if !@chatroom.roomname.blank? %>
-        <h1><%= @chatroom.roomname %></h1>
-    <% else %>
-        <h1><%= chatroom_path(@chatroom) %></h1>
-    <% end %>
+        <% if !@chatroom.roomname.blank? %>
+            <h1><span id="arrow" class="arrow"> >> </span><%= @chatroom.roomname %></h1>
+        <% else %>
+            <h1><span id="arrow" class="arrow"> >> </span><%= chatroom_path(@chatroom) %></h1>
+        <% end %>
     </div>
 
     <div id="messageContainer" class="box">
