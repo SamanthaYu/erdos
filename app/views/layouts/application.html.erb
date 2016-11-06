@@ -9,33 +9,27 @@
 </head>
 <body onload="renderAllMessages()">
 
-<!--<nav class="navbar navbar-default navbar-static-top navbar-inverse">
-  <div class="container">
-    <ul class="nav navbar-nav">
-      <li class="active">
-        <a href="/"><span class="glyphicon glyphicon-home"></span> Home</a>
-      </li>
-      <li class="active">
-        <a href="/chatrooms"> Chatrooms</a>
-      </li>
-      <li class="active">
-        <a href="/users"> Users</a>
-      </li>
-      <li class="active">
-        <a href="/login"> Login</a>
-      </li>
-      <li class="active">
+<% if params[:controller] == 'welcome'%>
+
+<% else %>
+    <div id="sidebar" class="sideNav">
+        <a href="javascript:void(0)" id="closeBtn" class="closeBtn"><<</a>
         <% if !current_user.nil? %>
-          <%= link_to "Log out", logout_path, method: :delete %>
+            <%= link_to @current_user.username, @current_user %>
         <% end %>
-      </li>
-      <li class="active">
+        <a href="/">Home</a>
+        <a href="/chatrooms">Chatrooms</a>
+        <a href="/users">Users</a>
+        <% if current_user.nil? %>
+            <a href="/login">Login</a>
+        <% end %>
         <% if !current_user.nil? %>
-          <%= link_to @current_user.username, @current_user %>
+            <%= link_to "Log out", logout_path, method: :delete %>
         <% end %>
-      </li>
-  </div>
-</nav>-->
+    </div>
+
+    <div id="sideBarOpener" class="sideBarOpener">>></div>
+<% end %>
 
 <%= yield %>
 
