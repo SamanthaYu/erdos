@@ -1,11 +1,11 @@
-<p id="notice"><%= notice %></p>
-
 <h1><%= @user.username %></h1>
 
 <% if @user.userType == 'Regular' %>
   <p> Regular </p>
 <% elsif @user.userType == 'Admin' %>
   <p> Admin </p>
+<% elsif @user.userType == 'Guest' %>
+  <p> Guest </p>
 <% end %>
 
 <%= link_to 'Back', users_path %>
