@@ -13,15 +13,15 @@ class UsersController < ApplicationController
 
   def create
     @user = User.new(user_params)
-      if @user.save
-        log_in @user
-        if (@user.userType == "Guest")
-          redirect_to chatrooms_url
-        else
-          redirect_to @user
-        end
+    if @user.save
+      log_in @user
+      if (@user.userType == "Guest")
+        redirect_to chatrooms_url
       else
-        render :new
+        redirect_to @user
+      end
+    else
+      render :new
     end
   end
 
