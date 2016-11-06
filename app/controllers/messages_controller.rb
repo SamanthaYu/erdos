@@ -1,6 +1,7 @@
 class MessagesController < ApplicationController
 
   def create
+    #caller.each{|i| puts i}
     message= Message.new(message_params)
     if message.save
       ActionCable.server.broadcast 'messages',
