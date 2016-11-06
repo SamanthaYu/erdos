@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<% @page_title = "UserAuth | Signup" %>
+<head>
+    <title>Erdos</title>
+    <%= stylesheet_link_tag  '//maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css' %>
+    <%= csrf_meta_tags %>
+    <%= action_cable_meta_tag %>
+    <style>
+        /*Styling placeholder text for input boxes*/
+        ::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+            font-style: italic;
+            letter-spacing: 2px;
+        }
+        ::-moz-placeholder { /* Firefox 19+ */
+            font-style: italic;
+            letter-spacing: 2px;
+        }
+        :-ms-input-placeholder { /* IE 10+ */
+            font-style: italic;
+            letter-spacing: 2px;
+        }
+        :-moz-placeholder { /* Firefox 18- */
+            font-style: italic;
+            letter-spacing: 2px;
+        }
+
+        h1 {
+            padding: 10px;
+            margin: auto;
+            color: #222;
+            text-align: center;
+        }
+
+        body {
+            background-color: #03a079;
+            padding: 0px;
+            margin: 0px;
+            text-align: center;
+        }
+
+        .outer {
+            display: table;
+            position: absolute;
+            height: 100%;
+            width: 100%;
+        }
+
+        .middle {
+            display: table-cell;
+            vertical-align: middle;
+        }
+
+        .inner {
+            margin-left: auto;
+            margin-right: auto;
+            width: 60%;
+        }
+
+        input[type=text], input[type=password] {
+            padding: 10px;
+            display: inline-block;
+            width: 100%;
+            margin: 8px 0;
+            border-radius: 0px;
+            border: 1px solid #ddd;
+            box-sizing: border-box;
+            line-height: 2em;
+        }
+
+        .basicForm {
+            background-color: #fff;
+            text-align: left;
+            padding: 20px;
+            border-radius: 5px;
+            border: 2px solid #aaa;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+        }
+
+        .submitButton {
+            background-color: #eee;
+            color: #444;
+            border-radius: 0px;
+            border: 1px solid #e1e1e1;
+            cursor:pointer;
+            width: 30%;
+            padding: 12px 5px;
+            margin: 8px 0;
+        }
+
+        .submitButton:hover {
+            background-color: #444;
+            color: #fff;
+        }
+
+        hr {
+            border: 1px solid #ddd;
+            width: 100%;
+            margin: 0.5em 0 0.5em 0;
+            text-align: center;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="outer">
+    <div class="middle">
+    <div class="inner">
+        <p><%= @user.errors.full_messages.first if @user.errors.any? %></p>
+        <div id="signUpForm" class="basicForm">
+            <%= form_for(@user) do |f| %>
+              <%= f.text_field :username, :placeholder => 'Enter Username' %><br>
+
+              <%= f.password_field :password, :placeholder => 'Enter Password' %><br>
+
+              <%= f.password_field :password_confirmation, :placeholder => 'Confirm Password'%><br>
+
+              <%= f.label :userType, "User Type" %> &nbsp;&nbsp;
+              <%= f.select :userType, ['Regular', 'Admin'], :selected => 'Regular' %><br>
+
+              <center><%= f.submit "Create Account", class: "submitButton" %></center>
+              <hr>
+              <center><%= f.submit "Login", class: "submitButton" %></center>
+              <center><%= f.submit "Guest Login", class: "submitButton" %></center>
+            <% end %>
+        </div>
+
+        <div id="guestLogin" class="basicForm">
+            <%= render partial: 'users/guestform', locals: {message: @message, chatroom: @chatroom}%>
+        </div>
+
+        <!--<%= link_to 'Back', users_path %>-->
+    </div>
+    </div>
+    </div>
+
+    <%= javascript_include_tag  '//maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+</body>
+</html>
