@@ -1,13 +1,13 @@
-<div id="message">
+<div class="message" onclick="renderAllMessages()">
     <% if !message.user.nil? %>
-        <div id="messageHeader"><p><strong><%= link_to User.find(message.user).username, user_path(message.user) %> </strong>
-            <span id="timeStamp"><%=message.created_at.strftime("%I:%M %p")%></span></p>
+        <div class="messageHeader"><p><strong><%= link_to User.find(message.user).username, user_path(message.user) %> </strong>
+            <span class="timeStamp"><%=message.created_at.strftime("%I:%M %p")%></span></p>
         </div>
-        <div id="messageContent"><%=message.content%></div>
+        <div class="messageContent"><%=message.content%></div>
     <% else %>
-        <div id="messageHeader"><p><strong>Gerbil </strong>
-            <span id="timeStamp"><%=message.created_at.strftime("%I:%M %p")%></span></p>
+        <div class="messageHeader"><p><strong>Gerbil </strong>
+            <span class="timeStamp"><%=message.created_at.strftime("%I:%M %p")%></span></p>
         </div>
-        <div id="messageContent"><%=message.content%></div>
+        <div class="messageContent"><%=message.content%></div>
     <% end %>
 </div>
