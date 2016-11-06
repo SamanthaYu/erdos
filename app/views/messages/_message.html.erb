@@ -1,4 +1,4 @@
-<div class="message" onclick="renderAllMessages()">
+<div class="message">
     <% if !message.user.nil? %>
         <div class="messageHeader"><p><strong><%= link_to User.find(message.user).username, user_path(message.user) %> </strong>
             <span class="timeStamp"><%=message.created_at.strftime("%I:%M %p")%></span></p>
