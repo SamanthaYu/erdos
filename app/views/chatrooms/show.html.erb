@@ -1,18 +1,16 @@
-<div id="container">
-    <div id="header">
-        <% if !@chatroom.roomname.blank? %>
-            <h1><%= @chatroom.roomname %></h1>
-        <% else %>
-            <h1><%= chatroom_path(@chatroom) %></h1>
-        <% end %>
-    </div>
-
-    <div id="messageContainer">
-        <%= render partial: 'messages/message', collection: @chatroom.messages.order(:id)%>
-    </div>
-
-    <%= render partial: 'messages/message_form', locals: {message: @message, chatroom: @chatroom}%>
+<div id="header">
+    <% if !@chatroom.roomname.blank? %>
+        <h1><%= @chatroom.roomname %></h1>
+    <% else %>
+        <h1><%= chatroom_path(@chatroom) %></h1>
+    <% end %>
 </div>
+
+<div id="messageContainer">
+    <%= render partial: 'messages/message', collection: @chatroom.messages.order(:id)%>
+</div>
+
+<%= render partial: 'messages/message_form', locals: {message: @message, chatroom: @chatroom}%>
 
 <!--
 <p> &nbsp; ^Original &nbsp;</p>
