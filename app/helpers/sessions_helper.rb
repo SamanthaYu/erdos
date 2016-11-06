@@ -12,6 +12,12 @@ module SessionsHelper
   end
 
   def log_out
+    begin
+      if User.find(session[:user_id]).userType == 'Guest'
+        User.find(session[:user_id]).destroy
+      end
+    rescue
+    end
     session.delete(:user_id)
     @current_user = nil
   end
