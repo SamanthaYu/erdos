@@ -15,6 +15,9 @@ class UsersController < ApplicationController
       if @user.save
         log_in @user
         redirect_to @user
+      else
+        flash.now[:notice] = "Select a Trainer (if no trainer exists, please make one first)."
+        render :new
     end
   end
 
