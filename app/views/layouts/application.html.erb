@@ -6,6 +6,7 @@
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
   <%= action_cable_meta_tag %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
 </head>
 <body onload="renderAllMessages()">
 
@@ -33,7 +34,6 @@
 
 <%= yield %>
 
-<%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
 <%= javascript_include_tag  '//maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js' %>
 </body>
 </html>

@@ -21,7 +21,6 @@ Rails.application.configure do
 
   # Disable Rails's static asset server (Apache or nginx will already do this).
   config.serve_static_files = ENV['RAILS_SERVE_STATIC_FILES'].present?
-  #config.public_file_server.enabled = true
 
   # Compress JavaScripts and CSS.
   config.assets.js_compressor = :uglifier
@@ -76,7 +75,4 @@ Rails.application.configure do
 
   # Do not dump schema after migrations.
   config.active_record.dump_schema_after_migration = false
-
-  config.web_socket_server_url = "wss://erdos314.herokuapp.com/cable"
-  config.action_cable.allowed_request_origins = ['https://erdos314.herokuapp.com', 'http://erdos314.herokuapp.com']
 end
