@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
-    layout 'login', only: [:new]
-    
+    layout 'signup', only: [:new, :create]
+
   def index
     @user=User.new
     @users=User.all

@@ -108,23 +108,20 @@
     <div class="outer">
     <div class="middle">
     <div class="inner">
-        <p><%= @user.errors.full_messages.first if @user.errors.any? %></p>
         <div id="signUpForm" class="basicForm">
+            <p><%= @user.errors.full_messages.first if @user.errors.any? %></p>
             <%= form_for(@user) do |f| %>
               <%= f.text_field :username, :placeholder => 'Enter Username' %><br>
-
               <%= f.password_field :password, :placeholder => 'Enter Password' %><br>
-
               <%= f.password_field :password_confirmation, :placeholder => 'Confirm Password'%><br>
-
               <%= f.label :userType, "User Type" %> &nbsp;&nbsp;
               <%= f.select :userType, ['Regular', 'Admin'], :selected => 'Regular' %><br>
 
               <center><%= f.submit "Create Account", class: "submitButton" %></center>
-              <hr>
-              <center><%= f.submit "Login", class: "submitButton" %></center>
-              <center><%= f.submit "Guest Login", class: "submitButton" %></center>
             <% end %>
+            <hr>
+            <center><%= button_to "Login", , {class: "submitButton"} %></center>
+            <center><%= button_to "Guest Login", "javascript:void(0)", {class: "submitButton"} %></center>
         </div>
 
         <div id="guestLogin" class="basicForm">
