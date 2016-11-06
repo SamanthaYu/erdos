@@ -1,6 +1,6 @@
-function renderMath(data) {
+function renderMath(element) {
 	renderMathInElement(
-		document.getElementById(mathDiv),{
+			element,{
 			delimiters: [
 				{left: "$$", right: "$$", display: true},
 				{left: "\\[", right: "\\]", display: true},
@@ -21,4 +21,12 @@ function types() {
 	//katex.render(userInput.value, document.getElementById('userTypes'));
 	document.getElementById('userTypes').innerHTML = userInput.value;
 	renderMath('userTypes');
+}
+
+function renderAllMessages() {
+	var allMessages = document.getElementsByClassName('messageContent');
+
+	for (var i = 0; i < allMessages.length; i++){
+		renderMath(allMessages[i]);
+	}
 }
