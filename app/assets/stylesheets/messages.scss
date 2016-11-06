@@ -83,22 +83,22 @@ body {
     margin: 20px 0 auto;
 }
 
-#message {
+.message {
     border-bottom: 1px solid #aaa;
     padding: 5px;
 }
 
-#messageHeader {
+.messageHeader {
     margin-bottom: 5px;
 }
 
-#timeStamp {
+.timeStamp {
     color: #777;
     margin-left: 5px;
     font-size: 10px;
 }
 
-#messageContent {
+.messageContent {
     margin-top: 0;
 }
 

@@ -5,7 +5,6 @@ App.messages = App.cable.subscriptions.create('MessagesChannel', {
   },
 
   renderMessage: function(data) {
-    renderMath();
     return "<p> <b>" + "Call Me Ishmael" + ": </b>" + data.message + "</p>";
   }
 });
