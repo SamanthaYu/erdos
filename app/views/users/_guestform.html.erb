@@ -2,6 +2,9 @@
 
   <%= form_for(:user, :url => {:controller => 'users', :action => 'create'}) do |f| %>
     <p> Username:</br> <%= f.text_field :username,required: true%> </p>
+    <%= f.hidden_field :userType, value: "Guest" %>
+    <%= f.hidden_field :password_confirmation, value: "GuestPassword" %>
+    <%= f.hidden_field :password, value: "GuestPassword" %>
     <%= f.submit :Signup %>
   <% end %>
   <% if @user.errors.any? %>
