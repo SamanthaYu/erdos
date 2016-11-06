@@ -1,4 +1,4 @@
-<div class="message">
+<div class="message" onClick="renderAllMessages()">
     <% if !message.user.nil? %>
         <div class="messageHeader"><p><strong><%= message.user.username %> </strong>
             <span class="timeStamp"><%=message.created_at.strftime("%I:%M %p")%></span></p>
