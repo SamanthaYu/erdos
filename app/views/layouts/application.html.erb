@@ -31,7 +31,13 @@
     <div id="sideBarOpener" class="sideBarOpener">>></div>
 <% end %>
 
-<%= yield %>
+<% if params[:controller] == 'welcome'%>
+    <%= yield %>
+<% else %>
+    <div id="container">
+        <%= yield %>
+    </div>
+<% end %>
 
 <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
 <%= javascript_include_tag  '//maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js' %>
