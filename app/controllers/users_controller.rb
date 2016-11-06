@@ -14,9 +14,12 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
       if @user.save
         log_in @user
-        redirect_to @user
+        if (@user.userType == "Guest")
+          redirect_to chatrooms_url
+        else
+          redirect_to @user
+        end
       else
-        flash.now[:notice] = "Select a Trainer (if no trainer exists, please make one first)."
         render :new
     end
   end
