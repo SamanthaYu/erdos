@@ -12,6 +12,7 @@
  *
  *= require_tree .
  *= require_self
+ *= require katex.min.css
  */
 
  /*Styling placeholder text for input boxes*/

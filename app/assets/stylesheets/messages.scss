@@ -32,23 +32,23 @@ $footer-height: 100px;
     display: block;
 }
 
-#message {
+.message {
     border-bottom: 1px solid #aaa;
     padding: 5px;
     padding-left: 15px;
 }
 
-#messageHeader {
+.messageHeader {
     margin-bottom: 5px;
 }
 
-#timeStamp {
+.timeStamp {
     color: #777;
     margin-left: 5px;
     font-size: 10px;
 }
 
-#messageContent {
+.messageContent {
     margin-top: 0;
 }
 
