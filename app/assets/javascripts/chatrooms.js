@@ -15,7 +15,7 @@ $(document).ready(function() {
         $("#container").width($(window).width());
         setTimeout(function() {
             $("#sideBarOpener").show();
-        }, 400);
+        }, 500);
     });
 });
 
