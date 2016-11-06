@@ -1,14 +1,16 @@
 <div id="sidebar" class="sideNav">
-    <a href="javascript:void(0)" id="closeBtn" onclick="closeNav()" class="closeBtn"><<</a>
+    <a href="javascript:void(0)" id="closeBtn" class="closeBtn"><<</a>
     <a href="/">Home</a>
     <a href="/chatrooms">Chatrooms</a>
     <a href="/users">Users</a>
-    <a href="/login">Login</a>
-    <% if !current_user.nil? %>
-        <%= link_to "Log out", logout_path, method: :delete %>
-        <% end %>
+    <% if current_user.nil? %>
+        <a href="/login">Login</a>
+    <% end %>
     <% if !current_user.nil? %>
         <%= link_to @current_user.username, @current_user %>
+    <% end %>
+    <% if !current_user.nil? %>
+        <%= link_to "Log out", logout_path, method: :delete %>
     <% end %>
 </div>
 <div id="sideBarOpener" class="sideBarOpener">>></div>
@@ -24,7 +26,6 @@
     <div id="messageContainer">
         <%= render partial: 'messages/message', collection: @chatroom.messages%>
     </div>
-
 
     <%= render partial: 'messages/message_form', locals: {message: @message, chatroom: @chatroom}%>
 </div>
