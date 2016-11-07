@@ -1,6 +1,6 @@
 <div class="message">
-    <% if !message.user.nil? %>
-        <div class="messageHeader"><p><strong><%= message.user.username %> </strong>
+    <% if !message.poster.blank? %>
+        <div class="messageHeader"><p><strong><%= message.poster %> </strong>
             <span class="timeStamp"><%=message.created_at.strftime("%I:%M %p")%></span></p>
         </div>
         <div class="messageContent"><%=message.content%></div>
