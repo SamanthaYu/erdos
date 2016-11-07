@@ -2,6 +2,9 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+$green: #03a079;
+$main-green: #41b799;
+
 h1 {
     padding: 10px;
     margin: 0;
@@ -37,4 +40,23 @@ table, th, td {
 
 th {
     letter-spacing: 2px;
+    text-align: center;
+}
+
+table a {
+    color: $green;
+}
+
+table a:hover {
+    color: #777;
+    font-style: oblique;
+}
+
+#chatroomList a {
+    color: $green;
+}
+
+#chatroomList a:hover {
+    color: #777;
+    font-style: oblique;
 }

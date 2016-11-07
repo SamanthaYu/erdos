@@ -63,8 +63,11 @@
      opacity: 0.5;
      transition: 0.2s;
      display: none;
-     border-top-right-radius: 1em;
-     border-bottom-right-radius: 1em;
+     border-top-right-radius: 10px;
+     border-bottom-right-radius: 10px;
+     font-family: 'Fira Sans', sans-serif;
+     letter-spacing: 2px;
+     padding: 3px 0 0 5px;
  }
 
  #sideBarOpener:hover{
@@ -87,21 +90,23 @@
  }
 
  .sideNav a {
+     font-family: 'Fira Sans', sans-serif;
      padding: 8px 8px 8px 32px;
      text-decoration: none;
      font-size: 25px;
      color: #bbb;
      display: block;
      transition: 0.3s;
+     letter-spacing: 2px;
  }
 
  .sideNav a:hover {
      color: $yellow;
      background-color: lighten($dark-blue, 10%);
+     letter-spacing: 2px;
  }
 
  #closeBtn {
-     padding-top: 0px;
      font-size: 36px;
      text-align: right;
      padding-right: 30px;
