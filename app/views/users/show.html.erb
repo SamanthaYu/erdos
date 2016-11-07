@@ -1,10 +1,10 @@
 <div id="usersContainer">
-<h1><%= @user.username %></h1>
+<h1><span class="username"><%= @user.username %></span></h1>
 
 <h3> User Type: </h3>
 <center><%= @user.userType %></center><br>
 
-<h3 style="text-align:left"> User has joined these Chatrooms: </h3>
+<h3 style="text-align:left"><span class="username"><%= @user.username %></span> has joined these Chatrooms:</h3>
 <% userRooms = Array.new(@user.chatrooms.size+1)%>
 <% roomNum = 0 %>
 <ol id="chatroomList">
