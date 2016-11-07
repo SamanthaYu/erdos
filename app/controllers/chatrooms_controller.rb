@@ -17,7 +17,11 @@ class ChatroomsController < ApplicationController
       if @chatroom.roomname.blank?
         @chatroom.roomname = chatroom_path(@chatroom)
       end
-      first = Message.create(:content => 'Chatroom \'' << @chatroom.roomname << '\' was create by ' << current_user.username, :chatroom_id => @chatroom.id, :user_id => current_user.id)
+      if !current_user.nil?
+        first = Message.create(:content => 'Chatroom \'' << @chatroom.roomname << '\' was create by ' << current_user.username, :chatroom_id => @chatroom.id, :user_id => current_user.id, :poster => current_user.username)
+      else
+        first = Message.create(:content => 'Chatroom \'' << @chatroom.roomname << '\' was create by Gerbil', :chatroom_id => @chatroom.id, :user_id => nil)
+      end
       respond_to do |format|
         format.html { redirect_to @chatroom }
         format.js

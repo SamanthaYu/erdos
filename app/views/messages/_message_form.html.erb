@@ -3,6 +3,7 @@
       <%= f.text_area :content, class: "form-control", :placeholder => "Enter Message", data: {textarea: "message"}%>
       <%= f.hidden_field :chatroom_id, value: chatroom.id %>
       <% if !current_user.nil? %>
+        <%= f.hidden_field :poster, value: current_user.username %>
         <%= f.hidden_field :user_id, value: current_user.id %>
       <% end %>
       <%= f.submit "send", class: "btn", style: "display: none", data: {send: "message"}%>
