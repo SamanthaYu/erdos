@@ -8,6 +8,11 @@ class SessionsController < ApplicationController
       log_in user
       redirect_to user
     else
+      if !user
+        flash.now[:notice] = "User not found"
+      else
+        flash.now[:notice] = "Incorrect password"
+      end
       render 'new'
     end
   end
