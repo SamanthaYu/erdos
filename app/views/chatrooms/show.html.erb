@@ -6,10 +6,12 @@
     <% end %>
 </div>
 
+<div id="messages">
 <div id="messageContainer">
     <% @chatroom.messages.each do |message| %>
       <%= render partial: 'messages/message', object: message %>
     <% end %>
+</div>
 </div>
 
 <%= render partial: 'messages/message_form', locals: {message: @message, chatroom: @chatroom}%>
