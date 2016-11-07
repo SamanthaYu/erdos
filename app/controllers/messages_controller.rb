@@ -10,16 +10,16 @@ class MessagesController < ApplicationController
     end
   end
 
-  def edit
-  end
+#  def edit
+#  end
 
-  def update
-    if message.update(message_params)
-      ActionCable.server.broadcast 'messages',
-        message: message.content
-      head :ok
-    end
-  end
+#  def update
+#    if message.update(message_params)
+#      ActionCable.server.broadcast 'messages',
+#        message: message.content
+#      head :ok
+#    end
+#  end
 
   private
     def message_params
