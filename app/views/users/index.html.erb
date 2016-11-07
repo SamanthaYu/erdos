@@ -1,32 +1,33 @@
-<h1>Users</h1>
+<div id="usersContainer">
+    <h1>USERS</h1>
 
-
-<div id="userDiv">
-  <table>
-    <thead>
-      <tr>
-        <th>Username&nbsp;</th>
-        <th>&nbsp;Destroy</th>
-      </tr>
-    </thead>
-
-    <tbody>
-      <% @users.order("username").each do |user| %>
-        <% if user.userType != 'Guest' %>
+    <div id="userDiv">
+        <h3>List of Current Users</h3>
+      <table>
+        <thead>
           <tr>
-            <td><%= link_to user.username, user %></td>
+            <th>Username</th>
+            <th>Type</th>
             <% if !current_user.nil? && current_user.userType == 'Admin' %>
-              <td><%= link_to 'Destroy', user, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+                <th>&nbsp;Destroy</th>
             <% end %>
           </tr>
-        <% end %>
-        </tr>
-        </tr>
-      <% end %>
-    </tbody>
-  </table>
+        </thead>
+
+        <tbody>
+          <% @users.order("username").each do |user| %>
+            <% if user.userType != 'Guest' %>
+              <tr>
+                <td><%= link_to user.username, user %></td>
+                <td><%= user.userType %></td>
+                <% if !current_user.nil? && current_user.userType == 'Admin' %>
+                  <td><%= link_to 'Destroy', user, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+                <% end %>
+              </tr>
+            <% end %>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+
 </div>
-
-<br>&nbsp;</br>
-
-<%= link_to 'New User', new_user_path %>
