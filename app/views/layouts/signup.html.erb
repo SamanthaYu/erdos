@@ -148,7 +148,7 @@
     <div class="middle">
     <div class="inner">
         <div id="signUpForm" class="basicForm">
-            <center><img src="/assets/logo.png" id="smallLogo"></center>
+            <center><img src="/assets/logo-31226dfe0ddfc3baac39f33bcf9dafeaf24f95aef659aac5c5aaf04b999711f7.png" id="smallLogo"></center>
             <p><%= @user.errors.full_messages.first if @user.errors.any? %></p>
             <%= form_for(@user) do |f| %>
               <%= f.text_field :username, :placeholder => 'Enter Username' %><br>
@@ -172,7 +172,7 @@
 
         <div id="guestLogin" class="basicForm">
             <span id="closeBtn" onclick="closeGuestLogin()">&times;</span>
-            <center><img src="/assets/logo.png" id="smallLogo"></center>
+            <center><img src="/assets/logo-31226dfe0ddfc3baac39f33bcf9dafeaf24f95aef659aac5c5aaf04b999711f7.png" id="smallLogo"></center>
             <%= render partial: 'users/guestform', locals: {message: @message, chatroom: @chatroom}%>
             <hr>
             <div id="option1" class="options">
