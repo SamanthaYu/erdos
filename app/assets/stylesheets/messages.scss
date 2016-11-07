@@ -35,6 +35,15 @@ $footer-height: 100px;
 .message {
     border-bottom: 1px solid #aaa;
     padding: 5px;
+}
+
+#currentUserMessage {
+    text-align: right;
+    padding-right: 15px;
+    background-color: #eee;
+}
+
+#otherUserMessage {
     padding-left: 15px;
 }
 
@@ -46,6 +55,11 @@ $footer-height: 100px;
     color: #777;
     margin-left: 5px;
     font-size: 10px;
+}
+
+#currentUserTime {
+    margin-left: 0px;
+    margin-right: 5px;
 }
 
 .messageContent {

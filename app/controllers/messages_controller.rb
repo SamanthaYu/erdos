@@ -2,6 +2,7 @@ class MessagesController < ApplicationController
 
   def create
     #caller.each{|i| puts i}
+    @chatroom = Message.chatroom_id
     message= Message.new(message_params)
     if message.save
       ActionCable.server.broadcast 'messages',
