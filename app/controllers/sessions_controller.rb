@@ -7,7 +7,7 @@ class SessionsController < ApplicationController
   def create
     user=User.find_by(username: params[:session][:username])
     if user && user.authenticate(params[:session][:password])
-      if user.userType = 'Guest'
+      if user.userType == 'Guest'
         flash.now[:notice] = "User not found"
         render :new
       else
