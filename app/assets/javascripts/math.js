@@ -1,6 +1,6 @@
 function renderMath(element) {
 	renderMathInElement(
-			element,{
+			element, {
 			delimiters: [
 				{left: "$$", right: "$$", display: true},
 				{left: "\\[", right: "\\]", display: true},
