@@ -16,11 +16,9 @@
 //= require_tree ./channels
 //= require chatrooms
 //= require math
-//= require auto-render.min
-//= require katex.min
 //= require jquery.imagemapster.min
 //= require welcome
-// require_tree .
+//= require_tree .
 
 $(document).on('turbolinks:load', function(){
     $("#sideBarOpener").click(function(){
@@ -37,4 +35,6 @@ $(document).on('turbolinks:load', function(){
             $("#sideBarOpener").show();
         }, 500);
     });
+
+    renderAllMessages();
 });
