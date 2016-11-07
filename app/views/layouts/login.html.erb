@@ -151,6 +151,7 @@
             <center><img src="/assets/logo-31226dfe0ddfc3baac39f33bcf9dafeaf24f95aef659aac5c5aaf04b999711f7.png" id="smallLogo"></center>
             <h1>Log in</h1>
             <%= form_for(:session, url: login_path) do |f| %>
+              <p id="notice"><%= notice %></p>
               <%= f.text_field :username %>
               <%= f.password_field :password %>
               <center><%= f.submit "Log in", class: "submitButton" %></center>

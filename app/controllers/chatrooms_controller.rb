@@ -14,6 +14,7 @@ class ChatroomsController < ApplicationController
   def create
     @chatroom = Chatroom.new(chatroom_params)
     if @chatroom.save
+      first = Message.create(:content => 'Chatroom \'' << @chatroom.roomname << '\' was create by ' << current_user.username, :chatroom_id => @chatroom.id, :user_id => current_user.id)
       respond_to do |format|
         format.html { redirect_to @chatroom }
         format.js
