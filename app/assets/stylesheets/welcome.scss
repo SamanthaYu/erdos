@@ -20,8 +20,32 @@
     width: 60%;
 }
 
+.overlay {
+    position:absolute;
+    background:#fff;
+    opacity:0.2;
+    width: 35vh;
+    height:22vh;
+    margin-left: 12vh;
+    z-index: 1;
+    cursor: pointer;
+}
+
+#overlay1 {
+    margin-top: 26.5vh;
+}
+
+#overlay2 {
+    margin-top: 48.5vh;
+}
+
+#overlay1:hover, #overlay2:hover {
+    opacity:0.0;
+}
+
 #welcomeLogo {
     height: 100vh;
+    width: auto;
     z-index: 0;
     margin: auto;
     top: 0;
