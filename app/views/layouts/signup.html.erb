@@ -27,13 +27,15 @@
 
         h1 {
             padding: 10px;
-            margin: auto;
-            color: #222;
+            margin: 0;
             text-align: center;
+            font-family: 'Fira Sans', sans-serif;
+            letter-spacing: 2px;
+            font-size: 30px;
         }
 
         body {
-            background-color: #03a079;
+            background-color: #41b799;
             padding: 0px;
             margin: 0px;
             text-align: center;
@@ -54,27 +56,35 @@
         .inner {
             margin-left: auto;
             margin-right: auto;
-            width: 60%;
+            width: 65%;
         }
 
         #smallLogo {
-            height: 175px;
+            height: 180px;
             margin-bottom: 10px;
         }
 
         input[type=text], input[type=password] {
             padding: 10px;
-            display: inline-block;
-            width: 100%;
-            margin: 8px 0;
+            display: block;;
+            width: 60%;
+            margin: 0 auto;
             border-radius: 0px;
             border: 1px solid #ddd;
             box-sizing: border-box;
             line-height: 2em;
         }
 
+        #errorNotice {
+            font-family: 'Fira Sans', sans-serif;
+            color: red;
+            font-style: italic;
+            font-size: 15px;
+        }
+
         .basicForm {
-            background-color: #bbb;
+            margin: 30px 0 30px 0;
+            background-color: #fff;
             text-align: left;
             padding: 10px 20px 10px 20px;
             border-radius: 5px;
@@ -142,16 +152,17 @@
     <div class="inner">
         <div id="signUpForm" class="basicForm">
             <span id="closeBtn1" class="closeBtn">&times;</span>
-            <center><img src="/assets/logo-31226dfe0ddfc3baac39f33bcf9dafeaf24f95aef659aac5c5aaf04b999711f7.png" id="smallLogo"></center>
-            <p><%= @user.errors.full_messages.first if @user.errors.any? %></p>
+            <center><img src="/assets/logo-green-4c7f53aa7a4b32f23e84f16b6767fdcdc50d1be9247657f19f062e3df406ef27.png" id="smallLogo"></center>
+            <h1>SIGN UP</h1>
+            <center><p id="errorNotice"><%= @user.errors.full_messages.first if @user.errors.any? %></p></center>
             <%= form_for(@user, url: signup_path) do |f| %>
               <%= f.text_field :username, :placeholder => 'Enter Username' %><br>
               <%= f.password_field :password, :placeholder => 'Enter Password' %><br>
               <%= f.password_field :password_confirmation, :placeholder => 'Confirm Password'%><br>
-              <%= f.label :userType, "User Type" %> &nbsp;&nbsp;
+              <center><%= f.label :userType, "User Type" %> &nbsp;&nbsp;
               <%= f.select :userType, ['Regular', 'Admin'], :selected => 'Regular' %><br>
 
-              <center><%= f.submit "Create Account", class: "submitButton" %></center>
+              <%= f.submit "Create Account", class: "submitButton" %></center>
             <% end %>
             <hr>
             <div id="option1" class="options">
@@ -166,7 +177,8 @@
 
         <div id="guestLogin" class="basicForm">
             <span id="closeBtn2" class="closeBtn" onclick="closeGuestLogin()">&times;</span>
-            <center><img src="/assets/logo-31226dfe0ddfc3baac39f33bcf9dafeaf24f95aef659aac5c5aaf04b999711f7.png" id="smallLogo"></center>
+            <center><img src="/assets/logo-green-4c7f53aa7a4b32f23e84f16b6767fdcdc50d1be9247657f19f062e3df406ef27.png" id="smallLogo"></center>
+            <h1>GUEST LOGIN</h1>
             <%= render partial: 'users/guestform'%>
             <hr>
             <div id="option1" class="options">
