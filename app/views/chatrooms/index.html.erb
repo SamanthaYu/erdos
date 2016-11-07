@@ -1,17 +1,19 @@
-<h1>Chatrooms</h1>
-<%= render partial: 'chatroom_form', locals: {chatroom: @chatroom} %>
+<div id="indexContainer">
+    <h1>CHATROOMS</h1>
+    <%= render partial: 'chatroom_form', locals: {chatroom: @chatroom} %>
+    <!--
+    <ol id="chatrooms">
+        <%= render @chatrooms%>
+    </ol>
+    -->
 
-<!--
-<ol id="chatrooms">
-    <%= render @chatrooms%>
-</ol>
--->
-
-<ol id="chatrooms">
-  <% @chatrooms.each do |room| %>
-      <%= render room %>
-      <% if !current_user.nil? && current_user.userType == 'Admin' %>
-         <p>&nbsp;&nbsp; <%= link_to 'Destroy', room, method: :delete, data: { confirm: 'Are you sure?' } %> </p>
+    <br><h3 style="text-align:left">List of Current Chatrooms</h3>
+    <ol id="chatroomList">
+      <% @chatrooms.each do |room| %>
+          <%= render room %>
+          <% if !current_user.nil? && current_user.userType == 'Admin' %>
+             <p>&nbsp;&nbsp;<%= link_to 'Destroy', room, method: :delete, data: { confirm: 'Are you sure?' } %> </p>
+          <% end %>
       <% end %>
-  <% end %>
-</ol>
+    </ol>
+</div>
