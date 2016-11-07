@@ -9,6 +9,7 @@ Rails.application.routes.draw do
   post '/login', to: 'sessions#create'
   delete '/logout', to: 'sessions#destroy'
   get 'welcome/index'
+  get '/home', to: 'welcome#show'
   resources :chatrooms
   resources :messages
   resources :users
