@@ -16,7 +16,6 @@
 //= require_tree ./channels
 //= require chatrooms
 //= require math
-//= require jquery.imagemapster.min
 //= require welcome
 //= require_tree .
 
