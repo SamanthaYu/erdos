@@ -1,13 +1,8 @@
+<div id="usersContainer">
 <h1><%= @user.username %></h1>
 
 <h3> User Type: </h3>
-<% if @user.userType == 'Regular' %>
-  <p> Regular </p>
-<% elsif @user.userType == 'Admin' %>
-  <p> Admin </p>
-<% elsif @user.userType == 'Guest' %>
-  <p> Guest </p>
-<% end %>
+<%= @user.userType %>
 
 <h3> User has messages in: </h3>
 <% userRooms = Array.new(@user.chatrooms.size+1)%>
@@ -26,3 +21,4 @@
 <p>&nbsp;</p>
 
 <%= link_to 'Back', users_path %>
+</div>
