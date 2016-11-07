@@ -1,10 +1,10 @@
 App.messages = App.cable.subscriptions.create('MessagesChannel', {
   received: function(data) {
     $("#messages").removeClass('hidden')
-    return $('#messages').append(this.renderMessage(data));
+    return $('#messages').append("<p> fire is bad</p>");//this.renderMessage(data));
   },
 
   renderMessage: function(data) {
-    return "<p> <b>" + data.poster + ": </b>" + data.content + "</p>";
+    return "<p> <b>" + "Call Me Ishmael" + ": </b>" + data.message + "</p>";
   }
 });
