@@ -2,6 +2,7 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+$green: #03a079;
 $main-green: #41b799;
 $sidebar-width: 250px;
 $header-height: 60px;
@@ -95,10 +96,10 @@ input[type=text], input[type=password] {
 }
 
 #chatroomList a {
-    color: #777;
+    color: $green;
 }
 
 #chatroomList a:hover {
-    color: $main-green;
+    color: #777;
     font-style: oblique;
 }
