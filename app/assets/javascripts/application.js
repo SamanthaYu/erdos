@@ -36,4 +36,5 @@ $(document).on('turbolinks:load', function(){
     });
 
     renderAllMessages();
+    renderAllUsernames();
 });

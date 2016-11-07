@@ -18,3 +18,11 @@ function renderAllMessages() {
 		renderMath(allMessages[i]);
 	}
 }
+
+function renderAllUsernames() {
+	var allUsernames = document.getElementsByClassName('username');
+
+	for (var j = 0; j < allUsernames.length; j++) {
+		renderMath(allUsernames[j]);
+	}
+}
