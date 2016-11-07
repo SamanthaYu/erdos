@@ -12,7 +12,7 @@ class SessionsController < ApplicationController
         render :new
       else
         log_in user
-        redirect_to user
+        redirect_to chatrooms_path
       end
     else
       if !user
