@@ -27,7 +27,7 @@
 
         h1 {
             padding: 10px;
-            margin: auto;
+            margin: 0;
             color: #222;
             text-align: center;
         }
@@ -108,7 +108,7 @@
             text-align: center;
         }
 
-        #signUpForm {
+        #loginForm {
             overflow: hidden;
         }
 
@@ -145,23 +145,21 @@
     <div class="outer">
     <div class="middle">
     <div class="inner">
-        <div id="signUpForm" class="basicForm">
+        <% provide(:title, "Log in") %>
+        <div id="loginForm" class="basicForm">
             <span id="closeBtn1" class="closeBtn">&times;</span>
             <center><img src="/assets/logo-31226dfe0ddfc3baac39f33bcf9dafeaf24f95aef659aac5c5aaf04b999711f7.png" id="smallLogo"></center>
-            <p><%= @user.errors.full_messages.first if @user.errors.any? %></p>
-            <%= form_for(@user, url: signup_path) do |f| %>
-              <%= f.text_field :username, :placeholder => 'Enter Username' %><br>
-              <%= f.password_field :password, :placeholder => 'Enter Password' %><br>
-              <%= f.password_field :password_confirmation, :placeholder => 'Confirm Password'%><br>
-              <%= f.label :userType, "User Type" %> &nbsp;&nbsp;
-              <%= f.select :userType, ['Regular', 'Admin'], :selected => 'Regular' %><br>
-
-              <center><%= f.submit "Create Account", class: "submitButton" %></center>
+            <h1>Log in</h1>
+            <%= form_for(:session, url: login_path) do |f| %>
+              <%= f.text_field :username %>
+              <%= f.password_field :password %>
+              <center><%= f.submit "Log in", class: "submitButton" %></center>
             <% end %>
+
             <hr>
             <div id="option1" class="options">
-                Already have an account?
-                <%= button_to "Login", "/login", method: :get, id: "loginBtn" , class: "submitButton" %>
+                Want to create an account?<br>
+                <%= button_to "Sign Up", "/signup", method: :get, id: "signUpBtn" , class: "submitButton" %>
             </div>
             <div id="option2" class="options">
                 Don't want to create an account?<br>
@@ -175,12 +173,12 @@
             <%= render partial: 'users/guestform'%>
             <hr>
             <div id="option1" class="options">
-                Already have an account?
-                <%= button_to "Login", "/login", method: :get, id: "loginBtn" , class: "submitButton" %>
+                Already have an account?<br>
+                <%= submit_tag "Login", id: "loginBtn", class: "submitButton", :onclick => "closeGuestLogin()" %>
             </div>
             <div id="option2" class="options">
                 Want to create an account?<br>
-                <%= submit_tag "Sign Up", id: "signUpBtn", class: "submitButton", :onclick => "closeGuestLogin()" %>
+                <%= button_to "Sign Up", "/signup", method: :get, id: "signUpBtn" , class: "submitButton" %>
             </div>
         </div>
 
@@ -199,14 +197,14 @@
     });
 
     function showGuestLogin(){
-        $("#signUpForm").fadeOut("swing", function(){
+        $("#loginForm").fadeOut("swing", function(){
             $("#guestLogin").fadeIn("swing");
         });
     };
 
     function closeGuestLogin(){
         $("#guestLogin").fadeOut("swing", function(){
-            $("#signUpForm").fadeIn("swing");
+            $("#loginForm").fadeIn("swing");
         });
     };
 
