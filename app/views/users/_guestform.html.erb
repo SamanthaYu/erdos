@@ -4,13 +4,13 @@
     <%= f.hidden_field :userType, value: "Guest" %>
     <%= f.hidden_field :password_confirmation, value: "GuestPassword" %>
     <%= f.hidden_field :password, value: "GuestPassword" %>
-    <center><%= f.submit :Signup, class: "submitButton" %></center>
+    <center><%= f.submit "Login as Guest", class: "submitButton" %></center>
   <% end %>
-  <% if @user.errors.any? %>
+  <!--<% if @user.errors.any? %>
     <ul class="Signup_Errors">
     <% for message_error in @user.errors.full_messages %>
       <li>* <%= message_error %></li>
     <% end %>
     </ul>
-  <% end %>
+  <% end %>-->
 </div>
