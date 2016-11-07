@@ -21,7 +21,7 @@
 //= require jquery.imagemapster.min
 //= require_tree .
 
-$(document).ready(function() {
+$(document).on('turbolinks:load', function(){
     $("#sideBarOpener").click(function(){
         $("#sideBarOpener").hide();
         $("#sidebar").width(250);
