@@ -1,13 +1,24 @@
-<div class="message">
-    <% if !message.poster.blank? %>
-        <div class="messageHeader"><p><strong><%= message.poster %> </strong>
-            <span class="timeStamp"><%=message.created_at.strftime("%I:%M %p")%></span></p>
+<% if !message.poster.blank? %>
+    <% if message.user == current_user %>
+        <div id="currentUserMessage" class="message">
+            <div class="messageHeader"><p><span id="currentUserTime" class="timeStamp"><%=message.created_at.strftime("%v, %r")%></span>
+                <strong><%= message.poster %> </strong></p>
+            </div>
+            <div class="messageContent"><%=message.content%></div>
         </div>
-        <div class="messageContent"><%=message.content%></div>
     <% else %>
-        <div class="messageHeader"><p><strong>Gerbil </strong>
-            <span class="timeStamp"><%=message.created_at.strftime("%I:%M %p")%></span></p>
+        <div id="otherUserMessage" class="message">
+            <div class="messageHeader"><p><strong><%= message.poster %> </strong>
+                <span class="timeStamp"><%=message.created_at.strftime("%v, %r")%></span></p>
+            </div>
+            <div class="messageContent"><%=message.content%></div>
+        </div>
+    <% end %>
+<% else %>
+    <div id="otherUserMessage" class="message">
+        <div class="messageHeader"><p><strong><%= message.poster %> </strong>
+            <span class="timeStamp"><%=message.created_at.strftime("%v, %r")%></span></p>
         </div>
         <div class="messageContent"><%=message.content%></div>
-    <% end %>
-</div>
+    </div>
+<% end %>
