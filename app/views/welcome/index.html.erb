@@ -2,6 +2,8 @@
 <html>
 <head>
     <title>Erdos</title>
+    <script type="text/javascript" src="jquery.imagemapster.min.js"></script>
+    <script type="text/javascript" src="jquery.rwdImageMaps.min.js"></script>
     <style>
         body {
             background-color: #41b799;
@@ -30,13 +32,23 @@
     <div class="inner">
         <div class="welcomePage">
             <img src="/assets/login-ab29bec87a47633df2aa63f9ced2cf7a74fdaa61f07b77290405d93049380cc1.png" id="welcomeLogo" alt="erdos" usemap="#buttonMap">
-            <map name="buttonmap" id="buttonmap">
+            <map name="buttonMap" id="buttonMap">
                 <area shape="rect" id="button1" coords="80,180,313,328" href="/signup" alt="signup">
-                <area shape="rect" id="button2" coords="80,330,313,475" href="/login" alt="login">
+                <area shape="rect" id="button2" coords="80,328,313,475" href="/login" alt="login">
             </map>
         </div>
     </div>
     </div>
     </div>
+    <script>
+        $(document).ready(function(){
+
+            $('#welcomeLogo').mapster({
+                scaleMap: false,
+                fillColor: 'ffffff',
+                fillOpacity: 0.3
+            });
+        });
+    </script>
 </body>
 </html>

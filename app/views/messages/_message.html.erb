@@ -2,13 +2,13 @@
     <% if message.user == current_user %>
         <div id="currentUserMessage" class="message">
             <div class="messageHeader"><p><span id="currentUserTime" class="timeStamp"><%=message.created_at.strftime("%v, %r")%></span>
-                <strong><%= message.poster %> </strong></p>
+                <strong><%= message.poster %></strong></p>
             </div>
             <div class="messageContent"><%=message.content%></div>
         </div>
     <% else %>
         <div id="otherUserMessage" class="message">
-            <div class="messageHeader"><p><strong><%= message.poster %> </strong>
+            <div class="messageHeader"><p><strong><%= message.poster %></strong>
                 <span class="timeStamp"><%=message.created_at.strftime("%v, %r")%></span></p>
             </div>
             <div class="messageContent"><%=message.content%></div>
