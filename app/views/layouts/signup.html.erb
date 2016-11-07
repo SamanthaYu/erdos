@@ -56,6 +56,10 @@
             width: 60%;
         }
 
+        #smallLogo {
+            height: 175px;
+        }
+
         input[type=text], input[type=password] {
             padding: 10px;
             display: inline-block;
@@ -68,7 +72,7 @@
         }
 
         .basicForm {
-            background-color: #fff;
+            background-color: #bbb;
             text-align: left;
             padding: 20px;
             border-radius: 5px;
@@ -85,7 +89,7 @@
             border-radius: 0px;
             border: 1px solid #e1e1e1;
             cursor:pointer;
-            width: 30%;
+            width: 40%;
             padding: 12px 5px;
             margin: 8px 0;
         }
@@ -102,6 +106,41 @@
             text-align: center;
         }
 
+        #signUpForm {
+            overflow: hidden;
+        }
+
+        #guestLogin{
+            display: none;
+            overflow: hidden;
+        }
+
+        #closeBtn {
+            font-size: 32px;
+            float: right;
+            cursor: pointer;
+        }
+
+        .options {
+            display: inline-block;
+            position: relative;
+            width: 50%;
+            text-align: center;
+            margin: 0;
+        }
+
+        #option1 {
+            float: left;
+        }
+
+        #option2 {
+            float: right;
+        }
+
+        #loginBtn, #signUpBtn, #guestLoginBtn {
+            width: 80%;
+        }
+
     </style>
 </head>
 <body>
@@ -109,6 +148,7 @@
     <div class="middle">
     <div class="inner">
         <div id="signUpForm" class="basicForm">
+            <center><img src="/assets/logo.png" id="smallLogo"></center>
             <p><%= @user.errors.full_messages.first if @user.errors.any? %></p>
             <%= form_for(@user) do |f| %>
               <%= f.text_field :username, :placeholder => 'Enter Username' %><br>
@@ -120,12 +160,29 @@
               <center><%= f.submit "Create Account", class: "submitButton" %></center>
             <% end %>
             <hr>
-            <center><%= button_to "Login", , {class: "submitButton"} %></center>
-            <center><%= button_to "Guest Login", "javascript:void(0)", {class: "submitButton"} %></center>
+            <div id="option1" class="options">
+                Already have an account?
+                <%= button_to "Login", "/login", method: :get, id: "loginBtn" , class: "submitButton" %>
+            </div>
+            <div id="option2" class="options">
+                Don't want to create an account?<br>
+                <%= submit_tag "Guest Login", id: "guestLoginBtn", class: "submitButton", :onclick => "showGuestLogin()" %>
+            </div>
         </div>
 
         <div id="guestLogin" class="basicForm">
+            <span id="closeBtn" onclick="closeGuestLogin()">&times;</span>
+            <center><img src="/assets/logo.png" id="smallLogo"></center>
             <%= render partial: 'users/guestform', locals: {message: @message, chatroom: @chatroom}%>
+            <hr>
+            <div id="option1" class="options">
+                Already have an account?
+                <%= button_to "Login", "/login", method: :get, id: "loginBtn" , class: "submitButton" %>
+            </div>
+            <div id="option2" class="options">
+                Want to create an account?<br>
+                <%= submit_tag "Sign Up", id: "signUpBtn", class: "submitButton", :onclick => "closeGuestLogin()" %>
+            </div>
         </div>
 
         <!--<%= link_to 'Back', users_path %>-->
@@ -135,5 +192,22 @@
 
     <%= javascript_include_tag  '//maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+    <script>
+
+
+    function showGuestLogin(){
+        $(document).ready(function(){
+            $("#signUpForm").fadeOut("swing", function(){
+                $("#guestLogin").fadeIn("swing");
+            });
+        });
+    }
+
+    function closeGuestLogin(){
+        $("#guestLogin").fadeOut("swing", function(){
+            $("#signUpForm").fadeIn("swing");
+        });
+    }
+    </script>
 </body>
 </html>

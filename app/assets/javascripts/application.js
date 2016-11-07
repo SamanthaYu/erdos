@@ -19,7 +19,8 @@
 //= require auto-render.min
 //= require katex.min
 //= require jquery.imagemapster.min
-//= require_tree .
+//= require welcome
+// require_tree .
 
 $(document).ready(function() {
     $("#sideBarOpener").click(function(){
