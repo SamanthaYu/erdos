@@ -1,5 +1,5 @@
 class SessionsController < ApplicationController
-    layout "login", only: [:]
+    layout "login", only: [:new, :create]
 
   def new
   end
@@ -10,7 +10,7 @@ class SessionsController < ApplicationController
       log_in user
       redirect_to user
     else
-      render action: "new"
+      render :new
     end
   end
 
