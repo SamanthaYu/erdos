@@ -77,5 +77,5 @@ Rails.application.configure do
   config.active_record.dump_schema_after_migration = false
 
   config.web_socket_server_url = "wss://erdos314.herokuapp.com/cable"
- -  config.action_cable.allowed_request_origins = ['https://erdos314.herokuapp.com', 'http://erdos314.herokuapp.com']
+  config.action_cable.allowed_request_origins = ['https://erdos314.herokuapp.com', 'http://erdos314.herokuapp.com']
 end
