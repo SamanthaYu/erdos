@@ -32,6 +32,7 @@
             font-family: 'Fira Sans', sans-serif;
             letter-spacing: 2px;
             font-size: 30px;
+            color: #41b799;
         }
 
         body {
@@ -61,7 +62,6 @@
 
         #smallLogo {
             height: 180px;
-            margin-bottom: 10px;
         }
 
         input[type=text], input[type=password] {
@@ -152,8 +152,8 @@
     <div class="inner">
         <div id="signUpForm" class="basicForm">
             <span id="closeBtn1" class="closeBtn">&times;</span>
-            <center><img src="/assets/logo-green-4c7f53aa7a4b32f23e84f16b6767fdcdc50d1be9247657f19f062e3df406ef27.png" id="smallLogo"></center>
-            <h1>SIGN UP</h1>
+            <center><img src="/assets/logoNoLabel-green-c0f5771e8dcd884fa3ba259b2b8e9c7f8536ddc1c7da58dfc1e14fab5796e69f.png" id="smallLogo"></center>
+            <h1>sign up</h1>
             <center><p id="errorNotice"><%= @user.errors.full_messages.first if @user.errors.any? %></p></center>
             <%= form_for(@user, url: signup_path) do |f| %>
               <%= f.text_field :username, :placeholder => 'Enter Username' %><br>
@@ -177,8 +177,8 @@
 
         <div id="guestLogin" class="basicForm">
             <span id="closeBtn2" class="closeBtn" onclick="closeGuestLogin()">&times;</span>
-            <center><img src="/assets/logo-green-4c7f53aa7a4b32f23e84f16b6767fdcdc50d1be9247657f19f062e3df406ef27.png" id="smallLogo"></center>
-            <h1>GUEST LOGIN</h1>
+            <center><img src="/assets/logoNoLabel-green-c0f5771e8dcd884fa3ba259b2b8e9c7f8536ddc1c7da58dfc1e14fab5796e69f.png" id="smallLogo"></center>
+            <h1>guest login</h1>
             <%= render partial: 'users/guestform'%>
             <hr>
             <div id="option1" class="options">

@@ -17,15 +17,15 @@
 </head>
 <body>
 
-<% if params[:controller] == 'welcome'%>
+<% if params[:controller] == 'welcome' && params[:action] == 'index'%>
 
 <% else %>
     <div id="sidebar" class="sideNav">
         <a href="javascript:void(0)" id="closeBtn" class="closeBtn"><<</a>
-        <% if !current_user.nil? %>
-            <%= link_to @current_user.username, @current_user %>
-        <% end %>
-        <a href="/">Home</a>
+          <% if !current_user.nil? %>
+              <%= link_to @current_user.username, @current_user, class: 'username' %>
+          <% end %>
+        <a href="/home">Home</a>
         <a href="/chatrooms">Chatrooms</a>
         <a href="/users">Users</a>
         <% if current_user.nil? %>
@@ -39,7 +39,7 @@
     <div id="sideBarOpener" class="sideBarOpener">>></div>
 <% end %>
 
-<% if params[:controller] == 'welcome'%>
+<% if params[:controller] == 'welcome' && params[:action] == 'index'%>
     <%= yield %>
 <% else %>
     <div id="container">
