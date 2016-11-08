@@ -14,5 +14,5 @@ function submitNewMessage(){
 }
 
 function scrollBottom() {
-    $("#messageContainer").animate({ scrollTop: $('#messageContainer').height()});
-}
+    $('#messages').scrollTop($('#messages').height());
+'}
