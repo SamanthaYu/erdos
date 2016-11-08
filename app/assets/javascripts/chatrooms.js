@@ -1,6 +1,6 @@
 $(document).on('turbolinks:load', function() {
   submitNewMessage();
-  scroll_bottom();
+  scrollBottom();
 });
 
 function submitNewMessage(){
