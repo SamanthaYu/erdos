@@ -7,6 +7,8 @@ class MessagesController < ApplicationController
       ActionCable.server.broadcast 'messages',
         message: message.content,
         poster: message.poster
+        currentuser: current_user.username
+        timestamp: message.created_at
       head :ok
     end
   end
