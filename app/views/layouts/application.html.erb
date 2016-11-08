@@ -21,10 +21,14 @@
 
 <% else %>
     <div id="sidebar" class="sideNav">
-        <a href="javascript:void(0)" id="closeBtn" class="closeBtn"><<</a>
-          <% if !current_user.nil? %>
-              <%= link_to @current_user.username, @current_user, class: 'username' %>
-          <% end %>
+        <% if params[:controller] == 'chatrooms' && params[:action] == 'show'%>
+            <a href="javascript:void(0)" id="closeBtn" class="closeBtn"><<</a>
+        <% else %>
+            <a href="javascript:void(0)" id="closeBtn" class="closeBtn"></a>
+        <% end %>
+        <% if !current_user.nil? %>
+            <%= link_to @current_user.username, @current_user, class: 'username' %>
+        <% end %>
         <a href="/home">Home</a>
         <a href="/chatrooms">Chatrooms</a>
         <a href="/users">Users</a>
