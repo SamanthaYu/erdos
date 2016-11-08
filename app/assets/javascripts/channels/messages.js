@@ -12,8 +12,8 @@ App.messages = App.cable.subscriptions.create('MessagesChannel', {
 
     if (data.currentuser==data.poster){
       retmess+='<div id="currentUserMessage" class="message">';
-      retmess+='<div class="messageHeader"><p><span id="currentUserTime" class="timeStamp">' + timestamp + '</span>';
-      retmess+='<span class="username"><strong>'+data.poster+'</strong></span></p>';
+      retmess+='<div class="messageHeader"><p><span class="username"><strong>'+data.poster+'</strong></span>';
+      retmess+='<span class="timeStamp">' + timestamp + '</span></p>';
     }
     if (data.currentuser!=data.poster){
       retmess+='<div id="otherUserMessage" class="message">';
