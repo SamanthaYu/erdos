@@ -5,7 +5,7 @@ class MessagesController < ApplicationController
     message= Message.new(message_params)
     if message.save
       ActionCable.server.broadcast 'messages',
-        message: message.content
+        message: message.content,
         poster: message.poster
       head :ok
     end
