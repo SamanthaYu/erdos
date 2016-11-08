@@ -1,5 +1,6 @@
 $(document).on('turbolinks:load', function() {
   submitNewMessage();
+  scrollBottom();
 });
 
 function submitNewMessage(){
@@ -10,4 +11,8 @@ function submitNewMessage(){
         return false;
      }
   });
+}
+
+function scrollBottom() {
+    $('#messages').scrollTop($('#messages').height());
 }
