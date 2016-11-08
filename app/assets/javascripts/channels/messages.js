@@ -5,6 +5,6 @@ App.messages = App.cable.subscriptions.create('MessagesChannel', {
   },
 
   renderMessage: function(data) {
-    return "<p> <b>" + data[0] + ": </b>" + data[1] + "</p>";
+    return "<p> <b>" + data.poster + ": </b>" + data.message + "</p>";
   }
 });
