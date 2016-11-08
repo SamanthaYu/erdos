@@ -1,5 +1,9 @@
 class ChatroomsController < ApplicationController
+
   def index
+    if !logged_in?
+      redirect_to :root
+    end
     @chatroom=Chatroom.new
     @chatrooms=Chatroom.all
   end
@@ -37,6 +41,9 @@ class ChatroomsController < ApplicationController
   end
 
   def show
+    if !logged_in?
+      redirect_to :root
+    end
     @chatroom = Chatroom.find(params[:id])
     @message = Message.new
   end
