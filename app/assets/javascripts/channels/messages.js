@@ -3,6 +3,7 @@ App.messages = App.cable.subscriptions.create('MessagesChannel', {
     $("#messages").removeClass('hidden');
     $('#messages').append(this.renderMessage(data));
     renderAllMessages();
+    scrollBottom();
     return;
   },
 
