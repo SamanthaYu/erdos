@@ -1,8 +1,8 @@
 <% if !message.poster.blank? %>
     <% if message.user == current_user %>
         <div id="currentUserMessage" class="message">
-            <div class="messageHeader"><p><span id="currentUserTime" class="timeStamp"><%=message.created_at.strftime("%v, %r")%></span>
-                   <span class="username"><strong><%= message.poster %></strong></span></p>
+            <div class="messageHeader"><p><span class="username"><strong><%= message.poster %></strong></span>
+                <span class="timeStamp"><%=message.created_at.strftime("%v, %r")%></span></p>
             </div>
             <div class="messageContent"><%=message.content%></div>
         </div>
