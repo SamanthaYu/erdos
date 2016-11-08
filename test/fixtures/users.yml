@@ -17,4 +17,10 @@ three:
   userType: "Regular"
 
 four:
+<<<<<<< HEAD
   username: "hi"
+=======
+  username: "as"
+  password: "RegPassword"
+  userType: "Regular"
+>>>>>>> ad926e24d14180f73247ff6ca16cc35b9299b236
