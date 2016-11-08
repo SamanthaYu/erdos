@@ -7,4 +7,14 @@ class UsersControllerTest < ActionDispatch::IntegrationTest
     assert_not user.save, "Saved the user without attributes"
   end
 
+  test "should not save user with short usernames" do
+    user = User.new("username" => "hi")
+    assert_not user.save, "Saved the user with short usernames"
+  end
+
+  test "should not save user with short passwords" do
+    user = User.new("username" => "hi", "password" => "hello")
+    assert_not user.save, "Saved the user with short password"
+  end
+
 end
