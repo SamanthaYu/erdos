@@ -6,6 +6,6 @@
         <%= f.hidden_field :poster, value: current_user.username, data: {textarea: "useridfier"}%>
         <%= f.hidden_field :user_id, value: current_user.id%>
       <% end %>
-      <%= f.submit "send", class: "btn", style: "display: none", data: {send: "message", send: "useridfier"}%>
+      <%= f.submit "send", class: "btn", style: "display: none", data: {send: ["message", "useridfier"]}%>
     <%end%>
 </div>
