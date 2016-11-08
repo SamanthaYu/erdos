@@ -1,7 +1,4 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  messsage: MyString
-
-two:
-  messsage: MyString
+  content: "Hi"
