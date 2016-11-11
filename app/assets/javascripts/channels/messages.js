@@ -27,3 +27,7 @@ App.messages = App.cable.subscriptions.create('MessagesChannel', {
     //return "<p> <b>" + data.poster + ": </b>" + data.message + "</p>";
   }
 });
+
+function scrollBottom() {
+  $("#messageContainer").animate({ scrollTop: $('#messageContainer')[0].scrollHeight});
+};
