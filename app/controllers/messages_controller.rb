@@ -3,7 +3,9 @@ class MessagesController < ApplicationController
   def create
     #caller.each{|i| puts i}
     message= Message.new(message_params)
-    if message.save
+    if message.content.blank?
+      message.delete
+    elsif message.save
       ActionCable.server.broadcast 'messages',
         message: message.content,
         poster: message.poster,
