@@ -14,5 +14,9 @@ function submitNewMessage(){
 }
 
 function scrollBottom() {
-      $("#messageContainer").animate({ scrollTop: $('#message').last().scrollHeight });
+  $("messageContainer").scrollTop($('#messages').last().scrollHeight);
+
+  return;
+      //$("#messageContainer").animate({ scrollTop: $('#message').last().scrollHeight });
+      //$("#messageContainer").animate({ scrollTop: $('#messageContainer')[0].scrollHeight });
 }
