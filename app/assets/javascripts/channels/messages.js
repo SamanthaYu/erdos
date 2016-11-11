@@ -4,7 +4,7 @@ App.messages = App.cable.subscriptions.create('MessagesChannel', {
     $('#messages').append(this.renderMessage(data));
     renderMath($("#messageContent").last());
     //renderAllMessages();
-    scrollBottom();
+    //scrollBottom();
     return;
   },
 
@@ -28,7 +28,3 @@ App.messages = App.cable.subscriptions.create('MessagesChannel', {
     //return "<p> <b>" + data.poster + ": </b>" + data.message + "</p>";
   }
 });
-
-function scrollBottom() {
-  $("#messageContainer").animate({ scrollTop: $('#messageContainer')[0].scrollHeight});
-};
