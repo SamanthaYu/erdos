@@ -14,9 +14,9 @@ function submitNewMessage(){
 }
 
 function scrollBottom() {
-  $("messageContainer").scrollTop($('#messages').last().scrollHeight);
+  //$("messageContainer").scrollTop($('#messageContainer').last().scrollHeight);
+  $("#messageContainer").animate({ scrollTop: $('#messageContainer')[0].scrollHeight });
 
   return;
       //$("#messageContainer").animate({ scrollTop: $('#message').last().scrollHeight });
-      //$("#messageContainer").animate({ scrollTop: $('#messageContainer')[0].scrollHeight });
 }
