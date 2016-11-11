@@ -6,10 +6,12 @@
 #
 one:
   username: "gerbil"
+  password: "trysix"
   userType: "Guest"
 
 two:
   username: "admin"
+  password: "trysix"
   userType: "Admin"
 
 three:
@@ -17,10 +19,7 @@ three:
   userType: "Regular"
 
 four:
-<<<<<<< HEAD
   username: "hi"
-=======
   username: "as"
   password: "RegPassword"
   userType: "Regular"
->>>>>>> ad926e24d14180f73247ff6ca16cc35b9299b236
