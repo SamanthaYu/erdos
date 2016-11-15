@@ -1,6 +1,4 @@
-<head>
-  <title>Erdos | <%= @user.username %>'s Profile</title>
-</head>
+<% content_for :title, @user.username+"'s Profile" %>
 
 <div id="usersContainer">
 <h1><span class="username"><%= @user.username %></span></h1>
