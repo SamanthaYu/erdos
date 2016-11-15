@@ -11,6 +11,15 @@ function renderMath(element) {
 	);
 }
 
+
+function renderLastMessage() {
+	var allMessages = document.getElementsByClassName('messageContent');
+	var len=allMessages.length;
+	renderMath(allMessages[len-1]);
+}
+
+
+
 function renderAllMessages() {
 	var allMessages = document.getElementsByClassName('messageContent');
 
