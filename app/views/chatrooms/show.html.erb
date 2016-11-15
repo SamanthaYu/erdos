@@ -1,6 +1,4 @@
-<head>
-  <title>Erdos | <%= @chatroom.roomname %></title>
-</head>
+<% content_for :title, @chatroom.roomname %>
 
 <div id="header">
     <% if !@chatroom.roomname.blank? %>
