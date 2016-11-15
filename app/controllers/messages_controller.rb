@@ -10,7 +10,7 @@ class MessagesController < ApplicationController
         message: message.content,
         poster: message.poster,
         currentuser: current_user.username,
-        timestamp: message.created_at
+        timestamp: message.created_at.strftime("%v, %r")
       head :ok
     end
   end
