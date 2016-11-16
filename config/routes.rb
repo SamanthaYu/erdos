@@ -13,6 +13,7 @@ Rails.application.routes.draw do
    resources :chatrooms
    resources :messages
    resources :users
+   resources :friendships
    resources :sessions
 
   # The priority is based upon order of creation: first created -> highest priority.
