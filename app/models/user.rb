@@ -1,6 +1,8 @@
 class User < ApplicationRecord
   has_many :messages
   has_many :chatrooms, through: :messages
+  has_many :friendships
+  has_many :friends, :through => :friendships
 
   before_save {username.downcase!}
 

@@ -20,6 +20,14 @@
     <% end %>
 </ol>
 
+<h3 style="text-align:left"><span class="username"><%= @user.username %></span>'s Acquaintances:</h3>
+<ol id="friendsList">
+  <% @user.friendships.each do |friendship| %>
+    <%= friendship.friend.username %>
+    <%= link_to "remove", friendship, :method => :delete %>
+  <% end %>
+</ol>
+
 <p>&nbsp;</p>
 
 <%= link_to 'Back', users_path %>
