@@ -8,6 +8,9 @@
           <tr>
             <th>Username</th>
             <th>Type</th>
+            <% if !current_user.nil?%>
+              <th>Acquaintances</th>
+            <% end %>
             <% if !current_user.nil? && current_user.userType == 'Admin' %>
                 <th>Destroy</th>
             <% end %>
@@ -20,6 +23,13 @@
               <tr>
                 <td><%= link_to user.username, user, class: 'username' %></td>
                 <td><%= user.userType %></td>
+                <% if !current_user.nil? && current_user != user && !current_user.friends.where(id: user).exists?%>
+                  <td><%= link_to "Add Acquaintance", friendships_path(:friend_id => user), :method => :post %></td>
+                <% elsif current_user == user %>
+                  <td>You are already friends with yourself</td>
+                <% elsif !current_user.nil? && current_user.friends.where(id: user).exists? %>
+                  <td>Already Added</td>
+                <% end %>
                 <% if !current_user.nil? && current_user.userType == 'Admin' %>
                   <td><%= link_to 'Destroy', user, method: :delete, data: { confirm: 'Are you sure?' } %></td>
                 <% end %>
