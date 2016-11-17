@@ -20,11 +20,24 @@
     <% end %>
 </ol>
 
-<h3 style="text-align:left"><span class="username"><%= @user.username %></span>'s Acquaintances:</h3>
+<h3 style="text-align:left"><span class="username"><%= @user.username %></span> has added these Acquaintances:</h3>
 <ol id="friendsList">
   <% @user.friendships.each do |friendship| %>
-    <%= friendship.friend.username %>
-    <%= link_to "remove", friendship, :method => :delete %>
+    <% if !friendship.friend_id.nil? %>
+      <%= friendship.friend.username %>&nbsp;
+      <% if current_user == @user %>
+        &nbsp;<%= link_to 'Remove Acquaintance', friendship, method: :delete, data: { confirm: 'Are you sure?' }%>
+      <% end %>
+      <p></p>
+    <% end %>
+  <% end %>
+</ol>
+
+<h3 style="text-align:left"><span class="username"><%= @user.username %></span> has been added by these Users:</h3>
+<ol id="friendsList">
+  <% @user.inverse_friends.each do |inverse_friend| %>
+    <%= inverse_friend.username %>
+    <p></p>
   <% end %>
 </ol>
 
