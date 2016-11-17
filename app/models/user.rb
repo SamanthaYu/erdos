@@ -1,6 +1,8 @@
 class User < ApplicationRecord
   has_many :messages
   has_many :chatrooms, through: :messages
+  has_many :private_chats
+  has_many :private_chatrooms, :through => :private_chats, :source => :chatroom
   has_many :friendships
   has_many :friends, :through => :friendships
   has_many :inverse_friendships, :class_name => "Friendship", :foreign_key => "friend_id"

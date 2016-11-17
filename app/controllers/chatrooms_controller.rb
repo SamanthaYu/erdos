@@ -42,11 +42,14 @@ class ChatroomsController < ApplicationController
   end
 
   def show
+    @chatroom = Chatroom.find(params[:id])
     if !logged_in?
       redirect_to :root
+    elsif !@chatroom.private_chatters.empty? && !@chatroom.private_chatters.where(id: current_user).exists?
+      redirect_to '/chatrooms'
     end
-    @chatroom = Chatroom.find(params[:id])
     @message = Message.new
+    @private_chat = PrivateChat.new
   end
 
   def destroy
