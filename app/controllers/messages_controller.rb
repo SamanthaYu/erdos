@@ -2,7 +2,7 @@ class MessagesController < ApplicationController
 
   def create
     #caller.each{|i| puts i}
-    message= Message.new(message_params)
+    message = Message.new(message_params)
     if message.content.blank?
       message.delete
     elsif message.save
