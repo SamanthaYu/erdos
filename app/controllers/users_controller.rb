@@ -7,10 +7,12 @@ class UsersController < ApplicationController
   end
 
   def new
+    loggedinredirect
     @user = User.new
   end
 
   def create
+    loggedinredirect
     @user = User.new(user_params)
     if @user.save
       log_in @user
