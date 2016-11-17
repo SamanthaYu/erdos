@@ -5,10 +5,8 @@ class FriendshipsController < ApplicationController
   def create
     @friendship = current_user.friendships.build(:friend_id => params[:friend_id])
     if @friendship.save
-      flash[:notice] = 'Friendship was successfully created.'
       redirect_to users_url
     else
-      flash[:error] = 'No friendship'
       redirect_to users_url
     end
   end

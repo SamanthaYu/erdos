@@ -21,7 +21,7 @@
 </ol>
 
 <h3 style="text-align:left"><span class="username"><%= @user.username %></span> has added these Acquaintances:</h3>
-<ol id="friendsList">
+<ol id="friendList">
   <% @user.friendships.each do |friendship| %>
     <% if !friendship.friend_id.nil? %>
       <%= friendship.friend.username %>&nbsp;
@@ -34,9 +34,17 @@
 </ol>
 
 <h3 style="text-align:left"><span class="username"><%= @user.username %></span> has been added by these Users:</h3>
-<ol id="friendsList">
+<ol id="inversefriendList">
   <% @user.inverse_friends.each do |inverse_friend| %>
     <%= inverse_friend.username %>
+    <p></p>
+  <% end %>
+</ol>
+
+<h3 style="text-align:left"><span class="username"><%= @user.username %></span>'s Private Chats:</h3>
+<ol id="privateChatList">
+  <% @user.private_chatrooms.each do |room| %>
+    <%= render room %>
     <p></p>
   <% end %>
 </ol>
