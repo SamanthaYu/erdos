@@ -30,7 +30,7 @@ class ChatroomsController < ApplicationController
         format.html { redirect_to @chatroom }
         format.js
       end
-      redirect_to @chatroom
+      #redirect_to @chatroom
     else
       respond_to do |format|
         format.html { render :new }

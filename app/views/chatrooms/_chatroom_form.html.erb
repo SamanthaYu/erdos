@@ -1,5 +1,6 @@
 <%= form_for chatroom, remote: true do |f| %>
   <h3>Create a New Chatroom</h3>
+  <% f.label :roomname%>
   <%= f.text_field :roomname, :placeholder => 'Enter Chatroom Name'%>
   <center><%= f.submit "Create Chatroom", class: "submitButton"%></center>
 <% end %>
