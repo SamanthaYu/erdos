@@ -10,15 +10,17 @@ class ChatroomTests < ActionDispatch::IntegrationTest
   end
 
   test "chatroom created successfully" do
-    get "/login"
-    assert_response :success
-    fill_in 'username',   :with => 'admin'
-    fill_in 'password',   :with => 'trysix'
-    click_button
-    post "/sessions",
-    params: { session: { session_id: user.id } }
+    visit signup_path
+    fill_in "username_area", :with => 'newuser'
+    fill_in "password_area", :with => 'trysix'
+    fill_in "password_confirmation_area", :with => 'trysix'
+    click_button "signup_button"
+    page.should has_content?('newuser')
+    visit login_path
+    fill_in "username_area",   :with => 'newuser'
+    fill_in "password_area",   :with => 'trysix'
+    click_button "login_button"
     assert_response :redirect
-
     follow_redirect!
     assert_response :success
     assert request.path == '/'

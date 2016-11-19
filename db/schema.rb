@@ -54,6 +54,11 @@ ActiveRecord::Schema.define(version: 20161117042657) do
     t.index ["updated_at"], name: "index_sessions_on_updated_at", using: :btree
   end
 
+  create_table "user_connections", id: false, force: :cascade do |t|
+    t.integer "user_a_id", null: false
+    t.integer "user_b_id", null: false
+  end
+
   create_table "users", force: :cascade do |t|
     t.string   "username"
     t.string   "password"
