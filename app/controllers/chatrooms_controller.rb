@@ -27,10 +27,10 @@ class ChatroomsController < ApplicationController
         first = Message.create(:content => 'Chatroom \'' << @chatroom.roomname << '\' was created by Gerbil', :chatroom_id => @chatroom.id, :user_id => nil)
       end
       respond_to do |format|
-        format.html { redirect_to @chatroom }
+        format.html { }#redirect_to @chatroom }
         format.js
       end
-      #redirect_to @chatroom
+      redirect_to @chatroom
     else
       respond_to do |format|
         format.html { render :new }
