@@ -7,7 +7,7 @@ class MessagesController < ApplicationController
       message.delete
     elsif message.save
       ActionCable.server.broadcast 'messages',
-        chatroomname: message.chatroom.roomname
+        chatroomname: message.chatroom.roomname,
         avatarurl: message.user.avatar.thumb.url,
         message: message.content,
         poster: message.poster,
