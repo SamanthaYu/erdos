@@ -12,7 +12,7 @@
         <div id="otherUserMessage" class="message">
             <div class="messageHeader">
               <p>
-              <%if User.exists?(username: message.user) %>
+              <%if User.exists?(username: message.poster) %>
                 <span class="userAvatar"><%= image_tag message.user.avatar.thumb.url %></span>
               <%end%>
               <span class="username"><strong><%= message.poster %></strong></span>
