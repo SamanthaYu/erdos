@@ -1,4 +1,6 @@
 <div id="inputForm">
+<%= render partial: 'messages/mathMenu'%>
+
     <%=form_for message, remote: true, authenticity_token: true do |f|%>
       <%= f.text_area :content, class: "form-control", :placeholder => "Enter Message, to use math formatting surround formula with $ signs", data: {textarea: "message"}%>
       <%= f.hidden_field :chatroom_id, value: chatroom.id %>
