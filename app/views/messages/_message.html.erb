@@ -2,9 +2,10 @@
     <% if message.user == current_user %>
         <div id="currentUserMessage" class="message">
             <div class="messageHeader">
-              <p><span class="userAvatar"><%= image_tag message.user.avatar.thumb.url %></span>
-                <span class="username"><strong><%= message.poster %></strong></span>
-                <span class="timeStamp"><%=message.created_at.strftime("%v, %r")%></span></p>
+              <p><span class="timeStamp" id="currentUserTime"><%=message.created_at.strftime("%v, %r")%></span></span>
+                <span class="username"><strong><%= message.poster %></strong>
+                <span class="userAvatar"><%= image_tag message.user.avatar.thumb.url %></span>
+                </p>
             </div>
             <div class="messageContent"><%=message.content%></div>
         </div>
