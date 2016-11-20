@@ -158,6 +158,9 @@
               <%= f.text_field :username, :placeholder => 'Enter Username', id: 'username_area' %><br>
               <%= f.password_field :password, :placeholder => 'Enter Password', id: 'password_area' %><br>
               <%= f.password_field :password_confirmation, :placeholder => 'Confirm Password', id: 'password_confirmation_area'%><br>
+
+                    <%= f.label :avatar %>
+                    <%= f.file_field :avatar %> <br>
               <center><%= f.label :userType, "User Type" %> &nbsp;&nbsp;
               <%= f.select :userType, ['Regular', 'Admin'], :selected => 'Regular' %><br>
 
