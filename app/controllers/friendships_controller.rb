@@ -5,9 +5,9 @@ class FriendshipsController < ApplicationController
   def create
     @friendship = current_user.friendships.build(:friend_id => params[:friend_id])
     if @friendship.save
-      redirect_to users_url
+      redirect_to :back
     else
-      redirect_to users_url
+      redirect_to :back
     end
   end
 
@@ -16,7 +16,6 @@ class FriendshipsController < ApplicationController
   def destroy
     @friendship = current_user.friendships.find(params[:id])
     @friendship.destroy
-    flash[:notice] = 'No friendship'
     redirect_to current_user
   end
 
