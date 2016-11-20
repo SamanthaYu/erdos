@@ -2,9 +2,11 @@ class SessionsController < ApplicationController
     layout "login", only: [:new, :create]
 
   def new
+    loggedinredirect
   end
 
   def create
+    loggedinredirect
     user=User.find_by(username: params[:session][:username])
     if user && user.authenticate(params[:session][:password])
       if user.userType == 'Guest'

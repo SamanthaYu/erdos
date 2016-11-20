@@ -43,3 +43,5 @@ gem 'puma'
 gem 'redis', '~> 3.0'
 
 gem 'bcrypt'
+
+gem 'capybara'

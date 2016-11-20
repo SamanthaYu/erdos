@@ -156,9 +156,9 @@
             <h1>login</h1>
             <%= form_for(:session, url: login_path) do |f| %>
               <center><p id="errorNotice"><%= notice %></p></center>
-              <%= f.text_field :username, :placeholder => 'Enter Username' %><br>
-              <%= f.password_field :password, :placeholder => 'Enter Password' %><br>
-              <center><%= f.submit "Log in", class: "submitButton" %></center>
+              <%= f.text_field :username, :placeholder => 'Enter Username', id: 'username_area'%><br>
+              <%= f.password_field :password, :placeholder => 'Enter Password', id: 'password_area' %><br>
+              <center><%= f.submit "Log in", class: "submitButton", id: 'login_button' %></center>
             <% end %>
 
             <hr>
