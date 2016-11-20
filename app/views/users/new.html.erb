@@ -18,6 +18,9 @@
       <%= f.label :userType, "User Type" %>
       <%= f.select :userType, ['Regular', 'Admin'], :selected => 'Regular' %><br>
 
+      <%= f.label :avatar %>
+      <%= f.file_field :avatar %>
+
       <%= f.submit "Create my account", class: "btn btn-primary" %>
     <% end %>
   </div>

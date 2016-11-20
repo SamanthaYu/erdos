@@ -2,11 +2,13 @@ class MessagesController < ApplicationController
 
   def create
     #caller.each{|i| puts i}
-    message= Message.new(message_params)
+    message = Message.new(message_params)
     if message.content.blank?
       message.delete
     elsif message.save
       ActionCable.server.broadcast 'messages',
+        chatroomname: message.chatroom.roomname,
+        avatarurl: message.user.avatar.thumb.url,
         message: message.content,
         poster: message.poster,
         currentuser: current_user.username,

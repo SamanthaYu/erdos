@@ -1,0 +1,24 @@
+<div id="inputForm">
+  <%=form_for private_chat, remote: true do |f|%>
+    <% if !current_user.nil? %>
+      <%= f.hidden_field :chatroom_id, value: chatroom.id %>
+      <% buttonString = "Make Private" %>
+      <% @userlist = Array.new(User.all.size) %>
+      <% i = 0 %>
+      <% if !chatroom.private_chatters.empty? %>
+        <% User.all.each do |user| %>
+          <% if !chatroom.private_chatters.where(id: user).exists? %>
+            <% @userlist[i] = user %>
+            <% i = i + 1 %>
+          <% end %>
+        <% end %>
+        <% buttonString = "Add User" %>
+        <% @userlist2 = @userlist.reject { |c| c.nil? } %>
+        <%= f.select( :user_id, @userlist2.map { |value| [ User.find(value).username, value.id ] }) %>
+      <% elsif !current_user.nil? %>
+        <%= f.hidden_field :user_id, value: current_user.id %>
+      <% end %>
+    <% end %>
+    <%= f.submit buttonString, class: "submitButton"%>
+  <%end%>
+</div>

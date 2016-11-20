@@ -1,5 +1,4 @@
 Rails.application.routes.draw do
-
   mount ActionCable.server => '/cable'
 
 
@@ -13,7 +12,9 @@ Rails.application.routes.draw do
    resources :chatrooms
    resources :messages
    resources :users
+   resources :friendships
    resources :sessions
+   resources :private_chats
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

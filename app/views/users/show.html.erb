@@ -24,6 +24,37 @@
     <% end %>
 </ol>
 
+<h3 style="text-align:left"><span class="username"><%= @user.username %></span> has added these Acquaintances:</h3>
+<ol id="friendList">
+  <% @user.friendships.each do |friendship| %>
+    <% if !friendship.friend_id.nil? %>
+      <%= friendship.friend.username %>&nbsp;
+      <% if current_user == @user %>
+        &nbsp;<%= link_to 'Remove Acquaintance', friendship, method: :delete, data: { confirm: 'Are you sure?' }%>
+      <% end %>
+      <p></p>
+    <% end %>
+  <% end %>
+</ol>
+
+<h3 style="text-align:left"><span class="username"><%= @user.username %></span> has been added by these Users:</h3>
+<ol id="inversefriendList">
+  <% @user.inverse_friends.each do |inverse_friend| %>
+    <%= inverse_friend.username %>
+    <p></p>
+  <% end %>
+</ol>
+
+<h3 style="text-align:left"><span class="username"><%= @user.username %></span>'s Private Chats:</h3>
+<ol id="privateChatList">
+  <% @user.private_chatrooms.each do |room| %>
+    <%= render room %>
+    <p></p>
+  <% end %>
+</ol>
+
+<%= image_tag @user.avatar.thumb.url %>
+
 <p>&nbsp;</p>
 
 <%= link_to 'Back', users_path %>

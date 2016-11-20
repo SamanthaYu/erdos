@@ -11,6 +11,13 @@ module SessionsHelper
     !current_user.nil?
   end
 
+  def loggedinredirect
+    if logged_in?
+      redirect_to '/home'
+    end
+  end
+
+
   def log_out
     begin
       if User.find(session[:user_id]).userType == 'Guest'
