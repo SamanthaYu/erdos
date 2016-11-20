@@ -14,10 +14,7 @@
   <% @chatroom.private_chatters.each do |user| %>
     &nbsp;<%= user.username %>
   <% end %>
-
-  <div id="privateField">
-    <%= render partial: 'private_chats/form', locals: {private_chat: @private_chat, chatroom: @chatroom} %>
-  </div>
+  <%= render partial: 'private_chats/form', locals: {private_chat: @private_chat, chatroom: @chatroom} %>
 
   <div id="messages">
     <% @chatroom.messages.each do |message| %>

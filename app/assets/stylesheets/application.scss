@@ -89,6 +89,17 @@
      overflow-x: hidden;
  }
 
+ a, a:link, a:visited {
+     color: $green;
+ }
+
+ a:hover {
+     color: #777;
+     font-style: oblique;
+     background-color: #fff;
+ }
+
+
  .sideNav a {
      font-family: 'Fira Sans', sans-serif;
      padding: 5px 5px 5px 32px;
@@ -103,6 +114,7 @@
 
  .sideNav a:hover {
      color: $yellow;
+     font-style: normal;
      background-color: lighten($dark-blue, 10%);
      letter-spacing: 2px;
  }

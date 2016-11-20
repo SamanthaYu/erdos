@@ -22,24 +22,27 @@
     <% end %>
 </ol>
 
-<h3 style="text-align:left"><span class="username"><%= @user.username %></span> has added these Acquaintances:</h3>
-<ol id="friendList">
+<h3><span class="username"><%= @user.username %></span> has added these users as Friends:</h3>
+<table id="friendList">
+    <thead>
+        <tr>
+            <th>Friend</th>
+            <th>Remove</th>
   <% @user.friendships.each do |friendship| %>
     <% if !friendship.friend_id.nil? %>
-      <%= friendship.friend.username %>&nbsp;
-      <% if current_user == @user %>
-        &nbsp;<%= link_to 'Remove Acquaintance', friendship, method: :delete, data: { confirm: 'Are you sure?' }%>
-      <% end %>
-      <p></p>
+        <tr>
+            <td> <%= link_to friendship.friend.username, friendship.friend %></td>
+        <% if current_user == @user %>
+            <td><%= link_to '&times;'.html_safe+' Remove Friend', friendship, method: :delete, data: { confirm: 'Are you sure?' }%> </td>
+        <% end %>
     <% end %>
   <% end %>
-</ol>
+</table><br>
 
 <h3 style="text-align:left"><span class="username"><%= @user.username %></span> has been added by these Users:</h3>
 <ol id="inversefriendList">
   <% @user.inverse_friends.each do |inverse_friend| %>
-    <%= inverse_friend.username %>
-    <p></p>
+    <%= link_to inverse_friend.username, inverse_friend %>
   <% end %>
 </ol>
 
@@ -47,7 +50,6 @@
 <ol id="privateChatList">
   <% @user.private_chatrooms.each do |room| %>
     <%= render room %>
-    <p></p>
   <% end %>
 </ol>
 
