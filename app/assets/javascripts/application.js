@@ -11,17 +11,36 @@
 // about supported directives.
 //
 //= require jquery
+//= require jquery.turbolinks
 //= require jquery_ujs
 //= require turbolinks
+//= require bootstrap
 //= require_tree ./channels
-//= require chatrooms
 //= require math
+//= require mathMenu
+//= require chatrooms
 //= require welcome
 //= require_tree .
 
-$(document).on('turbolinks:load', function(){
+document.addEventListener("turbolinks:load", function() {
     renderAllMessages();
     renderAllUsernames();
+    renderAllButtons();
+
+    $('.mathButton').click(function() {
+      var mathSymbol = $(this).data('val');
+      var content = $('#message_content').val();
+
+      var start = $('#message_content')[0].selectionStart;
+      var end = $('#message_content')[0].selectionEnd;
+
+      var newContent = content.substr(0, start) + mathSymbol + content.substr(end);
+      $('#message_content').val(newContent);
+
+      $('#message_content')[0].selectionStart = start + mathSymbol.length;
+      $('#message_content')[0].selectionEnd = $('#message_content')[0].selectionStart;
+      $('#message_content').focus();
+    });
 });
 
 function openSidebar(){
