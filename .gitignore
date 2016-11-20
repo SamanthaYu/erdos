@@ -22,3 +22,6 @@
 /public/assets
 
 hyylookat.txt
+
+#ignore uploaded files in local
+/public/uploads
