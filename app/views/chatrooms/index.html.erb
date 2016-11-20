@@ -9,13 +9,32 @@
     </ol>
     -->
 
-    <br><h3 style="text-align:left">List of Current Chatrooms</h3>
-    <ol id="chatroomList">
+    <br><h3>List of Current Chatrooms</h3>
+    <table id="chatroomList">
+        <thead>
+            <tr>
+                <th>Chatroom</th>
+                <th>Private</th>
+                <th>Created at</th>
+                <th>Last updated</th>
+                <% if !current_user.nil? && current_user.userType == 'Admin' %>
+                   <th>Destroy Chatroom</th>
+                <% end %>
+            </tr>
+        </thead>
       <% @chatrooms.each do |room| %>
-          <%= render room %>
-          <% if !current_user.nil? && current_user.userType == 'Admin' %>
-             <p>&nbsp;&nbsp;<%= link_to 'Destroy', room, method: :delete, data: { confirm: 'Are you sure?' } %> </p>
-          <% end %>
+        <tr>
+            <td><%= link_to room.roomname, room %></td>
+            <% if !room.private_chatters.empty? %>
+                <td>Yes</td>
+            <% else %>
+                <td>No</td>
+            <%end%>
+            <td><%= room.created_at.strftime("%v, %r") %></td>
+            <td><%= room.updated_at.strftime("%v, %r") %></td>
+            <% if !current_user.nil? && current_user.userType == 'Admin' %>
+                <td><%= link_to 'Destroy', room, method: :delete, data: { confirm: 'Are you sure?' } %> </td>
+            <% end %>
       <% end %>
-    </ol>
+  </table>
 </div>
