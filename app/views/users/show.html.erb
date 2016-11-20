@@ -24,19 +24,21 @@
         </tr>
     </thead>
     <% @user.chatrooms.each do |room| %>
-      <% if room != userRooms[roomNum] %>
-        <% roomNum += 1 %>
-        <% userRooms[roomNum] = room %>
-        <td><%= link_to room.roomname, room %></td>
-        <% if !@user.private_chatrooms.where(id: room).exists? %>
-            <td> No </td>
-        <% else %>
-            <td> Yes </td>
-        <% end %>
-        <% if !current_user.nil? && current_user.userType == 'Admin' %>
-           <td>&nbsp;&nbsp; <%= link_to 'Destroy', room, method: :delete, data: { confirm: 'Are you sure?' } %> </td>
-        <% end %>
-      <% end %>
+        <tr>
+            <% if room != userRooms[roomNum] %>
+                <% roomNum += 1 %>
+                <% userRooms[roomNum] = room %>
+                <td><%= link_to room.roomname, room %></td>
+                <% if !@user.private_chatrooms.where(id: room).exists? %>
+                    <td> No </td>
+                <% else %>
+                    <td> Yes </td>
+                <% end %>
+                <% if !current_user.nil? && current_user.userType == 'Admin' %>
+                    <td><%= link_to 'Destroy', room, method: :delete, data: { confirm: 'Are you sure?' } %> </td>
+                <% end %>
+            <% end %>
+        </tr>
     <% end %>
 </table><br>
 
