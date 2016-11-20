@@ -15,7 +15,8 @@
   <%= action_cable_meta_tag %>
 </head>
 <body>
-
+  <script type="text/javascript" src="refreshPage.js"></script>
+  <!--<%= javascript_include_tag 'refreshPage', 'data-turbolinks-track' => "reload" %>-->
 <% if params[:controller] == 'welcome' && params[:action] == 'index'%>
 
 <% else %>
