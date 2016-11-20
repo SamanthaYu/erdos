@@ -24,6 +24,9 @@
         </thead>
       <% @chatrooms.each do |room| %>
         <tr>
+            <% if room.roomname.blank? %>
+                <%room.roomname = chatroom_path(room)%>
+            <%end%>
             <td><%= link_to room.roomname, room %></td>
             <% if !room.private_chatters.empty? %>
                 <td>Yes</td>
