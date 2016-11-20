@@ -7,10 +7,12 @@ class ChatroomTests < ActionDispatch::IntegrationTest
 
 
   test "cannot see chatrooms without login" do
-    get "/chatrooms"
-    follow_redirect!
-    assert_response :success
-    assert request.path == '/'
+    visit chatrooms_path
+    assert page.has_current_path?('/')
+    #get "/chatrooms"
+    #follow_redirect!
+    #assert_response :success
+    #assert request.path == '/'
   end
 
   test "chatroom created successfully" do
@@ -19,12 +21,12 @@ class ChatroomTests < ActionDispatch::IntegrationTest
     fill_in "password_area", :with => 'trysix'
     fill_in "password_confirmation_area", :with => 'trysix'
     click_button('Create Account')
-    assert page.has_content?('newuser')
     visit chatrooms_path
-    assert page.has_content?('Create a New Chatroom')
+    #assert page.has_content?('Create a New Chatroom')
     fill_in "chatroom[roomname]",   :with => 'TestName'
     click_button('Create Chatroom')
     assert page.has_content?("Chatroom 'TestName' was created by newuser")
+    #assert page.has_current_path?('/')
 
 #    assert_redirected_to "/users"
 #    follow_redirect!
