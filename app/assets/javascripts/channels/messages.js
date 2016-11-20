@@ -1,9 +1,11 @@
 App.messages = App.cable.subscriptions.create('MessagesChannel', {
   received: function(data) {
-    $("#messages").removeClass('hidden');
-    $('#messages').append(this.renderMessage(data));
-    renderLastMessage();
-    scrollBottom();
+    if ($('h1').text()==data.chatroomname){
+      $("#messages").removeClass('hidden');
+      $('#messages').append(this.renderMessage(data));
+      renderLastMessage();
+      scrollBottom();
+    }
     return;
   },
 
