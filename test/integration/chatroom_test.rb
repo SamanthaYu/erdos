@@ -1,27 +1,42 @@
 require 'test_helper'
 
 class ChatroomTests < ActionDispatch::IntegrationTest
+  setup do
+    @chatroom = chatrooms(:one)
+  end
+
 
   test "cannot see chatrooms without login" do
-    get "/chatrooms"
-    follow_redirect!
-    assert_response :success
-    assert request.path == '/'
+    visit chatrooms_path
+    assert page.has_current_path?('/')
+    #get "/chatrooms"
+    #follow_redirect!
+    #assert_response :success
+    #assert request.path == '/'
   end
 
   test "chatroom created successfully" do
-    get "/login"
-    assert_response :success
-    fill_in 'username',   :with => 'admin'
-    fill_in 'password',   :with => 'trysix'
-    click_button
-    post "/sessions",
-    params: { session: { session_id: user.id } }
-    assert_response :redirect
+    visit signup_path
+    fill_in "username_area", :with => 'newuser'
+    fill_in "password_area", :with => 'trysix'
+    fill_in "password_confirmation_area", :with => 'trysix'
+    click_button('Create Account')
+    visit chatrooms_path
+    #assert page.has_content?('Create a New Chatroom')
+    fill_in "chatroom[roomname]",   :with => 'TestName'
+    click_button('Create Chatroom')
+    assert page.has_content?("Chatroom 'TestName' was created by newuser")
+    #assert page.has_current_path?('/')
 
-    follow_redirect!
-    assert_response :success
-    assert request.path == '/'
+#    assert_redirected_to "/users"
+#    follow_redirect!
+#
+    #visit login_path
+    #fill_in "username_area",   :with => 'newuser'
+    #fill_in "password_area",   :with => 'trysix'
+    #click_button "login_button"
+  #  assert_response :success
+  #  assert request.path == '/'
   end
 
   #post "/articles",
