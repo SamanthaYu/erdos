@@ -1,0 +1,36 @@
+#mathMenuWrapper {
+  width: 100%;
+}
+
+#mathTable {
+  border: 0px;
+  display: inline-block;
+  float: left;
+}
+
+#mathMenu {
+  display: inline-block;
+}
+
+.mathButton {
+  display: inline-block;
+  border-radius: 10px;
+}
+
+.mathButton:hover {
+  background-color: #2AA0C7;
+  color: #FFFFFF;
+}
+
+.helpButton {
+  text-align: center;
+  border-radius: 25px;
+  border-color: #4B5D63;
+  border-width: 3px;
+  border-style: solid;
+  width: 25px;
+  height: 25px;
+  line-height: 19px;
+  font-weight: bold;
+  display: inline-block;
+}

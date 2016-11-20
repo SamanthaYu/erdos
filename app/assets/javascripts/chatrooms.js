@@ -1,6 +1,8 @@
 $(document).on('turbolinks:load', function() {
   submitNewMessage();
   scrollBottom();
+  renderLastMessage();
+  renderLastUsername();
 });
 
 function submitNewMessage(){

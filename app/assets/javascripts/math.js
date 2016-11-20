@@ -11,14 +11,17 @@ function renderMath(element) {
 	);
 }
 
-
 function renderLastMessage() {
 	var allMessages = document.getElementsByClassName('messageContent');
 	var len=allMessages.length;
 	renderMath(allMessages[len-1]);
 }
 
-
+function renderLastUsername() {
+	var allUsernames = document.getElementsByClassName('username');
+	var len=allUsernames.length;
+	renderMath(allUsernames[len-1]);
+}
 
 function renderAllMessages() {
 	var allMessages = document.getElementsByClassName('messageContent');
@@ -33,5 +36,13 @@ function renderAllUsernames() {
 
 	for (var j = 0; j < allUsernames.length; j++) {
 		renderMath(allUsernames[j]);
+	}
+}
+
+function renderAllButtons() {
+	var allButtons = document.getElementsByClassName('mathButton');
+
+	for (var j = 0; j < allButtons.length; j++) {
+		renderMath(allButtons[j]);
 	}
 }
