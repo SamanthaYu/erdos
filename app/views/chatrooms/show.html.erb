@@ -10,14 +10,28 @@
     <% end %>
 </div>
 
-
 <div id="messageContainer">
+
+  <span> Room Users: </span>
+  <% @chatroom.private_chatters.each do |user| %>
+    &nbsp;<%= user.username %>
+  <% end %>
+
+  <div id="privateField">
+    <%= render partial: 'private_chats/form', locals: {private_chat: @private_chat, chatroom: @chatroom} %>
+  </div>
+
   <div id="messages">
-    <% @chatroom.messages.each do |message| %>
-      <%= render partial: 'messages/message', object: message %>
-    <% end %>
-    </div>
+    <%= render partial: 'messages/message', collection: @chatroom.messages.order(:id)%>
+    <%# @chatroom.messages.each do |message| %>
+      <%#= render partial: 'messages/message', object: message %>
+    <%# end %>
+  </div>
 </div>
+
+
+
+
 
 
 <%= render partial: 'messages/message_form', locals: {message: @message, chatroom: @chatroom}%>

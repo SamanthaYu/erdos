@@ -42,4 +42,13 @@ gem 'puma'
 # for chat server thingy
 gem 'redis', '~> 3.0'
 
+#for passwords
 gem 'bcrypt'
+
+#for testing
+gem 'capybara'
+
+#for file upload
+gem 'carrierwave', '>= 1.0.0.rc', '< 2.0'
+#for image processing
+gem 'mini_magick'

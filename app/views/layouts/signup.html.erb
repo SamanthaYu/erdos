@@ -155,13 +155,16 @@
             <h1>sign up</h1>
             <center><p id="errorNotice"><%= @user.errors.full_messages.first if @user.errors.any? %></p></center>
             <%= form_for(@user, url: signup_path) do |f| %>
-              <%= f.text_field :username, :placeholder => 'Enter Username' %><br>
-              <%= f.password_field :password, :placeholder => 'Enter Password' %><br>
-              <%= f.password_field :password_confirmation, :placeholder => 'Confirm Password'%><br>
+              <%= f.text_field :username, :placeholder => 'Enter Username', id: 'username_area' %><br>
+              <%= f.password_field :password, :placeholder => 'Enter Password', id: 'password_area' %><br>
+              <%= f.password_field :password_confirmation, :placeholder => 'Confirm Password', id: 'password_confirmation_area'%><br>
+
+                    <%= f.label :avatar %>
+                    <%= f.file_field :avatar %> <br>
               <center><%= f.label :userType, "User Type" %> &nbsp;&nbsp;
               <%= f.select :userType, ['Regular', 'Admin'], :selected => 'Regular' %><br>
 
-              <%= f.submit "Create Account", class: "submitButton" %></center>
+              <%= f.submit "Create Account", class: "submitButton", id: 'signup_button' %></center>
             <% end %>
             <hr>
             <div id="option1" class="options">

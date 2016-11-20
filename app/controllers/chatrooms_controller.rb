@@ -27,7 +27,7 @@ class ChatroomsController < ApplicationController
         first = Message.create(:content => 'Chatroom \'' << @chatroom.roomname << '\' was created by Gerbil', :chatroom_id => @chatroom.id, :user_id => nil)
       end
       respond_to do |format|
-        format.html { redirect_to @chatroom }
+        format.html { }#redirect_to @chatroom }
         format.js
       end
       redirect_to @chatroom
@@ -42,11 +42,14 @@ class ChatroomsController < ApplicationController
   end
 
   def show
+    @chatroom = Chatroom.find(params[:id])
     if !logged_in?
       redirect_to :root
+    elsif !@chatroom.private_chatters.empty? && !@chatroom.private_chatters.where(id: current_user).exists?
+      redirect_to '/chatrooms'
     end
-    @chatroom = Chatroom.find(params[:id])
     @message = Message.new
+    @private_chat = PrivateChat.new
   end
 
   def destroy
