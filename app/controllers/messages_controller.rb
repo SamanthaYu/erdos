@@ -7,6 +7,7 @@ class MessagesController < ApplicationController
       message.delete
     elsif message.save
       ActionCable.server.broadcast 'messages',
+        avatarurl: message.user.avatar.thumb.url,
         message: message.content,
         poster: message.poster,
         currentuser: current_user.username,
