@@ -6,6 +6,18 @@ class PrivateChatsController < ApplicationController
 
   def create
     @private_chat = PrivateChat.new(private_chat_params)
+    @that_chatroom = Chatroom.find_by(id: @private_chat.chatroom_id)
+    if @that_chatroom.private_chatters.size < 2
+      @those_users = Array.new(@that_chatroom.users.size+1)
+      @user_num = 0
+      @that_chatroom.users.each do |poster|
+        if poster != @those_users[@user_num] && poster != current_user
+          @user_num += 1
+          @those_users[@user_num] = poster
+          PrivateChat.create(:user_id => poster.id, :chatroom_id => @that_chatroom.id)
+        end
+      end
+    end
     if @private_chat.save
       redirect_to :back
     else
