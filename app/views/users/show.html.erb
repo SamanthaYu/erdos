@@ -1,6 +1,15 @@
 <% content_for :title, @user.username+"'s Profile" %>
 
 <div id="usersContainer">
+<% if @user != current_user && !current_user.friends.where(id: @user).exists?%>
+    <%= button_to "+ Add Friend", friendships_path(:friend_id => @user), :method => :post, class: "submitButton" %>
+<% elsif @user != current_user && current_user.friends.where(id: @user).exists? %>
+    <% current_user.friendships.each do |friendship| %>
+        <% if !friendship.friend_id.nil? && friendship.friend.id == @user.id %>
+            <%= button_to '&times;'.html_safe+' Remove Friend', friendship, method: :delete, class: "submitButton", data: { confirm: 'Are you sure you want to remove this friend?' } %>
+        <% end %>
+    <% end %>
+<% end %>
 <center><%= image_tag @user.avatar.thumb.url %> </center>
 <h1><span class="username"><%= @user.username %></span></h1>
 
