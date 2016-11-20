@@ -136,3 +136,20 @@
      z-index: 0;
      transition: 0.5s;
  }
+
+ table {
+     border-collapse: collapse;
+     width: 70%;
+     table-layout: fixed;
+     margin: 0 auto;
+ }
+
+ table, th, td {
+     border: 1px solid #777;
+     padding: 5px;
+ }
+
+ th {
+     letter-spacing: 2px;
+     text-align: center;
+ }

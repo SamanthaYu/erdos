@@ -1,4 +1,4 @@
-<% content_for :title, 'List of Users' %>
+<% content_for :title, 'Users' %>
 
 <div id="usersContainer">
     <h1>USERS</h1>
@@ -10,6 +10,7 @@
           <tr>
             <th>Username</th>
             <th>Type</th>
+            <th>Joined on</th>
             <% if !current_user.nil?%>
                 <th>Add as Friend</th>
             <% end %>
@@ -25,6 +26,7 @@
               <tr>
                 <td><%= link_to user.username, user, class: 'username' %></td>
                 <td><%= user.userType %></td>
+                <td><%= user.created_at.strftime("%v, %r") %></td>
                 <% if !current_user.nil? && current_user != user && !current_user.friends.where(id: user).exists?%>
                   <td><%= link_to "+ Add Friend", friendships_path(:friend_id => user), :method => :post %></td>
                 <% elsif current_user == user %>

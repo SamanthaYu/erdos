@@ -25,38 +25,3 @@ h3 {
 #usersContainer {
     padding: 15px;
 }
-
-table {
-    border-collapse: collapse;
-    width: 50%;
-    table-layout: fixed;
-    margin: 0 auto;
-}
-
-table, th, td {
-    border: 1px solid #777;
-    padding: 5px;
-}
-
-th {
-    letter-spacing: 2px;
-    text-align: center;
-}
-
-table a {
-    color: $green;
-}
-
-table a:hover {
-    color: #777;
-    font-style: oblique;
-}
-
-#chatroomList a {
-    color: $green;
-}
-
-#chatroomList a:hover {
-    color: #777;
-    font-style: oblique;
-}
