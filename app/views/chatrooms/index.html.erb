@@ -1,4 +1,4 @@
-<% content_for :title, 'List of Chatrooms'%>
+<% content_for :title, 'Chatrooms'%>
 
 <div id="indexContainer">
     <h1>CHATROOMS</h1>
@@ -10,7 +10,7 @@
     -->
 
     <br><h3>List of Current Chatrooms</h3>
-    <table id="chatroomList">
+    <table id="chatroomList" class="dataTable">
         <thead>
             <tr>
                 <th>Chatroom</th>
@@ -34,7 +34,7 @@
                 <td>No</td>
             <%end%>
             <td><%= local_time_ago(room.created_at) %></td>
-            <td><%= local_time_ago(room.updated_at) %></td>
+            <td><%= local_time_ago(room.messages.last.created_at) %></td>
             <% if !current_user.nil? && current_user.userType == 'Admin' %>
                 <td><%= link_to 'Destroy', room, method: :delete, data: { confirm: 'Are you sure?' } %> </td>
             <% end %>
