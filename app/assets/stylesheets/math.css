@@ -6,6 +6,9 @@
   border: 0px;
   display: inline-block;
   float: left;
+  table-layout: auto;
+  margin: 0px;
+  padding: 0px;
 }
 
 #mathMenu {
