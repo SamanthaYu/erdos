@@ -31,12 +31,12 @@
         <% if @chatroom.roomname.blank? %>
             <% @chatroom.roomname = chatroom_path(@chatroom) %>
         <% end %>
-        <span style="font-size: 18px"><%= @chatroom.roomname %></span>
+        <span id="sideHeader" style="font-size: 18px"><%= @chatroom.roomname %></span>
         <% if !@chatroom.private_chatters.empty? %>
-            <span>Members:</span>
+            <span id="subHeader">Members:</span>
             <ul>
             <% @chatroom.private_chatters.each do |user| %>
-                <li><%= link_to user.username, user, class: "memberList" %></li>
+                <li><%= link_to user.username, user, class: "username" %></li>
             <% end %>
             </ul>
         <% end %>
