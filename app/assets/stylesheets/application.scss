@@ -117,7 +117,11 @@
      padding: 15px 8px;
  }
 
- .sideNav a, .sideNav p, .sideNav span {
+ #userHeader span {
+     font-size: 26px;
+ }
+
+ .sideNav a, .sideNav p, #sideHeader, #subHeader{
      font-family: 'Fira Sans', sans-serif;
      padding: 5px 5px 5px 20px;
      text-decoration: none;
@@ -129,7 +133,7 @@
      text-align: left;
  }
 
- .sideNav a:hover, .sideNav span:hover {
+ .sideNav a:hover, #sideHeader:hover, #subHeader:hover{
      color: $yellow;
      font-style: normal;
      background-color: lighten($dark-blue, 10%);
