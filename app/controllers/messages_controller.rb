@@ -14,7 +14,7 @@ class MessagesController < ApplicationController
         chatroomname: roomname,
         avatarurl: message.user.avatar.thumb.url,
         message: message.content,
-        poster: message.poster,
+        poster: message.user,
         currentuser: current_user.username,
         timestamp: view_context.local_time_ago(message.created_at);
       head :ok
