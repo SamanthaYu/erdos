@@ -1,4 +1,4 @@
-<div id="inputForm">
+<div id="privateChatForm">
   <%=form_for private_chat, remote: true do |f|%>
     <% if !current_user.nil? %>
       <%= f.hidden_field :chatroom_id, value: chatroom.id %>
@@ -12,13 +12,13 @@
             <% i = i + 1 %>
           <% end %>
         <% end %>
-        <% buttonString = "Add User" %>
         <% @userlist2 = @userlist.reject { |c| c.nil? } %>
-        <%= f.select( :user_id, @userlist2.map { |value| [ User.find(value).username, value.id ] }) %>
+        <%= f.select( :user_id, @userlist2.map { |value| [ User.find(value).username, value.id ] }, {}, {class:"sideNavDropdown"}) %>
+        <br><% buttonString = "Add User" %>
       <% elsif !current_user.nil? %>
         <%= f.hidden_field :user_id, value: current_user.id %>
       <% end %>
     <% end %>
-    <%= f.submit buttonString, class: "submitButton"%>
+    <%= f.submit buttonString, class: "sideNavButton"%>
   <%end%>
 </div>
