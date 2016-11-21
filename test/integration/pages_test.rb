@@ -3,7 +3,7 @@ require 'test_helper'
 class PageTests < ActionDispatch::IntegrationTest
   test "can see the home page" do
     get "/"
-    assert_select "title", "Erdos"
+    assert_select "title", "erdos"
   end
 
   test "can see the signup page" do
