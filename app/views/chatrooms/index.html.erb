@@ -1,6 +1,4 @@
-<head>
-  <title>Erdos || List of Chatrooms</title>
-</head>
+<% content_for :title, 'List of Chatrooms'%>
 
 <div id="indexContainer">
     <h1>CHATROOMS</h1>
@@ -11,13 +9,35 @@
     </ol>
     -->
 
-    <br><h3 style="text-align:left">List of Current Chatrooms</h3>
-    <ol id="chatroomList">
+    <br><h3>List of Current Chatrooms</h3>
+    <table id="chatroomList">
+        <thead>
+            <tr>
+                <th>Chatroom</th>
+                <th>Private</th>
+                <th>Created at</th>
+                <th>Last updated</th>
+                <% if !current_user.nil? && current_user.userType == 'Admin' %>
+                   <th>Destroy Chatroom</th>
+                <% end %>
+            </tr>
+        </thead>
       <% @chatrooms.each do |room| %>
-          <%= render room %>
-          <% if !current_user.nil? && current_user.userType == 'Admin' %>
-             <p>&nbsp;&nbsp;<%= link_to 'Destroy', room, method: :delete, data: { confirm: 'Are you sure?' } %> </p>
-          <% end %>
+        <tr>
+            <% if room.roomname.blank? %>
+                <%room.roomname = chatroom_path(room)%>
+            <%end%>
+            <td><%= link_to room.roomname, room %></td>
+            <% if !room.private_chatters.empty? %>
+                <td>Yes</td>
+            <% else %>
+                <td>No</td>
+            <%end%>
+            <td><%= local_time_ago(room.created_at) %></td>
+            <td><%= local_time_ago(room.updated_at) %></td>
+            <% if !current_user.nil? && current_user.userType == 'Admin' %>
+                <td><%= link_to 'Destroy', room, method: :delete, data: { confirm: 'Are you sure?' } %> </td>
+            <% end %>
       <% end %>
-    </ol>
+  </table>
 </div>

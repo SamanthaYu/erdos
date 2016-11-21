@@ -3,15 +3,16 @@ App.messages = App.cable.subscriptions.create('MessagesChannel', {
     if ($('h1').text()==data.chatroomname){
       $("#messages").removeClass('hidden');
       $('#messages').append(this.renderMessage(data));
-      renderLastMessage();
       scrollBottom();
+      renderLastMessage();
+      renderLastUsername();
     }
     return;
   },
 
   renderMessage: function(data) {
     var retmess='';
-    var timestamp=data.timestamp;
+    var timestamp=data.timestamp;//LocalTime.relativeTimeAgo(new Date(data.timestamp));
     var avatarlink='<span class="userAvatar"><img src="'+data.avatarurl+'"></span>'
     if (data.currentuser==data.poster){
       retmess+='<div id="currentUserMessage" class="message">';
@@ -29,7 +30,3 @@ App.messages = App.cable.subscriptions.create('MessagesChannel', {
     //return "<p> <b>" + data.poster + ": </b>" + data.message + "</p>";
   }
 });
-
-function scrollBottom() {
-  $("#messageContainer").animate({ scrollTop: $('#messageContainer')[0].scrollHeight});
-};

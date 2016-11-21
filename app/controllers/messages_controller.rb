@@ -6,13 +6,18 @@ class MessagesController < ApplicationController
     if message.content.blank?
       message.delete
     elsif message.save
+      roomname=message.chatroom.roomname
+      if message.chatroom.roomname.blank?
+        roomname = chatroom_path(message.chatroom)
+      end
+      #previous = Message.where(:chatroom_id => message.chatroom_id, :created_at < message.created_at).last
       ActionCable.server.broadcast 'messages',
-        chatroomname: message.chatroom.roomname,
+        chatroomname: roomname,
         avatarurl: message.user.avatar.thumb.url,
         message: message.content,
         poster: message.poster,
         currentuser: current_user.username,
-        timestamp: message.created_at
+        timestamp: view_context.local_time_ago(message.created_at);
       head :ok
     end
   end
