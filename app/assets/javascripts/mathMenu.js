@@ -1,5 +1,10 @@
 document.addEventListener("turbolinks:load", function() {
+  $('#message_content').keyup(function() {
+    renderTyping();
+  });
+
   $('.mathButton').click(function() {
+    $('#message_content').focus();
     var mathSymbol = $(this).data('val');
     var content = $('#message_content').val();
 
@@ -15,9 +20,12 @@ document.addEventListener("turbolinks:load", function() {
     $('#message_content')[0].selectionStart = start + mathSymbol.length;
     $('#message_content')[0].selectionEnd = $('#message_content')[0].selectionStart;
     $('#message_content').focus();
+
+    renderTyping();
   });
 });
 
-function updateRender() {
-  document.getElementById('#mathRender').value = document.getElementById('#message_content').value;
+function renderTyping() {
+  $('#mathTyping').text($('#message_content').val());
+  renderMath(document.getElementById('mathTyping'));
 };
