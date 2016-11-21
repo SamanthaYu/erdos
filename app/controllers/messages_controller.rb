@@ -1,5 +1,6 @@
 class MessagesController < ApplicationController
-
+  include LocalTime
+  
   def create
     #caller.each{|i| puts i}
     message = Message.new(message_params)
@@ -13,7 +14,7 @@ class MessagesController < ApplicationController
         message: message.content,
         poster: message.poster,
         currentuser: current_user.username,
-        timestamp: LocalTime::local_time_ago(message.created_at)
+        timestamp: local_time_ago(message.created_at)
       head :ok
     end
   end
