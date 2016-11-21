@@ -1,5 +1,4 @@
 class MessagesController < ApplicationController
-  helper LocalTimeHelper
 
   def create
     #caller.each{|i| puts i}
@@ -18,7 +17,7 @@ class MessagesController < ApplicationController
         message: message.content,
         poster: message.poster,
         currentuser: current_user.username,
-        timestamp: relativeTimeAgo(message.created_at);
+        timestamp: message.created_at
       head :ok
     end
   end
