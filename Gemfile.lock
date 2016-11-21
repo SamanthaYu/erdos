@@ -83,6 +83,8 @@ GEM
       railties (>= 3.1.0)
       turbolinks
     json (1.8.3)
+    local_time (1.0.3)
+      coffee-rails
     loofah (2.0.3)
       nokogiri (>= 1.5.9)
     mail (2.6.4)
@@ -182,6 +184,7 @@ DEPENDENCIES
   jbuilder (~> 2.0)
   jquery-rails
   jquery-turbolinks
+  local_time
   mini_magick
   pg
   puma

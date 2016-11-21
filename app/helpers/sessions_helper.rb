@@ -13,7 +13,7 @@ module SessionsHelper
 
   def loggedinredirect
     if logged_in?
-      redirect_to '/home'
+      redirect_to chatrooms_path
     end
   end
 

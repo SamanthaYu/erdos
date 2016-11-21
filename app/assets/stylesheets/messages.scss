@@ -34,11 +34,11 @@ $footer-height: 100px;
 
 .message {
     border-bottom: 1px solid #aaa;
-    padding: 5px;
+    padding: 8px;
     padding-left: 15px;
 }
 
-/*#currentUserMessage {
+#currentUserMessage {
     text-align: right;
     padding-right: 15px;
     background-color: #eee;
@@ -46,7 +46,7 @@ $footer-height: 100px;
 
 #otherUserMessage {
     padding-left: 15px;
-}*/
+}
 
 .messageHeader {
     margin-bottom: 5px;
@@ -54,14 +54,24 @@ $footer-height: 100px;
 
 .timeStamp {
     color: #777;
-    margin-left: 5px;
+    margin-left: 3px;
     font-size: 10px;
 }
 
-/*#currentUserTime {
+#currentUserTime {
     margin-left: 0px;
     margin-right: 5px;
-}*/
+}
+
+#otherUserAvatar {
+    float: left;
+    margin-right: 15px;
+}
+
+#currentUserAvatar {
+    float: right;
+    margin-left: 15px;
+}
 
 .messageContent {
     margin-top: 0;
@@ -77,3 +87,18 @@ $footer-height: 100px;
     resize: none;
     border: 3px solid #aaa;
 }
+
+/*#timeDivider {
+    font-family: 'Fira Sans', sans-serif;
+    font-size: 14px;
+    width:100%;
+    text-align:center;
+    border-bottom: 1px solid #000;
+    line-height:0.1em;
+    margin:10px 0 20px;
+}
+
+#timeDivider span {
+    background:#fff;
+    padding:0 10px; }
+*/
