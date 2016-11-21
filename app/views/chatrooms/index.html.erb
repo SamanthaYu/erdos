@@ -33,8 +33,8 @@
             <% else %>
                 <td>No</td>
             <%end%>
-            <td><%= room.created_at.strftime("%v, %r") %></td>
-            <td><%= room.updated_at.strftime("%v, %r") %></td>
+            <td><%= local_time_ago(room.created_at) %></td>
+            <td><%= local_time_ago(room.updated_at) %></td>
             <% if !current_user.nil? && current_user.userType == 'Admin' %>
                 <td><%= link_to 'Destroy', room, method: :delete, data: { confirm: 'Are you sure?' } %> </td>
             <% end %>

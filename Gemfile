@@ -53,3 +53,6 @@ gem 'capybara'
 gem 'carrierwave', '>= 1.0.0.rc', '< 2.0'
 #for image processing
 gem 'mini_magick'
+
+#relative timestamping
+gem 'local_time'
