@@ -14,21 +14,15 @@ class UsersController < ApplicationController
   def create
     loggedinredirect
     @user = User.new(user_params)
-    respond_to do |format|
-      if @user.save
-        log_in @user
-        if (@user.userType == "Guest")
-          format.html { redirect_to chatrooms_url, notice: 'Guest User was successfully created.' }
-        else
-          format.html { redirect_to @user, notice: 'User was successfully created.' }
-        end
-        format.json { render json: @user, status: :created, location: @user }
-        format.js
+    if @user.save
+      log_in @user
+      if (@user.userType == "Guest")
+        redirect_to chatrooms_url
       else
-        format.html { render action: "new" }
-        format.json { render json: @user.errors, status: :unprocessable_entity }
-        format.js { render layout: false, content_type: 'text/javascript' }
+        redirect_to @user
       end
+    else
+      render :new
     end
   end
 
@@ -46,7 +40,7 @@ class UsersController < ApplicationController
 
   private
     def user_params
-      params.require(:user).permit(:username, :password, :password_confirmation, :userType, :avatar)
+      params.require(:user).permit(:username, :password, :password_confirmation, :userType,:avatar)
     end
 
 end
