@@ -6,7 +6,6 @@ class MessagesController < ApplicationController
     if message.content.blank?
       message.delete
     elsif message.save
-      #previous = Message.where(:chatroom_id => message.chatroom_id, :created_at < message.created_at).last
       ActionCable.server.broadcast 'messages',
         chatroomname: message.chatroom.roomname,
         avatarurl: message.user.avatar.thumb.url,
