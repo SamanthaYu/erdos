@@ -1,61 +1,95 @@
-<head>
-  <title><% "Erdos || "+@user.username+"'s Profile" %></title>
-</head>
+<% content_for :title, @user.username+"'s Profile" %>
 
 <div id="usersContainer">
+<center><%= image_tag @user.avatar.thumb.url %> </center>
 <h1><span class="username"><%= @user.username %></span></h1>
 
 <h3> User Type: </h3>
 <center><%= @user.userType %></center><br>
 
-<h3 style="text-align:left"><span class="username"><%= @user.username %></span> has joined these Chatrooms:</h3>
+<h3> Joined on: </h3>
+<center><%= @user.created_at.strftime("%v") %></center><br>
+
+<h3><span class="username"><%= @user.username %></span> has joined these Chatrooms:</h3>
 <% userRooms = Array.new(@user.chatrooms.size+1)%>
 <% roomNum = 0 %>
-<ol id="chatroomList">
+<table id="chatroomList">
+    <thead>
+        <tr>
+            <th>Chatrooms</th>
+            <th>Private</th>
+            <% if !current_user.nil? && current_user.userType == 'Admin' %>
+                <th>Destroy Chatroom</th>
+            <% end %>
+        </tr>
+    </thead>
     <% @user.chatrooms.each do |room| %>
-      <% if room != userRooms[roomNum] %>
-        <% roomNum += 1 %>
-        <% userRooms[roomNum] = room %>
-        <%= render room %>
-        <% if !current_user.nil? && current_user.userType == 'Admin' %>
-           <p>&nbsp;&nbsp; <%= link_to 'Destroy', room, method: :delete, data: { confirm: 'Are you sure?' } %> </p>
+        <tr>
+            <% if room != userRooms[roomNum] %>
+                <% roomNum += 1 %>
+                <% userRooms[roomNum] = room %>
+                <% if room.roomname.blank? %>
+                    <%room.roomname = chatroom_path(room)%>
+                <%end%>
+                <td><%= link_to room.roomname, room %></td>
+                <% if !@user.private_chatrooms.where(id: room).exists? %>
+                    <td> No </td>
+                <% else %>
+                    <td> Yes </td>
+                <% end %>
+                <% if !current_user.nil? && current_user.userType == 'Admin' %>
+                    <td><%= link_to 'Destroy', room, method: :delete, data: { confirm: 'Are you sure?' } %> </td>
+                <% end %>
+            <% end %>
+        </tr>
+    <% end %>
+</table><br>
+
+<h3><span class="username"><%= @user.username %></span> has added these users as Friends:</h3>
+<table id="friendList">
+    <thead>
+        <tr>
+            <th>Friends</th>
+            <% if current_user == @user %>
+                <th>Remove Friend</th>
+            <% end %>
+        </tr>
+    </thead>
+    <% @user.friendships.each do |friendship| %>
+        <% if !friendship.friend_id.nil? %>
+            <tr>
+                <td> <%= link_to friendship.friend.username, friendship.friend %></td>
+            <% if current_user == @user %>
+                <td><%= link_to '&times;'.html_safe+' Remove Friend', friendship, method: :delete, data: { confirm: 'Are you sure you want to remove this friend?' }%> </td>
+            <% end %>
+            </tr>
         <% end %>
-      <% end %>
+  <% end %>
+</table><br>
+
+<h3><span class="username"><%= @user.username %></span> has been added by these Users:</h3>
+<table id="inversefriendList">
+    <thead>
+        <tr>
+            <th>Friends</th>
+            <% if current_user == @user %>
+                <th>Add as Friend</th>
+            <% end %>
+        </tr>
+    </thead>
+    <% @user.inverse_friends.each do |inverse_friend| %>
+        <tr>
+            <td><%= link_to inverse_friend.username, inverse_friend %> </td>
+            <% if current_user == @user %>
+                <% if !@user.friends.where(id: inverse_friend).exists? %>
+                    <td><%= link_to "+ Add Friend", friendships_path(:friend_id => inverse_friend), :method => :post %></td>
+                <% else %>
+                    <td>Already Added</td>
+                <% end %>
+            <% end %>
+        </tr>
     <% end %>
-</ol>
-
-<h3 style="text-align:left"><span class="username"><%= @user.username %></span> has added these Acquaintances:</h3>
-<ol id="friendList">
-  <% @user.friendships.each do |friendship| %>
-    <% if !friendship.friend_id.nil? %>
-      <%= friendship.friend.username %>&nbsp;
-      <% if current_user == @user %>
-        &nbsp;<%= link_to 'Remove Acquaintance', friendship, method: :delete, data: { confirm: 'Are you sure?' }%>
-      <% end %>
-      <p></p>
-    <% end %>
-  <% end %>
-</ol>
-
-<h3 style="text-align:left"><span class="username"><%= @user.username %></span> has been added by these Users:</h3>
-<ol id="inversefriendList">
-  <% @user.inverse_friends.each do |inverse_friend| %>
-    <%= inverse_friend.username %>
-    <p></p>
-  <% end %>
-</ol>
-
-<h3 style="text-align:left"><span class="username"><%= @user.username %></span>'s Private Chats:</h3>
-<ol id="privateChatList">
-  <% @user.private_chatrooms.each do |room| %>
-    <%= render room %>
-    <p></p>
-  <% end %>
-</ol>
-
-<%= image_tag @user.avatar.thumb.url %>
-
-<p>&nbsp;</p>
+</table><br>
 
 <%= link_to 'Back', users_path %>
 </div>

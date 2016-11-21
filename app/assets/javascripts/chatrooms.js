@@ -1,6 +1,8 @@
 $(document).on('turbolinks:load', function() {
   submitNewMessage();
   scrollBottom();
+  renderLastMessage();
+  renderLastUsername();
 });
 
 function submitNewMessage(){
@@ -14,7 +16,7 @@ function submitNewMessage(){
 }
 
 function scrollBottom() {
-  //$("messageContainer").scrollTop($('#messageContainer').last().scrollHeight);
-  $("#messageContainer").animate({ scrollTop: $('#messageContainer')[0].scrollHeight });
-      //$("#messageContainer").animate({ scrollTop: $('#message').last().scrollHeight });
+    //$("messageContainer").scrollTop($('#messageContainer').last().scrollHeight);
+    $("#messageContainer").animate({ scrollTop: $('#messageContainer')[0].scrollHeight });
+    //$("#messageContainer").animate({ scrollTop: $('#message').last().scrollHeight });
 }
