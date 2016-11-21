@@ -30,6 +30,11 @@ class User < ApplicationRecord
     errors[:avatar] << "too big - avatar should be less than 500KB" if avatar.size > 0.5.megabytes
   end
 
+  def allChatrooms
+      self.chatrooms |= self.private_chatrooms
+      self.chatrooms.sort_by(&:created_at)
+  end
+
   has_secure_password
   validates :password, presence: true, length: {minimum: 6, maximum: 30}
 
