@@ -1,5 +1,3 @@
-include local_time
-
 class MessagesController < ApplicationController
 
   def create
@@ -15,7 +13,7 @@ class MessagesController < ApplicationController
         message: message.content,
         poster: message.poster,
         currentuser: current_user.username,
-        timestamp: local_time_ago(message.created_at)
+        timestamp: LocalTime::local_time_ago(message.created_at)
       head :ok
     end
   end
