@@ -12,7 +12,7 @@ App.messages = App.cable.subscriptions.create('MessagesChannel', {
 
   renderMessage: function(data) {
     var retmess='';
-    var timestamp=data.timestamp;
+    var timestamp=LocalTime.relativeTimeAgo(data.timestamp);
     var avatarlink='<span class="userAvatar"><img src="'+data.avatarurl+'"></span>'
     if (data.currentuser==data.poster){
       retmess+='<div id="currentUserMessage" class="message">';
