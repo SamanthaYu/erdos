@@ -34,7 +34,7 @@
                 <td>No</td>
             <%end%>
             <td><%= room.created_at.strftime("%v, %r") %></td>
-            <td><%= room.updated_at.strftime("%v, %r") %></td>
+            <td><%= room.messages.last.created_at.strftime("%v, %r") %></td>
             <% if !current_user.nil? && current_user.userType == 'Admin' %>
                 <td><%= link_to 'Destroy', room, method: :delete, data: { confirm: 'Are you sure?' } %> </td>
             <% end %>

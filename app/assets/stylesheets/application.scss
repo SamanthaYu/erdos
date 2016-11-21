@@ -67,6 +67,7 @@
      font-family: 'Fira Sans', sans-serif;
      letter-spacing: 2px;
      padding: 3px 0 0 5px;
+     cursor: pointer;
  }
 
  .sideBarToggle:hover{
@@ -116,11 +117,11 @@
      padding: 15px 8px;
  }
 
- .sideNav a {
+ .sideNav a, .sideNav p, .sideNav span {
      font-family: 'Fira Sans', sans-serif;
-     padding: 5px 5px 5px 32px;
+     padding: 5px 5px 5px 20px;
      text-decoration: none;
-     font-size: 18px;
+     font-size: 20px;
      color: #bbb;
      display: block;
      transition: 0.3s;
@@ -128,11 +129,34 @@
      text-align: left;
  }
 
- .sideNav a:hover {
+ .sideNav a:hover, .sideNav p:hover, .sideNav span:hover, .sideNav ul li:hover {
      color: $yellow;
      font-style: normal;
      background-color: lighten($dark-blue, 10%);
      letter-spacing: 2px;
+ }
+
+ .memberList {
+    padding-left: 0;
+
+ }
+
+ .sideNav ul {
+     list-style-type: circle;
+     margin: 0;
+ }
+
+ .sideNav ul li {
+     color: $main-green;
+ }
+
+ .sideNav ul li a {
+     font-size: 14px;
+     padding-left: 5px;
+ }
+
+ .sideNav span {
+     font-size: 14px;
  }
 
  #closeBtn {
