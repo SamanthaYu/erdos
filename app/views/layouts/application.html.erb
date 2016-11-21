@@ -28,6 +28,9 @@
             <% end %>
         </div>
         <!--<a href="/home">Home</a>-->
+        <% if @chatroom.roomname.blank? %>
+            <% @chatroom.roomname = chatroom_path(@chatroom) %>
+        <% end %>
         <span style="font-size: 18px"><%= @chatroom.roomname %></span>
         <% if !@chatroom.private_chatters.empty? %>
             <span>Members:</span>
