@@ -1,3 +1,5 @@
+include local_time
+
 class MessagesController < ApplicationController
 
   def create
