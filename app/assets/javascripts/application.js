@@ -20,6 +20,7 @@
 //= require mathMenu
 //= require chatrooms
 //= require welcome
+//= require local_time
 //= require_tree .
 
 document.addEventListener("turbolinks:load", function() {
