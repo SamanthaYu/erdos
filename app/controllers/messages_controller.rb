@@ -1,5 +1,5 @@
 class MessagesController < ApplicationController
-  include LocalTime::LocalTimeHelper
+  helper LocalTimeHelper
 
   def create
     #caller.each{|i| puts i}
