@@ -23,7 +23,7 @@
 //= require local_time
 //= require_tree .
 
-$(document).on('turbolinks:load', function(){
+document.addEventListener("turbolinks:load", function() {
     renderAllMessages();
     renderAllUsernames();
     renderAllButtons();
@@ -32,19 +32,15 @@ $(document).on('turbolinks:load', function(){
 
 function openSidebar(){
     $("#sideBarOpener").hide();
-    $("#sideBarCloser").show();
     $("#sidebar").width(250);
     $("#container").css({left: 250});
-    $("#sideBarCloser").css({left:250});
     $("#container").width($(window).width() - 250);
 };
 function closeSidebar() {
     $("#sidebar").width(0);
     $("#container").css({left: 0});
-    $("#sideBarCloser").css({left:0});
     $("#container").width($(window).width());
     setTimeout(function() {
         $("#sideBarOpener").show();
-        $("#sideBarCloser").hide();
     }, 500);
 };
