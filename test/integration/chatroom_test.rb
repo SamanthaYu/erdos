@@ -1,6 +1,8 @@
 require 'test_helper'
 
+  #include TestHelper::PressEnterHelper
 class ChatroomTests < ActionDispatch::IntegrationTest
+
   setup do
     @chatroom = chatrooms(:one)
   end
@@ -37,6 +39,25 @@ class ChatroomTests < ActionDispatch::IntegrationTest
     #click_button "login_button"
   #  assert_response :success
   #  assert request.path == '/'
+  end
+
+  test "can post inside the chatroom" do
+    visit signup_path
+    fill_in "username_area", :with => 'newuser'
+    fill_in "password_area", :with => 'trysix'
+    fill_in "password_confirmation_area", :with => 'trysix'
+    click_button('Create Account')
+    visit chatrooms_path
+    fill_in "chatroom[roomname]",   :with => 'TestName'
+    click_button('Create Chatroom')
+    #fill_in "message_area", :with => 'This is a message\n'
+    #press_enter("#message_area")
+#    find('#message_area').send_keys(:return)
+    fill_in('message_area', :with => 'This is a message')
+    url = current_url
+    click_button("message_submit")
+    visit url
+    assert page.has_content?('This is a message')
   end
 
   #post "/articles",
