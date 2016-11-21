@@ -1,4 +1,5 @@
 <div id="inputForm">
+    <div id="mathTyping"></div>
     <%= render partial: 'messages/mathMenu'%>
     <%=form_for message, remote: true, authenticity_token: true do |f|%>
       <%= f.text_area :content, class: "form-control", rows: "1", :placeholder => "Enter Message, to use math formatting surround formula with $ signs", data: {textarea: "message"}%>
@@ -9,5 +10,4 @@
       <% end %>
       <%= f.submit "send", class: "btn", style: "display: none", data: {send: "message"}%>
     <%end%>
-    <div id="mathTyping"></div>
 </div>
