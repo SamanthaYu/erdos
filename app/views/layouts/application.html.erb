@@ -18,13 +18,47 @@
 <body>
 <% if params[:controller] == 'welcome' && params[:action] == 'index'%>
 
+<% elsif params[:controller] == 'chatrooms' && params[:action] == 'show' %>
+    <div id="sidebar" class="sideNav">
+        <!--<a href="javascript:void(0)" id="closeBtn" onClick="closeSidebar()" class="closeBtn"><<</a>-->
+        <div id="userHeader">
+            <span id="avatar"><%= image_tag @current_user.avatar.thumb.url %></span>
+            <% if !current_user.nil? %>
+                <%= link_to @current_user.username, @current_user, class: 'username' %>
+            <% end %>
+        </div>
+        <!--<a href="/home">Home</a>-->
+        <span style="font-size: 18px"><%= @chatroom.roomname %></span>
+        <% if !@chatroom.private_chatters.empty? %>
+            <span>Members:</span>
+            <ul>
+            <% @chatroom.private_chatters.each do |user| %>
+                <li><%= link_to user.username, user, class: "memberList" %></li>
+            <% end %>
+            </ul>
+        <% end %>
+        <%= render partial: 'private_chats/form', locals: {private_chat: @private_chat, chatroom: @chatroom} %>
+        <a href="/chatrooms" >Chatrooms</a>
+        <a href="/users">Users</a>
+        <% if current_user.nil? %>
+            <a href="/login">Login</a>
+        <% end %>
+        <% if !current_user.nil? %>
+            <%= link_to "Log out", logout_path, method: :delete %>
+        <% end %>
+    </div>
+    <div id="sideBarCloser" onClick="closeSidebar()" class="sideBarToggle"><<</div>
+    <div id="sideBarOpener" onClick="openSidebar()" class="sideBarToggle">>></div>
 <% else %>
     <div id="sidebar" class="sideNav">
-        <a href="javascript:void(0)" id="closeBtn" onClick="closeSidebar()" class="closeBtn"><<</a>
-        <% if !current_user.nil? %>
-            <%= link_to @current_user.username, @current_user, class: 'username' %>
-        <% end %>
-        <a href="/home">Home</a>
+        <!--<a href="javascript:void(0)" id="closeBtn" onClick="closeSidebar()" class="closeBtn"><<</a>-->
+        <div id="userHeader">
+            <span id="avatar"><%= image_tag @current_user.avatar.thumb.url %></span>
+            <% if !current_user.nil? %>
+                <%= link_to @current_user.username, @current_user, class: 'username' %>
+            <% end %>
+        </div>
+        <!--<a href="/home">Home</a>-->
         <a href="/chatrooms">Chatrooms</a>
         <a href="/users">Users</a>
         <% if current_user.nil? %>
@@ -34,13 +68,13 @@
             <%= link_to "Log out", logout_path, method: :delete %>
         <% end %>
     </div>
-
-    <div id="sideBarOpener" onClick="openSidebar()" class="sideBarOpener">>></div>
+    <div id="sideBarCloser" onClick="closeSidebar()" class="sideBarToggle"><<</div>
+    <div id="sideBarOpener" onClick="openSidebar()" class="sideBarToggle">>></div>
 <% end %>
 
 <% if params[:controller] == 'welcome' && params[:action] == 'index'%>
     <%= yield %>
-<% else %>
+<%else%>
     <div id="container">
         <%= yield %>
     </div>

@@ -10,7 +10,6 @@ class MessagesController < ApplicationController
       if message.chatroom.roomname.blank?
         roomname = chatroom_path(message.chatroom)
       end
-      #previous = Message.where(:chatroom_id => message.chatroom_id, :created_at < message.created_at).last
       ActionCable.server.broadcast 'messages',
         chatroomname: roomname,
         avatarurl: message.user.avatar.thumb.url,
