@@ -20,7 +20,7 @@ class AvatarUploader < CarrierWave::Uploader::Base
   #   # For Rails 3.1+ asset pipeline compatibility:
   #   # ActionController::Base.helpers.asset_path("fallback/" + [version_name, "default.png"].compact.join('_'))
   #
-    "/images/fallback/" + [version_name, "default.png"].compact.join('_')
+    [version_name, "default.png"].compact.join('_')
    end
 
   # Process files as they are uploaded:
@@ -32,7 +32,11 @@ class AvatarUploader < CarrierWave::Uploader::Base
 
    #Create different versions of your uploaded files:
   version :thumb do
-    process :resize_to_fit => [50, 50]
+    process :resize_to_fit => [36, 36]
+  end
+
+  version :display do
+    process :resize_to_fit => [72, 72]
   end
 
   # Add a white list of extensions which are allowed to be uploaded.

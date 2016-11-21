@@ -6,6 +6,7 @@
   border: 0px;
   display: inline-block;
   float: left;
+  table-layout: auto;
 }
 
 #mathMenu {
@@ -15,6 +16,8 @@
 .mathButton {
   display: inline-block;
   border-radius: 10px;
+  padding: 5px;
+  border: 1px solid #aaa;
 }
 
 .mathButton:hover {
