@@ -180,6 +180,7 @@
             <span id="closeBtn2" class="closeBtn" onclick="closeGuestLogin()">&times;</span>
             <center><img src="/assets/logoNoLabel-green-c0f5771e8dcd884fa3ba259b2b8e9c7f8536ddc1c7da58dfc1e14fab5796e69f.png" id="smallLogo"></center>
             <h1>guest login</h1>
+            <center><p id="guestErrorNotice"><%= @user.errors.full_messages.first if @user.errors.any? %></p></center>
             <%= render partial: 'users/guestform'%>
             <hr>
             <div id="option1" class="options">
