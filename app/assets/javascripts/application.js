@@ -23,7 +23,7 @@
 //= require local_time
 //= require_tree .
 
-document.addEventListener("turbolinks:load", function() {
+$(document).on('turbolinks:load', function(){
     renderAllMessages();
     renderAllUsernames();
     renderAllButtons();
