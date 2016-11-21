@@ -106,6 +106,10 @@
      background-color: #fff;
  }
 
+ #userHeader a {
+     font-size: 26px;
+     padding: 8px;
+ }
 
  .sideNav a {
      font-family: 'Fira Sans', sans-serif;
@@ -144,14 +148,14 @@
      transition: 0.5s;
  }
 
- table {
+ .dataTable {
      border-collapse: collapse;
      width: 70%;
      table-layout: fixed;
      margin: 0 auto;
  }
 
- table, th, td {
+ .dataTable, .dataTable th, .dataTable td {
      border: 1px solid #777;
      padding: 5px;
  }

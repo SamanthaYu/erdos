@@ -13,7 +13,7 @@
     <% end %>
 </div>
 <div id="userHeader" style="text-align: center; margin: 0 auto">
-<%= image_tag @user.avatar.thumb.url %>
+<%= image_tag @user.avatar.display.url %>
 <h1><span class="username"><%= @user.username %></span></h1>
 </div>
 
@@ -26,7 +26,7 @@
 <h3><span class="username"><%= @user.username %></span> has joined these Chatrooms:</h3>
 <% userRooms = Array.new(@user.chatrooms.size+1)%>
 <% roomNum = 0 %>
-<table id="chatroomList">
+<table id="chatroomList" class="dataTable">
     <thead>
         <tr>
             <th>Chatrooms</th>
@@ -59,7 +59,7 @@
 </table><br>
 
 <h3><span class="username"><%= @user.username %></span> has added these users as Friends:</h3>
-<table id="friendList">
+<table id="friendList" class="dataTable">
     <thead>
         <tr>
             <th>Friends</th>
@@ -81,7 +81,7 @@
 </table><br>
 
 <h3><span class="username"><%= @user.username %></span> has been added by these Users:</h3>
-<table id="inversefriendList">
+<table id="inversefriendList" class="dataTable">
     <thead>
         <tr>
             <th>Friends</th>

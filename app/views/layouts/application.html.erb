@@ -21,9 +21,12 @@
 <% else %>
     <div id="sidebar" class="sideNav">
         <!--<a href="javascript:void(0)" id="closeBtn" onClick="closeSidebar()" class="closeBtn"><<</a>-->
-        <% if !current_user.nil? %>
-            <%= link_to @current_user.username, @current_user, class: 'username' %>
-        <% end %>
+        <div id="userHeader">
+            <span style="float:left"><%= image_tag @current_user.avatar.thumb.url %></span>
+            <% if !current_user.nil? %>
+                <%= link_to @current_user.username, @current_user, class: 'username' %>
+            <% end %>
+        </div>
         <!--<a href="/home">Home</a>-->
         <a href="/chatrooms">Chatrooms</a>
         <a href="/users">Users</a>
@@ -40,7 +43,7 @@
 
 <% if params[:controller] == 'welcome' && params[:action] == 'index'%>
     <%= yield %>
-<% else %>
+<%else%>
     <div id="container">
         <%= yield %>
     </div>
