@@ -8,10 +8,10 @@ document.addEventListener("turbolinks:load", function() {
   $('#message_content').keyup(function() {
     renderTyping();
   });
+});
 
-  $(document).on("click", '.mathButton', function() {
-    enterButton($(this));
-  });
+$(document).on("click", '.mathButton', function() {
+  enterButton($(this));
 });
 
 function enterButton(thisObj) {
