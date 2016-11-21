@@ -25,7 +25,7 @@
 <% else %>
     <div id="otherUserMessage" class="message">
         <div class="messageHeader"><p><strong>Gerbil</strong>
-            <span class="timeStamp"><%=message.created_at.strftime("%v, %r")%></span></p>
+            <span class="timeStamp"><%=local_time_ago(message.created_at)%></span></p>
         </div>
         <div class="messageContent"><%=message.content%></div>
     </div>
