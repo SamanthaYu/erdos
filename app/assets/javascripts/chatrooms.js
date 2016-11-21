@@ -1,8 +1,9 @@
-$(document).on('turbolinks:load', function() {
+document.addEventListener("turbolinks:load", function() {
   submitNewMessage();
   scrollBottom();
   renderLastMessage();
   renderLastUsername();
+  renderTyping();
 })
 
 function submitNewMessage(){
