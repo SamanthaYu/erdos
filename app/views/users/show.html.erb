@@ -8,7 +8,7 @@
 <center><%= @user.userType %></center><br>
 
 <h3> Joined on: </h3>
-<center><%= @user.created_at.strftime("%v, %r") %></center><br>
+<center><%= @user.created_at.strftime("%v") %></center><br>
 
 <h3><span class="username"><%= @user.username %></span> has joined these Chatrooms:</h3>
 <% userRooms = Array.new(@user.chatrooms.size+1)%>
@@ -28,6 +28,9 @@
             <% if room != userRooms[roomNum] %>
                 <% roomNum += 1 %>
                 <% userRooms[roomNum] = room %>
+                <% if room.roomname.blank? %>
+                    <%room.roomname = chatroom_path(room)%>
+                <%end%>
                 <td><%= link_to room.roomname, room %></td>
                 <% if !@user.private_chatrooms.where(id: room).exists? %>
                     <td> No </td>
