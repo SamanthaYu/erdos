@@ -20,7 +20,7 @@
 
 <% else %>
     <div id="sidebar" class="sideNav">
-        <a href="javascript:void(0)" id="closeBtn" onClick="closeSidebar()" class="closeBtn"><<</a>
+        <!--<a href="javascript:void(0)" id="closeBtn" onClick="closeSidebar()" class="closeBtn"><<</a>-->
         <% if !current_user.nil? %>
             <%= link_to @current_user.username, @current_user, class: 'username' %>
         <% end %>
@@ -34,8 +34,8 @@
             <%= link_to "Log out", logout_path, method: :delete %>
         <% end %>
     </div>
-
-    <div id="sideBarOpener" onClick="openSidebar()" class="sideBarOpener">>></div>
+    <div id="sideBarCloser" onClick="closeSidebar()" class="sideBarToggle"><<</div>
+    <div id="sideBarOpener" onClick="openSidebar()" class="sideBarToggle">>></div>
 <% end %>
 
 <% if params[:controller] == 'welcome' && params[:action] == 'index'%>
