@@ -14,7 +14,7 @@ class MessagesController < ApplicationController
         chatroomname: roomname,
         avatarurl: message.user.avatar.thumb.url,
         message: message.content,
-        poster: message.user,
+        poster: message.poster,
         currentuser: current_user.username,
         timestamp: view_context.local_time_ago(message.created_at);
       head :ok
@@ -34,7 +34,7 @@ class MessagesController < ApplicationController
 
   private
     def message_params
-      params.require(:message).permit(:content, :chatroom_id, :user_id, :user)
+      params.require(:message).permit(:content, :chatroom_id, :user_id, :poster)
     end
 
 end
