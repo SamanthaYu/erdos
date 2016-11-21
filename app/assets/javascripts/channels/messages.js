@@ -17,13 +17,13 @@ App.messages = App.cable.subscriptions.create('MessagesChannel', {
     var avatarlink2='<span class="userAvatar" id="otherUserAvatar"><img src="'+data.avatarurl+'"></span>';
     if (data.currentuser==data.poster){
       retmess+='<div id="currentUserMessage" class="message">';
-      retmess+='<div class="messageHeader"><p><span class="timeStamp" id="currentUserTime">' + '<%=local_time_ago(timestamp)%>' + '</span><span class="username"><strong>'+data.poster+'</strong></span>';
+      retmess+='<div class="messageHeader"><p><span class="timeStamp" id="currentUserTime">' + timestamp + '</span><span class="username"><strong>'+data.poster+'</strong></span>';
       retmess+=avatarlink1+'</p>';
     }
     if (data.currentuser!=data.poster){
       retmess+='<div id="otherUserMessage" class="message">';
       retmess+='<div class="messageHeader"><p>'+ avatarlink2 +'<span class="username"><strong>'+data.poster+'</strong></span>';
-      retmess+='<span class="timeStamp">' + '<%=local_time_ago(timestamp)%>' + '</span></p>';
+      retmess+='<span class="timeStamp">' + timestamp + '</span></p>';
     }
 
     retmess+='</div><div class="messageContent">'+data.message + '</div></div>';
