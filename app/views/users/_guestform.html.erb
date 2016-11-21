@@ -1,4 +1,4 @@
-  <%= form_for(:user, :url => {:controller => 'users', :action => 'create'}) do |f| %>
+  <%= form_for(:user, remote: true, :url => {:controller => 'users', :action => 'create'}) do |f| %>
     <br><%= f.text_field :username, :placeholder => 'Enter Guest Username', required: true%>
     <%= f.hidden_field :userType, value: "Guest" %>
     <%= f.hidden_field :password_confirmation, value: "GuestPassword" %>

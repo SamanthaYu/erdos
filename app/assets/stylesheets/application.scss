@@ -121,7 +121,7 @@
      font-family: 'Fira Sans', sans-serif;
      padding: 5px 5px 5px 20px;
      text-decoration: none;
-     font-size: 20px;
+     font-size: 18px;
      color: #bbb;
      display: block;
      transition: 0.3s;
@@ -129,7 +129,7 @@
      text-align: left;
  }
 
- .sideNav a:hover, .sideNav p:hover, .sideNav span:hover, .sideNav ul li:hover {
+ .sideNav a:hover, .sideNav span:hover {
      color: $yellow;
      font-style: normal;
      background-color: lighten($dark-blue, 10%);
@@ -148,6 +148,11 @@
 
  .sideNav ul li {
      color: $main-green;
+ }
+
+ .sideNav ul li a:hover, .sideNav ul li:hover {
+     color: $yellow;
+     background-color: $dark-blue;
  }
 
  .sideNav ul li a {
