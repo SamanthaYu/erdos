@@ -4,7 +4,7 @@
             <div class="messageHeader">
               <p><span class="userAvatar"><%= image_tag message.user.avatar.thumb.url %></span>
                 <span class="username"><strong><%= message.poster %></strong></span>
-                <span class="timeStamp"><%=message.created_at.strftime("%v, %r")%></span></p>
+                <span class="timeStamp"><%=local_time_ago(message.created_at)%></span></p>
             </div>
             <div class="messageContent"><%=message.content%></div>
         </div>
@@ -16,7 +16,7 @@
                 <span class="userAvatar"><%= image_tag message.user.avatar.thumb.url %></span>
               <%end%>
               <span class="username"><strong><%= message.poster %></strong></span>
-              <span class="timeStamp"><%=message.created_at.strftime("%v, %r")%></span>
+              <span class="timeStamp"><%=local_time_ago(message.created_at)%></span>
               </p>
             </div>
             <div class="messageContent"><%=message.content%></div>
