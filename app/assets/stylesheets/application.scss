@@ -164,6 +164,56 @@
      font-size: 14px;
  }
 
+ #privateChatForm {
+     position: relative;
+     text-align: center;
+     left: 0;
+     right: 0;
+ }
+
+ .sideNavDropdown {
+     font-family: 'Fira Sans', sans-serif;
+     background: url(asset-path('Down-arrow.png')) no-repeat right center;
+     border: none;
+     border-radius: 5px;
+     background-color: #eee;
+     -webkit-appearance: none;  /*Removes default chrome and safari style*/
+     -moz-appearance: none;  /*Removes default style Firefox*/
+     height: 32px;
+     width: 150px;
+     margin: 10px 0 0;
+     cursor: pointer;
+     padding-left: 5px;
+     overflow-x: hidden;
+ }
+
+ .sideNavDropdown:hover {
+     background-color: $main-green;
+     color: #333;
+ }
+
+ .sideNavDropdown select:hover {
+     padding-left: 5px;
+     border: none;
+     background-color: #fff;
+ }
+
+ .sideNavButton {
+     font-family: 'Fira Sans', sans-serif;
+     background-color: #eee;
+     border-radius: 10px;
+     border: none;
+     cursor:pointer;
+     width: auto;
+     padding: 10px 15px;
+     margin: 10px 0 50px 0;
+ }
+
+ .sideNavButton:hover {
+     background-color: $main-green;
+     color: #333;
+ }
+
  #closeBtn {
      font-size: 36px;
      text-align: right;
@@ -194,7 +244,7 @@
      padding: 5px;
  }
 
- th {
+ .dataTable th {
      letter-spacing: 2px;
      text-align: center;
  }
