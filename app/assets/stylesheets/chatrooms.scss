@@ -94,3 +94,10 @@ input[type=text], input[type=password] {
     background-color: #444;
     color: #fff;
 }
+
+#errorNotice {
+    font-family: 'Fira Sans', sans-serif;
+    color: red;
+    font-style: italic;
+    font-size: 15px;
+}
