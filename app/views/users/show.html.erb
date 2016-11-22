@@ -17,6 +17,7 @@
 <%if current_user!=nil && @user==current_user%>
   <center><%= link_to 'Edit Avatar', edit_user_path(@user) %></center>
 <%end%>
+
 <h3> User Type: </h3>
 <center><%= @user.userType %></center><br>
 
