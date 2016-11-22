@@ -46,6 +46,7 @@ class ChatroomsController < ApplicationController
     if !logged_in?
       redirect_to :root
     elsif !@chatroom.private_chatters.empty? && !@chatroom.private_chatters.where(id: current_user).exists?
+      flash[:notice] = "Private Chatroom: Access Denied"
       redirect_to '/chatrooms'
     end
     @message = Message.new
