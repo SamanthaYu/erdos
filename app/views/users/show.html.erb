@@ -13,10 +13,10 @@
     <% end %>
 </div>
 <center><%= image_tag @user.avatar.display.url %></center>
-<h1><span class="username"><%= @user.username %></span></h1>
 <%if current_user!=nil && @user==current_user%>
   <center><%= link_to 'Edit Avatar', edit_user_path(@user) %></center>
 <%end%>
+<h1><span class="username"><%= @user.username %></span></h1>
 
 <h3> User Type: </h3>
 <center><%= @user.userType %></center><br>
