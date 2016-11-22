@@ -3,13 +3,13 @@ require 'test_helper'
 class LoginRedirectTests < ActionDispatch::IntegrationTest
 
   test "can't signup while logged in" do
-    visit signup_path
-    fill_in "username_area", :with => 'newuser'
-    fill_in "password_area", :with => 'trysix'
-    fill_in "password_confirmation_area", :with => 'trysix'
-    click_button('Create Account')
-    visit signup_path
-    assert page.has_no_content?('Create Account')
+      visit signup_path
+      fill_in "username_area", :with => 'newuser'
+      fill_in "password_area", :with => 'trysix'
+      fill_in "password_confirmation_area", :with => 'trysix'
+      click_button('Create Account')
+      visit signup_path
+      assert page.has_no_content?('Create Account')
     end
 
     test "can't login again while logged in" do
