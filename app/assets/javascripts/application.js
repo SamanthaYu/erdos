@@ -33,10 +33,10 @@ document.addEventListener("turbolinks:load", function() {
 function openSidebar(){
     $("#sideBarOpener").hide();
     $("#sideBarCloser").show();
-    $("#sidebar").width(250);
-    $("#container").css({left: 250});
-    $("#sideBarCloser").css({left:250});
-    $("#container").width($(window).width() - 250);
+    $("#sidebar").width(275);
+    $("#container").css({left: 275});
+    $("#sideBarCloser").css({left:275});
+    $("#container").width($(window).width() - 275);
 };
 function closeSidebar() {
     $("#sidebar").width(0);
