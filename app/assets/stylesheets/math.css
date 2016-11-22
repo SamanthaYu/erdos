@@ -1,20 +1,3 @@
-#mathMenuWrapper {
-  width: 100%;
-}
-
-#mathTable {
-  border: 0px;
-  display: inline-block;
-  float: left;
-  table-layout: auto;
-  margin: 0px;
-  padding: 0px;
-}
-
-#mathMenu {
-  display: inline-block;
-}
-
 .mathButton {
   display: inline-block;
   border-radius: 10px;
@@ -26,6 +9,7 @@
 .mathButton:hover {
   background-color: #2AA0C7;
   color: #FFFFFF;
+  cursor: hand;
 }
 
 .helpButton {
@@ -39,4 +23,39 @@
   line-height: 19px;
   font-weight: bold;
   display: inline-block;
+  float: left;
+  margin-left: 10px;
+  margin-right: 10px;
+  cursor: hand;
+}
+
+#mathMenuWrapper {
+  width: 100%;
+  margin-bottom: 10px;
+}
+
+#mathTable {
+  border: 0px;
+  display: inline-block;
+  float: left;
+  table-layout: auto;
+  margin-right: 10px;
+  padding: 0px;
+}
+
+#mathTable td {
+  margin: 0px;
+  cursor: hand;
+}
+
+#mathMenu {
+  display: inline-block;
+  float: left;
+  text-align: center;
+  margin-right: 10px;
+}
+
+#mathTyping {
+  height: 2.5em;
+  padding: 5px;
 }

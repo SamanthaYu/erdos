@@ -50,6 +50,24 @@ function checkButtons() {
             <td class='mathButton' data-val='$\\alpha$ '>$\\alpha$</td>\
             <td class='mathButton' data-val='$\\beta$ '>$\\beta$</td>\
             <td class='mathButton' data-val='$\\gamma$ '>$\\gamma$</td>\
+            <td class='mathButton' data-val='$\\delta$ '>$\\delta$</td>\
+            <td class='mathButton' data-val='$\\alpha$ '>$\\alpha$</td>\
+            <td class='mathButton' data-val='$\\zeta$ '>$\\zeta$</td>\
+            <td class='mathButton' data-val='$\\eta$ '>$\\eta$</td>\
+            <td class='mathButton' data-val='$\\iota$ '>$\\iota$</td>\
+            <td class='mathButton' data-val='$\\kappa$ '>$\\kappa$</td>\
+            <td class='mathButton' data-val='$\\lambda$ '>$\\lambda$</td>\
+            <td class='mathButton' data-val='$\\mu$ '>$\\mu$</td>\
+            <td class='mathButton' data-val='$\\nu$ '>$\\nu$</td>\
+            <td class='mathButton' data-val='$\\xi$ '>$\\xi$</td>\
+            <td class='mathButton' data-val='$\\pi$ '>$\\pi$</td>\
+            <td class='mathButton' data-val='$\\sigma$ '>$\\sigma$</td>\
+            <td class='mathButton' data-val='$\\tau$ '>$\\tau$</td>\
+            <td class='mathButton' data-val='$\\upsilon$ '>$\\upsilon$</td>\
+            <td class='mathButton' data-val='$\\phi$ '>$\\phi$</td>\
+            <td class='mathButton' data-val='$\\chi$ '>$\\chi$</td>\
+            <td class='mathButton' data-val='$\\psi$ '>$\\psi$</td>\
+            <td class='mathButton' data-val='$\\omega$ '>$\\omega$</td>\
         </tr>");
     }
 
