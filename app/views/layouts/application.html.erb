@@ -41,8 +41,19 @@
             </ul>
         <% end %>
         <%= render partial: 'private_chats/form', locals: {private_chat: @private_chat, chatroom: @chatroom} %>
-        <a href="/chatrooms" >Chatrooms</a>
+        <a href="/chatrooms">Chatrooms</a>
         <a href="/users">Users</a>
+        <!--<span id="sideHeader" style="font-size: 18px; margin-top: 30px"><%= @current_user.username %>'s Chatrooms</span>
+        <ul>
+        <% @current_user.allChatrooms.each do |chatroom| %>
+            <% if chatroom.roomname.blank? %>
+                <%chatroom.roomname = chatroom_path(chatroom)%>
+            <%end%>
+            <li><%= link_to chatroom.roomname, chatroom, class: "username" %></li>
+        <% end %>
+        <li><a href="/chatrooms" class="username">View All Chatrooms</a></li>
+        </ul>
+        <a href="/users" style="margin-top: 30px">Users</a>-->
         <% if current_user.nil? %>
             <a href="/login">Login</a>
         <% end %>
@@ -61,9 +72,19 @@
               <%= link_to @current_user.username, @current_user, class: 'username' %>
             <% end %>
         </div>
-        <!--<a href="/home">Home</a>-->
         <a href="/chatrooms">Chatrooms</a>
         <a href="/users">Users</a>
+        <!--<span id="sideHeader" style="font-size: 18px"><%= @current_user.username %>'s Chatrooms</span>
+        <ul>
+        <% @current_user.allChatrooms.each do |chatroom| %>
+            <% if chatroom.roomname.blank? %>
+                <%chatroom.roomname = chatroom_path(chatroom)%>
+            <%end%>
+            <li><%= link_to chatroom.roomname, chatroom, class: "username" %></li>
+        <% end %>
+        <li><a href="/chatrooms" class="username">View All Chatrooms</a></li>
+        </ul>
+        <a href="/users" style="margin-top: 30px">Users</a>-->
         <% if current_user.nil? %>
             <a href="/login">Login</a>
         <% end %>
