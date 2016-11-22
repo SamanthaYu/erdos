@@ -24,7 +24,7 @@ class UserTests < ActionDispatch::IntegrationTest
   test "can enter site as a guest user" do
     visit signup_path
     click_button('Guest Login')
-    fill_in "username_area", :with => 'guestusertest'
+    fill_in "guest_username_area", :with => 'guestusertest'
     click_button('Login as Guest')
     visit chatrooms_path
     assert page.has_content?('List of Current Chatrooms')
@@ -32,14 +32,8 @@ class UserTests < ActionDispatch::IntegrationTest
 
   test "admins can delete chatrooms" do
 
-    
+
   end
-
-
-
-
-
-
 
 
 end

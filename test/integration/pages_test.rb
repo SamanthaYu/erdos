@@ -2,17 +2,17 @@ require 'test_helper'
 
 class PageTests < ActionDispatch::IntegrationTest
   test "can see the home page" do
-    get "/"
-    assert_select "title", "erdos"
+    visit "/"
+    assert page.has_current_path?('/')
   end
 
   test "can see the signup page" do
-    get "/signup"
-    assert_select "h1", "sign up"
+    visit "/signup"
+    assert page.has_current_path?('/signup')
   end
 
   test "can see the login page" do
-    get "/login"
-    assert_select "h1", "login"
+    visit "/login"
+    assert page.has_current_path?('/login')
   end
 end
