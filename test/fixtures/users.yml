@@ -7,7 +7,7 @@
 one:
   username: "gerbil"
   password: "trysix"
-  userType: "Guest"
+  userType: "Regular"
 
 two:
   username: "admin"

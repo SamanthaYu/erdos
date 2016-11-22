@@ -30,9 +30,15 @@ class UserTests < ActionDispatch::IntegrationTest
     assert page.has_content?('List of Current Chatrooms')
   end
 
-  test "admins can delete chatrooms" do
-
-
+  test "admins can decide to delete chatrooms" do
+    visit signup_path
+    fill_in "username_area", :with => 'newuser'
+    fill_in "password_area", :with => 'trysix'
+    fill_in "password_confirmation_area", :with => 'trysix'
+    select "Admin", :from => 'user[userType]'
+    click_button('Create Account')
+    visit chatrooms_path
+    assert page.has_content?('Destroy Chatroom')
   end
 
 
