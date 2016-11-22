@@ -36,4 +36,10 @@ class UserTests < ActionDispatch::IntegrationTest
   end
 
 
+
+
+
+
+
+
 end
