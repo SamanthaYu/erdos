@@ -53,10 +53,11 @@ class ChatroomTests < ActionDispatch::IntegrationTest
     #fill_in "message_area", :with => 'This is a message\n'
     #press_enter("#message_area")
 #    find('#message_area').send_keys(:return)
-    fill_in('message_area', :with => 'This is a message')
-    url = current_url
-    click_button("message_submit")
-    visit url
+    fill_in('message_content', :with => 'This is a message\n')
+#    url = current_url
+#    has_selector("textarea[value='John']")
+#    click_button("message_submit")
+#    visit url
     assert page.has_content?('This is a message')
   end
 
