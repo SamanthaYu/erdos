@@ -24,7 +24,7 @@
           <% @users.order("username").each do |user| %>
             <% if user.userType != 'Guest' %>
               <tr>
-                <td><%= image_tag user.avatar.thumb.url%><%=  link_to user.username, user, class: 'username' %></td>
+                <td><%= image_tag user.avatar.thumb.url%>&nbsp;&nbsp;<%=  link_to user.username, user, class: 'username' %></td>
                 <td><%= user.userType %></td>
                 <td><%= user.created_at.strftime("%v") %></td>
                 <% if !current_user.nil? && current_user != user && !current_user.friends.where(id: user).exists?%>
