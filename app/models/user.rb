@@ -10,6 +10,7 @@ class User < ApplicationRecord
   has_many :inverse_friends, :through => :inverse_friendships, :source => :user
   validates_processing_of :avatar
   validate :avatar_size_validation
+  attr_accessor :skip_password_validation
 
   before_save {username.downcase!}
   before_destroy :delete_friendships
@@ -27,7 +28,7 @@ class User < ApplicationRecord
   end
 
   def avatar_size_validation
-    errors[:avatar] << "too big - avatar should be less than 500KB" if avatar.size > 0.5.megabytes
+    errors[:avatar] << "too big - avatar should be less than 1MB" if avatar.size > 1.0.megabytes
   end
 
   def allChatrooms
@@ -36,6 +37,6 @@ class User < ApplicationRecord
   end
 
   has_secure_password
-  validates :password, presence: true, length: {minimum: 6, maximum: 30}
+  validates :password, presence: true, length: {minimum: 6, maximum: 30}, unless: :skip_password_validation
 
 end

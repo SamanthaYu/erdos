@@ -11,6 +11,10 @@ class UsersController < ApplicationController
     @user = User.new
   end
 
+  def edit
+    @user = User.find(params[:id])
+  end
+
   def create
     loggedinredirect
     @user = User.new(user_params)
@@ -25,6 +29,21 @@ class UsersController < ApplicationController
       render :new
     end
   end
+
+  def update
+    @user=User.find(params[:id])
+    @user.skip_password_validation=true
+    respond_to do |format|
+      if @user.update(params.require(:user).permit(:avatar,:remove_avatar))
+        format.html { redirect_to @user, notice: 'User was successfully updated.' }
+        format.json { render :show, status: :ok, location: @user }
+      else
+        format.html { render :edit }
+        format.json { render json: @user.errors, status: :unprocessable_entity }
+      end
+    end
+  end
+
 
   def show
     @user = User.find(params[:id])

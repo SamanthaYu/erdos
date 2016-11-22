@@ -34,7 +34,11 @@
                 <td>No</td>
             <%end%>
             <td><%= local_time_ago(room.created_at) %></td>
-            <td><%= local_time_ago(room.messages.last.created_at) %></td>
+            <%if !room.messages.last.nil?%>
+              <td><%= local_time_ago(room.messages.last.created_at) %></td>
+            <%else%>
+              <td><%= local_time_ago(room.updated_at) %></td>
+            <%end%>
             <% if !current_user.nil? && current_user.userType == 'Admin' %>
                 <td><%= link_to 'Destroy', room, method: :delete, data: { confirm: 'Are you sure?' } %> </td>
             <% end %>
