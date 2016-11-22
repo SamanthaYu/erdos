@@ -58,7 +58,7 @@ class ChatroomsController < ApplicationController
     if @chatroom.present?
       @chatroom.destroy
     end
-    render chatrooms_url
+    redirect_to chatrooms_url
   end
 
   private
