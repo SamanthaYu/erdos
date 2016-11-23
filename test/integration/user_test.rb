@@ -30,6 +30,21 @@ class UserTests < ActionDispatch::IntegrationTest
     assert page.has_content?('List of Current Chatrooms')
   end
 
+  test "non-guest users can log into their accounts again" do
+    visit signup_path
+    fill_in "username_area", :with => 'tologout'
+    fill_in "password_area", :with => 'trysix'
+    fill_in "password_confirmation_area", :with => 'trysix'
+    click_button('Create Account')
+    click_on 'Log out'
+    visit login_path
+    fill_in "username_area", :with => 'tologout'
+    fill_in "password_area", :with => 'trysix'
+    click_button('Log in')
+    assert page.has_content?('tologout')
+  end
+
+
   test "admins can decide to delete chatrooms" do
     visit signup_path
     fill_in "username_area", :with => 'newuser'

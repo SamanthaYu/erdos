@@ -26,7 +26,6 @@ class FriendshipTests < ActionDispatch::IntegrationTest
     click_button('Create Account')
     visit users_path
     assert page.has_content?('+ Add Friend')
-    #click_on('+ Add Friend')
   end
 
 end
