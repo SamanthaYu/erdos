@@ -152,7 +152,7 @@
         <% provide(:title, "Log in") %>
         <div id="loginForm" class="basicForm">
             <span id="closeBtn1" class="closeBtn">&times;</span>
-            <center><img src="/assets/logoNoLabel-green-c0f5771e8dcd884fa3ba259b2b8e9c7f8536ddc1c7da58dfc1e14fab5796e69f.png" id="smallLogo"></center>
+            <center><%=image_tag "logoNoLabel-green.png", :id=> "smallLogo"%></center>
             <h1>login</h1>
             <%= form_for(:session, url: login_path) do |f| %>
               <center><p id="errorNotice"><%= notice %></p></center>
@@ -174,7 +174,7 @@
 
         <div id="guestLogin" class="basicForm">
             <span id="closeBtn2" class="closeBtn" onclick="closeGuestLogin()">&times;</span>
-            <center><img src="/assets/logoNoLabel-green-c0f5771e8dcd884fa3ba259b2b8e9c7f8536ddc1c7da58dfc1e14fab5796e69f.png" id="smallLogo"></center>
+            <center><%=image_tag "logoNoLabel-green.png", :id=> "smallLogo"%></center>
             <h1>guest login</h1>
             <%= render partial: 'users/guestform'%>
             <hr>
