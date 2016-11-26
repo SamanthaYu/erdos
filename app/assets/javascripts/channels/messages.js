@@ -16,7 +16,7 @@ App.messages = App.cable.subscriptions.create('MessagesChannel', {
     var avatarlink1='<span class="userAvatar" id="currentUserAvatar"><img src="'+data.avatarurl+'"></span>';
     var avatarlink2='<span class="userAvatar" id="otherUserAvatar"><img src="'+data.avatarurl+'"></span>';
 
-    if ($('#currentUser').getAttribute('value') == data.poster){
+    if ($('#currentUser').attr('name') == data.poster){
       retmess+='<div id="currentUserMessage" class="message">';
       retmess+='<div class="messageHeader"><p><span class="timeStamp" id="currentUserTime">' + timestamp + '</span><span class="username"><strong>'+data.poster+'</strong></span>';
       retmess+=avatarlink1+'</p>';
