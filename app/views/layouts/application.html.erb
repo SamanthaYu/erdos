@@ -18,7 +18,7 @@
 <body>
 <% if params[:controller] == 'welcome' && params[:action] == 'index'%>
 
-<% elsif params[:controller] == 'chatrooms' && params[:action] == 'show' %>
+<% else %>
     <div id="sidebar" class="sideNav">
         <div id="userHeader">
             <% if !current_user.nil? %>
@@ -26,60 +26,24 @@
               <%= link_to @current_user.username, @current_user, class: 'username', id: 'currentUser', :name => @current_user.username %>
             <% end %>
         </div>
-        <!--<a href="/home">Home</a>-->
-        <% if @chatroom.roomname.blank? %>
-            <% @chatroom.roomname = chatroom_path(@chatroom) %>
-        <% end %>
-        <span id="sideHeader" style="font-size: 18px"><%= @chatroom.roomname %></span>
-        <% if !@chatroom.private_chatters.empty? %>
-            <span id="subHeader">Members:</span>
-            <ul>
-            <% @chatroom.private_chatters.each do |user| %>
-                <li><%= link_to user.username, user, class: "username" %></li>
+        <% if params[:controller] == 'chatrooms' && params[:action] == 'show' %>
+            <% if @chatroom.roomname.blank? %>
+                <% @chatroom.roomname = chatroom_path(@chatroom) %>
             <% end %>
-            </ul>
-        <% end %>
-        <%= render partial: 'private_chats/form', locals: {private_chat: @private_chat, chatroom: @chatroom} %>
-        <!--<a href="/chatrooms">Chatrooms</a>
-        <a href="/users">Users</a>-->
-        <span id="sideHeader" style="font-size: 18px; margin-top: 30px"><%= @current_user.username %>'s Chatrooms</span>
-        <ul>
-        <% userRooms = Array.new(current_user.chatrooms.size+1)%>
-        <% roomNum = 0 %>
-        <% current_user.allChatrooms.each do |room| %>
-            <% if room != userRooms[roomNum] %>
-                <% roomNum += 1 %>
-                <% userRooms[roomNum] = room %>
-                <% if room.roomname.blank? %>
-                    <%room.roomname = chatroom_path(room)%>
-                <%end%>
-                <li><%= link_to room.roomname, room, class: "username" %></li>
+            <span id="sideHeader" style="font-size: 18px"><%= @chatroom.roomname %></span>
+            <% if !@chatroom.private_chatters.empty? %>
+                <span id="subHeader">Members:</span>
+                <ul>
+                <% @chatroom.private_chatters.each do |user| %>
+                    <li><%= link_to user.username, user, class: "username" %></li>
+                <% end %>
+                </ul>
             <% end %>
+            <%= render partial: 'private_chats/form', locals: {private_chat: @private_chat, chatroom: @chatroom} %>
+            <span id="sideHeader" style="font-size: 18px; margin-top: 30px"><%= @current_user.username %>'s Chatrooms</span>
+        <% else %>
+            <span id="sideHeader" style="font-size: 18px"><%= @current_user.username %>'s Chatrooms</span>
         <% end %>
-        <li><a href="/chatrooms" class="username">View All Chatrooms</a></li>
-        </ul>
-        <a href="/users" style="font-size: 18px; margin-top: 30px">Users</a>
-        <% if current_user.nil? %>
-            <a href="/login">Login</a>
-        <% end %>
-        <% if !current_user.nil? %>
-            <%= link_to "Log out", logout_path, method: :delete %>
-        <% end %>
-    </div>
-    <div id="sideBarCloser" onClick="closeSidebar()" class="sideBarToggle"><<</div>
-    <div id="sideBarOpener" onClick="openSidebar()" class="sideBarToggle">>></div>
-<% else %>
-    <div id="sidebar" class="sideNav">
-        <!--<a href="javascript:void(0)" id="closeBtn" onClick="closeSidebar()" class="closeBtn"><<</a>-->
-        <div id="userHeader">
-            <% if !current_user.nil? %>
-              <span id="avatar"><%= image_tag @current_user.avatar.thumb.url %></span>
-              <%= link_to @current_user.username, @current_user, class: 'username' %>
-            <% end %>
-        </div>
-        <!--<a href="/chatrooms">Chatrooms</a>
-        <a href="/users">Users</a>-->
-        <span id="sideHeader" style="font-size: 18px"><%= @current_user.username %>'s Chatrooms</span>
         <ul>
         <% userRooms = Array.new(current_user.chatrooms.size+1)%>
         <% roomNum = 0 %>
