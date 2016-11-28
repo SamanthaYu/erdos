@@ -52,6 +52,11 @@ class UsersController < ApplicationController
   def destroy
     @user = User.find(params[:id])
     if @user.present?
+      @user.private_chatrooms.each do |room|
+        if room.private_chatters.size < 2
+          Chatroom.find(room).destroy
+        end
+      end
       @user.destroy
     end
     redirect_to users_url

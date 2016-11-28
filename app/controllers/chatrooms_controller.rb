@@ -16,15 +16,12 @@ class ChatroomsController < ApplicationController
   end
 
   def create
-    if Chatroom.where(roomname: chatroom_params[:roomname]).exists?
+    if Chatroom.where(roomname: chatroom_params[:roomname]).exists? && !chatroom_params[:roomname].blank?
       flash[:notice] = "Chatroom " + chatroom_params[:roomname] + " Already Exists"
       redirect_to '/chatrooms'
     else
       @chatroom = Chatroom.new(chatroom_params)
       if @chatroom.save
-        if @chatroom.roomname.blank?
-          @chatroom.roomname = chatroom_path(@chatroom)
-        end
         if !current_user.nil?
           first = Message.create(:content => 'Chatroom \'' << @chatroom.roomname << '\' was created by ' << current_user.username, :chatroom_id => @chatroom.id, :user_id => current_user.id, :poster => current_user.username)
         else
