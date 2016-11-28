@@ -5,6 +5,10 @@
 $header-height: 60px;
 $footer-height: 140px;
 
+#editForm {
+    z-index: 1;
+}
+
 #messageContainer {
     position: absolute;
     max-width: 100vw;
@@ -16,6 +20,7 @@ $footer-height: 140px;
     right: 0;
     margin: auto;
     display: block;
+    z-index: 0;
 }
 
 #inputForm {

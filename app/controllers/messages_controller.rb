@@ -21,16 +21,23 @@ class MessagesController < ApplicationController
     end
   end
 
-#  def edit
-#  end
+def edit
+    @message = Message.find(params[:id])
+    respond_to do |format|
+        format.js {}
+end
 
-#  def update
-#    if message.update(message_params)
-#      ActionCable.server.broadcast 'messages',
-#        message: message.content
-#      head :ok
-#    end
-#  end
+def update
+    @message = Message.find(params[:id])
+    respond_to do |format|
+      if @message.update(message_params)
+        format.html { redirect_to chatroom_path(@message.chatroom) }
+        format.js {}
+      else
+        format.html { render :edit }
+      end
+    end
+end
 
   private
     def message_params
