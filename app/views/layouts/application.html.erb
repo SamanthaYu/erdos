@@ -20,7 +20,6 @@
 
 <% elsif params[:controller] == 'chatrooms' && params[:action] == 'show' %>
     <div id="sidebar" class="sideNav">
-        <!--<a href="javascript:void(0)" id="closeBtn" onClick="closeSidebar()" class="closeBtn"><<</a>-->
         <div id="userHeader">
             <% if !current_user.nil? %>
               <span id="avatar"><%= image_tag @current_user.avatar.thumb.url %></span>
@@ -41,19 +40,25 @@
             </ul>
         <% end %>
         <%= render partial: 'private_chats/form', locals: {private_chat: @private_chat, chatroom: @chatroom} %>
-        <a href="/chatrooms">Chatrooms</a>
-        <a href="/users">Users</a>
-        <!--<span id="sideHeader" style="font-size: 18px; margin-top: 30px"><%= @current_user.username %>'s Chatrooms</span>
+        <!--<a href="/chatrooms">Chatrooms</a>
+        <a href="/users">Users</a>-->
+        <span id="sideHeader" style="font-size: 18px; margin-top: 30px"><%= @current_user.username %>'s Chatrooms</span>
         <ul>
-        <% @current_user.allChatrooms.each do |chatroom| %>
-            <% if chatroom.roomname.blank? %>
-                <%chatroom.roomname = chatroom_path(chatroom)%>
-            <%end%>
-            <li><%= link_to chatroom.roomname, chatroom, class: "username" %></li>
+        <% userRooms = Array.new(current_user.chatrooms.size+1)%>
+        <% roomNum = 0 %>
+        <% current_user.allChatrooms.each do |room| %>
+            <% if room != userRooms[roomNum] %>
+                <% roomNum += 1 %>
+                <% userRooms[roomNum] = room %>
+                <% if room.roomname.blank? %>
+                    <%room.roomname = chatroom_path(room)%>
+                <%end%>
+                <li><%= link_to room.roomname, room, class: "username" %></li>
+            <% end %>
         <% end %>
         <li><a href="/chatrooms" class="username">View All Chatrooms</a></li>
         </ul>
-        <a href="/users" style="margin-top: 30px">Users</a>-->
+        <a href="/users" style="font-size: 18px; margin-top: 30px">Users</a>
         <% if current_user.nil? %>
             <a href="/login">Login</a>
         <% end %>
@@ -72,19 +77,25 @@
               <%= link_to @current_user.username, @current_user, class: 'username' %>
             <% end %>
         </div>
-        <a href="/chatrooms">Chatrooms</a>
-        <a href="/users">Users</a>
-        <!--<span id="sideHeader" style="font-size: 18px"><%= @current_user.username %>'s Chatrooms</span>
+        <!--<a href="/chatrooms">Chatrooms</a>
+        <a href="/users">Users</a>-->
+        <span id="sideHeader" style="font-size: 18px"><%= @current_user.username %>'s Chatrooms</span>
         <ul>
-        <% @current_user.allChatrooms.each do |chatroom| %>
-            <% if chatroom.roomname.blank? %>
-                <%chatroom.roomname = chatroom_path(chatroom)%>
-            <%end%>
-            <li><%= link_to chatroom.roomname, chatroom, class: "username" %></li>
+        <% userRooms = Array.new(current_user.chatrooms.size+1)%>
+        <% roomNum = 0 %>
+        <% current_user.allChatrooms.each do |room| %>
+            <% if room != userRooms[roomNum] %>
+                <% roomNum += 1 %>
+                <% userRooms[roomNum] = room %>
+                <% if room.roomname.blank? %>
+                    <%room.roomname = chatroom_path(room)%>
+                <%end%>
+                <li><%= link_to room.roomname, room, class: "username" %></li>
+            <% end %>
         <% end %>
         <li><a href="/chatrooms" class="username">View All Chatrooms</a></li>
         </ul>
-        <a href="/users" style="margin-top: 30px">Users</a>-->
+        <a href="/users" style="font-size: 18px; margin-top: 30px">Users</a>
         <% if current_user.nil? %>
             <a href="/login">Login</a>
         <% end %>
