@@ -38,7 +38,11 @@ def update
         format.html { redirect_to chatroom_path(@message.chatroom) }
         format.js {}
       else
+        if @message.content.blank?
+          flash[:notice] = "Message cannot be empty"
+        end
         format.html { render :edit }
+        format.js
       end
     end
 end

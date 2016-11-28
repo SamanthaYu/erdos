@@ -3,5 +3,7 @@ class Message < ApplicationRecord
   default_scope { order(created_at: :asc) }
   belongs_to :chatroom
   belongs_to :user
+
+  validates :content, presence: true, length: {minimum: 1}
   #something about user?
 end
