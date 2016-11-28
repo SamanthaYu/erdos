@@ -4,7 +4,7 @@
             <div class="messageHeader">
                 <p>
                     <%= link_to "edit", edit_message_path(message), style:"float:left", remote: true%>
-                    <span class="timeStamp" id="currentUserTime<%=message.id%>"><%=local_time_ago(message.created_at)%>
+                    <span class="currentUserTime" id="currentUserTime<%=message.id%>"><%=local_time_ago(message.created_at)%>
                     <% if message.updated_at != message.created_at %>
                         , edited: <%=local_time_ago(message.updated_at)%>
                     <% end %>
