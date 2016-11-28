@@ -16,6 +16,7 @@ class MessagesController < ApplicationController
         message: message.content,
         poster: message.poster,
         currentuser: current_user.username,
+        editlink: edit_message_path(message),
         timestamp: view_context.local_time_ago(message.created_at);
       head :ok
     end
@@ -24,7 +25,9 @@ class MessagesController < ApplicationController
 def edit
     @message = Message.find(params[:id])
     respond_to do |format|
+        format.html {}
         format.js {}
+    end
 end
 
 def update

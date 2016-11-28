@@ -55,7 +55,7 @@
   margin-right: 10px;
 }
 
-#mathTyping {
+.mathTyping {
   height: 2.5em;
   padding: 8px;
   overflow-y: auto;

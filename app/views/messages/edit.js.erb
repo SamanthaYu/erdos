@@ -1,0 +1,3 @@
+$("body").css({"background-color":"blue"});
+$('#editForm').html("<%= j (render partial: 'messages/editmessage_form', locals: {message: @message, chatroom: @chatroom}) %>");
+$('#editForm').fadeIn("swing");

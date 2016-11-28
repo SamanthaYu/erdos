@@ -1,11 +1,12 @@
-<div id="mathTyping"></div>
-    <%= render partial: 'messages/mathMenu'%>
-    <%=form_for @message, remote:true, authenticity_token: true do |f|%>
-      <%= f.text_area :content,  class: "form-control", rows: "1", :placeholder => "Enter Message, to use math formatting surround formula with $ signs", data: {textarea: "message"}, id: 'message_content'%>
+<h3>Editing Message</h3>
+<div id="mathTyping<%=@message.id%>" class="mathTyping"></div>
+    <!--<%= render partial: 'messages/mathMenu'%>-->
+    <%=form_for @message, remote: true, authenticity_token: true do |f|%>
+      <%= f.text_area :content,  class: "form-control", rows: "1", :placeholder => "Edit Message, to use math formatting surround formula with $ signs", data: {textarea: "message"}, id: 'message_content'%>
       <%= f.hidden_field :chatroom_id, value: @message.chatroom_id %>
       <% if !current_user.nil? %>
         <%= f.hidden_field :poster, value: current_user.username %>
         <%= f.hidden_field :user_id, value: current_user.id %>
       <% end %>
-      <%= f.submit "send", class: "btn", style: "display:block", data: {send: "message"}, id: 'message_submit'%>
+      <%= f.submit "edit", class: "submitButton", style:"margin-left: 10px", data: {send: "message"}, id: 'message_submit'%>
     <%end%>
