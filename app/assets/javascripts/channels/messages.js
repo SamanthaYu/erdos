@@ -19,7 +19,7 @@ App.messages = App.cable.subscriptions.create('MessagesChannel', {
     if ($('#currentUser').attr('name') == data.poster){
       retmess+='<div id="currentUserMessage" class="message"><div class="messageHeader"><p>';
       retmess+='<a href="'+data.editlink+'" data-remote="true" style="float:left">edit</a>';
-      retmess+='<span class="timeStamp" id="currentUserTime<%=message.id%>">' + timestamp + '</span><span class="username"><strong>'+data.poster+'</strong></span>';
+      retmess+='<span class="timeStamp" id="currentUserTime'+data.id+'">' + timestamp + '</span><span class="username"><strong>'+data.poster+'</strong></span>';
       retmess+=avatarlink1+'</p>';
     }
     else {
@@ -28,7 +28,7 @@ App.messages = App.cable.subscriptions.create('MessagesChannel', {
       retmess+='<span class="timeStamp">' + timestamp + '</span></p>';
     }
 
-    retmess+='</div><div id="messageContent<%=message.id%>">'+data.message + '</div></div>';
+    retmess+='</div><div id="messageContent'+data.id+'">'+data.message + '</div></div>';
     return retmess;
     //return "<p> <b>" + data.poster + ": </b>" + data.message + "</p>";
   }
