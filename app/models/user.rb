@@ -12,10 +12,8 @@ class User < ApplicationRecord
   validate :avatar_size_validation
   attr_accessor :skip_password_validation
 
-  before_save {username.downcase!}
   before_destroy :delete_friendships
-
-  validates :username, presence: true, length: {minimum: 3, maximum: 50}, uniqueness: {case_sensitive: false}
+  validates :username, presence: true, length: {minimum: 3, maximum: 12}, uniqueness: {case_sensitive: true}
 
   def User.digest(string)
     cost= ActiveModel::SecurePassword.min_cost ? Bcrypt::Engine::MIN_COST : Bcrypt::Engine.cost
