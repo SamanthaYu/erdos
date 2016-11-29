@@ -6,6 +6,8 @@
 
 Irene Abrea, Dawn Chandler, Heather Li, Paul Miiller, Samantha Yu
 
+URL: http://erdos314.herokuapp.com/
+
 ##Abstract/Introduction
 Erdos is a web application that makes writing and reading mathematical expressions in an instant messaging application easier. This web app will use an API to translate plaintext into elegant formulae and equations. Erdos will have a regular user login, and possibly an administrator login for certain users to manage chat groups that they have created. Our web application will use an open API to turn plaintext into elegant mathematical expressions. We have narrowed our choices of API down to MathJax, AsciiMath, and KaTeX.
 

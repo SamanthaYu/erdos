@@ -3,13 +3,13 @@
   border-radius: 10px;
   padding: 5px;
   border: 1px solid #aaa;
-  cursor: hand;
+  cursor: pointer;
 }
 
 .mathButton:hover {
   background-color: #2AA0C7;
   color: #FFFFFF;
-  cursor: hand;
+  cursor: pointer;
 }
 
 .helpButton {
@@ -58,4 +58,5 @@
 #mathTyping {
   height: 2.5em;
   padding: 8px;
+  overflow-y: auto;
 }

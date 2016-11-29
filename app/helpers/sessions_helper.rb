@@ -21,6 +21,11 @@ module SessionsHelper
   def log_out
     begin
       if User.find(session[:user_id]).userType == 'Guest'
+        User.find(session[:user_id]).private_chatrooms.each do |room|
+          if room.private_chatters.size < 2
+            Chatroom.find(room).destroy
+          end
+        end
         User.find(session[:user_id]).destroy
       end
     rescue

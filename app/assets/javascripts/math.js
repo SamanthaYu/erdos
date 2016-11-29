@@ -9,6 +9,8 @@ function renderMath(element) {
 			]
 		}
 	);
+
+	$('option .katex-mathml').remove();	// Remove double rendering in dropdown menu by getting rid of MathML elements here
 }
 
 function renderLastMessage() {
