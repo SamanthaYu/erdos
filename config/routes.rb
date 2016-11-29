@@ -11,7 +11,12 @@ Rails.application.routes.draw do
    get '/home', to: 'welcome#show'
    resources :chatrooms
    resources :messages
-   resources :users
+   resources :users do
+      member do
+        get "edit_password"
+        patch "update_password"
+      end
+    end
    resources :friendships
    resources :sessions
    resources :private_chats

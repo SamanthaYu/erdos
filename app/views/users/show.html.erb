@@ -15,6 +15,7 @@
 <center><%= image_tag @user.avatar.display.url %></center>
 <%if current_user!=nil && @user==current_user%>
   <center><%= link_to 'Edit Avatar', edit_user_path(@user) %></center>
+  <center><%= link_to 'Change Password', edit_password_user_path(@user) %></center>
 <%end%>
 <h1><span class="username"><%= @user.username %></span></h1>
 

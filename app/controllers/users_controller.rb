@@ -11,8 +11,26 @@ class UsersController < ApplicationController
     @user = User.new
   end
 
-  def edit
+  def edit #for avatars
     @user = User.find(params[:id])
+  end
+
+  def edit_password
+    @user = User.find(params[:id])
+  end
+
+  def update_password
+    @user=User.find(params[:id])
+    @user.skip_password_validation=false
+    respond_to do |format|
+      if @user.update_attributes(params.require(:user).permit(:password,:password_confirmation))
+        format.html { redirect_to @user, notice: 'User password was successfully updated.' }
+        format.json { render :show, status: :ok, location: @user }
+      else
+        format.html { render :edit_password }
+        format.json { render json: @user.errors, status: :unprocessable_entity }
+      end
+    end
   end
 
   def create
@@ -30,12 +48,12 @@ class UsersController < ApplicationController
     end
   end
 
-  def update
+  def update #for avatars
     @user=User.find(params[:id])
-    @user.skip_password_validation=true
     respond_to do |format|
+      @user.skip_password_validation=true
       if @user.update(params.require(:user).permit(:avatar,:remove_avatar))
-        format.html { redirect_to @user, notice: 'User was successfully updated.' }
+        format.html { redirect_to @user, notice: 'User avatar was successfully updated.' }
         format.json { render :show, status: :ok, location: @user }
       else
         format.html { render :edit }
