@@ -1,91 +1,105 @@
 document.addEventListener("turbolinks:load", function() {
-  checkButtons();
+  checkButtons("mathMenu", "mathTable");
+  renderTyping($('#mathTyping'), $('#message_content'));
 
   $("#mathMenu").change(function() {  // If the user has selected a new option from the dropdown
-    checkButtons();
+    checkButtons("mathMenu", "mathTable");
   });
 
   $('#message_content').keyup(function() {
     renderTyping($('#mathTyping'), $('#message_content'));
-
   });
 
 });
 
 $(document).on("click", '#edit_link', function () {
     setTimeout( function () {
+        checkButtons("editMathMenu", "editMathTable");
+        renderTyping($('#editMathTyping'), $('#editmessage_content'));
+
+        $("#editMathMenu").change(function() {  // If the user has selected a new option from the dropdown
+          checkButtons("editMathMenu", "editMathTable");
+        });
+
         if ($('#editmessage_content')) {
             $('#editmessage_content').keyup(function() {
                 renderTyping($('#editMathTyping'), $('#editmessage_content'));
             });
         }
-    }, 500);
+
+    }, 200);
+
 });
 
 
 $(document).on("click", '.mathButton', function() {
-    enterButton($(this), $('#mathTyping'), $('#message_content'));
+    if ($(this).attr("id") === "mathMenuButton") {
+        enterButton($(this), $('#mathTyping'), $('#message_content'));
+    }
+    else if ($(this).attr("id") === "editMathMenuButton") {
+        enterButton($(this), $('#editMathTyping'), $('#editmessage_content'));
+    }
 });
 
-function enterButton(thisObj, renderID, contentID) {
-  contentID.focus();
+function enterButton(thisObj, renderObj, contentObj) {
+  contentObj.focus();
   var mathSymbol = thisObj.data('val');
-  var content = contentID.val();
+  var content = contentObj.val();
 
-  var start = contentID[0].selectionStart;
-  var end = contentID[0].selectionEnd;
+  var start = contentObj[0].selectionStart;
+  var end = contentObj[0].selectionEnd;
 
   var beforeInsert = content.substr(0, start);
   var afterInsert = content.substr(end);
 
   var newContent = beforeInsert + mathSymbol + afterInsert;
-  contentID.val(newContent);
+  contentObj.val(newContent);
 
-  contentID[0].selectionStart = start + mathSymbol.length;
-  contentID[0].selectionEnd = contentID[0].selectionStart;
-  contentID.focus();
+  contentObj[0].selectionStart = start + mathSymbol.length;
+  contentObj[0].selectionEnd = contentObj[0].selectionStart;
+  contentObj.focus();
 
-  renderTyping(renderID, contentID);
+  renderTyping(renderObj, contentObj);
 }
 
-function checkButtons() {
-    if ($('#mathMenu option:selected').text() == "Default") {
-      $('#mathTable').html(
+function checkButtons(menu, table) {
+    if ($('#'+menu+' option:selected').text() == "Default") {
+      $('#'+table).html(
         "<tr>\
-            <td class='mathButton' data-val='$\\int$ '>$\\int$</td>\
-            <td class='mathButton' data-val='$\\pm$ '>$\\pm$</td>\
-            <td class='mathButton' data-val='$\\exists$ '>$\\exists$</td>\
+            <td class='mathButton' id='"+menu+"Button"+"'data-val='$\\int$ '>$\\int$</td>\
+            <td class='mathButton' id='"+menu+"Button"+"'data-val='$\\pm$ '>$\\pm$</td>\
+            <td class='mathButton' id='"+menu+"Button"+"'data-val='$\\exists$ '>$\\exists$</td>\
         </tr>");
     }
-    else if ($('#mathMenu option:selected').text() == "Operators") {
-      $('#mathTable').html(
+    else if ($('#'+menu+' option:selected').text() == "Operators") {
+      $('#'+table).html(
         "<tr>\
-            <td class='mathButton' data-val='$\\pm$ '>$\\pm$</td>\
-            <td class='mathButton' data-val='$\\times$ '>$\\times$</td>\
-            <td class='mathButton' data-val='$\\div$ '>$\\div$</td>\
-            <td class='mathButton' data-val='$\\neq$ '>$\\neq$</td>\
-            <td class='mathButton' data-val='$\\leq$ '>$\\leq$</td>\
-            <td class='mathButton' data-val='$\\geq$ '>$\\geq$</td>\
-            <td class='mathButton' data-val='$\\ll$ '>$\\ll$</td>\
-            <td class='mathButton' data-val='$\\gg$ '>$\\gg$</td>\
-            <td class='mathButton' data-val='$\\subset$ '>$\\subset$</td>\
-            <td class='mathButton' data-val='$\\supset$ '>$\\supset$</td>\
-            <td class='mathButton' data-val='$\\subseteq$ '>$\\subseteq$</td>\
-            <td class='mathButton' data-val='$\\supseteq$ '>$\\supseteq$</td>\
-            <td class='mathButton' data-val='$\\nsubseteq$ '>$\\nsubseteq$</td>\
-            <td class='mathButton' data-val='$\\nsupseteq$ '>$\\nsupseteq$</td>\
-            <td class='mathButton' data-val='$\\equiv$ '>$\\equiv$</td>\
-            <td class='mathButton' data-val='$\\approx$ '>$\\approx$</td>\
-            <td class='mathButton' data-val='$\\propto$ '>$\\propto$</td>\
-            <td class='mathButton' data-val='$\\neq$ '>$\\neq$</td>\
-            <td class='mathButton' data-val='$\\neg$ '>$\\neg$</td>\
-            <td class='mathButton' data-val='$\\in$ '>$\\in$</td>\
-            <td class='mathButton' data-val='$\\notin$ '>$\\notin$</td>\
-            <td class='mathButton' data-val='$\\perp$ '>$\\perp$</td>\
+            <td class='mathButton' id='"+menu+"Button"+"'data-val='$\\pm$ '>$\\pm$</td>\
+            <td class='mathButton' id='"+menu+"Button"+"'data-val='$\\times$ '>$\\times$</td>\
+            <td class='mathButton' id='"+menu+"Button"+"'data-val='$\\div$ '>$\\div$</td>\
+            <td class='mathButton' id='"+menu+"Button"+"'data-val='$\\neq$ '>$\\neq$</td>\
+            <td class='mathButton' id='"+menu+"Button"+"'data-val='$\\leq$ '>$\\leq$</td>\
+            <td class='mathButton' id='"+menu+"Button"+"'data-val='$\\geq$ '>$\\geq$</td>\
+            <td class='mathButton' id='"+menu+"Button"+"'data-val='$\\ll$ '>$\\ll$</td>\
+            <td class='mathButton' id='"+menu+"Button"+"'data-val='$\\gg$ '>$\\gg$</td>\
+            <td class='mathButton' id='"+menu+"Button"+"'data-val='$\\subset$ '>$\\subset$</td>\
+            <td class='mathButton' id='"+menu+"Button"+"'data-val='$\\supset$ '>$\\supset$</td>\
+            <td class='mathButton' id='"+menu+"Button"+"'data-val='$\\subseteq$ '>$\\subseteq$</td>\
+            <td class='mathButton' id='"+menu+"Button"+"'data-val='$\\supseteq$ '>$\\supseteq$</td>\
+            <td class='mathButton' id='"+menu+"Button"+"'data-val='$\\nsubseteq$ '>$\\nsubseteq$</td>\
+            <td class='mathButton' id='"+menu+"Button"+"'data-val='$\\nsupseteq$ '>$\\nsupseteq$</td>\
+            <td class='mathButton' id='"+menu+"Button"+"'data-val='$\\equiv$ '>$\\equiv$</td>\
+            <td class='mathButton' id='"+menu+"Button"+"'data-val='$\\approx$ '>$\\approx$</td>\
+            <td class='mathButton' id='"+menu+"Button"+"'data-val='$\\propto$ '>$\\propto$</td>\
+            <td class='mathButton' id='"+menu+"Button"+"'data-val='$\\neq$ '>$\\neq$</td>\
+            <td class='mathButton' id='"+menu+"Button"+"'data-val='$\\neg$ '>$\\neg$</td>\
+            <td class='mathButton' id='"+menu+"Button"+"'data-val='$\\in$ '>$\\in$</td>\
+            <td class='mathButton' id='"+menu+"Button"+"'data-val='$\\notin$ '>$\\notin$</td>\
+            <td class='mathButton' id='"+menu+"Button"+"'data-val='$\\perp$ '>$\\perp$</td>\
         </tr>");
     }
-    else if ($('#mathMenu option:selected').text() == "Greek Letters") {
-      $('#mathTable').html(
+    else if ($('#'+menu+' option:selected').text() == "Greek Letters") {
+      $('#'+table).html(
         "<tr>\
             <td class='mathButton' data-val='$\\alpha$ '>$\\alpha$</td>\
             <td class='mathButton' data-val='$\\beta$ '>$\\beta$</td>\
@@ -114,12 +128,12 @@ function checkButtons() {
     renderAllButtons();
 }
 
-function renderTyping(renderID, contentID) {
-  renderID.text(contentID.val());
-  if (contentID.attr("id") === "message_content") {
+function renderTyping(renderObj, contentObj) {
+  renderObj.text(contentObj.val());
+  if (contentObj.attr("id") === "message_content") {
       renderMath(document.getElementById('mathTyping'));
   }
-  else if (contentID.attr("id") === "editmessage_content") {
+  else if (contentObj.attr("id") === "editmessage_content") {
       renderMath(document.getElementById('editMathTyping'));
   }
 };
