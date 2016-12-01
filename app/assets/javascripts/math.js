@@ -20,6 +20,7 @@ function renderLastMessage() {
 }
 
 function renderThisMessage(var calltag){
+	var messagecontent = document.getElementById(calltag);
 	renderMath($(calltag));
 }
 
