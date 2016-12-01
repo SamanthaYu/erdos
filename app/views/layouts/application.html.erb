@@ -40,7 +40,9 @@
             <% end %>
             </ul>
         <% end %>
-        <%= render partial: 'private_chats/form', locals: {private_chat: @private_chat, chatroom: @chatroom} %>
+        <% if current_user.userType != 'Guest' %>
+          <%= render partial: 'private_chats/form', locals: {private_chat: @private_chat, chatroom: @chatroom} %>
+        <% end %>
         <a href="/chatrooms">Chatrooms</a>
         <a href="/users">Users</a>
         <!--<span id="sideHeader" style="font-size: 18px; margin-top: 30px"><%= @current_user.username %>'s Chatrooms</span>

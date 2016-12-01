@@ -7,7 +7,7 @@
       <% i = 0 %>
       <% if !chatroom.private_chatters.empty? %>
         <% User.all.each do |user| %>
-          <% if !chatroom.private_chatters.where(id: user).exists? %>
+          <% if !chatroom.private_chatters.where(id: user).exists? && user.userType != 'Guest' %>
             <% @userlist[i] = user %>
             <% i = i + 1 %>
           <% end %>
