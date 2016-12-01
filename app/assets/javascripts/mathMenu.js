@@ -13,7 +13,7 @@ document.addEventListener("turbolinks:load", function() {
 });
 
 $(document).on("click", '#edit_link', function () {
-    setTimeout( function () {
+    $ (document).ajaxComplete( function () {
         checkButtons("editMathMenu", "editMathTable");
         renderTyping($('#editMathTyping'), $('#editmessage_content'));
 
@@ -26,8 +26,7 @@ $(document).on("click", '#edit_link', function () {
                 renderTyping($('#editMathTyping'), $('#editmessage_content'));
             });
         }
-
-    }, 200);
+    });
 
 });
 
