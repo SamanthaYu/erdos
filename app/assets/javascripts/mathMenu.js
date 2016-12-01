@@ -6,33 +6,46 @@ document.addEventListener("turbolinks:load", function() {
   });
 
   $('#message_content').keyup(function() {
-    renderTyping();
+    renderTyping($('#mathTyping'), $('#message_content'));
+
   });
+
 });
+
+$(document).on("click", '#edit_link', function () {
+    setTimeout( function () {
+        if ($('#editmessage_content')) {
+            $('#editmessage_content').keyup(function() {
+                renderTyping($('#editMathTyping'), $('#editmessage_content'));
+            });
+        }
+    }, 500);
+});
+
 
 $(document).on("click", '.mathButton', function() {
-  enterButton($(this));
+    enterButton($(this), $('#mathTyping'), $('#message_content'));
 });
 
-function enterButton(thisObj) {
-  $('#message_content').focus();
+function enterButton(thisObj, renderID, contentID) {
+  contentID.focus();
   var mathSymbol = thisObj.data('val');
-  var content = $('#message_content').val();
+  var content = contentID.val();
 
-  var start = $('#message_content')[0].selectionStart;
-  var end = $('#message_content')[0].selectionEnd;
+  var start = contentID[0].selectionStart;
+  var end = contentID[0].selectionEnd;
 
   var beforeInsert = content.substr(0, start);
   var afterInsert = content.substr(end);
 
   var newContent = beforeInsert + mathSymbol + afterInsert;
-  $('#message_content').val(newContent);
+  contentID.val(newContent);
 
-  $('#message_content')[0].selectionStart = start + mathSymbol.length;
-  $('#message_content')[0].selectionEnd = $('#message_content')[0].selectionStart;
-  $('#message_content').focus();
+  contentID[0].selectionStart = start + mathSymbol.length;
+  contentID[0].selectionEnd = contentID[0].selectionStart;
+  contentID.focus();
 
-  renderTyping();
+  renderTyping(renderID, contentID);
 }
 
 function checkButtons() {
@@ -101,7 +114,12 @@ function checkButtons() {
     renderAllButtons();
 }
 
-function renderTyping() {
-  $('#mathTyping').text($('#message_content').val());
-  renderMath(document.getElementById('mathTyping'));
+function renderTyping(renderID, contentID) {
+  renderID.text(contentID.val());
+  if (contentID.attr("id") === "message_content") {
+      renderMath(document.getElementById('mathTyping'));
+  }
+  else if (contentID.attr("id") === "editmessage_content") {
+      renderMath(document.getElementById('editMathTyping'));
+  }
 };
