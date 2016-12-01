@@ -102,6 +102,6 @@ function checkButtons() {
 }
 
 function renderTyping() {
-  $('.mathTyping').text($('#message_content').val());
+  $('#mathTyping').text($('#message_content').val());
   renderMath(document.getElementById('mathTyping'));
 };

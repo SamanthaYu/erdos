@@ -13,7 +13,7 @@
                     <span class="userAvatar" id="currentUserAvatar"><%= image_tag message.user.avatar.thumb.url %></span>
                 </p>
             </div>
-            <div id="messageContent<%=message.id%>"><%=message.content%></div>
+            <div id="messageContent<%=message.id%>" class="messageContent"><%=message.content%></div>
 
         </div>
     <% else %>
@@ -27,7 +27,7 @@
                   <span class="timeStamp"><%=local_time_ago(message.created_at)%></span>
               </p>
             </div>
-            <div id="messageContent<%=message.id%>"><%=message.content%></div>
+            <div id="messageContent<%=message.id%> class="messageContent""><%=message.content%></div>
         </div>
     <% end %>
 <% else %>

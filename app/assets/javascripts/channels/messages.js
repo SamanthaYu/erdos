@@ -28,7 +28,7 @@ App.messages = App.cable.subscriptions.create('MessagesChannel', {
       retmess+='<span class="timeStamp">' + timestamp + '</span></p>';
     }
 
-    retmess+='</div><div id="messageContent'+data.id+'">'+data.message + '</div></div>';
+    retmess+='</div><div id="messageContent'+data.id+'" class="messageContent">'+data.message + '</div></div>';
     return retmess;
     //return "<p> <b>" + data.poster + ": </b>" + data.message + "</p>";
   }
