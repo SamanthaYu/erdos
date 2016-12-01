@@ -1,11 +1,20 @@
 App.messages = App.cable.subscriptions.create('MessagesChannel', {
   received: function(data) {
     if ($('h1').text()===data.chatroomname){
-      $("#messages").removeClass('hidden');
-      $('#messages').append(this.renderMessage(data));
-      scrollBottom();
-      renderLastMessage();
-      renderLastUsername();
+        if (data.type=="new"){
+          $("#messages").removeClass('hidden');
+          $('#messages').append(this.renderMessage(data));
+          scrollBottom();
+          renderLastMessage();
+          renderLastUsername();
+      }
+        else{
+            var calltag="#messageContent"+data.id;
+            var calltimetag="#currentUserTime"+data.id;
+            $(calltag).replaceWith(data.message);
+            $(calltimetag).replaceWith("last edited: " + data.timestamp);
+            renderThisMessage(calltag);
+        }
     }
     return;
   },
@@ -31,5 +40,8 @@ App.messages = App.cable.subscriptions.create('MessagesChannel', {
     retmess+='</div><div id="messageContent'+data.id+'" class="messageContent">'+data.message + '</div></div>';
     return retmess;
     //return "<p> <b>" + data.poster + ": </b>" + data.message + "</p>";
-  }
+},
+
+
+
 });

@@ -11,6 +11,7 @@ class MessagesController < ApplicationController
         roomname = chatroom_path(message.chatroom)
       end
       ActionCable.server.broadcast 'messages',
+        type: "new",
         chatroomname: roomname,
         avatarurl: message.user.avatar.thumb.url,
         message: message.content,
@@ -25,10 +26,18 @@ class MessagesController < ApplicationController
 
 def edit
     @message = Message.find(params[:id])
-    respond_to do |format|
-        format.html {}
-        format.js {}
-    end
+    ActionCable.server.broadcast 'messages',
+      type: "edit",
+      chatroomname: roomname,
+      avatarurl: message.user.avatar.thumb.url,
+      message: message.content,
+      poster: message.poster,
+      currentuser: current_user.username,
+      editlink: edit_message_path(message),
+      id: message.id,
+      timestamp: view_context.local_time_ago(message.updated_at);
+    head :ok
+  end
 end
 
 def update
