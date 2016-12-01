@@ -1,0 +1,6 @@
+<% if !@message.content.blank? %>
+    $("#messageContent<%=@message.id%>").html("<%= j (render 'messages/newmessage', locals: {message: @message, chatroom: @chatroom}) %>");
+    $("#currentUserTime<%=@message.id%>").html("<%= j (render 'messages/edittime', locals: {message: @message, chatroom: @chatroom}) %>");
+    $("#editForm").fadeOut("swing");
+<%end%>
+$("#errorNotice").replaceWith("<p id='errorNotice'><%= notice %></p>");

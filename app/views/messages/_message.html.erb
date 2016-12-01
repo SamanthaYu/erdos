@@ -2,25 +2,32 @@
     <% if message.user == current_user %>
         <div id="currentUserMessage" class="message">
             <div class="messageHeader">
-              <p><span class="timeStamp" id="currentUserTime"><%=local_time_ago(message.created_at)%></span></span>
-                <span class="username"><strong><%= message.poster %></strong>
-                <span class="userAvatar" id="currentUserAvatar"><%= image_tag message.user.avatar.thumb.url %></span>
+                <p>
+                    <%= link_to "edit", edit_message_path(message), style:"float:left", remote: true, id: "edit_link"%>
+                    <span class="currentUserTime" id="currentUserTime<%=message.id%>"><%=local_time_ago(message.created_at)%>
+                    <% if message.updated_at != message.created_at %>
+                        , edited: <%=local_time_ago(message.updated_at)%>
+                    <% end %>
+                    </span>
+                    <span class="username"><strong><%= message.poster %></strong></span>
+                    <span class="userAvatar" id="currentUserAvatar"><%= image_tag message.user.avatar.thumb.url %></span>
                 </p>
             </div>
-            <div class="messageContent"><%=message.content%></div>
+            <div id="messageContent<%=message.id%>" class="messageContent"><%=message.content%></div>
+
         </div>
     <% else %>
         <div id="otherUserMessage" class="message">
             <div class="messageHeader">
               <p>
-              <%if message.user !=nil%>
-                  <span class="userAvatar" id="otherUserAvatar"><%= image_tag message.user.avatar.thumb.url %></span>
-              <%end%>
-              <span class="username"><strong><%= message.poster %></strong></span>
-              <span class="timeStamp"><%=local_time_ago(message.created_at)%></span>
+                  <%if message.user !=nil%>
+                      <span class="userAvatar" id="otherUserAvatar"><%= image_tag message.user.avatar.thumb.url %></span>
+                  <%end%>
+                  <span class="username"><strong><%= message.poster %></strong></span>
+                  <span class="timeStamp"><%=local_time_ago(message.created_at)%></span>
               </p>
             </div>
-            <div class="messageContent"><%=message.content%></div>
+            <div id="messageContent<%=message.id%> class="messageContent""><%=message.content%></div>
         </div>
     <% end %>
 <% else %>

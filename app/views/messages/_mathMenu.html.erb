@@ -1,12 +1,20 @@
 <div id = "mathMenuWrapper">
   <a href="https://oeis.org/wiki/List_of_LaTeX_mathematical_symbols" target="_blank"><div class="helpButton">?</div></a>
 
-  <select id="mathMenu">
+  <% if params[:action] == "edit" %>
+    <select id="editMathMenu" class="mathMenu">
+  <% else %>
+    <select id="mathMenu" class="mathMenu">
+  <% end %>
     <option value="default" selected="selected">Default</option>
     <option value="operators">Operators</option>
     <option value="GreekLetters">Greek Letters</option>
   </select>
 
-  <table id="mathTable">
+  <% if params[:action] == "edit" %>
+    <table id="editMathTable" class="mathTable">
+  <% else %>
+    <table id="mathTable" class="mathTable">
+  <% end %>
   </table>
 </div>

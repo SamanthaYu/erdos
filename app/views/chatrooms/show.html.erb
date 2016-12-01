@@ -4,6 +4,8 @@
     <% content_for :title, chatroom_path(@chatroom) %>
 <% end %>
 
+<div id="editForm" class="forms" style="display:none"></div>
+
 <div id="header">
     <% if !@chatroom.roomname.blank? %>
         <h1><%= @chatroom.roomname %></h1>
@@ -11,6 +13,7 @@
         <h1><%= chatroom_path(@chatroom) %></h1>
     <% end %>
 </div>
+
 
 <div id="messageContainer">
     <div id="messages">
@@ -22,15 +25,3 @@
 </div>
 
 <%= render partial: 'messages/message_form', locals: {message: @message, chatroom: @chatroom}%>
-
-<!--
-<p> &nbsp; ^Original &nbsp;</p>
-<div id="messages">
-  <% @chatroom.messages.each do |message| %>
-    <%= render partial: 'messages/message', object: message %>
-    <div id="message_edit">
-      <%= render partial: 'messages/editmessage_form', object: message %>
-    </div>
-  <% end %>
-</div>
--->

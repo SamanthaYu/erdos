@@ -34,7 +34,7 @@
   margin-bottom: 10px;
 }
 
-#mathTable {
+.mathTable {
   border: 0px;
   display: inline-block;
   float: left;
@@ -43,19 +43,19 @@
   padding: 0px;
 }
 
-#mathTable td {
+.mathTable td {
   margin: 3px;
   cursor: hand;
 }
 
-#mathMenu {
+.mathMenu {
   display: inline-block;
   float: left;
   text-align: center;
   margin-right: 10px;
 }
 
-#mathTyping {
+.mathTyping {
   height: 2.5em;
   padding: 8px;
   overflow-y: auto;
