@@ -8,12 +8,16 @@ App.messages = App.cable.subscriptions.create('MessagesChannel', {
           renderLastMessage();
           renderLastUsername();
       }
+        else if (data.type == "edit"){
+            var calltag="messageContent"+data.id;
+            var calltimetag="currentUserTime"+data.id;
+            $("#"+calltag).replaceWith('<div id="messageContent'+data.id+'" class="messageContent">'+data.message+'</div>');
+            $("#"+calltimetag).replaceWith('<span class="currentUserTime" id="currentUserTime'+data.id+'">'+data.createtimestamp+', last edited: '+data.edittimestamp+'</span>');
+            renderThisMessage(calltag);
+        }
         else {
-            var calltag="#messageContent"+data.id;
-            var calltimetag="#currentUserTime"+data.id;
-            $(calltag).replaceWith('<div id="messageContent'+data.id+'" class="messageContent">'+data.message+'</div>');
-            $(calltimetag).replaceWith('<span class="currentUserTime" id="currentUserTime'+data.id+'">'+data.createtimestamp+', last edited: '+data.edittimestamp+'</span>');
-            renderThisMessage("messageContent"+data.id);
+            var parent = $("#messageContent"+data.id).parent();
+            parent.fadeOut("swing");
         }
     }
     return;
