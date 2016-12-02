@@ -26,12 +26,15 @@ class MessagesController < ApplicationController
 
 def edit
     @message = Message.find(params[:id])
+    respond_to do |format|
+        format.html {}
+        format.js {}
+    end
 end
 
 def update
     @message = Message.find(params[:id])
-    respond_to do |format|
-      if @message.update(message_params)
+    if @message.update(message_params)
         roomname=@message.chatroom.roomname
         if @message.chatroom.roomname.blank?
           roomname = chatroom_path(@message.chatroom)
@@ -47,13 +50,10 @@ def update
           id: @message.id,
           timestamp: view_context.local_time_ago(@message.created_at);
         head :ok
-      else
+    else
         if @message.content.blank?
           flash[:notice] = "Message cannot be empty"
         end
-        format.html { render :edit }
-        format.js
-      end
     end
 end
 
