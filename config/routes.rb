@@ -12,6 +12,7 @@ Rails.application.routes.draw do
    resources :chatrooms
    resources :messages
    get '/messages/:id/delete(.:format)', to: 'messages#delete', as: :delete_message
+   delete '/messages/:id(.:format)', to: 'messages#destroy_message', as: :destroy_message
    resources :users
    resources :friendships
    resources :sessions

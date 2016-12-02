@@ -7,6 +7,7 @@ $(document).on("click", '#editmessage_submit', function () {
 });
 
 $(document).on("click", '#deletemessage_submit', function () {
+    alert($(this).parent());
     closeDeleteForm();
 });
 
