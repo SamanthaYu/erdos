@@ -128,7 +128,7 @@
   </table><br>
 <% end %>
 
-<% if @user == current_user && @user.userType == 'Regular' &&  !@user.requesting_admin %>
+<% if @user == current_user && @user.userType == 'Regular' &&  @user.requesting_admin != true %>
   <%= render partial: 'users/requestadminform', locals: {user: @user}%>
 <% end %>
 

@@ -1,6 +1,8 @@
-<center><%= "Are you sure you want to make " + @user.username + " an Admin?" %></center>
-<%= form_for(@user, :url => { :action => "update_admin" }) do |f| %>
-  <%= f.hidden_field :requesting_admin, value: false %>
-  <%= f.hidden_field :userType, value: 'Admin' %>
-  <center><%= f.submit "Accept Request", class: "submitButton"%></center>
+<% if current_user.userType == 'Admin' %>
+  <center><%= "Are you sure you want to make " + @user.username + " an Admin?" %></center>
+  <%= form_for(@user, :url => { :action => "update_admin" }) do |f| %>
+    <%= f.hidden_field :requesting_admin, value: false %>
+    <%= f.hidden_field :userType, value: 'Admin' %>
+    <center><%= f.submit "Accept Request", class: "submitButton"%></center>
+  <% end %>
 <% end %>
