@@ -106,5 +106,29 @@
     <% end %>
 </table><br>
 
+<% if @user.userType == 'Admin' && current_user == @user %>
+  <h3>These Users are requesting Admin:</h3>
+  <table id="adminrequestList" class="dataTable">
+      <thead>
+          <tr>
+              <th>Users</th>
+              <th>Accept Request</th>
+          </tr>
+      </thead>
+      <% User.all.each do |user| %>
+          <% if user.requesting_admin %>
+              <tr>
+                <td> <%= link_to user.username, user %> </td>
+                <td> <%= render partial: 'users/acceptadminform', locals: {user: user}%> </td>
+              </tr>
+          <% end %>
+    <% end %>
+  </table><br>
+<% end %>
+
+<% if @user == current_user && @user.userType == 'Regular' &&  !@user.requesting_admin %>
+  <%= render partial: 'users/requestadminform', locals: {user: @user}%>
+<% end %>
+
 <%= link_to 'Back', users_path %>
 </div>

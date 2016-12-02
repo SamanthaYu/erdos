@@ -19,6 +19,10 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
   end
 
+  def edit_admin
+    @user = User.find(params[:id])
+  end
+
   def update_password
     @user=User.find(params[:id])
     @user.skip_password_validation=false
@@ -28,6 +32,34 @@ class UsersController < ApplicationController
         format.json { render :show, status: :ok, location: @user }
       else
         format.html { render :edit_password }
+        format.json { render json: @user.errors, status: :unprocessable_entity }
+      end
+    end
+  end
+
+  def update_admin
+    @user=User.find(params[:id])
+    respond_to do |format|
+      @user.skip_password_validation=true
+      if @user.update(params.require(:user).permit(:userType))
+        format.html { redirect_to current_user, notice: 'User was made an Admin.' }
+        format.json { render :show, status: :ok, location: @user }
+      else
+        format.html { render :edit }
+        format.json { render json: @user.errors, status: :unprocessable_entity }
+      end
+    end
+  end
+
+  def update_admin_request
+    @user=User.find(params[:id])
+    respond_to do |format|
+      @user.skip_password_validation=true
+      if @user.update(params.require(:user).permit(:requesting_admin))
+        format.html { redirect_to @user, notice: 'Admin Request Sent.' }
+        format.json { render :show, status: :ok, location: @user }
+      else
+        format.html { render :edit }
         format.json { render json: @user.errors, status: :unprocessable_entity }
       end
     end
@@ -82,7 +114,7 @@ class UsersController < ApplicationController
 
   private
     def user_params
-      params.require(:user).permit(:username, :password, :password_confirmation, :userType,:avatar)
+      params.require(:user).permit(:username, :password, :password_confirmation, :userType, :avatar, :requesting_admin)
     end
 
 end

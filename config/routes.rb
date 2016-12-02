@@ -15,6 +15,8 @@ Rails.application.routes.draw do
       member do
         get "edit_password"
         patch "update_password"
+        patch "update_admin_request"
+        patch "update_admin"
       end
     end
    resources :friendships

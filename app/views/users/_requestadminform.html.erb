@@ -1,0 +1,4 @@
+<%= form_for(@user, :url => { :action => "update_admin_request" }) do |f| %>
+  <%= f.hidden_field :requesting_admin, value: 1 %>
+  <center><%= f.submit "Request Admin", class: "submitButton"%></center>
+<% end %>
