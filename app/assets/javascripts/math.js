@@ -19,7 +19,7 @@ function renderLastMessage() {
 	renderMath(allMessages[len-1]);
 }
 
-function renderThisMessage(var calltag){
+function renderThisMessage(calltag){
 	var messagecontent = document.getElementById(calltag);
 	renderMath(messagecontent);
 }
