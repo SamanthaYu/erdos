@@ -20,8 +20,8 @@ function renderLastMessage() {
 }
 
 function renderThisMessage(calltag){
-	var messagecontent = document.getElementById(calltag);
-	renderMath(messagecontent);
+	var thisMessage = document.getElementById(calltag);
+	renderMath(thisMessage);
 }
 
 function renderLastUsername() {

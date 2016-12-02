@@ -3,7 +3,7 @@
 <center><p id="editErrorNotice" class="errorNotice"><%= notice %></p></center>
 <div id="editMathTyping" class="mathTyping"></div>
     <%= render partial: 'messages/mathMenu'%>
-    <%=form_for @message, remote: true, :url => {:controller=> "messages", :action => "update"}, :method => "put", authenticity_token: true do |f|%>
+    <%=form_for @message, remote: true, authenticity_token: true do |f|%>
       <%= f.text_area :content,  class: "form-control", rows: "1", :placeholder => "Edit Message, to use math formatting surround formula with $ signs", data: {textarea: "message"}, id: 'editmessage_content'%>
       <%= f.hidden_field :chatroom_id, value: @message.chatroom_id %>
       <% if !current_user.nil? %>

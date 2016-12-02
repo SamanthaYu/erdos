@@ -12,7 +12,7 @@ App.messages = App.cable.subscriptions.create('MessagesChannel', {
             var calltag="#messageContent"+data.id;
             var calltimetag="#currentUserTime"+data.id;
             $(calltag).replaceWith('<div id="messageContent'+data.id+'" class="messageContent">'+data.message+'</div>');
-            $(calltimetag).replaceWith('<span class="currentUserTime" id="currentUserTime'+data.id+'">'+data.createtimestamp+', last edited:'+data.edittimestamp+'</span>');
+            $(calltimetag).replaceWith('<span class="currentUserTime" id="currentUserTime'+data.id+'">'+data.createtimestamp+', last edited: '+data.edittimestamp+'</span>');
             renderThisMessage(calltag);
             closeEditForm();
         }

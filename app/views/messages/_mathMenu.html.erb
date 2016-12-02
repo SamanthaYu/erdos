@@ -4,7 +4,7 @@
   <% if params[:action] == "edit" %>
     <select id="editMathMenu" class="mathMenu">
   <% else %>
-    <select id="mathMenu" class="mathMenu">
+    <select id="chatMathMenu" class="mathMenu">
   <% end %>
     <option value="default" selected="selected">Default</option>
     <option value="operators">Operators</option>
@@ -14,7 +14,7 @@
   <% if params[:action] == "edit" %>
     <table id="editMathTable" class="mathTable">
   <% else %>
-    <table id="mathTable" class="mathTable">
+    <table id="chatMathTable" class="mathTable">
   <% end %>
   </table>
 </div>

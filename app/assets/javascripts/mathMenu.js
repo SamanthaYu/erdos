@@ -1,9 +1,10 @@
 document.addEventListener("turbolinks:load", function() {
-  checkButtons("mathMenu", "mathTable");
+
+  checkButtons("chatMathMenu", $("#chatMathTable"));
   renderTyping($('#mathTyping'), $('#message_content'));
 
-  $("#mathMenu").change(function() {  // If the user has selected a new option from the dropdown
-    checkButtons("mathMenu", "mathTable");
+  $("#chatMathMenu").change(function() {  // If the user has selected a new option from the dropdown
+    checkButtons("chatMathMenu", $("#chatMathTable"));
   });
 
   $('#message_content').keyup(function() {
@@ -14,11 +15,11 @@ document.addEventListener("turbolinks:load", function() {
 
 $(document).on("click", '#edit_link', function () {
     $ (document).ajaxComplete( function () {
-        checkButtons("editMathMenu", "editMathTable");
+        checkButtons("editMathMenu", $("#editMathTable"));
         renderTyping($('#editMathTyping'), $('#editmessage_content'));
 
         $("#editMathMenu").change(function() {  // If the user has selected a new option from the dropdown
-          checkButtons("editMathMenu", "editMathTable");
+          checkButtons("editMathMenu", $("#editMathTable"));
         });
 
         if ($('#editmessage_content')) {
@@ -32,7 +33,7 @@ $(document).on("click", '#edit_link', function () {
 
 
 $(document).on("click", '.mathButton', function() {
-    if ($(this).attr("id") === "mathMenuButton") {
+    if ($(this).attr("id") === "chatMathMenuButton") {
         enterButton($(this), $('#mathTyping'), $('#message_content'));
     }
     else if ($(this).attr("id") === "editMathMenuButton") {
@@ -63,7 +64,7 @@ function enterButton(thisObj, renderObj, contentObj) {
 
 function checkButtons(menu, table) {
     if ($('#'+menu+' option:selected').text() == "Default") {
-      $('#'+table).html(
+      table.html(
         "<tr>\
             <td class='mathButton' id='"+menu+"Button"+"'data-val='$\\int$ '>$\\int$</td>\
             <td class='mathButton' id='"+menu+"Button"+"'data-val='$\\pm$ '>$\\pm$</td>\
@@ -71,7 +72,7 @@ function checkButtons(menu, table) {
         </tr>");
     }
     else if ($('#'+menu+' option:selected').text() == "Operators") {
-      $('#'+table).html(
+     table.html(
         "<tr>\
             <td class='mathButton' id='"+menu+"Button"+"'data-val='$\\pm$ '>$\\pm$</td>\
             <td class='mathButton' id='"+menu+"Button"+"'data-val='$\\times$ '>$\\times$</td>\
@@ -98,29 +99,29 @@ function checkButtons(menu, table) {
         </tr>");
     }
     else if ($('#'+menu+' option:selected').text() == "Greek Letters") {
-      $('#'+table).html(
+     table.html(
         "<tr>\
-            <td class='mathButton' data-val='$\\alpha$ '>$\\alpha$</td>\
-            <td class='mathButton' data-val='$\\beta$ '>$\\beta$</td>\
-            <td class='mathButton' data-val='$\\gamma$ '>$\\gamma$</td>\
-            <td class='mathButton' data-val='$\\delta$ '>$\\delta$</td>\
-            <td class='mathButton' data-val='$\\alpha$ '>$\\alpha$</td>\
-            <td class='mathButton' data-val='$\\zeta$ '>$\\zeta$</td>\
-            <td class='mathButton' data-val='$\\eta$ '>$\\eta$</td>\
-            <td class='mathButton' data-val='$\\iota$ '>$\\iota$</td>\
-            <td class='mathButton' data-val='$\\kappa$ '>$\\kappa$</td>\
-            <td class='mathButton' data-val='$\\lambda$ '>$\\lambda$</td>\
-            <td class='mathButton' data-val='$\\mu$ '>$\\mu$</td>\
-            <td class='mathButton' data-val='$\\nu$ '>$\\nu$</td>\
-            <td class='mathButton' data-val='$\\xi$ '>$\\xi$</td>\
-            <td class='mathButton' data-val='$\\pi$ '>$\\pi$</td>\
-            <td class='mathButton' data-val='$\\sigma$ '>$\\sigma$</td>\
-            <td class='mathButton' data-val='$\\tau$ '>$\\tau$</td>\
-            <td class='mathButton' data-val='$\\upsilon$ '>$\\upsilon$</td>\
-            <td class='mathButton' data-val='$\\phi$ '>$\\phi$</td>\
-            <td class='mathButton' data-val='$\\chi$ '>$\\chi$</td>\
-            <td class='mathButton' data-val='$\\psi$ '>$\\psi$</td>\
-            <td class='mathButton' data-val='$\\omega$ '>$\\omega$</td>\
+            <td class='mathButton' id='"+menu+"Button"+"'data-val='$\\alpha$ '>$\\alpha$</td>\
+            <td class='mathButton' id='"+menu+"Button"+"'data-val='$\\beta$ '>$\\beta$</td>\
+            <td class='mathButton' id='"+menu+"Button"+"'data-val='$\\gamma$ '>$\\gamma$</td>\
+            <td class='mathButton' id='"+menu+"Button"+"'data-val='$\\delta$ '>$\\delta$</td>\
+            <td class='mathButton' id='"+menu+"Button"+"'data-val='$\\alpha$ '>$\\alpha$</td>\
+            <td class='mathButton' id='"+menu+"Button"+"'data-val='$\\zeta$ '>$\\zeta$</td>\
+            <td class='mathButton' id='"+menu+"Button"+"'data-val='$\\eta$ '>$\\eta$</td>\
+            <td class='mathButton' id='"+menu+"Button"+"'data-val='$\\iota$ '>$\\iota$</td>\
+            <td class='mathButton' id='"+menu+"Button"+"'data-val='$\\kappa$ '>$\\kappa$</td>\
+            <td class='mathButton' id='"+menu+"Button"+"'data-val='$\\lambda$ '>$\\lambda$</td>\
+            <td class='mathButton' id='"+menu+"Button"+"'data-val='$\\mu$ '>$\\mu$</td>\
+            <td class='mathButton' id='"+menu+"Button"+"'data-val='$\\nu$ '>$\\nu$</td>\
+            <td class='mathButton' id='"+menu+"Button"+"'data-val='$\\xi$ '>$\\xi$</td>\
+            <td class='mathButton' id='"+menu+"Button"+"'data-val='$\\pi$ '>$\\pi$</td>\
+            <td class='mathButton' id='"+menu+"Button"+"'data-val='$\\sigma$ '>$\\sigma$</td>\
+            <td class='mathButton' id='"+menu+"Button"+"'data-val='$\\tau$ '>$\\tau$</td>\
+            <td class='mathButton' id='"+menu+"Button"+"'data-val='$\\upsilon$ '>$\\upsilon$</td>\
+            <td class='mathButton' id='"+menu+"Button"+"'data-val='$\\phi$ '>$\\phi$</td>\
+            <td class='mathButton' id='"+menu+"Button"+"'data-val='$\\chi$ '>$\\chi$</td>\
+            <td class='mathButton' id='"+menu+"Button"+"'data-val='$\\psi$ '>$\\psi$</td>\
+            <td class='mathButton' id='"+menu+"Button"+"'data-val='$\\omega$ '>$\\omega$</td>\
         </tr>");
     }
 

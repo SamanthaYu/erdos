@@ -4,9 +4,7 @@
     <% content_for :title, chatroom_path(@chatroom) %>
 <% end %>
 
-<div id="editForm" class="forms" style="display:none">
-    <%= render partial: 'messages/editmessage_form', locals: {message: @message, chatroom: @chatroom} %>
-</div>
+<div id="editForm" class="forms" style="display:none"></div>
 
 <div id="header">
     <% if !@chatroom.roomname.blank? %>
