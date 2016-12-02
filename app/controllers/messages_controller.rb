@@ -66,16 +66,14 @@ def delete
     end
 end
 
-def destroy_message
+
+def destroy
     @message = Message.find(params[:id])
     ActionCable.server.broadcast 'messages',
       type: "delete",
       id: @message.id;
     head :ok
     @message.destroy
-end
-
-def destroy
 end
 
   private
