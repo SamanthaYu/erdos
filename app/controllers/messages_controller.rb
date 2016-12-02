@@ -40,11 +40,17 @@ def update
           roomname = chatroom_path(@message.chatroom)
         end
         ActionCable.server.broadcast 'messages',
-          type: "edit",
-          message: @message.content,
-          id: @message.id,
-          createtimestamp: view_context.local_time_ago(@message.created_at),
-          edittimestamp: view_context.local_time_ago(@message.updated_at);
+            type: "edit",
+            chatroomname: roomname,
+            avatarurl: @message.user.avatar.thumb.url,
+            message: @message.content,
+            poster: @message.poster,
+            currentuser: current_user.username,
+            editlink: edit_message_path(@message),
+            deletelink: delete_message_path(@message),
+            id: @message.id,
+            createtimestamp: view_context.local_time_ago(@message.created_at),
+            edittimestamp: view_context.local_time_ago(@message.updated_at);
         head :ok
     else
         if @message.content.blank?
