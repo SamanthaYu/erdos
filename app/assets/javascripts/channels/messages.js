@@ -16,7 +16,8 @@ App.messages = App.cable.subscriptions.create('MessagesChannel', {
             renderThisMessage(calltag);
         }
         else {
-            $("#messageContent"+data.id).remove();
+            var parent = $("#messageContent"+data.id).parent();
+            parent.remove();
         }
     }
     return;
