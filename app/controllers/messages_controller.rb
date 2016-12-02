@@ -18,6 +18,7 @@ class MessagesController < ApplicationController
         poster: message.poster,
         currentuser: current_user.username,
         editlink: edit_message_path(message),
+        deletelink: message_path(message),
         id: message.id,
         timestamp: view_context.local_time_ago(message.created_at);
       head :ok

@@ -16,7 +16,7 @@ App.messages = App.cable.subscriptions.create('MessagesChannel', {
             renderThisMessage(calltag);
         }
         else {
-            $('#messages').remove("#messageContent"+data.id);
+            $("#messageContent"+data.id).remove();
         }
     }
     return;
@@ -29,8 +29,9 @@ App.messages = App.cable.subscriptions.create('MessagesChannel', {
     var avatarlink2='<span class="userAvatar" id="otherUserAvatar"><img src="'+data.avatarurl+'"></span>';
 
     if ($('#currentUser').attr('name') == data.poster){
-      retmess+='<div id="currentUserMessage" class="message"><div class="messageHeader"><p>';
-      retmess+='<a href="'+data.editlink+'" data-remote="true" style="float:left" id="edit_link">edit</a>';
+      retmess+='<div id="currentUserMessage" class="message"><div class="messageHeader"><p><span id="messageActions" style="float:left">';
+      retmess+='<a href="'+data.editlink+'" data-remote="true" id="edit_link">edit</a> | ';
+      retmess+='<a href="'+data.deletelink+'" data-remote="true" data-method="delete" data-confirm="Are you sure?" id="edit_link">delete</a></span>';
       retmess+='<span class="currentUserTime" id="currentUserTime'+data.id+'">' + timestamp + '</span><span class="username"><strong>'+data.poster+'</strong></span>';
       retmess+=avatarlink1+'</p>';
     }
