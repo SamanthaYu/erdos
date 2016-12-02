@@ -1,0 +1,9 @@
+<%=form_for @message, :html => { :method => :delete, :remote => true }, authenticity_token: true do |f|%>
+  <center>
+  <h3 style="background-color: #ddd">Delete Message</h3>
+  <p><br>Are you sure you want to delete this message? This action cannot be undone.</p>
+  <%= f.hidden_field :chatroom_id, value: @message.chatroom_id %>
+  <button type="button" class="submitButton" id="deletemessage_cancel" onclick="closeDeleteForm()">cancel</button>
+  <%= f.submit "confirm", class: "submitButton", style:"margin-left: 10px", data: {send: "message"}, id: 'deletemessage_submit'%>
+  </center>
+<%end%>

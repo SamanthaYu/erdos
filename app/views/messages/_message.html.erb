@@ -5,7 +5,7 @@
                 <p>
                     <span id="messageActions" style="float:left">
                         <%= link_to "edit", edit_message_path(message), remote: true, id: "edit_link"%> |
-                        <%= link_to 'delete', message, method: :delete, remote: true, data: { confirm: 'Are you sure?' } %>
+                        <%= link_to 'delete', delete_message_path(message), remote: true, id: "delete_link"%>
                     </span>
                     <span class="currentUserTime" id="currentUserTime<%=message.id%>"><%=local_time_ago(message.created_at)%>
                     <% if message.updated_at != message.created_at %>

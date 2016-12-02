@@ -1,5 +1,4 @@
-<span onclick=closeEditForm() style="float:right; margin: 5px 15px 0 0; font-size:20px; cursor:pointer">&times;</span>
-<h3>Editing Message</h3>
+<h3 style="background-color: #ddd">Editing Message</h3>
 <center><p id="editErrorNotice" class="errorNotice" style="display:none"><%= notice %></p></center>
 <div id="editMathTyping" class="mathTyping"></div>
     <%= render partial: 'messages/mathMenu'%>
@@ -10,5 +9,8 @@
         <%= f.hidden_field :poster, value: current_user.username %>
         <%= f.hidden_field :user_id, value: current_user.id %>
       <% end %>
+      <center>
+      <button type="button" class="submitButton" id="editmessage_cancel" onclick="closeEditForm()">cancel</button>
       <%= f.submit "edit", class: "submitButton", style:"margin-left: 10px", data: {send: "message"}, id: 'editmessage_submit'%>
+      </center>
     <%end%>

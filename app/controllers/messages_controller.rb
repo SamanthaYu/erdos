@@ -28,7 +28,6 @@ class MessagesController < ApplicationController
 def edit
     @message = Message.find(params[:id])
     respond_to do |format|
-        format.html {}
         format.js {}
     end
 end
@@ -49,8 +48,16 @@ def update
         head :ok
     else
         if @message.content.blank?
-          destroy
+          render 'delete'
         end
+    end
+end
+
+def delete
+    @message = Message.find(params[:id])
+    respond_to do |format|
+        format.html {}
+        format.js {}
     end
 end
 
