@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
     layout 'signup', only: [:new, :create]
+  include SessionsHelper
 
   def index
     @user=User.new
@@ -96,14 +97,25 @@ class UsersController < ApplicationController
   def destroy
     @user = User.find(params[:id])
     if @user.present?
-      @user.private_chatrooms.each do |room|
-        if room.private_chatters.size < 2
-          Chatroom.find(room).destroy
+      if @user != current_user
+        @user.private_chatrooms.each do |room|
+          if room.private_chatters.size < 2
+            Chatroom.find(room).destroy
+          end
         end
+        @user.destroy
+        redirect_to users_url
+      else
+        @user.private_chatrooms.each do |room|
+          if room.private_chatters.size < 2
+            Chatroom.find(room).destroy
+          end
+        end
+        log_out
+        @user.destroy
+        redirect_to '/'
       end
-      @user.destroy
     end
-    redirect_to users_url
   end
 
   private
