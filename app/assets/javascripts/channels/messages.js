@@ -8,11 +8,11 @@ App.messages = App.cable.subscriptions.create('MessagesChannel', {
           renderLastMessage();
           renderLastUsername();
       }
-        else{
+        else {
             var calltag="#messageContent"+data.id;
             var calltimetag="#currentUserTime"+data.id;
-            $(calltag).replaceWith(data.message);
-            $(calltimetag).replaceWith("last edited: " + data.timestamp);
+            $(calltag).replaceWith('<div id="messageContent'+data.id+'" class="messageContent">'+data.message+'</div>');
+            $(calltimetag).replaceWith('<span class="currentUserTime" id="currentUserTime'+data.id+'">'+data.createtimestamp+', last edited:'+data.edittimestamp+'</span>');
             renderThisMessage(calltag);
             closeEditForm();
         }
@@ -38,7 +38,7 @@ App.messages = App.cable.subscriptions.create('MessagesChannel', {
       retmess+='<span class="timeStamp">' + timestamp + '</span></p>';
     }
 
-    retmess+='</div><div id="messageContent'+data.id+'" class="messageContent">'+data.message + '</div></div>';
+    retmess+='</div><div id="messageContent'+data.id+'" class="messageContent">'+data.message+'</div></div>';
     return retmess;
     //return "<p> <b>" + data.poster + ": </b>" + data.message + "</p>";
     }

@@ -48,7 +48,8 @@ def update
           currentuser: current_user.username,
           editlink: edit_message_path(@message),
           id: @message.id,
-          timestamp: view_context.local_time_ago(@message.created_at);
+          createtimestamp: view_context.local_time_ago(@message.created_at);
+          edittimestamp: view_context.local_time_ago(@message.updated_at);
         head :ok
     else
         if @message.content.blank?
