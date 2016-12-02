@@ -26,25 +26,27 @@ class MessagesController < ApplicationController
 
 def edit
     @message = Message.find(params[:id])
-    ActionCable.server.broadcast 'messages',
-      type: "edit",
-      chatroomname: roomname,
-      avatarurl: message.user.avatar.thumb.url,
-      message: message.content,
-      poster: message.poster,
-      currentuser: current_user.username,
-      editlink: edit_message_path(message),
-      id: message.id,
-      timestamp: view_context.local_time_ago(message.updated_at);
-    head :ok
 end
 
 def update
     @message = Message.find(params[:id])
     respond_to do |format|
       if @message.update(message_params)
-        format.html { redirect_to chatroom_path(@message.chatroom) }
-        format.js {}
+        roomname=@message.chatroom.roomname
+        if @message.chatroom.roomname.blank?
+          roomname = chatroom_path(@message.chatroom)
+        end
+        ActionCable.server.broadcast 'messages',
+          type: "edit",
+          chatroomname: roomname,
+          avatarurl: @message.user.avatar.thumb.url,
+          message: @message.content,
+          poster: @message.poster,
+          currentuser: current_user.username,
+          editlink: edit_message_path(@message),
+          id: @message.id,
+          timestamp: view_context.local_time_ago(@message.created_at);
+        head :ok
       else
         if @message.content.blank?
           flash[:notice] = "Message cannot be empty"
