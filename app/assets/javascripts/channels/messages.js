@@ -17,7 +17,7 @@ App.messages = App.cable.subscriptions.create('MessagesChannel', {
         }
         else {
             var parent = $("#messageContent"+data.id).parent();
-            parent.remove();
+            parent.fadeOut("swing");
         }
     }
     return;
