@@ -58,8 +58,8 @@ ActiveRecord::Schema.define(version: 20161120015032) do
     t.string   "username"
     t.string   "password"
     t.string   "userType"
-    t.datetime "created_at",      null: false
-    t.datetime "updated_at",      null: false
+    t.datetime "created_at",       null: false
+    t.datetime "updated_at",       null: false
     t.string   "password_digest"
     t.string   "avatar"
     t.boolean  "requesting_admin"

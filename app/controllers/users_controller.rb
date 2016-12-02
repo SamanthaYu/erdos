@@ -41,12 +41,9 @@ class UsersController < ApplicationController
     @user=User.find(params[:id])
     respond_to do |format|
       @user.skip_password_validation=true
-      if @user.update(params.require(:user).permit(:userType))
-        format.html { redirect_to current_user, notice: 'User was made an Admin.' }
+      if @user.update(params.require(:user).permit(:userType, :requesting_admin))
+        format.html { redirect_to current_user, notice: 'Admin request accepted' }
         format.json { render :show, status: :ok, location: @user }
-      else
-        format.html { render :edit }
-        format.json { render json: @user.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -56,11 +53,8 @@ class UsersController < ApplicationController
     respond_to do |format|
       @user.skip_password_validation=true
       if @user.update(params.require(:user).permit(:requesting_admin))
-        format.html { redirect_to @user, notice: 'Admin Request Sent.' }
+        format.html { redirect_to @user, notice: 'Admin request sent.' }
         format.json { render :show, status: :ok, location: @user }
-      else
-        format.html { render :edit }
-        format.json { render json: @user.errors, status: :unprocessable_entity }
       end
     end
   end

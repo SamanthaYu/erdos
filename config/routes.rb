@@ -16,6 +16,7 @@ Rails.application.routes.draw do
         get "edit_password"
         patch "update_password"
         patch "update_admin_request"
+        get "edit_admin"
         patch "update_admin"
       end
     end
