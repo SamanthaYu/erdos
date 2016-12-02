@@ -37,7 +37,6 @@ def edit
       id: message.id,
       timestamp: view_context.local_time_ago(message.updated_at);
     head :ok
-  end
 end
 
 def update

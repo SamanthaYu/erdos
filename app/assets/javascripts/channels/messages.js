@@ -14,6 +14,7 @@ App.messages = App.cable.subscriptions.create('MessagesChannel', {
             $(calltag).replaceWith(data.message);
             $(calltimetag).replaceWith("last edited: " + data.timestamp);
             renderThisMessage(calltag);
+            closeEditForm();
         }
     }
     return;
