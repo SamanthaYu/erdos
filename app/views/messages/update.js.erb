@@ -3,4 +3,3 @@
     $("#currentUserTime<%=@message.id%>").html("<%= j (render 'messages/edittime', locals: {message: @message, chatroom: @chatroom}) %>");
     $("#editForm").fadeOut("swing");
 <%end%>
-$("#editErrorNotice").replaceWith("<p id='editErrorNotice' class='errorNotice'><%= notice %></p>");

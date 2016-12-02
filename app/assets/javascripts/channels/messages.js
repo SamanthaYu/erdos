@@ -1,20 +1,22 @@
 App.messages = App.cable.subscriptions.create('MessagesChannel', {
   received: function(data) {
     if ($('h1').text()===data.chatroomname){
-        if (data.type=="new"){
+        if (data.type === "new"){
           $("#messages").removeClass('hidden');
           $('#messages').append(this.renderMessage(data));
           scrollBottom();
           renderLastMessage();
           renderLastUsername();
       }
-        else {
-            var calltag="#messageContent"+data.id;
-            var calltimetag="#currentUserTime"+data.id;
-            $(calltag).replaceWith('<div id="messageContent'+data.id+'" class="messageContent">'+data.message+'</div>');
-            $(calltimetag).replaceWith('<span class="currentUserTime" id="currentUserTime'+data.id+'">'+data.createtimestamp+', last edited: '+data.edittimestamp+'</span>');
+        else if (data.type === "edit"){
+            var calltag="messageContent"+data.id;
+            var calltimetag="currentUserTime"+data.id;
+            $("#"+calltag).html(data.message);
+            $("#"+calltimetag).html(data.createtimestamp+', last edited: '+data.edittimestamp);
             renderThisMessage(calltag);
-            closeEditForm();
+        }
+        else {
+            $('#messages').remove("#messageContent"+data.id);
         }
     }
     return;

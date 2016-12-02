@@ -1,6 +1,6 @@
 <span onclick=closeEditForm() style="float:right; margin: 5px 15px 0 0; font-size:20px; cursor:pointer">&times;</span>
 <h3>Editing Message</h3>
-<center><p id="editErrorNotice" class="errorNotice"><%= notice %></p></center>
+<center><p id="editErrorNotice" class="errorNotice" style="display:none"><%= notice %></p></center>
 <div id="editMathTyping" class="mathTyping"></div>
     <%= render partial: 'messages/mathMenu'%>
     <%=form_for @message, remote: true, authenticity_token: true do |f|%>

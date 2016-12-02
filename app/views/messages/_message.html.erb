@@ -3,7 +3,10 @@
         <div id="currentUserMessage" class="message">
             <div class="messageHeader">
                 <p>
-                    <%= link_to "edit", edit_message_path(message), style:"float:left", remote: true, id: "edit_link"%>
+                    <span id="messageActions" style="float:left">
+                        <%= link_to "edit", edit_message_path(message), remote: true, id: "edit_link"%> |
+                        <%= link_to 'delete', message, method: :delete, remote: true, data: { confirm: 'Are you sure?' } %>
+                    </span>
                     <span class="currentUserTime" id="currentUserTime<%=message.id%>"><%=local_time_ago(message.created_at)%>
                     <% if message.updated_at != message.created_at %>
                         , last edited: <%=local_time_ago(message.updated_at)%>
