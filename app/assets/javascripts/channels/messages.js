@@ -31,7 +31,7 @@ App.messages = App.cable.subscriptions.create('MessagesChannel', {
     if ($('#currentUser').attr('name') == data.poster){
       retmess+='<div id="currentUserMessage" class="message"><div class="messageHeader"><p><span id="messageActions" style="float:left">';
       retmess+='<a href="'+data.editlink+'" data-remote="true" id="edit_link">edit</a> | ';
-      retmess+='<a href="'+data.deletelink+'" data-remote="true" data-method="delete" data-confirm="Are you sure?" id="edit_link">delete</a></span>';
+      retmess+='<a href="'+data.deletelink+'" data-remote="true" id="delete_link">delete</a></span>';
       retmess+='<span class="currentUserTime" id="currentUserTime'+data.id+'">' + timestamp + '</span><span class="username"><strong>'+data.poster+'</strong></span>';
       retmess+=avatarlink1+'</p>';
     }
