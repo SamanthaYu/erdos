@@ -12,8 +12,10 @@ $(document).on("click", '#deletemessage_submit', function () {
 
 function closeEditForm() {
     $('#editForm').fadeOut("swing");
+    return false;
 }
 
 function closeDeleteForm() {
     $('#deleteForm').fadeOut("swing");
+    return false;
 }
