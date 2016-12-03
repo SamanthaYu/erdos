@@ -68,8 +68,13 @@ end
 
 def destroy
     @message = Message.find(params[:id])
+    roomname=@message.chatroom.roomname
+    if @message.chatroom.roomname.blank?
+      roomname = chatroom_path(@message.chatroom)
+    end
     ActionCable.server.broadcast 'messages',
       type: "delete",
+      chatroom: roomname,
       id: @message.id;
     head :ok
     @message.destroy
