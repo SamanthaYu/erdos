@@ -1,11 +1,24 @@
 App.messages = App.cable.subscriptions.create('MessagesChannel', {
   received: function(data) {
     if ($('h1').text()===data.chatroomname){
-      $("#messages").removeClass('hidden');
-      $('#messages').append(this.renderMessage(data));
-      scrollBottom();
-      renderLastMessage();
-      renderLastUsername();
+        if (data.type == "new"){
+          $("#messages").removeClass('hidden');
+          $('#messages').append(this.renderMessage(data));
+          scrollBottom();
+          renderLastMessage();
+          renderLastUsername();
+      }
+        else if (data.type == "edit"){
+            var calltag="messageContent"+data.id;
+            var calltimetag="currentUserTime"+data.id;
+            $("#"+calltag).replaceWith('<div id="messageContent'+data.id+'" class="messageContent">'+data.message+'</div>');
+            $("#"+calltimetag).replaceWith('<span class="currentUserTime" id="currentUserTime'+data.id+'">'+data.createtimestamp+', last edited: '+data.edittimestamp+'</span>');
+            renderThisMessage(calltag);
+        }
+        else {
+            var parenttag = $("#messageContent"+data.id).parent();
+            parenttag.fadeOut("swing");
+        }
     }
     return;
   },
@@ -17,8 +30,10 @@ App.messages = App.cable.subscriptions.create('MessagesChannel', {
     var avatarlink2='<span class="userAvatar" id="otherUserAvatar"><img src="'+data.avatarurl+'"></span>';
 
     if ($('#currentUser').attr('name') == data.poster){
-      retmess+='<div id="currentUserMessage" class="message">';
-      retmess+='<div class="messageHeader"><p><span class="timeStamp" id="currentUserTime">' + timestamp + '</span><span class="username"><strong>'+data.poster+'</strong></span>';
+      retmess+='<div id="currentUserMessage" class="message"><div class="messageHeader"><p><span id="messageActions" style="float:left">';
+      retmess+='<a href="'+data.editlink+'" data-remote="true" id="edit_link">edit</a> | ';
+      retmess+='<a href="'+data.deletelink+'" data-remote="true" id="delete_link">delete</a></span>';
+      retmess+='<span class="currentUserTime" id="currentUserTime'+data.id+'">' + timestamp + '</span><span class="username"><strong>'+data.poster+'</strong></span>';
       retmess+=avatarlink1+'</p>';
     }
     else {
@@ -27,8 +42,8 @@ App.messages = App.cable.subscriptions.create('MessagesChannel', {
       retmess+='<span class="timeStamp">' + timestamp + '</span></p>';
     }
 
-    retmess+='</div><div class="messageContent">'+data.message + '</div></div>';
+    retmess+='</div><div id="messageContent'+data.id+'" class="messageContent">'+data.message+'</div></div>';
     return retmess;
     //return "<p> <b>" + data.poster + ": </b>" + data.message + "</p>";
-  }
+    }
 });

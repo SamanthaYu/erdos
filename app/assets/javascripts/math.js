@@ -19,6 +19,11 @@ function renderLastMessage() {
 	renderMath(allMessages[len-1]);
 }
 
+function renderThisMessage(calltag){
+	var thisMessage = document.getElementById(calltag);
+	renderMath(thisMessage);
+}
+
 function renderLastUsername() {
 	var allUsernames = document.getElementsByClassName('username');
 	var len=allUsernames.length;

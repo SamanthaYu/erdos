@@ -1,6 +1,16 @@
-<%=form_for @message, remote: true, authenticity_token: true do |f|%>
-  <%= f.label :your_message%>:
-  <%= f.text_area :content, class: "form-control", data: {textarea: "message"}%>
-  <%= f.hidden_field :chatroom_id, value: @chatroom.id %>
-  <%= f.submit "send", class: "btn", style: "display: none", data: {send: "message"}%>
-<%end%>
+<h3 style="background-color: #ddd">Editing Message</h3>
+<center><p id="editErrorNotice" class="errorNotice" style="display:none"><%= notice %></p></center>
+<div id="editMathTyping" class="mathTyping"></div>
+    <%= render partial: 'messages/mathMenu'%>
+    <%=form_for @message, remote: true, authenticity_token: true do |f|%>
+      <%= f.text_area :content,  class: "form-control", rows: "1", :placeholder => "Edit Message, to use math formatting surround formula with $ signs", data: {textarea: "message"}, id: 'editmessage_content'%>
+      <%= f.hidden_field :chatroom_id, value: @message.chatroom_id %>
+      <% if !current_user.nil? %>
+        <%= f.hidden_field :poster, value: current_user.username %>
+        <%= f.hidden_field :user_id, value: current_user.id %>
+      <% end %>
+      <center>
+      <button type="button" class="submitButton" id="editmessage_cancel" onclick="closeEditForm()">cancel</button>
+      <%= f.submit "edit", class: "submitButton", style:"margin-left: 10px", data: {send: "message"}, id: 'editmessage_submit'%>
+      </center>
+    <%end%>

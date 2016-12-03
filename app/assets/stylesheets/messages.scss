@@ -5,6 +5,34 @@
 $header-height: 60px;
 $footer-height: 140px;
 
+.forms {
+    background-color: #fff;
+    max-width: 100vw;
+    left: 0;
+    right: 0;
+    padding: 8px 0px;
+    padding-top: 0px;
+    margin: 0;
+    display: block;
+    position: absolute;
+}
+
+#editForm {
+    width: 80%;
+    margin: 0 auto;
+    border: 1px solid #aaa;
+    top: 40vh;
+    z-index: 1000;
+}
+
+#deleteForm {
+    width: 500px;
+    margin: 0 auto;
+    border: 1px solid #aaa;
+    top: 40vh;
+    z-index: 2000;
+}
+
 #messageContainer {
     position: absolute;
     max-width: 100vw;
@@ -16,22 +44,13 @@ $footer-height: 140px;
     right: 0;
     margin: auto;
     display: block;
+    z-index: 0;
 }
 
 #inputForm {
     border-top: 1px solid #aaa;
-    position: absolute;
-    background-color: #fff;
     bottom: 0;
     height: $footer-height;
-    min-width:80%;
-    max-width: 100vw;
-    left: 0;
-    right: 0;
-    padding: 8px 0px;
-    padding-top: 0px;
-    margin: 0;
-    display: block;
 }
 
 .message {
@@ -60,7 +79,9 @@ $footer-height: 140px;
     font-size: 10px;
 }
 
-#currentUserTime {
+.currentUserTime {
+    color: #777;
+    font-size: 10px;
     margin-left: 0px;
     margin-right: 5px;
 }

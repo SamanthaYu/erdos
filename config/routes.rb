@@ -11,6 +11,7 @@ Rails.application.routes.draw do
    get '/home', to: 'welcome#show'
    resources :chatrooms
    resources :messages
+   get '/messages/:id/delete(.:format)', to: 'messages#delete', as: :delete_message
    resources :users do
       member do
         get "edit_password"
