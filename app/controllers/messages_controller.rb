@@ -74,7 +74,7 @@ def destroy
     end
     ActionCable.server.broadcast 'messages',
       type: "delete",
-      chatroom: roomname,
+      chatroomname: roomname,
       id: @message.id;
     head :ok
     @message.destroy
