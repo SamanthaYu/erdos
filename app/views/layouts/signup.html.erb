@@ -160,8 +160,11 @@
               <%= f.password_field :password_confirmation, :placeholder => 'Confirm Password', id: 'password_confirmation_area'%><br>
               <center><%= f.label :avatar, "Avatar" %>
               <%= f.file_field :avatar %> <br>
-              <%= f.label :userType, "User Type" %> &nbsp;&nbsp;
-              <%= f.select :userType, ['Regular', 'Admin'], :selected => 'Regular' %><br>
+              <% if !User.where(userType: 'Admin').exists?%>
+                <%= f.hidden_field :userType, value: 'Admin' %>
+              <% else %>
+                <%= f.hidden_field :userType, value: 'Regular' %>
+              <% end %>
 
               <%= f.submit "Create Account", class: "submitButton", id: 'signup_button' %></center>
             <% end %>
