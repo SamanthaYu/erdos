@@ -66,7 +66,6 @@ def delete
     end
 end
 
-
 def destroy
     @message = Message.find(params[:id])
     ActionCable.server.broadcast 'messages',

@@ -16,7 +16,8 @@ App.messages = App.cable.subscriptions.create('MessagesChannel', {
             renderThisMessage(calltag);
         }
         else {
-            alert(data.id);
+            var parenttag = $("#messageContent95").parent();
+            parenttag.fadeOut("swing");
         }
     }
     return;
