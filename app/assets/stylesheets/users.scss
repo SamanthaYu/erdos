@@ -24,3 +24,11 @@ body.users_new, body.users_create {
     margin: 0px;
     text-align: center;
 }
+
+#adminRequestForm {
+    width: 500px;
+    margin: 0 auto;
+    border: 1px solid #aaa;
+    top: 40%;
+    z-index: 2000;
+}

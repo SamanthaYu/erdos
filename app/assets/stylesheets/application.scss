@@ -70,6 +70,7 @@
      font-family: 'Fira Sans', sans-serif;
      letter-spacing: 2px;
      font-size: 20px;
+     line-height: 2em;
  }
 
  .sideBarToggle {
@@ -376,4 +377,16 @@
 
  #option2 {
      float: right;
+ }
+
+ .forms {
+     background-color: #fff;
+     max-width: 100vw;
+     left: 0;
+     right: 0;
+     padding: 8px 0px;
+     padding-top: 0px;
+     margin: 0;
+     display: block;
+     position: absolute;
  }
