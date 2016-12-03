@@ -1,5 +1,4 @@
 class UsersController < ApplicationController
-    layout 'signup', only: [:new, :create]
   include SessionsHelper
 
   def index

@@ -5,23 +5,22 @@
 $green: #03a079;
 $main-green: #41b799;
 
-h1 {
+#usersContainer {
+    padding: 15px;
+}
+
+h1.formTitle {
     padding: 10px;
     margin: 0;
     text-align: center;
     font-family: 'Fira Sans', sans-serif;
     letter-spacing: 2px;
-    font-size: 40px;
+    font-size: 30px;
+    color: #41b799;
 }
 
-h3 {
-    margin: 0;
+body.users_new, body.users_create {
+    padding: 0px;
+    margin: 0px;
     text-align: center;
-    font-family: 'Fira Sans', sans-serif;
-    letter-spacing: 2px;
-    font-size: 20px;
-}
-
-#usersContainer {
-    padding: 15px;
 }

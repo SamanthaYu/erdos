@@ -1,5 +1,4 @@
 class SessionsController < ApplicationController
-    layout "login", only: [:new, :create]
 
   def new
     loggedinredirect

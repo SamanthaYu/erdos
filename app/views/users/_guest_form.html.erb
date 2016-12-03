@@ -1,0 +1,45 @@
+<% formID = "id" %>
+<% if controller_name == "users" %>
+    <% formID = "signUpForm" %>
+<% elsif controller_name == "sessions" %>
+    <% formID = "loginForm" %>
+<% end %>
+<div id="guestLogin" class="basicForm">
+    <% if formID == "signUpForm" %>
+        <span id="closeBtn2" class="closeBtn" onclick="closeGuestLogin('signUpForm')">&times;</span>
+    <% elsif formID == "loginForm" %>
+        <span id="closeBtn2" class="closeBtn" onclick="closeGuestLogin('loginForm')">&times;</span>
+    <%end%>
+    <center><%=image_tag "logoNoLabel-green.png", :id=> "smallLogo"%></center>
+    <h1 class="formTitle">guest login</h1>
+    <center><p id="errorNoticeGuest" class="errorNotice"><%= notice %></p></center>
+    <%= form_for(:user, :url => {:controller => 'users', :action => 'create'}) do |f| %>
+       <br>
+       <%= f.text_field :username, :placeholder => 'Enter Guest Username', required: true, id: "guest_username_area"%>
+       <%= f.hidden_field :userType, value: "Guest" %>
+       <%= f.hidden_field :password_confirmation, value: "GuestPassword" %>
+       <%= f.hidden_field :password, value: "GuestPassword" %><br>
+       <center><%= f.submit "Login as Guest", class: "submitButton" %></center>
+    <% end %>
+    <hr>
+    <% if controller_name == "sessions" %>
+        <div id="option1" class="options">
+            Already have an account?<br>
+            <%= submit_tag "Login", id: "loginBtn", class: "submitButton", :onclick => "closeGuestLogin('#{formID}')" %>
+        </div>
+        <div id="option2" class="options">
+            Want to create an account?<br>
+            <%= button_to "Sign Up", "/signup", method: :get, id: "signUpBtn" , class: "submitButton" %>
+        </div>
+
+    <% elsif controller_name == "users" %>
+        <div id="option1" class="options">
+            Already have an account?
+            <%= button_to "Login", "/login", method: :get, id: "loginBtn" , class: "submitButton" %>
+        </div>
+        <div id="option2" class="options">
+            Want to create an account?<br>
+            <%= submit_tag "Sign Up", id: "signUpBtn", class: "submitButton", :onclick => "closeGuestLogin('#{formID}')" %>
+        </div>
+    <% end %>
+</div>

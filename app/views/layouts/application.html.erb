@@ -15,8 +15,10 @@
   <%= csrf_meta_tags %>
   <%= action_cable_meta_tag %>
 </head>
-<body>
-<% if params[:controller] == 'welcome' && params[:action] == 'index'%>
+<body class="<%= controller_name %>_<%= action_name %>">
+<% if (params[:controller] == 'welcome' && params[:action] == 'index') ||
+    (params[:controller] == 'sessions' && (params[:action] == 'new' || params[:action] == 'create')) ||
+    (params[:controller] == 'users' && (params[:action] == 'new' || params[:action] == 'create'))%>
 
 <% else %>
     <div id="sidebar" class="sideNav">
@@ -73,7 +75,9 @@
     <div id="sideBarOpener" onClick="openSidebar()" class="sideBarToggle">>></div>
 <% end %>
 
-<% if params[:controller] == 'welcome' && params[:action] == 'index'%>
+<% if (params[:controller] == 'welcome' && params[:action] == 'index') ||
+    (params[:controller] == 'sessions' && (params[:action] == 'new' || params[:action] == 'create')) ||
+    (params[:controller] == 'users' && (params[:action] == 'new' || params[:action] == 'create'))%>
     <%= yield %>
 <%else%>
     <div id="container">
