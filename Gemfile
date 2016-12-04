@@ -60,3 +60,6 @@ gem 'local_time'
 #...emojis
 gem 'gemoji-parser'
 gem 'gemoji'
+
+# for marking messages and notifications as read/unread
+gem 'unread'
