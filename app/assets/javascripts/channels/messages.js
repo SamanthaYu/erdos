@@ -30,7 +30,7 @@ App.messages = App.cable.subscriptions.create('MessagesChannel', {
     var avatarlink2='<span class="userAvatar" id="otherUserAvatar"><img src="'+data.avatarurl+'"></span>';
 
     if ($('#currentUser').attr('name') == data.poster){
-      retmess+='<div id="currentUserMessage" class="message"><div class="messageHeader" content="<%=message.content%> "><p><span id="messageActions" style="float:left">';
+      retmess+='<div id="currentUserMessage" class="message"><div class="messageHeader"><p><span id="messageActions" style="float:left">';
       retmess+='<a class="wolframAlphaLink">WolframAlpha</a> | ';
       retmess+='<a href="'+data.editlink+'" data-remote="true" id="edit_link">edit</a> | ';
       retmess+='<a href="'+data.deletelink+'" data-remote="true" id="delete_link">delete</a></span>';
@@ -38,13 +38,19 @@ App.messages = App.cable.subscriptions.create('MessagesChannel', {
       retmess+=avatarlink1+'</p>';
     }
     else {
-      retmess+='<div id="otherUserMessage" class="message" content="<%=message.content%> ">';
+      retmess+='<div id="otherUserMessage" class="message">';
       retmess+='<div class="messageHeader"><p>'+ avatarlink2 +'<span class="username"><strong>'+data.poster+'</strong></span>';
       retmess+='<span class="timeStamp">' + timestamp + '</span></p>';
       retmess+='<a class="wolframAlphaLink">WolframAlpha</a>';
     }
 
-    retmess+='</div><div id="messageContent'+data.id+'" class="messageContent" content="<%=message.content%> ">'+data.message+'</div></div>';
+    retmess+='<div id="messageContent'+data.id+'" class="messageContent" content="<%=message.content%> "'>;
+    if (data.isimage==0)
+      retmess+=data.message;
+    else {
+      retmess+='<img src="'+data.imagemessageurl+'">';
+    }
+    retmess+='</div></div>';
     return retmess;
     //return "<p> <b>" + data.poster + ": </b>" + data.message + "</p>";
     }
