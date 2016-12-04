@@ -1,0 +1,8 @@
+  <% if (params[:controller] == 'chatrooms' && params[:action] == 'show') %>
+    <span class="glyphicon glyphicon-bell" style="color: white">
+  <%else%>
+    <span class="glyphicon glyphicon-bell">
+  <% end %>
+    <span class="notificationCounter" id="counter"><%=counter%></span>
+    <span class="tooltiptext">Notifications</span>
+</span>

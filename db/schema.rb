@@ -10,14 +10,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161120015032) do
+ActiveRecord::Schema.define(version: 20161204030142) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "chatrooms", force: :cascade do |t|
-    t.string   "roomname"
+    t.integer  "message_id"
     t.integer  "user_id"
+    t.string   "roomname"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -38,6 +39,14 @@ ActiveRecord::Schema.define(version: 20161120015032) do
     t.datetime "updated_at",  null: false
   end
 
+  create_table "notifications", force: :cascade do |t|
+    t.integer  "message_id"
+    t.integer  "user_id"
+    t.string   "event"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "private_chats", force: :cascade do |t|
     t.integer  "user_id"
     t.integer  "chatroom_id"
@@ -45,21 +54,14 @@ ActiveRecord::Schema.define(version: 20161120015032) do
     t.datetime "updated_at",  null: false
   end
 
-  create_table "sessions", force: :cascade do |t|
-    t.string   "session_id", null: false
-    t.text     "data"
+  create_table "users", force: :cascade do |t|
+    t.integer  "user_id"
+    t.integer  "message_id"
+    t.string   "username"
+    t.integer  "type"
+    t.string   "userType"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.index ["session_id"], name: "index_sessions_on_session_id", unique: true, using: :btree
-    t.index ["updated_at"], name: "index_sessions_on_updated_at", using: :btree
-  end
-
-  create_table "users", force: :cascade do |t|
-    t.string   "username"
-    t.string   "password"
-    t.string   "userType"
-    t.datetime "created_at",       null: false
-    t.datetime "updated_at",       null: false
     t.string   "password_digest"
     t.string   "avatar"
     t.boolean  "requesting_admin"

@@ -1,0 +1,4 @@
+<li>
+  <%= link_to notification.event, chatroom_path(notification.message.chatroom.id) %>
+  <span class="timeStamp"> <%=local_time_ago(notification.created_at)%> </span>
+</li>

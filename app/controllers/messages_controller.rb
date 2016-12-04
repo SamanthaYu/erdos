@@ -22,6 +22,7 @@ class MessagesController < ApplicationController
         id: message.id,
         timestamp: view_context.local_time_ago(message.created_at);
       head :ok
+      message.notify
     end
   end
 

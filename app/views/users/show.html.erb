@@ -25,11 +25,9 @@
 <center><%= @user.userType %></center><br>
 
 <h3> Joined on: </h3>
-<center><%= @user.created_at.strftime("%v") %></center><br>
+<center><%= local_time_ago(@user.created_at) %></center><br>
 
 <h3><span class="username"><%= @user.username %></span> has joined these Chatrooms:</h3>
-<% userRooms = Array.new(@user.chatrooms.size+1)%>
-<% roomNum = 0 %>
 <table id="chatroomList" class="dataTable">
     <thead>
         <tr>
@@ -40,6 +38,8 @@
             <% end %>
         </tr>
     </thead>
+    <% userRooms = Array.new(@user.chatrooms.size+1)%>
+    <% roomNum = 0 %>
     <% @user.allChatrooms.each do |room| %>
         <tr>
             <% if room != userRooms[roomNum] %>

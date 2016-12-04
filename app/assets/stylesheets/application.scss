@@ -135,13 +135,13 @@
     float: left;
 }
 
- #userHeader a {
+ #currentUser {
      font-size: 26px;
      padding: 15px 8px;
  }
 
- #userHeader span {
-     font-size: 26px;
+ #notificationsLink {
+   padding: 0;
  }
 
  .sideNav a, .sideNav p, #sideHeader, #subHeader{
@@ -187,9 +187,82 @@
      padding-left: 5px;
  }
 
- .sideNav span {
-     font-size: 14px;
+ #sideHeader {
+     font-size: 18px;
  }
+
+ #subHeader {
+   font-size: 14px;
+ }
+
+ .glyphicon-bell {
+   color: $main-green;
+   font-size: 24px;
+   float: right;
+   right: 0;
+   margin-top: 23px;
+   margin-right: 50px;
+   cursor: pointer;
+   z-index: 1;
+   position: fixed;
+ }
+
+ .notificationCounter {
+   font-family: 'Fira Sans', sans-serif;
+   font-size: 11px;
+   width: 30px;
+   height: 1.5em;
+   background-color: red;
+   color: #fff;
+   text-align: center;
+   padding: 3px;
+   border-radius: 6px;
+   position: absolute;
+   z-index: 2;
+   bottom: 100%;
+   left: 50%;
+ }
+
+ .tooltiptext {
+    font-family: 'Fira Sans', sans-serif;
+    font-size: 12px;
+    visibility: hidden;
+    background-color: black;
+    color: #fff;
+    text-align: center;
+    padding: 5px 0;
+    border-radius: 6px;
+
+    /* Position the tooltip text - see examples below! */
+    position:absolute;
+    z-index: 1;
+    padding: 5px;
+    width: 100px;
+    letter-spacing: 1px;
+    top: 130%;
+    left: 50%;
+    margin-left: -50px;
+}
+
+.tooltiptext::after {
+    content: " ";
+    position: absolute;
+    bottom: 100%;  /* At the top of the tooltip */
+    left: 50%;
+    margin-left: -5px;
+    border-width: 5px;
+    border-style: solid;
+    border-color: transparent transparent black transparent;
+}
+
+.glyphicon-bell:hover {
+    color:$yellow;
+}
+
+.glyphicon-bell:hover .tooltiptext {
+    visibility: visible;
+    z-index: 999;
+}
 
  #privateChatForm {
      position: relative;
