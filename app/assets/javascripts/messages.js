@@ -14,6 +14,10 @@ $(document).on("click", '#imgUpload_submit', function () {
     closeImgUploadForm();
 });
 
+$(document).on("click", '#message_content', function () {
+    closeImgUploadForm();
+});
+
 function closeEditForm() {
     $('#editForm').fadeOut("swing");
     return false;
@@ -26,5 +30,6 @@ function closeDeleteForm() {
 
 function closeImgUploadForm() {
     $('#imgUploadForm').fadeOut("swing");
+    $('#imgUploadForm').html("");
     return false;
 }
