@@ -33,4 +33,10 @@ module SessionsHelper
     session.delete(:user_id)
     @current_user = nil
   end
+
+  def emojime(content)
+    EmojiParser.parse(content) do |emoji|
+      '<img src="/'+emoji.image_filename+'" alt=":'+emoji.name+':">'
+    end
+  end
 end
