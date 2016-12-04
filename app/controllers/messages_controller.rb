@@ -63,7 +63,7 @@ class MessagesController < ApplicationController
         deletelink: delete_message_path(message),
         id: message.id,
         timestamp: view_context.local_time_ago(message.created_at);
-      head :ok
+      redirect_to :back
     end
   end
 
