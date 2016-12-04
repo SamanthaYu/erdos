@@ -2,7 +2,6 @@ function wolframAlpha(messageId) {
     var inputUrl = $(messageId).attr('content');
     inputUrl = inputUrl.replace(/[$,]/g, "");	// Removes all $; it will replace /$ with / (not what should happen)
 
-alert(inputUrl);
     var urlified = inputUrl.split(' ').join('+');
     var wolfram = "http://api.wolframalpha.com/v2/query?input=" + urlified + "&appid=8WX3PP-5UVAT8YAY7";
     var proxy = 'https://cors-anywhere.herokuapp.com/';	// To bypass the CORS policy (cross-origin resource sharing)
