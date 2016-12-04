@@ -1,17 +1,26 @@
 class MessagesController < ApplicationController
 
+
+
   def create
     #caller.each{|i| puts i}
     message = Message.new(message_params)
-    if message.content.blank?
-      message.delete
-    elsif message.save
+    if message.imagemessage.display.url=="THISISNOTANIMAGE"
+      containsimage=0
+    else
+      containsimage=1
+    end
+    #if message.content.blank? && containsimage==0
+    #  message.delete
+    if message.save
       roomname=message.chatroom.roomname
       if message.chatroom.roomname.blank?
         roomname = chatroom_path(message.chatroom)
       end
       ActionCable.server.broadcast 'messages',
         type: "new",
+        isimage: containsimage,
+        imagemessageurl: message.imagemessage.display.url,
         chatroomname: roomname,
         avatarurl: message.user.avatar.thumb.url,
         message: message.content,
@@ -77,7 +86,7 @@ end
 
   private
     def message_params
-      params.require(:message).permit(:content, :chatroom_id, :user_id, :poster)
+      params.require(:message).permit(:content, :chatroom_id, :user_id, :poster, :imagemessage)
     end
 
 end

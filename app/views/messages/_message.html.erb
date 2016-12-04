@@ -19,7 +19,9 @@
                 </p>
             </div>
             <div id="messageContent<%=message.id%>" class="messageContent"><%=message.content%></div>
-
+            <% if message.imagemessage.display.url != "THISISNOTANIMAGE"%>
+              <img src="<%=message.imagemessage.display.url%>">
+            <%end%>
         </div>
     <% else %>
         <div id="otherUserMessage" class="message">
@@ -33,6 +35,9 @@
               </p>
             </div>
             <div id="messageContent<%=message.id%>" class="messageContent"><%=message.content%></div>
+            <% if message.imagemessage.display.url != "THISISNOTANIMAGE"%>
+              <img src="<%=message.imagemessage.display.url%>">
+            <%end%>
         </div>
     <% end %>
 <% else %>

@@ -2,6 +2,18 @@
     <div id="mathTyping" class="mathTyping"></div>
     <%= render partial: 'messages/mathMenu'%>
     <%=form_for message, remote: true, authenticity_token: true do |f|%>
+      <%= f.file_field :imagemessage , id: "imgmessage"%>
+      <%= f.hidden_field :content, value: "&nbsp" %>
+      <%= f.hidden_field :chatroom_id, value: chatroom.id %>
+      <% if !current_user.nil? %>
+        <%= f.hidden_field :poster, value: current_user.username %>
+        <%= f.hidden_field :user_id, value: current_user.id %>
+      <% end %>
+      <%= f.submit "upload image", class: "btn",  id: 'imgmessage_submit'%>
+    <%end%>
+
+
+    <%=form_for message, remote: true, authenticity_token: true do |f|%>
       <%= f.text_area :content,  class: "form-control", rows: "1", :placeholder => "Enter Message, to use math formatting surround formula with $ signs", data: {textarea: "message"}, id: 'message_content'%>
       <%= f.hidden_field :chatroom_id, value: chatroom.id %>
       <% if !current_user.nil? %>

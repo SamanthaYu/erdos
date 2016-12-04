@@ -43,6 +43,8 @@ App.messages = App.cable.subscriptions.create('MessagesChannel', {
     }
 
     retmess+='</div><div id="messageContent'+data.id+'" class="messageContent">'+data.message+'</div></div>';
+    if (data.imagemessageurl!="THISISNOTANIMAGE")
+      retmess+='<img src="'+data.imagemessageurl+'>';
     return retmess;
     //return "<p> <b>" + data.poster + ": </b>" + data.message + "</p>";
     }
