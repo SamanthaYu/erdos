@@ -31,6 +31,7 @@ App.messages = App.cable.subscriptions.create('MessagesChannel', {
 
     if ($('#currentUser').attr('name') == data.poster){
       retmess+='<div id="currentUserMessage" class="message"><div class="messageHeader"><p><span id="messageActions" style="float:left">';
+      retmess+='<a class="wolframAlphaLink">WolframAlpha</a> | ';
       retmess+='<a href="'+data.editlink+'" data-remote="true" id="edit_link">edit</a> | ';
       retmess+='<a href="'+data.deletelink+'" data-remote="true" id="delete_link">delete</a></span>';
       retmess+='<span class="currentUserTime" id="currentUserTime'+data.id+'">' + timestamp + '</span><span class="username"><strong>'+data.poster+'</strong></span>';
@@ -40,6 +41,7 @@ App.messages = App.cable.subscriptions.create('MessagesChannel', {
       retmess+='<div id="otherUserMessage" class="message">';
       retmess+='<div class="messageHeader"><p>'+ avatarlink2 +'<span class="username"><strong>'+data.poster+'</strong></span>';
       retmess+='<span class="timeStamp">' + timestamp + '</span></p>';
+      retmess+='<a class="wolframAlphaLink">WolframAlpha</a>';
     }
 
     retmess+='</div><div id="messageContent'+data.id+'" class="messageContent">'+data.message+'</div></div>';
