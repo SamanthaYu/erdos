@@ -31,7 +31,7 @@ class MessagesController < ApplicationController
         deletelink: delete_message_path(@message),
         id: @message.id,
         timestamp: view_context.local_time_ago(@message.created_at);
-      head :no_content
+      redirect_to :back
     else
       if @message.imagemessage.display.url=="THISISNOTANIMAGE"
         message.delete

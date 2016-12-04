@@ -15,7 +15,7 @@ $(document).on("click", '#imgUpload_submit', function () {
 });
 
 $(document).on("click", '#message_content', function () {
-    closeImgUploadForm();
+    clearImgUploadForm();
 });
 
 function closeEditForm() {
@@ -29,6 +29,12 @@ function closeDeleteForm() {
 }
 
 function closeImgUploadForm() {
+    $('#imgUploadForm').fadeOut("swing");
+    //$('#imgUploadForm').html("");
+    return false;
+}
+
+function clearImgUploadForm() {
     $('#imgUploadForm').fadeOut("swing");
     $('#imgUploadForm').html("");
     return false;
