@@ -21,11 +21,14 @@ class ChatroomsController < ApplicationController
       redirect_to '/chatrooms'
     else
       @chatroom = Chatroom.new(chatroom_params)
+      @chatroom.owner = User.find(chatroom_params[:user_id])
       if @chatroom.save
-        if !current_user.nil?
+        if !@chatroom.roomname.blank? && !current_user.nil?
           first = Message.create(:content => 'Chatroom \'' << @chatroom.roomname << '\' was created by ' << current_user.username, :chatroom_id => @chatroom.id, :user_id => current_user.id, :poster => current_user.username)
+        elsif !current_user.nil?
+          first = Message.create(:content => 'Chatroom \'' << chatroom_path(@chatroom) << '\' was created by ' << current_user.username, :chatroom_id => @chatroom.id, :user_id => current_user.id, :poster => current_user.username)
         else
-          first = Message.create(:content => 'Chatroom \'' << @chatroom.roomname << '\' was created by Gerbil', :chatroom_id => @chatroom.id, :user_id => nil)
+          first = Message.create(:content => 'The chatroom was created by Gerbil', :chatroom_id => @chatroom.id, :user_id => nil)
         end
         respond_to do |format|
           format.html { }#redirect_to @chatroom }
@@ -66,7 +69,7 @@ class ChatroomsController < ApplicationController
   private
 
     def chatroom_params
-      params.require(:chatroom).permit(:roomname)
+      params.require(:chatroom).permit(:roomname, :user_id)
     end
 
 
