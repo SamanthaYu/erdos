@@ -10,6 +10,10 @@ $(document).on("click", '#deletemessage_submit', function () {
     closeDeleteForm();
 });
 
+$(document).on("click", '#imgUpload_submit', function () {
+    closeImgUploadForm();
+});
+
 function closeEditForm() {
     $('#editForm').fadeOut("swing");
     return false;
@@ -17,5 +21,10 @@ function closeEditForm() {
 
 function closeDeleteForm() {
     $('#deleteForm').fadeOut("swing");
+    return false;
+}
+
+function closeImgUploadForm() {
+    $('#imgUploadForm').fadeOut("swing");
     return false;
 }

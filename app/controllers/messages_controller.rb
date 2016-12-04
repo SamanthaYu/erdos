@@ -2,25 +2,50 @@ class MessagesController < ApplicationController
 
 
 
+  def new_image
+    @message=Message.new
+    respond_to do |format|
+        format.js {}
+    end
+  end
+
+  def create_image
+    @message = Message.new(params.require(:message).permit(:chatroom_id, :user_id, :poster, :imagemessage))
+    if @message.save
+      roomname=@message.chatroom.roomname
+      if @message.chatroom.roomname.blank?
+        roomname = chatroom_path(@message.chatroom)
+      end
+      ActionCable.server.broadcast 'messages',
+        type: "new",
+        isimage: 1,
+        imagemessageurl: @message.imagemessage.display.url,
+        chatroomname: roomname,
+        avatarurl: @message.user.avatar.thumb.url,
+        poster: @message.poster,
+        currentuser: current_user.username,
+        editlink: edit_message_path(@message),
+        deletelink: delete_message_path(@message),
+        id: @message.id,
+        timestamp: view_context.local_time_ago(@message.created_at);
+      head :ok
+    end
+  end
+
+
   def create
     #caller.each{|i| puts i}
     message = Message.new(message_params)
-    if message.imagemessage.display.url=="THISISNOTANIMAGE"
-      containsimage=0
-    else
-      containsimage=1
-    end
-    #if message.content.blank? && containsimage==0
-    #  message.delete
-    if message.save
+    if message.content.blank?
+      message.delete
+    elsif message.save
       roomname=message.chatroom.roomname
       if message.chatroom.roomname.blank?
         roomname = chatroom_path(message.chatroom)
       end
       ActionCable.server.broadcast 'messages',
         type: "new",
-        isimage: containsimage,
-        imagemessageurl: message.imagemessage.display.url,
+        isimage: 0,
         chatroomname: roomname,
         avatarurl: message.user.avatar.thumb.url,
         message: message.content,
@@ -83,6 +108,9 @@ def destroy
     head :ok
     @message.destroy
 end
+
+
+
 
   private
     def message_params

@@ -1,6 +1,6 @@
 document.addEventListener("turbolinks:load", function() {
   submitNewMessage();
-  submitImageMessage();
+//  submitImageMessage();
   scrollBottom();
   renderLastMessage();
   renderLastUsername();
@@ -11,21 +11,22 @@ function submitNewMessage(){
 
   $('textarea#message_content').keydown(function(event) {
     if (event.keyCode == 13) {
+
+      $('#message_content').val("")
         $('#message_submit').click();
-        $('#message_content').val("");
         return false;
      }
   });
 }
 
-
+/*
 function submitImageMessage(){
   $("#imgmessage").change(function(){
       $('#imgmessage_submit').click();
       $("#imgmessage").html($('#imgmessage').val());
-      return true;
+      return false;
   });
-}
+}*/
 
 function scrollBottom() {
     //$("messageContainer").scrollTop($('#messageContainer').last().scrollHeight);
