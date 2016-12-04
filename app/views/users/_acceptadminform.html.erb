@@ -1,0 +1,5 @@
+<%= form_for(@user, :url => { :action => "update_admin" }) do |f| %>
+  <%= f.hidden_field :requesting_admin, value: false %>
+  <%= f.hidden_field :userType, value: 'Admin' %>
+  <center><%= f.submit @user.username + " Accept Request", class: "submitButton"%></center>
+<% end %>

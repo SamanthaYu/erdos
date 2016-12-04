@@ -9,8 +9,8 @@ document.addEventListener("turbolinks:load", function() {
 function submitNewMessage(){
   $('textarea#message_content').keydown(function(event) {
     if (event.keyCode == 13) {
-        $('[data-send="message"]').click();
-        $('[data-textarea="message"]').val("")
+        $('#message_submit').click();
+        $('#message_content').val("")
         return false;
      }
   });

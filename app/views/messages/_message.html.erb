@@ -3,10 +3,15 @@
         <div id="currentUserMessage" class="message">
             <div class="messageHeader">
                 <p>
-                    <%= link_to "edit", edit_message_path(message), style:"float:left", remote: true, id: "edit_link"%>
+                    <% if message != @chatroom.messages.first %>
+                        <span id="messageActions" style="float:left">
+                            <%= link_to "edit", edit_message_path(message), remote: true, id: "edit_link"%> |
+                            <%= link_to 'delete', delete_message_path(message), remote: true, id: "delete_link"%>
+                        </span>
+                    <% end %>
                     <span class="currentUserTime" id="currentUserTime<%=message.id%>"><%=local_time_ago(message.created_at)%>
                     <% if message.updated_at != message.created_at %>
-                        , edited: <%=local_time_ago(message.updated_at)%>
+                        , last edited: <%=local_time_ago(message.updated_at)%>
                     <% end %>
                     </span>
                     <span class="username"><strong><%= message.poster %></strong></span>

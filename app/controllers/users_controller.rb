@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
     layout 'signup', only: [:new, :create]
+  include SessionsHelper
 
   def index
     @user=User.new
@@ -19,6 +20,10 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
   end
 
+  def edit_admin
+    @user = User.find(params[:id])
+  end
+
   def update_password
     @user=User.find(params[:id])
     @user.skip_password_validation=false
@@ -29,6 +34,28 @@ class UsersController < ApplicationController
       else
         format.html { render :edit_password }
         format.json { render json: @user.errors, status: :unprocessable_entity }
+      end
+    end
+  end
+
+  def update_admin
+    @user=User.find(params[:id])
+    respond_to do |format|
+      @user.skip_password_validation=true
+      if @user.update(params.require(:user).permit(:userType, :requesting_admin))
+        format.html { redirect_to current_user, notice: 'Admin request accepted' }
+        format.json { render :show, status: :ok, location: @user }
+      end
+    end
+  end
+
+  def update_admin_request
+    @user=User.find(params[:id])
+    respond_to do |format|
+      @user.skip_password_validation=true
+      if @user.update(params.require(:user).permit(:requesting_admin))
+        format.html { redirect_to @user, notice: 'Admin request sent.' }
+        format.json { render :show, status: :ok, location: @user }
       end
     end
   end
@@ -70,19 +97,30 @@ class UsersController < ApplicationController
   def destroy
     @user = User.find(params[:id])
     if @user.present?
-      @user.private_chatrooms.each do |room|
-        if room.private_chatters.size < 2
-          Chatroom.find(room).destroy
+      if @user != current_user
+        @user.private_chatrooms.each do |room|
+          if room.private_chatters.size < 2
+            Chatroom.find(room).destroy
+          end
         end
+        @user.destroy
+        redirect_to users_url
+      else
+        @user.private_chatrooms.each do |room|
+          if room.private_chatters.size < 2
+            Chatroom.find(room).destroy
+          end
+        end
+        log_out
+        @user.destroy
+        redirect_to '/'
       end
-      @user.destroy
     end
-    redirect_to users_url
   end
 
   private
     def user_params
-      params.require(:user).permit(:username, :password, :password_confirmation, :userType,:avatar)
+      params.require(:user).permit(:username, :password, :password_confirmation, :userType, :avatar, :requesting_admin)
     end
 
 end

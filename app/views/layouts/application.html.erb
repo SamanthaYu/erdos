@@ -39,10 +39,12 @@
                 <% end %>
                 </ul>
             <% end %>
-            <%= render partial: 'private_chats/form', locals: {private_chat: @private_chat, chatroom: @chatroom} %>
-            <span id="sideHeader" style="font-size: 18px; margin-top: 30px"><%= @current_user.username %>'s Chatrooms</span>
+            <% if current_user.userType != "Guest" %>
+                <%= render partial: 'private_chats/form', locals: {private_chat: @private_chat, chatroom: @chatroom} %>
+             <% end %>
+            <span id="sideHeader" style="font-size: 18px; margin-top: 30px" class="username"><%= @current_user.username %>'s Chatrooms</span>
         <% else %>
-            <span id="sideHeader" style="font-size: 18px"><%= @current_user.username %>'s Chatrooms</span>
+            <span id="sideHeader" style="font-size: 18px" class="username"><%= @current_user.username %>'s Chatrooms</span>
         <% end %>
         <ul>
         <% userRooms = Array.new(current_user.chatrooms.size+1)%>

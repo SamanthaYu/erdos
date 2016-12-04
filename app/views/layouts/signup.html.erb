@@ -74,7 +74,7 @@
             line-height: 2em;
         }
 
-        #errorNotice {
+        .errorNotice {
             font-family: 'Fira Sans', sans-serif;
             color: red;
             font-style: italic;
@@ -153,15 +153,18 @@
             <span id="closeBtn1" class="closeBtn">&times;</span>
             <center><%=image_tag "logoNoLabel-green.png", :id=> "smallLogo"%></center>
             <h1>sign up</h1>
-            <center><p id="errorNotice"><%= @user.errors.full_messages.first if @user.errors.any? %></p></center>
+            <center><p id="errorNotice" class="errorNotice"><%= @user.errors.full_messages.first if @user.errors.any? %></p></center>
             <%= form_for(@user, url: signup_path) do |f| %>
               <%= f.text_field :username, :placeholder => 'Enter Username', id: 'username_area' %><br>
               <%= f.password_field :password, :placeholder => 'Enter Password', id: 'password_area' %><br>
               <%= f.password_field :password_confirmation, :placeholder => 'Confirm Password', id: 'password_confirmation_area'%><br>
               <center><%= f.label :avatar, "Avatar" %>
               <%= f.file_field :avatar %> <br>
-              <%= f.label :userType, "User Type" %> &nbsp;&nbsp;
-              <%= f.select :userType, ['Regular', 'Admin'], :selected => 'Regular' %><br>
+              <% if !User.where(userType: 'Admin').exists?%>
+                <%= f.hidden_field :userType, value: 'Admin' %>
+              <% else %>
+                <%= f.hidden_field :userType, value: 'Regular' %>
+              <% end %>
 
               <%= f.submit "Create Account", class: "submitButton", id: 'signup_button' %></center>
             <% end %>
