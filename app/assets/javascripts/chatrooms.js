@@ -1,5 +1,6 @@
 document.addEventListener("turbolinks:load", function() {
   submitNewMessage();
+//  submitImageMessage();
   scrollBottom();
   renderLastMessage();
   renderLastUsername();
@@ -7,14 +8,24 @@ document.addEventListener("turbolinks:load", function() {
 })
 
 function submitNewMessage(){
+
   $('textarea#message_content').keydown(function(event) {
     if (event.keyCode == 13) {
-        $('#message_submit').click();
-        $('#message_content').val("")
+      $('#message_submit').click();
+      $('#message_content').val("")
         return false;
      }
   });
 }
+
+/*
+function submitImageMessage(){
+  $("#imgmessage").change(function(){
+      $('#imgmessage_submit').click();
+      $("#imgmessage").html($('#imgmessage').val());
+      return false;
+  });
+}*/
 
 function scrollBottom() {
     //$("messageContainer").scrollTop($('#messageContainer').last().scrollHeight);

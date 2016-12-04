@@ -1,6 +1,7 @@
 <div id="inputForm" class="forms">
     <div id="mathTyping" class="mathTyping"></div>
     <%= render partial: 'messages/mathMenu'%>
+    <%= link_to "Upload Image", new_image_message_path, remote: true, id: "imgupload_link"%>
     <%=form_for message, remote: true, authenticity_token: true do |f|%>
       <%= f.text_area :content,  class: "form-control", rows: "1", :placeholder => "Enter Message, to use math formatting surround formula with $ signs", data: {textarea: "message"}, id: 'message_content'%>
       <%= f.hidden_field :chatroom_id, value: chatroom.id %>

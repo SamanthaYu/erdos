@@ -18,8 +18,13 @@
                     <span class="userAvatar" id="currentUserAvatar"><%= image_tag message.user.avatar.thumb.url %></span>
                 </p>
             </div>
-            <div id="messageContent<%=message.id%>" class="messageContent"><%=message.content%></div>
-
+            <div id="messageContent<%=message.id%>" class="messageContent">
+              <% if message.imagemessage.display.url == "THISISNOTANIMAGE"%>
+                <%=message.content%>
+              <%else%>
+                <img src="<%=message.imagemessage.display.url%>">
+              <%end%>
+            </div>
         </div>
     <% else %>
         <div id="otherUserMessage" class="message">
@@ -32,7 +37,13 @@
                   <span class="timeStamp"><%=local_time_ago(message.created_at)%></span>
               </p>
             </div>
-            <div id="messageContent<%=message.id%>" class="messageContent"><%=message.content%></div>
+            <div id="messageContent<%=message.id%>" class="messageContent">
+              <% if message.imagemessage.display.url == "THISISNOTANIMAGE"%>
+                <%=message.content%>
+              <%else%>
+                <img src="<%=message.imagemessage.display.url%>">
+              <%end%>
+            </div>
         </div>
     <% end %>
 <% else %>

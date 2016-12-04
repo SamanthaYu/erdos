@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161120015032) do
+ActiveRecord::Schema.define(version: 20161204022812) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -34,8 +34,10 @@ ActiveRecord::Schema.define(version: 20161120015032) do
     t.string   "poster"
     t.integer  "chatroom_id"
     t.integer  "user_id"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+    t.string   "imagemessage"
+    t.integer  "haspicture"
   end
 
   create_table "private_chats", force: :cascade do |t|
@@ -58,11 +60,10 @@ ActiveRecord::Schema.define(version: 20161120015032) do
     t.string   "username"
     t.string   "password"
     t.string   "userType"
-    t.datetime "created_at",       null: false
-    t.datetime "updated_at",       null: false
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
     t.string   "password_digest"
     t.string   "avatar"
-    t.boolean  "requesting_admin"
     t.index ["username"], name: "index_users_on_username", unique: true, using: :btree
   end
 

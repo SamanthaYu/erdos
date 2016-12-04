@@ -1,5 +1,46 @@
 class MessagesController < ApplicationController
 
+
+
+  def new_image
+    @message=Message.new
+    @chatroom=Chatroom.find(params[:id])
+
+    respond_to do |format|
+        format.js {}
+    end
+  end
+
+  def create_image
+    @message = Message.new(params.require(:message).permit(:content, :chatroom_id, :user_id, :poster, :imagemessage))
+    @chatroom=Chatroom.find(params[:id])
+    if @message.save
+      roomname=@message.chatroom.roomname
+      if @message.chatroom.roomname.blank?
+        roomname = chatroom_path(@message.chatroom)
+      end
+      ActionCable.server.broadcast 'messages',
+        type: "new",
+        isimage: 1,
+        imagemessageurl: @message.imagemessage.display.url,
+        chatroomname: roomname,
+        avatarurl: @message.user.avatar.thumb.url,
+        poster: @message.poster,
+        currentuser: current_user.username,
+        editlink: edit_message_path(@message),
+        deletelink: delete_message_path(@message),
+        id: @message.id,
+        timestamp: view_context.local_time_ago(@message.created_at);
+      redirect_to :back
+    else
+      if @message.imagemessage.display.url=="THISISNOTANIMAGE"
+        message.delete
+      end
+    end
+
+  end
+
+
   def create
     #caller.each{|i| puts i}
     message = Message.new(message_params)
@@ -12,6 +53,7 @@ class MessagesController < ApplicationController
       end
       ActionCable.server.broadcast 'messages',
         type: "new",
+        isimage: 0,
         chatroomname: roomname,
         avatarurl: message.user.avatar.thumb.url,
         message: message.content,
@@ -75,9 +117,12 @@ def destroy
     @message.destroy
 end
 
+
+
+
   private
     def message_params
-      params.require(:message).permit(:content, :chatroom_id, :user_id, :poster)
+      params.require(:message).permit(:content, :chatroom_id, :user_id, :poster, :imagemessage)
     end
 
 end

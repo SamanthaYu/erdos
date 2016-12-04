@@ -10,7 +10,12 @@ Rails.application.routes.draw do
    get 'welcome/index'
    get '/home', to: 'welcome#show'
    resources :chatrooms
-   resources :messages
+   resources :messages do
+     member do
+      get "new_image"
+      post "create_image"
+     end
+   end
    get '/messages/:id/delete(.:format)', to: 'messages#delete', as: :delete_message
    resources :users do
       member do
