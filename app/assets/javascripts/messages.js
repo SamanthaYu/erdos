@@ -12,6 +12,14 @@ $(document).on("click", '#deletemessage_submit', function () {
     closeDeleteForm();
 });
 
+$(document).on("click", '#imgUpload_submit', function () {
+    closeImgUploadForm();
+});
+
+$(document).on("click", '#message_content', function () {
+    clearImgUploadForm();
+});
+
 function closeEditForm() {
     $('#editForm').fadeOut("swing");
     return false;
@@ -19,5 +27,17 @@ function closeEditForm() {
 
 function closeDeleteForm() {
     $('#deleteForm').fadeOut("swing");
+    return false;
+}
+
+function closeImgUploadForm() {
+    $('#imgUploadForm').fadeOut("swing");
+    //$('#imgUploadForm').html("");
+    return false;
+}
+
+function clearImgUploadForm() {
+    $('#imgUploadForm').fadeOut("swing");
+    $('#imgUploadForm').html("");
     return false;
 }

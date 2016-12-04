@@ -7,6 +7,8 @@ class Message < ApplicationRecord
   has_one :notification
   #something about user?
 
+  mount_uploader :imagemessage, ImageMessageUploader
+
   validates :content, presence: true, length: {minimum: 1}
 
   def notify

@@ -1,0 +1,16 @@
+<h3 style="background-color: #ddd">Upload Image</h3>
+<center><p id="uploadErrorNotice" class="errorNotice" style="display:none"><%= notice %></p></center>
+    <%=form_for @message, :url => {controller: "messages", action: "create_image"},:html => { :method => "post" }, remote: true, authenticity_token: true do |f|%>
+      <%= f.file_field :imagemessage , id: "imgmessage"%>
+      <%= f.hidden_field :content, value: "-" %>
+      <%= f.hidden_field :chatroom_id, value: @chatroom.id %>
+      <% if !current_user.nil? %>
+        <%= f.hidden_field :poster, value: current_user.username %>
+        <%= f.hidden_field :user_id, value: current_user.id %>
+      <% end %>
+      <center>
+      <button type="button" class="submitButton" id="imgUpload_cancel" onclick="closeImgUploadForm()">cancel</button>
+      <%= f.submit "upload image", class: "btn", id: 'imgUpload_submit'%> </center>
+    <%end%>
+
+</div>

@@ -56,3 +56,7 @@ gem 'mini_magick'
 
 #relative timestamping
 gem 'local_time'
+
+#...emojis
+gem 'gemoji-parser'
+gem 'gemoji'
