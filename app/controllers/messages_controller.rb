@@ -51,12 +51,13 @@ class MessagesController < ApplicationController
       if message.chatroom.roomname.blank?
         roomname = chatroom_path(message.chatroom)
       end
+      msgcontent=emojime(message.content).html_safe
       ActionCable.server.broadcast 'messages',
         type: "new",
         isimage: 0,
         chatroomname: roomname,
         avatarurl: message.user.avatar.thumb.url,
-        message: message.content,
+        message: msgcontent,
         poster: message.poster,
         currentuser: current_user.username,
         editlink: edit_message_path(message),
