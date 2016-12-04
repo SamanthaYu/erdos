@@ -11,9 +11,8 @@ function submitNewMessage(){
 
   $('textarea#message_content').keydown(function(event) {
     if (event.keyCode == 13) {
-
+      $('#message_submit').click();
       $('#message_content').val("")
-        $('#message_submit').click();
         return false;
      }
   });

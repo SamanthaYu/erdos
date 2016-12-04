@@ -4,13 +4,16 @@ class MessagesController < ApplicationController
 
   def new_image
     @message=Message.new
+    @chatroom=Chatroom.find(params[:id])
+
     respond_to do |format|
         format.js {}
     end
   end
 
   def create_image
-    @message = Message.new(params.require(:message).permit(:chatroom_id, :user_id, :poster, :imagemessage))
+    @message = Message.new(params.require(:message).permit(:content, :chatroom_id, :user_id, :poster, :imagemessage))
+    @chatroom=Chatroom.find(params[:id])
     if @message.save
       roomname=@message.chatroom.roomname
       if @message.chatroom.roomname.blank?
@@ -29,7 +32,12 @@ class MessagesController < ApplicationController
         id: @message.id,
         timestamp: view_context.local_time_ago(@message.created_at);
       head :ok
+    else
+      if @message.imagemessage.display.url=="THISISNOTANIMAGE"
+        message.delete
+      end
     end
+
   end
 
 
