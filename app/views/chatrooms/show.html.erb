@@ -10,9 +10,9 @@
 
 <div id="header">
     <% if !@chatroom.roomname.blank? %>
-        <h1><%= @chatroom.roomname %></h1>
+        <h1><%= @chatroom.roomname << " - Owner: " << @chatroom.owner.username %></h1>
     <% else %>
-        <h1><%= chatroom_path(@chatroom) %></h1>
+        <h1><%= chatroom_path(@chatroom) << " - Owner: " << @chatroom.owner.username %></h1>
     <% end %>
 </div>
 

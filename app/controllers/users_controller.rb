@@ -97,6 +97,28 @@ class UsersController < ApplicationController
   def destroy
     @user = User.find(params[:id])
     if @user.present?
+      @user.owned_chatrooms.each do |room|
+        @new_owner = -1
+        room.users.each do |user|
+          if user.id != @user.id
+            @new_owner = user.id
+            break
+          end
+        end
+        if @new_owner != -1
+          room.update(user_id: @new_owner)
+        else
+          if room.private_chatters.empty?
+            Chatroom.find(room).destroy
+          else
+            room.private_chatters.each do |chatter|
+              if chatter.id != @user.id
+                room.update(user_id: chatter.id)
+              end
+            end
+          end
+        end
+      end
       if @user != current_user
         @user.private_chatrooms.each do |room|
           if room.private_chatters.size < 2

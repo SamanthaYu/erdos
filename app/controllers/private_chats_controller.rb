@@ -5,11 +5,15 @@ class PrivateChatsController < ApplicationController
   # POST /private_chats.json
 
   def create
-    @private_chat = PrivateChat.new(private_chat_params)
-    if @private_chat.save
+    if Chatroom.find(private_chat_params[:chatroom_id]).private_chatters.empty? && Chatroom.find(private_chat_params[:chatroom_id]).owner != current_user
       redirect_to :back
     else
-      redirect_to :back
+      @private_chat = PrivateChat.new(private_chat_params)
+      if @private_chat.save
+        redirect_to :back
+      else
+        redirect_to :back
+      end
     end
   end
 
