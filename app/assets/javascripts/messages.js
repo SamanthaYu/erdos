@@ -38,4 +38,24 @@ function clearImgUploadForm() {
     $('#imgUploadForm').fadeOut("swing");
     $('#imgUploadForm').html("");
     return false;
+
+// Open message area
+}
+function openMessageBox(){
+    $("#messageBoxOpener").hide();
+    $("#inputForm").height(200);
+    setTimeout(function() {
+      $("#messageContainer").css({bottom: 200});
+      $("#messageBoxCloser").show();
+    }, 500);
+}
+
+// Close message area
+function closeMessageBox() {
+    $("#messageBoxCloser").hide();
+    $("#inputForm").height(0);
+    $("#messageContainer").css({bottom: 0});
+    setTimeout(function() {
+        $("#messageBoxOpener").show();
+    }, 500);
 }
