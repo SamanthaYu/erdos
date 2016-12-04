@@ -31,7 +31,7 @@ class User < ApplicationRecord
   end
 
   def allChatrooms
-      self.chatrooms |= self.private_chatrooms
+      (self.chatrooms + self.private_chatrooms).uniq
       self.chatrooms.sort_by(&:created_at)
   end
 
