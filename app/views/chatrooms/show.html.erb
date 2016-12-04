@@ -1,7 +1,7 @@
 <% if !@chatroom.roomname.blank? %>
-    <% content_for :title, @chatroom.roomname << " " << @chatroom.owner.username %>
+    <% content_for :title, @chatroom.roomname %>
 <% else %>
-    <% content_for :title, chatroom_path(@chatroom) << " " << @chatroom.owner.username %>
+    <% content_for :title, chatroom_path(@chatroom) %>
 <% end %>
 
 <div id="deleteForm" class="forms" style="display:none"></div>
@@ -9,9 +9,9 @@
 
 <div id="header">
     <% if !@chatroom.roomname.blank? %>
-        <h1><%= @chatroom.roomname %></h1>
+        <h1><%= @chatroom.roomname << " - Owner: " << @chatroom.owner.username %></h1>
     <% else %>
-        <h1><%= chatroom_path(@chatroom) %></h1>
+        <h1><%= chatroom_path(@chatroom) << " - Owner: " << @chatroom.owner.username %></h1>
     <% end %>
 </div>
 

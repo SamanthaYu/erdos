@@ -44,6 +44,17 @@ class ChatroomsController < ApplicationController
   end
 
   def update
+    @chatroom = Chatroom.find(params[:id])
+    respond_to do |format|
+      if @chatroom.update(params.require(:chatroom).permit(:user_id))
+        @chatroom.owner = User.find(chatroom_params[:user_id])
+        format.html { redirect_to @chatroom, notice: 'Owner was successfully updated.' }
+        format.json { render :show, status: :ok, location: @chatroom }
+      else
+        format.html { redirect_to @chatroom, notice: 'Owner was not successfully updated.' }
+        format.json { render :show, status: :ok, location: @chatroom }
+      end
+    end
   end
 
   def show
