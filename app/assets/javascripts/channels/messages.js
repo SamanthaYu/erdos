@@ -41,11 +41,13 @@ App.messages = App.cable.subscriptions.create('MessagesChannel', {
       retmess+='<div class="messageHeader"><p>'+ avatarlink2 +'<span class="username"><strong>'+data.poster+'</strong></span>';
       retmess+='<span class="timeStamp">' + timestamp + '</span></p>';
     }
+    retmess+='<div id="messageContent'+data.id+'" class="messageContent">';
     if (data.isimage==0)
-    retmess+='</div><div id="messageContent'+data.id+'" class="messageContent">'+data.message+'</div></div>';
+      retmess+=data.message;
     else {
-      retmess+='</div><div id="messageContent'+data.id+'" class="messageContent">'+'<img src="'+data.imagemessageurl+'"></div></div>';
+      retmess+='<img src="'+data.imagemessageurl+'">';
     }
+    retmess+='</div></div>';
     return retmess;
     //return "<p> <b>" + data.poster + ": </b>" + data.message + "</p>";
     }
