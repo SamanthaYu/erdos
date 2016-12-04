@@ -5,6 +5,7 @@
                 <p>
                     <% if message != @chatroom.messages.first %>
                         <span id="messageActions" style="float:left">
+                            <a class="wolframAlphaLink" onclick="wolframAlpha('#messageContent<%=message.id%>')">WolframAlpha</a> |
                             <%= link_to "edit", edit_message_path(message), remote: true, id: "edit_link"%> |
                             <%= link_to 'delete', delete_message_path(message), remote: true, id: "delete_link"%>
                         </span>
@@ -18,7 +19,7 @@
                     <span class="userAvatar" id="currentUserAvatar"><%= image_tag message.user.avatar.thumb.url %></span>
                 </p>
             </div>
-            <div id="messageContent<%=message.id%>" class="messageContent">
+            <div id="messageContent<%=message.id%>" class="messageContent" content="<%=message.content%>">
               <% if message.imagemessage.display.url == "THISISNOTANIMAGE"%>
                 <%=message.content%>
               <%else%>
@@ -35,9 +36,10 @@
                   <%end%>
                   <span class="username"><strong><%= message.poster %></strong></span>
                   <span class="timeStamp"><%=local_time_ago(message.created_at)%></span>
+                  <a class="otherWolframAlphaLink" onclick="wolframAlpha('#messageContent<%=message.id%>')">WolframAlpha</a>
               </p>
             </div>
-            <div id="messageContent<%=message.id%>" class="messageContent">
+            <div id="messageContent<%=message.id%>" class="messageContent" content="<%=message.content%>">
               <% if message.imagemessage.display.url == "THISISNOTANIMAGE"%>
                 <%=message.content%>
               <%else%>
@@ -51,6 +53,6 @@
         <div class="messageHeader"><p><strong>Gerbil</strong>
             <span class="timeStamp"><%=local_time_ago(message.created_at)%></span></p>
         </div>
-        <div class="messageContent"><%=message.content%></div>
+        <div class="messageContent" content="<%=message.content%>"><%=message.content%></div>
     </div>
 <% end %>
