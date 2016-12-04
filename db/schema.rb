@@ -64,6 +64,7 @@ ActiveRecord::Schema.define(version: 20161204022812) do
     t.datetime "updated_at",      null: false
     t.string   "password_digest"
     t.string   "avatar"
+    t.boolean  "requesting_admin"
     t.index ["username"], name: "index_users_on_username", unique: true, using: :btree
   end
 
