@@ -13,7 +13,6 @@ App.notifications = App.cable.subscriptions.create("NotificationsChannel", {
 
     var counter = $('#counter');
     var val = data.counter;
-    alert(val);
     val++;
     counter.replaceWith('<span class="notificationCounter" id="counter">'+data.counter+'</span>');
     return;
@@ -21,7 +20,8 @@ App.notifications = App.cable.subscriptions.create("NotificationsChannel", {
 
   renderNotification: function(data) {
     var retmess='';
-    retmess+='<li>'+data.event+'<span class="timeStamp">'+data.timestamp+'</span></li>';
+    retmess+='<li><a href="'+data.chatroomlink+'">'+data.event+'</a><span class="timeStamp">'+data.timestamp+'</span></li>';
+    retmess+='<ul>'+data.content+'</ul>';
     return retmess;
   }
 });

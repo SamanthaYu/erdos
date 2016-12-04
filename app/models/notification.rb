@@ -14,7 +14,8 @@ class Notification < ApplicationRecord
           event: self.event,
           sender: self.message.user,
           chatroomname: self.message.chatroom.roomname,
-          chatroomlink: chatroom_path(self.message.chatroom.id),
+          chatroomlink: "/chatrooms/#{self.message.chatroom.id}",
+          content: self.message.content,
           timestamp: self.message.created_at.strftime('%v');
       end
     end
