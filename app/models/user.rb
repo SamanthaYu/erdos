@@ -1,4 +1,5 @@
 class User < ApplicationRecord
+  acts_as_reader
   mount_uploader :avatar, AvatarUploader
   has_many :messages
   has_many :chatrooms, through: :messages
@@ -8,6 +9,7 @@ class User < ApplicationRecord
   has_many :friends, :through => :friendships
   has_many :inverse_friendships, :class_name => "Friendship", :foreign_key => "friend_id"
   has_many :inverse_friends, :through => :inverse_friendships, :source => :user
+  has_many :notifications, dependent: :destroy
   has_many :owned_chatrooms, :class_name => "Chatroom", :foreign_key => "user_id"
   validates_processing_of :avatar
   validate :avatar_size_validation
@@ -31,7 +33,7 @@ class User < ApplicationRecord
   end
 
   def allChatrooms
-      self.chatrooms |= self.private_chatrooms
+      (self.chatrooms + self.private_chatrooms).uniq
       self.chatrooms.sort_by(&:created_at)
   end
 

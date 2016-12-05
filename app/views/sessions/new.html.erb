@@ -1,14 +1,10 @@
-<% provide(:title, "Log in") %>
-<h1>Log in</h1>
+<div class="outer">
+<div class="middle">
+<div class="inner">
 
-    <p id="notice"><%= notice %></p>
+<%= render partial: 'sessions/login_form'%>
+<%= render partial: 'users/guest_form'%>
 
-    <%= form_for(:session, url: login_path) do |f| %>
-
-      <%= f.text_field :username %>
-
-      <%= f.label :password %>
-      <%= f.password_field :password %>
-
-      <%= f.submit "Log in", class: "btn btn-primary" %>
-    <% end %>
+</div>
+</div>
+</div>

@@ -1,0 +1,9 @@
+<% content_for :title, @user.username+"'s Notifications" %>
+<p id="notice"><%= notice %></p>
+
+<h1><%= @user.username %>'s Notifications</h1>
+<% if @user.userType == "Admin" %>
+<center><%= button_to "View All User Activity", notifications_path(), method: :get, class: "submitButton" %></center>
+<% end %>
+
+<%= render "notification_center", notifications: @notifications %>

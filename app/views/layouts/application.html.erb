@@ -15,22 +15,24 @@
   <%= csrf_meta_tags %>
   <%= action_cable_meta_tag %>
 </head>
-<body>
-<% if params[:controller] == 'welcome' && params[:action] == 'index'%>
+<body class="<%= controller_name %>_<%= action_name %>">
+<% if (params[:controller] == 'welcome' && params[:action] == 'index') ||
+    (params[:controller] == 'sessions' && (params[:action] == 'new' || params[:action] == 'create')) ||
+    (params[:controller] == 'users' && (params[:action] == 'new' || params[:action] == 'create'))%>
 
 <% else %>
     <div id="sidebar" class="sideNav">
         <div id="userHeader">
             <% if !current_user.nil? %>
               <span id="avatar"><%= image_tag @current_user.avatar.thumb.url %></span>
-              <%= link_to @current_user.username, @current_user, class: 'username', id: 'currentUser', :name => @current_user.username %>
+              <%= link_to @current_user.username, @current_user, class: 'currentUsername', id: 'currentUser', :name => @current_user.username %>
             <% end %>
         </div>
         <% if params[:controller] == 'chatrooms' && params[:action] == 'show' %>
             <% if @chatroom.roomname.blank? %>
                 <% @chatroom.roomname = chatroom_path(@chatroom) %>
             <% end %>
-            <span id="sideHeader" style="font-size: 18px"><%= @chatroom.roomname %></span>
+            <span id="sideHeader"><%= @chatroom.roomname %></span>
             <% if !@chatroom.private_chatters.empty? %>
                 <span id="subHeader">Members:</span>
                 <ul>
@@ -45,7 +47,7 @@
              <% end %>
             <span id="sideHeader" style="font-size: 18px; margin-top: 30px" class="username"><%= @current_user.username %>'s Chatrooms</span>
         <% else %>
-            <span id="sideHeader" style="font-size: 18px" class="username"><%= @current_user.username %>'s Chatrooms</span>
+            <span id="sideHeader"><%= @current_user.username %>'s Chatrooms</span>
         <% end %>
         <ul>
         <% userRooms = Array.new(current_user.chatrooms.size+1)%>
@@ -74,10 +76,16 @@
     <div id="sideBarOpener" onClick="openSidebar()" class="sideBarToggle">>></div>
 <% end %>
 
-<% if params[:controller] == 'welcome' && params[:action] == 'index'%>
+<% if (params[:controller] == 'welcome' && params[:action] == 'index') ||
+    (params[:controller] == 'sessions' && (params[:action] == 'new' || params[:action] == 'create')) ||
+    (params[:controller] == 'users' && (params[:action] == 'new' || params[:action] == 'create'))%>
     <%= yield %>
 <%else%>
+    <div id=notificationBell>
+      <%= link_to render(partial: '/notifications/counter', locals: {counter: current_user.notifications.unread_by(current_user).count}), user_index_notifications_path(current_user.notifications.first) %>
+    </div>
     <div id="container">
+
         <%= yield %>
     </div>
 <% end %>

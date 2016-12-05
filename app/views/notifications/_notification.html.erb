@@ -1,0 +1,10 @@
+<% if notification.message.unread?(current_user) %>
+<div class="notificationMessage" style="background-color: #eee">
+<% else %>
+  <div class="notificationMessage">
+<% end %>
+  <span class="glyphicon glyphicon-comment"></span>
+    <%= link_to notification.event, chatroom_path(notification.message.chatroom.id) %>
+  <span class="timeStamp"> <%=local_time_ago(notification.created_at)%> </span>
+  <ul><%=notification.message.user.username%>: <%=notification.message.content%></ul>
+</div>

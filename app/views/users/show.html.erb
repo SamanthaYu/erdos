@@ -1,5 +1,4 @@
 <% content_for :title, @user.username+"'s Profile" %>
-
 <div id="usersContainer">
 <div id="friendButtons" style="text-align: right">
     <% if @user != current_user && !current_user.friends.where(id: @user).exists?%>
@@ -19,17 +18,15 @@
 <%end%>
 <h1><span class="username"><%= @user.username %></span></h1>
 
-<center><p id="errorNotice"><%= notice %></p></center>
+<center><p class="errorNotice" color="green"><%= notice %></p></center>
 
 <h3> User Type: </h3>
 <center><%= @user.userType %></center><br>
 
 <h3> Joined on: </h3>
-<center><%= @user.created_at.strftime("%v") %></center><br>
+<center><%= local_time_ago(@user.created_at) %></center><br>
 
 <h3><span class="username"><%= @user.username %></span> has joined these Chatrooms:</h3>
-<% userRooms = Array.new(@user.chatrooms.size+1)%>
-<% roomNum = 0 %>
 <table id="chatroomList" class="dataTable">
     <thead>
         <tr>
@@ -40,6 +37,8 @@
             <% end %>
         </tr>
     </thead>
+    <% userRooms = Array.new(@user.chatrooms.size+1)%>
+    <% roomNum = 0 %>
     <% @user.allChatrooms.each do |room| %>
         <tr>
             <% if room != userRooms[roomNum] %>
@@ -121,7 +120,7 @@
           <% if user.requesting_admin == true %>
               <tr>
                 <td> <%= link_to user.username, user %> </td>
-                <td><center><%= link_to 'Accept Request', edit_admin_user_path(user) %></center></td>
+                <td><center><%= link_to 'Accept Request', edit_admin_user_path(user), remote: true %></center></td>
               </tr>
           <% end %>
     <% end %>
@@ -131,6 +130,8 @@
 <% if @user == current_user && @user.userType == 'Regular' &&  @user.requesting_admin != true %>
   <%= render partial: 'users/requestadminform', locals: {user: @user}%>
 <% end %>
+
+<div id="adminRequestForm" class="forms" style="display:none"></div>
 
 <%= link_to 'Back', users_path %>
 </div>

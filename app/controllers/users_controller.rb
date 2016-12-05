@@ -1,5 +1,4 @@
 class UsersController < ApplicationController
-    layout 'signup', only: [:new, :create]
   include SessionsHelper
 
   def index
@@ -22,6 +21,10 @@ class UsersController < ApplicationController
 
   def edit_admin
     @user = User.find(params[:id])
+    respond_to do |format|
+        format.html {}
+        format.js
+    end
   end
 
   def update_password

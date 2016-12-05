@@ -129,11 +129,13 @@ function checkButtons(menu, table) {
 }
 
 function renderTyping(renderObj, contentObj) {
-  renderObj.text(contentObj.val());
-  if (contentObj.attr("id") === "message_content") {
-      renderMath(document.getElementById('mathTyping'));
-  }
-  else if (contentObj.attr("id") === "editmessage_content") {
-      renderMath(document.getElementById('editMathTyping'));
+  if (renderObj && renderObj) {
+    renderObj.text(contentObj.val());
+    if (contentObj.attr("id") === "message_content") {
+        renderMath(document.getElementById('mathTyping'));
+    }
+    else if (contentObj.attr("id") === "editmessage_content") {
+        renderMath(document.getElementById('editMathTyping'));
+    }
   }
 };

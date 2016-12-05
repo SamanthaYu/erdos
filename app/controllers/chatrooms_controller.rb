@@ -65,6 +65,13 @@ class ChatroomsController < ApplicationController
       flash[:notice] = "Private Chatroom: Access Denied"
       redirect_to '/chatrooms'
     end
+    @chatroom.messages.each do |message|
+      message.mark_as_read! :for => current_user
+      @notification = Notification.find_by(message_id: message.id)
+      if @notification
+        @notification.mark_as_read! :for => current_user
+      end
+    end
     @message = Message.new
     @private_chat = PrivateChat.new
   end
