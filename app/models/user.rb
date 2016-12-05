@@ -1,4 +1,5 @@
 class User < ApplicationRecord
+  acts_as_reader
   mount_uploader :avatar, AvatarUploader
   has_many :messages
   has_many :chatrooms, through: :messages

@@ -1,4 +1,5 @@
 class Notification < ApplicationRecord
+    acts_as_readable :on => :created_at
     after_create { notifyUsers }
 
     belongs_to :message
@@ -10,7 +11,7 @@ class Notification < ApplicationRecord
         user.notifications << self
         user.notifications.sort_by(&:created_at)
         ActionCable.server.broadcast "notification_channel_#{user.id}",
-          counter: user.notifications.count,
+          counter: user.notifications.unread_by(user).count,
           event: self.event,
           sender: self.message.user,
           chatroomname: self.message.chatroom.roomname,

@@ -13,8 +13,7 @@ App.notifications = App.cable.subscriptions.create("NotificationsChannel", {
 
     var counter = $('#counter');
     var val = data.counter;
-    val++;
-    counter.replaceWith('<span class="notificationCounter" id="counter">'+data.counter+'</span>');
+    counter.replaceWith('<span class="notificationCounter" id="counter">'+val+'</span>');
     return;
   },
 

@@ -10,6 +10,9 @@ class NotificationsController < ApplicationController
   def user_index
     @user = current_user
     @notifications = @user.notifications.all.reverse
+    @notifications.each do |notification|
+      notification.mark_as_read! :for => @user
+    end
   end
 
   # GET /notifications/1
