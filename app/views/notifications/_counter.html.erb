@@ -3,6 +3,12 @@
   <%else%>
     <span class="glyphicon glyphicon-bell">
   <% end %>
+  <% if counter == 0 %>
+    <span class="notificationCounter" id="counter" style="display:none"><%=counter%></span>
+  <% elsif counter >= 100 %>
+    <span class="notificationCounter" id="counter">99+</span>
+  <% else %>
     <span class="notificationCounter" id="counter"><%=counter%></span>
+  <% end %>
     <span class="tooltiptext">Notifications</span>
 </span>

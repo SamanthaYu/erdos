@@ -11,9 +11,16 @@ App.notifications = App.cable.subscriptions.create("NotificationsChannel", {
     // Called when there's incoming data on the websocket for this channel
     $('#notificationList').prepend(this.renderNotification(data));
 
-    var counter = $('#counter');
     var val = data.counter;
-    counter.replaceWith('<span class="notificationCounter" id="counter">'+val+'</span>');
+    if ( val >= 0 && val <= 100){
+      var counter = $('#counter');
+      if (val == 100) {
+          counter.replaceWith('<span class="notificationCounter" id="counter">99+</span>');
+      }
+      else {
+        counter.replaceWith('<span class="notificationCounter" id="counter">'+val+'</span>');
+      }
+    }
     return;
   },
 
