@@ -12,6 +12,7 @@ class SessionsController < ApplicationController
         flash.now[:notice] = "User not found"
         render :new
       else
+        cookies.signed[:user_id] = user.id
         log_in user
         redirect_to chatrooms_path
       end

@@ -7,17 +7,19 @@ module ApplicationCable
       self.current_user = find_verified_user
     end
 
-    def session
-      cookies.encrypted[Rails.application.config.session_options[:key]]
-    end
-
     def disconnect
       # Any cleanup work needed when the cable connection is cut.
     end
 
     protected
-    def find_verified_user
-      User.find_by(id: session["user_id"])
-    end
+      def find_verified_user
+        # session isn't accessible here
+        if current_user = User.find_by(id: cookies.signed[:user_id])
+          current_user
+        else
+          # writes a log and raises an exception
+          reject_unauthorized_connection
+        end
+      end
   end
 end
