@@ -34,7 +34,7 @@ App.notifications = App.cable.subscriptions.create("NotificationsChannel", {
     retmess+='<span class="glyphicon glyphicon-comment"></span>';
     retmess+='<a href="'+data.chatroomlink+'">'+data.event+'</a>';
     retmess+='<span class="timeStamp">'+data.timestamp+'</span>';
-    retmess+='<ul>'+data.sender+': '+data.content+'</ul></span>';
+    retmess+='<ul>'+data.sender+': '+data.message+'</ul></span>';
     return retmess;
   }
 });
