@@ -1,6 +1,7 @@
 document.addEventListener("turbolinks:load", function() {
   submitNewMessage();
 //  submitImageMessage();
+  clickMessageSubmit()
   scrollBottom();
   renderLastMessage();
   renderLastUsername();
@@ -15,6 +16,13 @@ function submitNewMessage(){
       $('#message_content').val("")
         return false;
      }
+  });
+}
+
+
+function clickMessageSubmit(){
+  $( "#message_submit" ).click(function() {
+    $('#message_content').val("");
   });
 }
 

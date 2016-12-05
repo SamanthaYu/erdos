@@ -9,7 +9,7 @@
         <%= f.hidden_field :poster, value: current_user.username %>
         <%= f.hidden_field :user_id, value: current_user.id %>
       <% end %>
-      <%= f.submit "send", class: "btn", style: "display:none", data: {send: "message"}, id: 'message_submit'%>
+      <%= f.submit "send", class: "btn", style: "position:absolute; top: -9999999px", data: {send: "message"}, id: 'message_submit'%>
     <%end%>
 </div>
 <!-- Message box retraction -->
