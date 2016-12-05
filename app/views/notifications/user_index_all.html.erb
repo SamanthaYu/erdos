@@ -2,10 +2,9 @@
 <p id="notice"><%= notice %></p>
 
 <h1><%= @user.username %>'s Notifications</h1>
-<h3>Displaying your 50 most recent notifications</h3>
-<center><%= link_to "Click here to view all of your notifications", user_index_all_notifications_path(current_user.notifications.first) %></center>
+<h3>Displaying all of your notifications</h3>
 <% if @user.userType == "Admin" %>
 <center><%= button_to "View All User Activity", notifications_path(), method: :get, class: "submitButton" %></center>
 <% end %>
 
-<%= render "notification_center", notifications: @first50 %>
+<%= render "notification_center", notifications: @notifications %>

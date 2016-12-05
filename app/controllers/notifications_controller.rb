@@ -13,7 +13,12 @@ class NotificationsController < ApplicationController
     @notifications.each do |notification|
       notification.mark_as_read! :for => @user
     end
-    @first100 = @notifications.limit(100)
+    @first50 = @notifications.limit(50)
+  end
+
+  def user_index_all
+    @user = current_user
+    @notifications = @user.notifications.all.order('created_at DESC')
   end
 
   # GET /notifications/1
