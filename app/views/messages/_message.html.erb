@@ -41,7 +41,7 @@
             </div>
             <div id="messageContent<%=message.id%>" class="messageContent" content="<%=message.content%>">
               <% if message.imagemessage.display.url == "THISISNOTANIMAGE"%>
-                <%=EmojiParser.detokenize(message.content)%>
+                <%=emojime(message.content).html_safe%>
               <%else%>
                 <img src="<%=message.imagemessage.display.url%>">
               <%end%>

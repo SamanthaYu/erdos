@@ -22,6 +22,7 @@ class MessagesController < ApplicationController
       ActionCable.server.broadcast 'messages',
         type: "new",
         isimage: 1,
+        content: "NOTANIMAGE",
         imagemessageurl: @message.imagemessage.display.url,
         chatroomname: roomname,
         avatarurl: @message.user.avatar.thumb.url,
@@ -54,6 +55,7 @@ class MessagesController < ApplicationController
       msgcontent=emojime(message.content).html_safe
       ActionCable.server.broadcast 'messages',
         type: "new",
+        content: messsage.content,
         isimage: 0,
         chatroomname: roomname,
         avatarurl: message.user.avatar.thumb.url,
