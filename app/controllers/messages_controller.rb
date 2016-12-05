@@ -55,7 +55,7 @@ class MessagesController < ApplicationController
       msgcontent=emojime(message.content).html_safe
       ActionCable.server.broadcast 'messages',
         type: "new",
-        content: messsage.content,
+        content: message.content,
         isimage: 0,
         chatroomname: roomname,
         avatarurl: message.user.avatar.thumb.url,
