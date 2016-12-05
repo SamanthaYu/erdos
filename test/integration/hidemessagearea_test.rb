@@ -11,7 +11,7 @@ class HideMessageAreaTests < ActionDispatch::IntegrationTest
     fill_in "chatroom[roomname]",   :with => 'TestName'
     click_button('Create Chatroom')
     find('#messageBoxCloser').click
-    assert page.has_no_content?('Upload Image')
+    assert !(find('#message_content')[:'bottom'] == 200)
   end
 
   test "can't login again while logged in" do
