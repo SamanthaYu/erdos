@@ -6,10 +6,5 @@
   <span class="glyphicon glyphicon-comment"></span>
     <%= link_to notification.event, chatroom_path(notification.message.chatroom.id) %>
   <span class="timeStamp"> <%=local_time_ago(notification.created_at)%> </span>
-  <%=notification.message.imagemessage.display.url%>
-  <% if notification.message.imagemessage.display.url == "THISISNOTANIMAGE"%>
-    <ul><%=notification.message.user.username%>: <%=emojime(notification.message.content).html_safe%></ul>
-  <%else%>
-    <p>hiii</p>
-  <%end%>
+  <ul><%=notification.message.user.username%>: <%=emojime(notification.message.content).html_safe%></ul>
 </div>
