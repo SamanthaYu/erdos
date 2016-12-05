@@ -41,6 +41,7 @@
             <% end %>
             <% if current_user.userType != "Guest" %>
                 <%= render partial: 'private_chats/form', locals: {private_chat: @private_chat, chatroom: @chatroom} %>
+                <center><p id="errorNotice" class="errorNotice"><%= notice %></p></center>
              <% end %>
             <span id="sideHeader" style="font-size: 18px; margin-top: 30px" class="username"><%= @current_user.username %>'s Chatrooms</span>
         <% else %>
