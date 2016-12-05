@@ -1,6 +1,6 @@
 App.messages = App.cable.subscriptions.create('MessagesChannel', {
   received: function(data) {
-    if ($('h1').text()===data.chatroomname){
+    if ($('h1').attr("content")===data.chatroomname){
         if (data.type == "new"){
           $("#messages").removeClass('hidden');
           $('#messages').append(this.renderMessage(data));
@@ -41,7 +41,7 @@ App.messages = App.cable.subscriptions.create('MessagesChannel', {
       retmess+='<div id="otherUserMessage" class="message">';
       retmess+='<div class="messageHeader"><p>'+ avatarlink2 +'<span class="username"><strong>'+data.poster+'</strong></span>';
       retmess+='<span class="timeStamp">' + timestamp + '</span></p>';
-      retmess+='<a class="wolframAlphaLink">WolframAlpha</a>';
+      retmess+='<a class="otherWolframAlphaLink">WolframAlpha</a>';
     }
 
     retmess+='<div id="messageContent'+data.id+'" class="messageContent" content="'+data.message+'">';

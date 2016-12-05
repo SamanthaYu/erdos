@@ -18,6 +18,7 @@
 //= require_tree ./channels
 //= require math
 //= require mathMenu
+//= require wolframAlpha
 //= require chatrooms
 //= require welcome
 //= require local_time
