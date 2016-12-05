@@ -1,5 +1,8 @@
 function wolframAlpha(messageId) {
-    var inputUrl = $(messageId).attr('content');
+    $("#"+messageId).text($("#"+messageId).attr('content'));
+    renderThisMessage(messageId);
+
+    var inputUrl = $("#"+messageId).attr('content');
     inputUrl = inputUrl.replace(/[$,]/g, "");	// Removes all $; it will replace /$ with / (not what should happen)
 
     var urlified = inputUrl.split(' ').join('+');
@@ -13,14 +16,14 @@ function wolframAlpha(messageId) {
         url: proxy + wolfram,
         dataType: "xml",
         success: function(result) {
-            $(messageId).append("<br/>Computing...<br/>")
-            var oldContent = $(messageId).attr('content');
+            $("#"+messageId).append("<br/>Computing...<br/>")
+            var oldContent = $("#"+messageId).attr('content');
 
             $(result).find("pod").each(function() {
-                $(messageId).append("<b>" + $(this).attr('title') + "</b>" + "<br />");
+                $("#"+messageId).append("<b>" + $(this).attr('title') + "</b>" + "<br />");
 
                 $(this).find("img").each(function() {
-                    $(messageId).append("<img src = '" + $(this).attr('src') + "' alt = '" + $(this).attr('alt') + "' title = '" + $(this).attr('title') + "' width = '" + $(this).attr('width') + "' height = '" + $(this).attr('height') + "'</img><br />");
+                    $("#"+messageId).append("<img src = '" + $(this).attr('src') + "' alt = '" + $(this).attr('alt') + "' title = '" + $(this).attr('title') + "' width = '" + $(this).attr('width') + "' height = '" + $(this).attr('height') + "'</img><br />");
                 });
             });
         },
