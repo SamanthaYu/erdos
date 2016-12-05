@@ -10,7 +10,7 @@ class HideMessageAreaTests < ActionDispatch::IntegrationTest
     visit chatrooms_path
     fill_in "chatroom[roomname]",   :with => 'TestName'
     click_button('Create Chatroom')
-    click_on('messageBoxCloser')
+    find('#messageBoxCloser').click
     assert page.has_no_content?('Upload Image')
   end
 
@@ -22,8 +22,8 @@ class HideMessageAreaTests < ActionDispatch::IntegrationTest
     visit chatrooms_path
     fill_in "chatroom[roomname]",   :with => 'TestName'
     click_button('Create Chatroom')
-    click_on('messageBoxCloser')
-    click_on('messageBoxOpener')
+    find('#messageBoxCloser').click
+    find('#messageBoxOpener').click
     assert page.has_content?('Upload Image')
   end
 
