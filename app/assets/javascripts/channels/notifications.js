@@ -11,6 +11,7 @@ App.notifications = App.cable.subscriptions.create("NotificationsChannel", {
     // Called when there's incoming data on the websocket for this channel
     var elementToPrepend = '<div class="notificationMessage" style="background-color: #eee">'+this.renderNotification(data)+'</div>';
     $(elementToPrepend).hide().prependTo('#notificationsBody').fadeIn("swing");
+    renderRecentNotification();
 
     var val = data.counter;
     if ($('h1').attr("content") === data.chatroomname || $('h1').text() === data.receiver+"'s Notifications"){

@@ -28,6 +28,7 @@ document.addEventListener("turbolinks:load", function() {
     renderAllMessages();
     renderAllUsernames();
     renderAllButtons();
+    renderAllNotifications()
     renderTyping();
 });
 
