@@ -35,7 +35,7 @@ class MessagesController < ApplicationController
       redirect_to :back
     else
       if @message.imagemessage.display.url=="THISISNOTANIMAGE"
-        message.delete
+        @message.delete
       end
     end
 
@@ -52,14 +52,13 @@ class MessagesController < ApplicationController
       if message.chatroom.roomname.blank?
         roomname = chatroom_path(message.chatroom)
       end
-      msgcontent=emojime(message.content).html_safe
       ActionCable.server.broadcast 'messages',
         type: "new",
-        content: message.content,
+        content: message.content, #the plaintext
         isimage: 0,
         chatroomname: roomname,
         avatarurl: message.user.avatar.thumb.url,
-        message: msgcontent,
+        message: emojime(message.content).html_safe,
         poster: message.poster,
         currentuser: current_user.username,
         editlink: edit_message_path(message),
@@ -88,7 +87,9 @@ def update
         ActionCable.server.broadcast 'messages',
             type: "edit",
             chatroomname: roomname,
-            message: @message.content,
+            isimage: 0,
+            content: @message.content, #the plaintext
+            message: emojime(@message.content).html_safe,
             id: @message.id,
             createtimestamp: view_context.local_time_ago(@message.created_at),
             edittimestamp: view_context.local_time_ago(@message.updated_at);

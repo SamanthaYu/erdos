@@ -16,9 +16,8 @@ ActiveRecord::Schema.define(version: 20161204184540) do
   enable_extension "plpgsql"
 
   create_table "chatrooms", force: :cascade do |t|
-    t.integer  "message_id"
-    t.integer  "user_id"
     t.string   "roomname"
+    t.integer  "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -38,6 +37,7 @@ ActiveRecord::Schema.define(version: 20161204184540) do
     t.datetime "created_at",   null: false
     t.datetime "updated_at",   null: false
     t.string   "imagemessage"
+    t.integer  "haspicture"
   end
 
   create_table "notifications", force: :cascade do |t|
@@ -64,11 +64,18 @@ ActiveRecord::Schema.define(version: 20161204184540) do
     t.index ["reader_id", "reader_type", "readable_type", "readable_id"], name: "read_marks_reader_readable_index", unique: true, using: :btree
   end
 
+  create_table "sessions", force: :cascade do |t|
+    t.string   "session_id", null: false
+    t.text     "data"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.index ["session_id"], name: "index_sessions_on_session_id", unique: true, using: :btree
+    t.index ["updated_at"], name: "index_sessions_on_updated_at", using: :btree
+  end
+
   create_table "users", force: :cascade do |t|
-    t.integer  "user_id"
-    t.integer  "message_id"
     t.string   "username"
-    t.integer  "type"
+    t.string   "password"
     t.string   "userType"
     t.datetime "created_at",       null: false
     t.datetime "updated_at",       null: false

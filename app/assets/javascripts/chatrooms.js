@@ -1,6 +1,7 @@
 document.addEventListener("turbolinks:load", function() {
   submitNewMessage();
 //  submitImageMessage();
+  clickMessageSubmit()
   scrollBottom();
   renderLastMessage();
   renderLastUsername();
@@ -12,9 +13,15 @@ function submitNewMessage(){
   $('textarea#message_content').keydown(function(event) {
     if (event.keyCode == 13) {
       $('#message_submit').click();
-      $('#message_content').val("")
         return false;
      }
+  });
+}
+
+
+function clickMessageSubmit(){
+  $( "#message_submit" ).onclick(function() {
+    $('#message_content').val("");
   });
 }
 
