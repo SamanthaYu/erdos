@@ -1,19 +1,9 @@
 require 'test_helper'
 
   #include TestHelper::PressEnterHelper
-class ChatroomTests < ActionDispatch::IntegrationTest
+class PrivateChatTests < ActionDispatch::IntegrationTest
 
-  setup do
-    @chatroom = chatrooms(:one)
-  end
-
-
-  test "cannot see chatrooms without login" do
-    visit chatrooms_path
-    assert page.has_current_path?('/')
-  end
-
-  test "chatroom created successfully" do
+  test "can make a chat private" do
     visit signup_path
     fill_in "username_area", :with => 'newuser'
     fill_in "password_area", :with => 'trysix'
@@ -22,10 +12,11 @@ class ChatroomTests < ActionDispatch::IntegrationTest
     visit chatrooms_path
     fill_in "chatroom[roomname]",   :with => 'TestName'
     click_button('Create Chatroom')
-    assert page.has_content?("Chatroom 'TestName' was created by newuser")
+    click_button('Make Private')
+    assert page.has_content?('Members')
   end
 
-  test "can post inside the chatroom" do
+  test "cannot access a private chat without permission" do
     visit signup_path
     fill_in "username_area", :with => 'newuser'
     fill_in "password_area", :with => 'trysix'
@@ -34,8 +25,16 @@ class ChatroomTests < ActionDispatch::IntegrationTest
     visit chatrooms_path
     fill_in "chatroom[roomname]",   :with => 'TestName'
     click_button('Create Chatroom')
-    fill_in('message_content', :with => 'This is a message\n')
-    assert page.has_content?('This is a message')
+    click_button('Make Private')
+    page.click_link('logoutLink')
+    visit signup_path
+    fill_in "username_area", :with => 'neweruser'
+    fill_in "password_area", :with => 'trysix'
+    fill_in "password_confirmation_area", :with => 'trysix'
+    click_button('Create Account')
+    visit chatrooms_path
+    click_link('TestName')
+    assert page.has_content?('Access Denied')
   end
 
 end

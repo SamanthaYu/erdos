@@ -66,7 +66,7 @@
             <a href="/login">Login</a>
         <% end %>
         <% if !current_user.nil? %>
-            <%= link_to "Log out", logout_path, method: :delete %>
+            <%= link_to "Log out", logout_path, method: :delete, id: "logoutLink" %>
         <% end %>
     </div>
     <div id="sideBarCloser" onClick="closeSidebar()" class="sideBarToggle"><<</div>
