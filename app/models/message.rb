@@ -1,4 +1,5 @@
 class Message < ApplicationRecord
+  acts_as_readable :on => :created_at
 
   # ensure that all messages are sorted in ascending order
   default_scope { order(created_at: :asc) }

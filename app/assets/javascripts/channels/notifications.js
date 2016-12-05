@@ -19,7 +19,8 @@ App.notifications = App.cable.subscriptions.create("NotificationsChannel", {
 
   renderNotification: function(data) {
     var retmess='';
-    retmess+='<li><a href="'+data.chatroomlink+'">'+data.event+'</a><span class="timeStamp">'+data.timestamp+'</span></li>';
+    retmess+='<li><span style="background-color: #eee"><a href="'+data.chatroomlink+'">'+data.event+'</a></span>';
+    retmess+='<span class="timeStamp">'+data.timestamp+'</span></li>';
     retmess+='<ul>'+data.content+'</ul>';
     return retmess;
   }

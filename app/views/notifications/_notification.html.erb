@@ -1,6 +1,9 @@
 <li>
-  <%= link_to notification.event, chatroom_path(notification.message.chatroom.id) %>
+  <% if notification.message.unread?(current_user) %>
+    <span style="background-color: #eee"><%= link_to notification.event, chatroom_path(notification.message.chatroom.id) %></span>
+  <% else %>
+    <span><%= link_to notification.event, chatroom_path(notification.message.chatroom.id) %></span>
+  <% end %>
   <span class="timeStamp"> <%=local_time_ago(notification.created_at)%> </span>
   <ul><%=notification.message.content%></ul>
-
 </li>
