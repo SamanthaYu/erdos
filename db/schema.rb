@@ -10,14 +10,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161204022812) do
+ActiveRecord::Schema.define(version: 20161204184540) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "chatrooms", force: :cascade do |t|
-    t.string   "roomname"
+    t.integer  "message_id"
     t.integer  "user_id"
+    t.string   "roomname"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -37,7 +38,14 @@ ActiveRecord::Schema.define(version: 20161204022812) do
     t.datetime "created_at",   null: false
     t.datetime "updated_at",   null: false
     t.string   "imagemessage"
-    t.integer  "haspicture"
+  end
+
+  create_table "notifications", force: :cascade do |t|
+    t.integer  "message_id"
+    t.integer  "user_id"
+    t.string   "event"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "private_chats", force: :cascade do |t|
@@ -47,21 +55,23 @@ ActiveRecord::Schema.define(version: 20161204022812) do
     t.datetime "updated_at",  null: false
   end
 
-  create_table "sessions", force: :cascade do |t|
-    t.string   "session_id", null: false
-    t.text     "data"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-    t.index ["session_id"], name: "index_sessions_on_session_id", unique: true, using: :btree
-    t.index ["updated_at"], name: "index_sessions_on_updated_at", using: :btree
+  create_table "read_marks", force: :cascade do |t|
+    t.string   "readable_type", null: false
+    t.integer  "readable_id"
+    t.string   "reader_type",   null: false
+    t.integer  "reader_id"
+    t.datetime "timestamp"
+    t.index ["reader_id", "reader_type", "readable_type", "readable_id"], name: "read_marks_reader_readable_index", unique: true, using: :btree
   end
 
   create_table "users", force: :cascade do |t|
+    t.integer  "user_id"
+    t.integer  "message_id"
     t.string   "username"
-    t.string   "password"
+    t.integer  "type"
     t.string   "userType"
-    t.datetime "created_at",      null: false
-    t.datetime "updated_at",      null: false
+    t.datetime "created_at",       null: false
+    t.datetime "updated_at",       null: false
     t.string   "password_digest"
     t.string   "avatar"
     t.boolean  "requesting_admin"

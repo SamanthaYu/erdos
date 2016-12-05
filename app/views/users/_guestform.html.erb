@@ -1,8 +1,0 @@
-<%= form_for(:user, :url => {:controller => 'users', :action => 'create'}) do |f| %>
-   <br>
-   <%= f.text_field :username, :placeholder => 'Enter Guest Username', required: true, id: "guest_username_area"%>
-   <%= f.hidden_field :userType, value: "Guest" %>
-   <%= f.hidden_field :password_confirmation, value: "GuestPassword" %>
-   <%= f.hidden_field :password, value: "GuestPassword" %><br>
-   <center><%= f.submit "Login as Guest", class: "submitButton" %></center>
-<% end %>

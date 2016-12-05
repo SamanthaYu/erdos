@@ -1,5 +1,7 @@
 $(window).load(function() {
-  $("#messageContainer").animate({ scrollTop: $('#messageContainer')[0].scrollHeight});
+  if ($('#messageContainer')[0]) {
+    $("#messageContainer").animate({ scrollTop: $('#messageContainer')[0].scrollHeight});
+  }
 });
 
 $(document).on("click", '#editmessage_submit', function () {

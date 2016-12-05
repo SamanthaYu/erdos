@@ -28,7 +28,7 @@ function submitImageMessage(){
 }*/
 
 function scrollBottom() {
-    //$("messageContainer").scrollTop($('#messageContainer').last().scrollHeight);
-    $("#messageContainer").animate({ scrollTop: $('#messageContainer')[0].scrollHeight });
-    //$("#messageContainer").animate({ scrollTop: $('#message').last().scrollHeight });
+    if ($('#messageContainer')[0]) {
+      $("#messageContainer").animate({ scrollTop: $('#messageContainer')[0].scrollHeight });
+    }
 }

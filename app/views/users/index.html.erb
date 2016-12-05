@@ -5,6 +5,7 @@
 
     <div id="userDiv">
         <h3>List of Current Users</h3>
+        <br>
       <table class="dataTable">
         <thead>
           <tr>
@@ -26,7 +27,7 @@
               <tr>
                 <td><%= image_tag user.avatar.thumb.url%>&nbsp;&nbsp;<%=  link_to user.username, user, class: 'username' %></td>
                 <td><%= user.userType %></td>
-                <td><%= user.created_at.strftime("%v") %></td>
+                <td><%= local_time_ago(user.created_at) %></td>
                 <% if !current_user.nil? && current_user != user && !current_user.friends.where(id: user).exists?%>
                   <td><%= link_to "+ Add Friend", friendships_path(:friend_id => user), :method => :post %></td>
                 <% elsif current_user == user %>
