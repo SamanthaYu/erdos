@@ -1,4 +1,6 @@
 class Notification < ApplicationRecord
+    include Rails.application.routes.url_helpers
+
     acts_as_readable :on => :created_at
     after_create { notifyUsers }
 
@@ -16,7 +18,7 @@ class Notification < ApplicationRecord
           sender: self.message.user,
           receiver: user.username,
           chatroomname: self.message.chatroom.roomname,
-          chatroomlink: "/chatrooms/#{self.message.chatroom.id}",
+          chatroomlink: chatroom_path(self.message.chatroom.id),
           content: self.message.content,
           timestamp: self.message.created_at.strftime('%v');
       end
