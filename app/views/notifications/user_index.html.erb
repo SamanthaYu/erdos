@@ -1,27 +1,9 @@
+<% content_for :title, @user.username+"'s Notifications" %>
 <p id="notice"><%= notice %></p>
 
 <h1><%= @user.username %>'s Notifications</h1>
+<% if @user.userType == "Admin" %>
+<center><%= button_to "View All User Activity", notifications_path(), method: :get, class: "submitButton" %></center>
+<% end %>
 
 <%= render "notification_center", notifications: @notifications %>
-
-<!--<table>
-  <thead>
-    <tr>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @notifications.each do |notification| %>
-      <tr>
-        <td><%= link_to 'Show', notification %></td>
-        <td><%= link_to 'Edit', edit_notification_path(notification) %></td>
-        <td><%= link_to 'Destroy', notification, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
-<br>
-
-<%= link_to 'New Notification', new_notification_path %>-->

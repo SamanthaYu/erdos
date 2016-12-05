@@ -15,7 +15,7 @@ class Notification < ApplicationRecord
         ActionCable.server.broadcast "notification_channel_#{user.id}",
           counter: user.notifications.unread_by(user).count,
           event: self.event,
-          sender: self.message.user,
+          sender: self.message.user.username,
           receiver: user.username,
           chatroomname: self.message.chatroom.roomname,
           chatroomlink: chatroom_path(self.message.chatroom.id),

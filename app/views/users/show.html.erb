@@ -1,5 +1,4 @@
 <% content_for :title, @user.username+"'s Profile" %>
-<center><%= @user.notifications.unread_by(@user).count %></center>
 <div id="usersContainer">
 <div id="friendButtons" style="text-align: right">
     <% if @user != current_user && !current_user.friends.where(id: @user).exists?%>

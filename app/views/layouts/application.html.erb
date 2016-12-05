@@ -81,7 +81,7 @@
     <%= yield %>
 <%else%>
     <div id=notificationBell>
-      <%= link_to render(partial: '/notifications/counter', locals: {counter: current_user.notifications.unread_by(current_user).count}) , user_index_notifications_path(current_user.notifications.first) %>
+      <%= link_to render(partial: '/notifications/counter', locals: {counter: current_user.notifications.unread_by(current_user).count}), user_index_notifications_path(current_user.notifications.first) %>
     </div>
     <div id="container">
 

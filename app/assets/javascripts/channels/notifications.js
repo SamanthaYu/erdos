@@ -9,11 +9,11 @@ App.notifications = App.cable.subscriptions.create("NotificationsChannel", {
 
   received: function(data) {
     // Called when there's incoming data on the websocket for this channel
-    $('#notificationList').prepend(this.renderNotification(data));
+    var elementToPrepend = '<div class="notificationMessage" style="background-color: #eee">'+this.renderNotification(data)+'</div>';
+    $(elementToPrepend).hide().prependTo('#notificationsBody').fadeIn("swing");
 
     var val = data.counter;
-    if ($('h1').text() === data.receiver+"'s Notifications"){
-      alert("1");
+    if ($('h1').text() === data.chatroomname || $('h1').text() === data.receiver+"'s Notifications"){
       return;
     }
     if ( val >= 0 && val <= 100){
@@ -30,9 +30,10 @@ App.notifications = App.cable.subscriptions.create("NotificationsChannel", {
 
   renderNotification: function(data) {
     var retmess='';
-    retmess+='<li><span style="background-color: #eee"><a href="'+data.chatroomlink+'">'+data.event+'</a></span>';
-    retmess+='<span class="timeStamp">'+data.timestamp+'</span></li>';
-    retmess+='<ul>'+data.content+'</ul>';
+    retmess+='<span class="glyphicon glyphicon-comment"></span>';
+    retmess+='<a href="'+data.chatroomlink+'">'+data.event+'</a>';
+    retmess+='<span class="timeStamp">'+data.timestamp+'</span>';
+    retmess+='<ul>'+data.sender+': '+data.content+'</ul></span>';
     return retmess;
   }
 });
