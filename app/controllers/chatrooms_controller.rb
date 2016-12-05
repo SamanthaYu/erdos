@@ -66,10 +66,12 @@ class ChatroomsController < ApplicationController
       redirect_to '/chatrooms'
     end
     @chatroom.messages.each do |message|
-      message.mark_as_read! :for => current_user
-      @notification = Notification.find_by(message_id: message.id)
-      if @notification
-        @notification.mark_as_read! :for => current_user
+      if message.unread?(current_user)
+        message.mark_as_read! :for => current_user
+        @notification = Notification.find_by(message_id: message.id)
+        if @notification
+          @notification.mark_as_read! :for => current_user
+        end
       end
     end
     @message = Message.new
