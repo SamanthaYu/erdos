@@ -44,7 +44,7 @@ App.messages = App.cable.subscriptions.create('MessagesChannel', {
       retmess+='<a class="otherWolframAlphaLink">WolframAlpha</a>';
     }
 
-    retmess+='<div id="messageContent'+data.id+'" class="messageContent" content="'+data.message+'">';
+    retmess+='<div id="messageContent'+data.id+'" class="messageContent" content="'+data.content+'">';
     if (data.isimage==0)
       retmess+=data.message;
     else {
