@@ -7,6 +7,18 @@ class PrivateChatsController < ApplicationController
   def create
     if Chatroom.find(private_chat_params[:chatroom_id]).private_chatters.empty? && Chatroom.find(private_chat_params[:chatroom_id]).owner != current_user
       redirect_to :back
+    elsif Chatroom.find(private_chat_params[:chatroom_id]).private_chatters.empty?
+      @private_chat = PrivateChat.new(private_chat_params)
+      Chatroom.find(private_chat_params[:chatroom_id]).users.uniq.each do |user|
+        if user.userType != 'Guest' && user != current_user
+          PrivateChat.create(user_id: user.id, chatroom_id: private_chat_params[:chatroom_id])
+        end
+      end
+      if @private_chat.save
+        redirect_to :back
+      else
+        redirect_to :back
+      end
     else
       @private_chat = PrivateChat.new(private_chat_params)
       if @private_chat.save
