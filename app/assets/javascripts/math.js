@@ -13,6 +13,12 @@ function renderMath(element) {
 	$('option .katex-mathml').remove();	// Remove double rendering in dropdown menu by getting rid of MathML elements here
 }
 
+function renderRecentNotification() {
+	var allMessages = document.getElementsByClassName('notificationMessage');
+	var len=allMessages.length;
+	renderMath(allMessages[0]);
+}
+
 function renderLastMessage() {
 	var allMessages = document.getElementsByClassName('messageContent');
 	var len=allMessages.length;
@@ -30,9 +36,16 @@ function renderLastUsername() {
 	renderMath(allUsernames[len-1]);
 }
 
+function renderAllNotifications() {
+	var allMessages = document.getElementsByClassName('notificationMessage');
+	var len=allMessages.length;
+	for (var i = 0; i < len; i++) {
+			renderMath(allMessages[i]);
+	}
+}
+
 function renderAllMessages() {
 	var allMessages = document.getElementsByClassName('messageContent');
-
 	for (var i = 0; i < allMessages.length; i++){
 		renderMath(allMessages[i]);
 	}

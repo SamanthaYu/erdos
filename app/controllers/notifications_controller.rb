@@ -4,15 +4,21 @@ class NotificationsController < ApplicationController
   # GET /notifications
   # GET /notifications.json
   def index
-    @notifications = Notification.all.reverse
+    @notifications = Notification.all.order('created_at DESC')
   end
 
   def user_index
     @user = current_user
-    @notifications = @user.notifications.all.reverse
+    @notifications = @user.notifications.all.order('created_at DESC')
     @notifications.each do |notification|
       notification.mark_as_read! :for => @user
     end
+    @first50 = @notifications.limit(50)
+  end
+
+  def user_index_all
+    @user = current_user
+    @notifications = @user.notifications.all.order('created_at DESC')
   end
 
   # GET /notifications/1

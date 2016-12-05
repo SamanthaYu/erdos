@@ -34,6 +34,7 @@ Rails.application.routes.draw do
    resources :notifications do
      collection do
        get "user_index", :format => false
+       get "user_index_all", :format => false
      end
    end
 
