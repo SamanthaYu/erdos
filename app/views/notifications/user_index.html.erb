@@ -6,4 +6,4 @@
 <center><%= button_to "View All User Activity", notifications_path(), method: :get, class: "submitButton" %></center>
 <% end %>
 
-<%= render "notification_center", notifications: @notifications %>
+<%= render "notification_center", notifications: @first100 %>

@@ -1,7 +1,7 @@
 module MessagesHelper
 
-  def unread?
-    self.unread_by(current_user).include?(self)
+  def unread?(user)
+    self.unread_by(user).include?(self)
   end
 
 end
