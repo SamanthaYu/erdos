@@ -12,6 +12,10 @@ App.notifications = App.cable.subscriptions.create("NotificationsChannel", {
     $('#notificationList').prepend(this.renderNotification(data));
 
     var val = data.counter;
+    if ($('h1').text() === data.chatroomname || $('h1').text() === data.receiver+"'s Notifications"){
+      alert("1");
+      return;
+    }
     if ( val >= 0 && val <= 100){
       var counter = $('#counter');
       if (val == 100) {

@@ -14,6 +14,7 @@ class Notification < ApplicationRecord
           counter: user.notifications.unread_by(user).count,
           event: self.event,
           sender: self.message.user,
+          receiver: user.username,
           chatroomname: self.message.chatroom.roomname,
           chatroomlink: "/chatrooms/#{self.message.chatroom.id}",
           content: self.message.content,
