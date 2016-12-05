@@ -35,7 +35,7 @@ class MessagesController < ApplicationController
       redirect_to :back
     else
       if @message.imagemessage.display.url=="THISISNOTANIMAGE"
-        message.delete
+        @message.delete
       end
     end
 
@@ -55,7 +55,7 @@ class MessagesController < ApplicationController
       msgcontent=emojime(message.content).html_safe
       ActionCable.server.broadcast 'messages',
         type: "new",
-        content: message.content,
+        content: messsage.content,
         isimage: 0,
         chatroomname: roomname,
         avatarurl: message.user.avatar.thumb.url,
