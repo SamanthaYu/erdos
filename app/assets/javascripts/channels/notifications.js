@@ -13,7 +13,7 @@ App.notifications = App.cable.subscriptions.create("NotificationsChannel", {
     $(elementToPrepend).hide().prependTo('#notificationsBody').fadeIn("swing");
 
     var val = data.counter;
-    if ($('h1').text() === data.chatroomname || $('h1').text() === data.receiver+"'s Notifications"){
+    if ($('h1').attr("content") === data.chatroomname || $('h1').text() === data.receiver+"'s Notifications"){
       return;
     }
     if ( val >= 0 && val <= 100){
