@@ -20,8 +20,10 @@ function submitNewMessage(){
 
 
 function clickMessageSubmit(){
-  $( "#message_submit" ).onclick(function() {
+  $( "#message_submit" ).click(function() {
+    $('#new_message').submit();
     $('#message_content').val("");
+    return false;
   });
 }
 
