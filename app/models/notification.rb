@@ -28,6 +28,7 @@ class Notification < ApplicationRecord
           chatroomlink: chatroom_path(self.message.chatroom.id),
           message: msgcontent,
           timestamp: self.message.created_at.strftime('%v'),
+          id: self.id,
           imagemessageurl: self.message.imagemessage.display.url;
       end
     end
