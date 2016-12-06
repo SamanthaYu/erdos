@@ -52,7 +52,7 @@
         <ul>
         <% userRooms = Array.new(current_user.chatrooms.size+1)%>
         <% roomNum = 0 %>
-        <% current_user.allChatrooms.each do |room| %>
+        <% current_user.chatrooms.each do |room| %>
             <% if room != userRooms[roomNum] %>
                 <% roomNum += 1 %>
                 <% userRooms[roomNum] = room %>

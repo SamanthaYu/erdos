@@ -27,3 +27,38 @@ four:
 five:
   username: "myadmin"
   userType: "Admin"
+
+six:
+  username: "barbara"
+  userType: "Regular"
+  password: "12345"
+
+seven:
+  username: "long_username"
+  userType: "Admin"
+  password: "123456"
+
+eight:
+  username: "marypoppins"
+  userType: "Regular"
+  password: "supercalifragilisticexpialicodocious"
+
+sender:
+  id: 1
+  username: "sender"
+  password: "123456"
+
+receiver1:
+  id: 2
+  username: "receiver1"
+  password: "123456"
+
+receiver2:
+  id: 3
+  username: "receiver2"
+  password: "123456"
+
+receiver3:
+  id: 4
+  username: "receiver3"
+  password: "123456"

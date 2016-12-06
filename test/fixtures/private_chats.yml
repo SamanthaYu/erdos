@@ -7,3 +7,7 @@ one:
 two:
   user_id: 1
   chatroom_id: 1
+
+three:
+  user_id: 1
+  chatroom_id: 3

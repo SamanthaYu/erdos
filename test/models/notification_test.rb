@@ -6,9 +6,9 @@ class NotificationTest < ActiveSupport::TestCase
   # end
 
   test "notification should notify a user upon creation" do
-    sender = User.create(:id => 1, :username => "sender", :password => "123456")
-    receiver1 = User.create(:id => 2, :username => "receiver1", :password => "123456")
-    chatroom = Chatroom.create(:roomname => "newchatroom", :id => 1, :user_id => sender.id)
+    sender = users(:sender)
+    receiver1 = users(:receiver1)
+    chatroom = chatrooms(:newchatroom)
     message = Message.create(:content => "I'm the owner of this chatroom", :chatroom_id => chatroom.id, :user_id => sender.id, :poster => sender.username)
     message2 = Message.create(:content => "I'm joining the chatroom", :chatroom_id => chatroom.id, :user_id => receiver1.id, :poster => receiver1.username)
 
