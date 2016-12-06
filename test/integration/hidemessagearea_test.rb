@@ -10,6 +10,7 @@ class HideMessageAreaTests < ActionDispatch::IntegrationTest
     visit chatrooms_path
     fill_in "chatroom[roomname]",   :with => 'TestName'
     click_button('Create Chatroom')
+    puts find('#message_content')[:bottom]
     find('#messageBoxCloser').click
     assert !(find('#message_content')[:bottom] == 200)
   end
