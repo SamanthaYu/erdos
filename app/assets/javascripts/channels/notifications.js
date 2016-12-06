@@ -10,6 +10,7 @@ App.notifications = App.cable.subscriptions.create("NotificationsChannel", {
   received: function(data) {
     // Called when there's incoming data on the websocket for this channel
     var elementToPrepend = '<div class="notificationMessage" style="background-color: #eee">'+this.renderNotification(data)+'</div>';
+
     $(elementToPrepend).hide().prependTo('#notificationsBody').fadeIn("swing");
     renderRecentNotification();
 
@@ -34,7 +35,6 @@ App.notifications = App.cable.subscriptions.create("NotificationsChannel", {
     retmess+='<span class="glyphicon glyphicon-comment"></span>';
     retmess+='<a href="'+data.chatroomlink+'">'+data.event+'</a>';
     retmess+='<span class="timeStamp">'+data.timestamp+'</span>';
-    retmess+=data.id;
     if (data.imagemessageurl == "THISISNOTANIMAGE"){
       retmess+='<ul>'+data.sender+': '+data.message+'</ul></span>';
     }
