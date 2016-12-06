@@ -63,6 +63,7 @@ class MessagesController < ApplicationController
         currentuser: current_user.username,
         editlink: edit_message_path(message),
         deletelink: delete_message_path(message),
+        wolframlink: wolframAlpha_message_path(message),
         id: message.id,
         timestamp: view_context.local_time_ago(message.created_at);
       head :ok
@@ -122,7 +123,12 @@ def destroy
     @message.destroy
 end
 
-
+def wolframAlpha
+  @message = Message.find(params[:id])
+  respond_to do |format|
+    format.js{}
+  end
+end
 
 
   private

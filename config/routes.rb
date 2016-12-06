@@ -16,6 +16,7 @@ Rails.application.routes.draw do
      member do
       get "new_image"
       post "create_image"
+      get "wolframAlpha"
      end
    end
    get '/messages/:id/delete(.:format)', to: 'messages#delete', as: :delete_message
