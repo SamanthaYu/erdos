@@ -20,6 +20,11 @@ App.messages = App.cable.subscriptions.create('MessagesChannel', {
             parenttag.fadeOut("swing");
         }
     }
+
+    // Scroll to bottom only if message content is an image
+    if (data.isimage!=0) {
+        scrollBottom();
+    }
     return;
   },
 
