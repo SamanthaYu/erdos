@@ -14,8 +14,11 @@ Rails.application.routes.draw do
    resources :chatrooms
    resources :messages do
      member do
+      get "wolframAlpha"
       get "new_image"
-      post "create_image"
+     end
+     collection do
+       post "create_image"
      end
    end
    get '/messages/:id/delete(.:format)', to: 'messages#delete', as: :delete_message
