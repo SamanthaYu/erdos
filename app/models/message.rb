@@ -5,7 +5,7 @@ class Message < ApplicationRecord
   default_scope { order(created_at: :asc) }
   belongs_to :chatroom
   belongs_to :user
-  has_one :notification
+  has_one :notification, dependent: :destroy
   #something about user?
 
   mount_uploader :imagemessage, ImageMessageUploader
