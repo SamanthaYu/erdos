@@ -31,9 +31,9 @@
             <%end%>
             <td><%= link_to room.roomname, room %></td>
             <% if !room.private_chatters.empty? %>
-                <td>Yes</td>
+                <td id="privateyes">Yes</td>
             <% else %>
-                <td>No</td>
+                <td id="privateno">No</td>
             <%end%>
             <td><%= local_time_ago(room.created_at) %></td>
             <%if !room.messages.last.nil?%>

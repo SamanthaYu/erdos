@@ -13,7 +13,7 @@
           <% end %>
         <% end %>
         <% @userlist2 = @userlist.reject { |c| c.nil? } %>
-        <%= f.select( :user_id, @userlist2.map { |value| [ User.find(value).username, value.id, class: "username"] }, {}, {class:"sideNavDropdown", id:"privatechatselector"}) %>
+        <%= f.select( :user_id, @userlist2.map { |value| [ User.find_by(id: value.id).username, value.id, class: "username"] }, {}, {class:"sideNavDropdown", id:"privatechatselector"}) %>
         <br><% buttonString = "Add User" %>
       <% elsif !current_user.nil? %>
         <%= f.hidden_field :user_id, value: current_user.id %>

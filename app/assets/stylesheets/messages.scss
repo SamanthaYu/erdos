@@ -65,12 +65,16 @@ $footer-height: 140px;
 }
 
 // Message box movement
-#messageBoxOpener {
+#messageBoxMinimizer {
+  display: none;
 }
 
-// Message box movement
-#messageBoxCloser {
+#messageBoxOpener {
   display: none;
+}
+
+#messageBoxCloser {
+    bottom: 70px;
 }
 
 // Message box movement button
@@ -85,6 +89,37 @@ $footer-height: 140px;
     text-align: center;
     letter-spacing: 2px;
     cursor: pointer;
+}
+
+// Open/close box movement button
+.openCloseToggle {
+    position: fixed;
+    bottom: 0px;
+    right: 25px;
+    background-color: #fff;
+    color: #bbb;
+    height: 50px;
+    width: 50px;
+    margin-top: 5px;
+    font-size: 32px;
+    opacity: 1.0;
+    transition: 0.5s;
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+    font-family: 'Fira Sans', sans-serif;
+    text-align: center;
+    border-radius: 25px;
+    border-color: $light-green;
+    border-width: 3px;
+    border-style: solid;
+    letter-spacing: 2px;
+    cursor: pointer;
+}
+
+// Hover colour of message box button
+.openCloseToggle:hover{
+    color: $main-green;
+    background-color: lighten($yellow, 10%);
 }
 
 // Hover colour of message box button

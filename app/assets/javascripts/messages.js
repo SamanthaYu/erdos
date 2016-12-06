@@ -51,8 +51,8 @@ function clearImgUploadForm() {
 // Expand message area for drawing
 function expandMessageBox(){
     $("#messageContainer").css({bottom: 210});
-    $("#messageBoxOpener").hide();
-    $("#messageBoxCloser").show();
+    $("#messageBoxExpander").hide();
+    $("#messageBoxMinimizer").show();
     $("#inputForm").height(202);
 
     setTimeout(function() {
@@ -65,12 +65,29 @@ function expandMessageBox(){
 // Minimize message area
 function minimizeMessagebox() {
     $("#messageContainer").css({bottom: 135});
-    $("#messageBoxCloser").hide();
-    $("#messageBoxOpener").show();
+    $("#messageBoxMinimizer").hide();
+    $("#messageBoxExpander").show();
     $("#inputForm").height(130);
 
     setTimeout(function() {
         $("#mathTyping").height(22);
     }, 20);
     scrollBottom();
+}
+
+// Open message area
+function openMessageBox(){
+    minimizeMessagebox();
+    $("#messageBoxOpener").hide();
+    $("#messageBoxCloser").show();
+}
+
+// Close message area
+function closeMessageBox() {
+    $("#messageBoxCloser").hide();
+    $("#inputForm").height(0);
+    $("#messageContainer").css({bottom: 0});
+    setTimeout(function() {
+        $("#messageBoxOpener").show();
+    }, 500);
 }

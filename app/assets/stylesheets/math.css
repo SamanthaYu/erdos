@@ -54,6 +54,7 @@
   height: 38px;
   padding: 8px;
   overflow-y: auto;
+  transition: 0.5s; // Needed for (re)traction
 }
 
 .wolframAlphaLink {

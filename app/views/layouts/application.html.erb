@@ -37,7 +37,7 @@
                 <span id="subHeader">Members:</span>
                 <ul>
                 <% @chatroom.private_chatters.each do |user| %>
-                    <li><%= link_to user.username, user, class: "username" %></li>
+                    <li id="private_chatters"><%= link_to user.username, user, class: "username" %></li>
                 <% end %>
                 </ul>
             <% end %>
