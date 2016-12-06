@@ -2,6 +2,11 @@
     <div id="mathTyping" class="mathTyping"></div>
     <%= render partial: 'messages/mathMenu'%>
     <%= link_to "Upload Image", new_image_message_path, remote: true, id: "imgupload_link"%>
+
+    <!-- Message box retraction -->
+    <span id="messageBoxOpener" onClick="expandMessageBox()" class="glyphicon glyphicon-resize-full messageBoxToggle"></span>
+    <span id="messageBoxCloser" onClick="minimizeMessagebox()" class="glyphicon glyphicon-resize-small messageBoxToggle"></span>
+
     <%=form_for message, remote: true, authenticity_token: true do |f|%>
       <%= f.text_area :content,  class: "form-control", rows: "1", :placeholder => "Enter Message, to use math formatting surround formula with $ signs", data: {textarea: "message"}, id: 'message_content'%>
       <%= f.hidden_field :chatroom_id, value: chatroom.id %>
@@ -9,9 +14,6 @@
         <%= f.hidden_field :poster, value: current_user.username %>
         <%= f.hidden_field :user_id, value: current_user.id %>
       <% end %>
-      <%= f.submit "send", class: "btn", style: "position:absolute; top: -9999999px", data: {send: "message"}, id: 'message_submit'%>
+      <%= f.submit "send", class: "btn", style: "display:none", data: {send: "message"}, id: 'message_submit'%>
     <%end%>
 </div>
-<!-- Message box retraction -->
-<div id="messageBoxCloser" onClick="closeMessageBox()" class="messageBoxToggle">↓</div>
-<div id="messageBoxOpener" onClick="openMessageBox()" class="messageBoxToggle">↑</div>

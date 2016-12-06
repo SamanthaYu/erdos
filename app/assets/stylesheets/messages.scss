@@ -12,7 +12,7 @@ $light-green: #55c6aa;
 $yellow: #fbca35;
 $dark-blue: #182031;
 $header-height: 60px;
-$footer-height: 200px;
+$footer-height: 140px;
 
 #editForm {
     width: 80%;
@@ -66,35 +66,23 @@ $footer-height: 200px;
 
 // Message box movement
 #messageBoxOpener {
-  display: none;
 }
 
 // Message box movement
 #messageBoxCloser {
-  bottom: 140px;
+  display: none;
 }
 
 // Message box movement button
 .messageBoxToggle {
-    position: fixed;
-    bottom: 0px;
-    right: 25px;
+    display: inline-block;
     background-color: #fff;
     color: #bbb;
-    height: 50px;
-    width: 50px;
-    margin-top: 5px;
     font-size: 32px;
     opacity: 1.0;
     transition: 0.5s;
-    border-top-right-radius: 10px;
-    border-bottom-right-radius: 10px;
-    font-family: 'Fira Sans', sans-serif;
+    padding: 5px;
     text-align: center;
-    border-radius: 25px;
-    border-color: $light-green;
-    border-width: 3px;
-    border-style: solid;
     letter-spacing: 2px;
     cursor: pointer;
 }
@@ -102,7 +90,6 @@ $footer-height: 200px;
 // Hover colour of message box button
 .messageBoxToggle:hover{
     color: $main-green;
-    background-color: lighten($yellow, 10%);
 }
 
 #inputForm {
