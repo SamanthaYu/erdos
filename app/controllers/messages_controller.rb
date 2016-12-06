@@ -23,7 +23,7 @@ class MessagesController < ApplicationController
       ActionCable.server.broadcast 'messages',
         type: "new",
         isimage: 1,
-        content: "YESANIMAGE",
+        content: "IMG",
         imagemessageurl: @message.imagemessage.display.url,
         chatroomname: roomname,
         avatarurl: @message.user.avatar.thumb.url,

@@ -33,7 +33,7 @@ class UserTests < ActionDispatch::IntegrationTest
       page.attach_file('imgmessagefield', Rails.root + 'test/thumb_default.png')
       click_on('imgUpload_submit')
       visit savedurl
-      assert page.has_content?('This is a message')
+      assert page.has_css?('img', :count => 3) #original was 2
     end
 
 
@@ -56,6 +56,27 @@ class UserTests < ActionDispatch::IntegrationTest
     visit savedurl
     assert page.has_content?('This is an edited message')
   end
+
+  test "image messages cannot be edited" do
+    visit signup_path
+    fill_in "username_area", :with => 'newuser'
+    fill_in "password_area", :with => 'trysix'
+    fill_in "password_confirmation_area", :with => 'trysix'
+    click_button('Create Account')
+    visit chatrooms_path
+    fill_in "chatroom[roomname]",   :with => 'TestName'
+    click_button('Create Chatroom')
+    savedurl=current_url
+    click_on('Upload Image')
+    page.attach_file('imgmessagefield', Rails.root + 'test/thumb_default.png')
+    click_on('imgUpload_submit')
+    visit savedurl
+    assert page.has_content?('edit') #original was 2
+  end
+
+
+
+
 
   test "all messages can be deleted" do
       visit signup_path
