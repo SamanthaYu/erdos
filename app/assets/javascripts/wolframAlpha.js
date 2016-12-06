@@ -26,7 +26,7 @@ function wolframAlpha(messageId, informationDiv) {
                   $("#"+informationDiv).append("<img src='"+$(this).attr('src')+"'alt='"+$(this).attr('alt')+"'title ='"+$(this).attr('title')+"'width='"+$(this).attr('width')+"'height='"+$(this).attr('height')+"'</img><br />");
                 });
             });
-            $("#"+informationDiv).append("<br/><a href='http://www.wolframalpha.com/input/?i=" + inputUrl + "'' target='_blank'>View in Wolfram Alpha</a>");
+            $("#"+informationDiv).append("<br/><a href='http://www.wolframalpha.com/input/?i=" + inputUrl + "' id='viewWolfram' target='_blank'>View in Wolfram Alpha</a>");
         },
         error: function() {
             $("#"+informationDiv).append("<br/>Sorry an error occurred.");
