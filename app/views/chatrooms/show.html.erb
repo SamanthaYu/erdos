@@ -13,7 +13,7 @@
     <% if !@chatroom.roomname.blank? %>
         <h1 content="<%= @chatroom.roomname%>"><%= @chatroom.roomname %> - Owner: <%= @chatroom.owner.username %></h1>
     <% else %>
-        <h1 content="<%= @chatroom.roomname%>"><%= chatroom_path(@chatroom) %> - Owner: <%= @chatroom.owner.username %></h1>
+        <h1 content="<%= chatroom_path(@chatroom)%>"><%= chatroom_path(@chatroom) %> - Owner: <%= @chatroom.owner.username %></h1>
     <% end %>
 </div>
 
