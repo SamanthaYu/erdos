@@ -4,7 +4,6 @@ App.messages = App.cable.subscriptions.create('MessagesChannel', {
         if (data.type == "new"){
           $("#messages").removeClass('hidden');
           $('#messages').append(this.renderMessage(data));
-          scrollBottom();
           renderLastMessage();
           renderLastUsername();
       }
@@ -19,6 +18,11 @@ App.messages = App.cable.subscriptions.create('MessagesChannel', {
             var parenttag = $("#messageContent"+data.id).parent();
             parenttag.fadeOut("swing");
         }
+    }
+
+    // Scroll to bottom only if message content is an image
+    if (data.isimage==0) {
+        scrollBottom();
     }
     return;
   },
