@@ -6,7 +6,7 @@ require 'capybara/rails'
 
 
 
-ActiveRecord::FixtureSet.context_class.send :include, PasswordDigestHelper
+#ActiveRecord::FixtureSet.context_class.send :include, PasswordDigestHelper
 
 class ActiveSupport::TestCase
   # Setup all fixtures in test/fixtures/*.yml for all tests in alphabetical order.

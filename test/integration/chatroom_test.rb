@@ -7,6 +7,17 @@ class ChatroomTests < ActionDispatch::IntegrationTest
     @chatroom = chatrooms(:one)
   end
 
+  test "users can own chatrooms" do
+    visit signup_path
+    fill_in "username_area", :with => 'newuser'
+    fill_in "password_area", :with => 'trysix'
+    fill_in "password_confirmation_area", :with => 'trysix'
+    click_button('Create Account')
+    visit chatrooms_path
+    fill_in "chatroom[roomname]",   :with => 'TestName'
+    assert page.has_content?('Testname - Owner: newuser')
+  end
+
 
   test "cannot see chatrooms without login" do
     visit chatrooms_path
@@ -34,7 +45,8 @@ class ChatroomTests < ActionDispatch::IntegrationTest
     visit chatrooms_path
     fill_in "chatroom[roomname]",   :with => 'TestName'
     click_button('Create Chatroom')
-    fill_in('message_content', :with => 'This is a message\n')
+    fill_in('message_content', :with => 'This is a message')
+    #click_button('message_submit')
     assert page.has_content?('This is a message')
   end
 
