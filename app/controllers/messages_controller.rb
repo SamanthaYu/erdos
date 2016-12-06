@@ -33,6 +33,7 @@ class MessagesController < ApplicationController
         id: @message.id,
         timestamp: view_context.local_time_ago(@message.created_at);
       @message.notify
+      redirect_back(fallback_location: '/chatrooms');
     else
       if @message.imagemessage.display.url=="THISISNOTANIMAGE"
         @message.delete
