@@ -28,13 +28,12 @@ class UserTests < ActionDispatch::IntegrationTest
       visit chatrooms_path
       fill_in "chatroom[roomname]",   :with => 'TestName'
       click_button('Create Chatroom')
-      assert page.has_css?('.message', :count => 1)
       savedurl=current_url
       click_on('Upload Image')
       page.attach_file('message[imagemessage]', Rails.root + 'test/thumb_default.png')
       click_on('imgUpload_submit')
       visit savedurl
-      assert page.has_css?('.message', :count => 2) #original was 2
+      assert page.has_css?('img', :count => 4) #original was 2, (add 1 extra for avatar)
     end
 
 
@@ -116,7 +115,23 @@ class UserTests < ActionDispatch::IntegrationTest
     assert page.has_css?('.message', :count => 1) #original was 2
   end
 
-
+  test "emoji messages can be posted" do
+    visit signup_path
+    fill_in "username_area", :with => 'newuser'
+    fill_in "password_area", :with => 'trysix'
+    fill_in "password_confirmation_area", :with => 'trysix'
+    click_button('Create Account')
+    visit chatrooms_path
+    fill_in "chatroom[roomname]",   :with => 'TestName'
+    click_button('Create Chatroom')
+    savedurl=current_url
+    assert page.has_css?('img', :count => 2)
+    fill_in('message_content', :with => ':fire: This is a message')
+    click_on('message_submit')
+    visit savedurl
+    assert page.has_css?('img', :count => 4)
+    assert page.has_content?('This is a message')
+  end
 
 
 

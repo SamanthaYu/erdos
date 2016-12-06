@@ -9,8 +9,8 @@ class MenuTests < ActionDispatch::IntegrationTest
     fill_in "password_confirmation_area", :with => 'trysix'
     click_button('Create Account')
     visit chatrooms_path
-    page.click("sideBarCloser")
-    assert page.has_no_content?('newuser')
+    find("#sideBarCloser").click
+    assert page.has_css?("#sidebar", visible: false)
   end
 
 end
