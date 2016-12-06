@@ -4,6 +4,7 @@
 # model remove the '{}' from the fixture names and add the columns immediately
 # below each fixture, per the syntax in the comments below
 #
+
 one:
   username: "gerbil"
   password: "trysix"
@@ -23,3 +24,7 @@ four:
   username: "as"
   password: "RegPassword"
   userType: "Regular"
+
+five:
+  username: "myadmin"
+  userType: "Admin"

@@ -2,6 +2,8 @@ require 'test_helper'
 
 class UserTests < ActionDispatch::IntegrationTest
 
+
+
   test "can signup as a regular user" do
     visit signup_path
     fill_in "username_area", :with => 'newuser'
@@ -11,6 +13,7 @@ class UserTests < ActionDispatch::IntegrationTest
     assert page.has_content?('newuser')
   end
 
+=begin
   test "can signup as an admin user" do
     visit signup_path
     fill_in "username_area", :with => 'newuser'
@@ -20,6 +23,7 @@ class UserTests < ActionDispatch::IntegrationTest
     click_button('Create Account')
     assert page.has_content?('Admin')
   end
+=end
 
   test "can enter site as a guest user" do
     visit signup_path
@@ -47,11 +51,12 @@ class UserTests < ActionDispatch::IntegrationTest
 
   test "admins can decide to delete chatrooms" do
     visit signup_path
-    fill_in "username_area", :with => 'newuser'
+    fill_in "username_area", :with => 'newadmin'
     fill_in "password_area", :with => 'trysix'
     fill_in "password_confirmation_area", :with => 'trysix'
-    select "Admin", :from => 'user[userType]'
     click_button('Create Account')
+    user=User.find_by(username: 'newadmin')
+    user.update_attribute :userType, 'Admin'
     visit chatrooms_path
     assert page.has_content?('Destroy Chatroom')
   end
