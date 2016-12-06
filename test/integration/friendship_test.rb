@@ -35,14 +35,14 @@ class FriendshipTests < ActionDispatch::IntegrationTest
     fill_in "password_confirmation_area", :with => 'trysix'
     click_button('Create Account')
     visit users_path
-    first(:link, '+ Add Friend').click
-    visit users_path
-    assert page.has_content?('Already Added')
-    click_link("gerbil")
-    click_button('submitButton')
-    click_button("OK")
-    visit users_path
-    assert page.has_no_content?('Already Added')
+    click_link("admin")
+    assert page.has_content?("+ Add Friend")
+    click_button("+ Add Friend")
+
+    assert page.has_content?('× Remove Friend')
+    click_button("× Remove Friend")
+    #click_button("OK")
+    assert page.has_content?('Are you sure you want to remove this friend?')
   end
 
 end

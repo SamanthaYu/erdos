@@ -15,7 +15,8 @@ class ChatroomTests < ActionDispatch::IntegrationTest
     click_button('Create Account')
     visit chatrooms_path
     fill_in "chatroom[roomname]",   :with => 'TestName'
-    assert page.has_content?('Testname - Owner: newuser')
+    click_button('Create Chatroom')
+    assert page.has_content?('TestName - Owner: newuser')
   end
 
 
