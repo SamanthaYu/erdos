@@ -76,10 +76,7 @@ class UserTests < ActionDispatch::IntegrationTest
   end
 
 
-
-
-
-  test "all messages can be deleted" do
+  test "regular messages can be deleted" do
       visit signup_path
       fill_in "username_area", :with => 'newuser'
       fill_in "password_area", :with => 'trysix'
@@ -96,6 +93,27 @@ class UserTests < ActionDispatch::IntegrationTest
       click_button('deletemessage_submit')
       visit savedurl
       assert page.has_no_content?('This is a message')
+  end
+
+  test "image messages can be deleted" do
+    visit signup_path
+    fill_in "username_area", :with => 'newuser'
+    fill_in "password_area", :with => 'trysix'
+    fill_in "password_confirmation_area", :with => 'trysix'
+    click_button('Create Account')
+    visit chatrooms_path
+    fill_in "chatroom[roomname]",   :with => 'TestName'
+    click_button('Create Chatroom')
+    assert page.has_css?('.message', :count => 1)
+    savedurl=current_url
+    click_on('Upload Image')
+    page.attach_file('message[imagemessage]', Rails.root + 'test/thumb_default.png')
+    click_on('imgUpload_submit')
+    visit savedurl
+    click_on('delete_link')
+    click_button('deletemessage_submit')
+    visit savedurl
+    assert page.has_css?('.message', :count => 1) #original was 2
   end
 
 
