@@ -16,14 +16,17 @@ function wolframAlpha(messageId, informationDiv) {
         url: proxy + wolfram,
         dataType: "xml",
         success: function(result) {
-            $("#"+informationDiv).append("<br/></br>Computing...<br/></br>")
-            var oldContent = $("#"+messageId).attr('content');
+            $("#"+informationDiv).append("<br/></br>Computing...<br/></br>");
+            $(result).find("didyoumean").each(function() {
+                $("#"+informationDiv).append('Wolfram asks, "Did you mean: "' + $(this).html() + '?<br/>');
+            });
 
             $(result).find("pod").each(function() {
                 $("#"+informationDiv).append("<b>" + $(this).attr('title') + "</b>" + "<br />");
 
                 $(this).find("img").each(function() {
                   $("#"+informationDiv).append("<img src='"+$(this).attr('src')+"'alt='"+$(this).attr('alt')+"'title ='"+$(this).attr('title')+"'width='"+$(this).attr('width')+"'height='"+$(this).attr('height')+"'</img><br />");
+                  alert('img');
                 });
             });
             $("#"+informationDiv).append("</br>Computing Done!<br/");
