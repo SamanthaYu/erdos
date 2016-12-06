@@ -9,11 +9,12 @@ one:
   username: "gerbil"
   password: "trysix"
   userType: "Regular"
+  requesting_admin: true
 
 two:
   username: "admin"
   password: "trysix"
-  userType: "Admin"
+  userType: "Regular"
 
 three:
   username: "reg"
@@ -23,7 +24,3 @@ four:
   username: "hi"
   password: "RegPassword"
   userType: "Regular"
-
-five:
-  username: "myadmin"
-  userType: "Admin"
