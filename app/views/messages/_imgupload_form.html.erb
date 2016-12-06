@@ -1,7 +1,7 @@
 <h3 style="background-color: #ddd">Upload Image</h3>
 <center><p id="uploadErrorNotice" class="errorNotice" style="display:none"><%= notice %></p></center>
     <%=form_for @message, :url => {controller: "messages", action: "create_image"}, remote: true, authenticity_token: true do |f|%>
-      <%= f.file_field :imagemessage , id: "imgmessage", name: 'imgmessagefield'%>
+      <%= f.file_field :imagemessage , id: "imgmessage"%>
       <%= f.hidden_field :content, value: "-" %>
       <%= f.hidden_field :chatroom_id, value: @chatroom.id %>
       <% if !current_user.nil? %>
