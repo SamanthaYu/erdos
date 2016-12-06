@@ -8,6 +8,7 @@ class MessagesController < ApplicationController
 
     respond_to do |format|
         format.js {}
+        format.html{render partial: 'messages/imgupload_form', locals: {message: @message, chatroom: @chatroom}}
     end
   end
 
@@ -22,7 +23,7 @@ class MessagesController < ApplicationController
       ActionCable.server.broadcast 'messages',
         type: "new",
         isimage: 1,
-        content: "NOTANIMAGE",
+        content: "YESANIMAGE",
         imagemessageurl: @message.imagemessage.display.url,
         chatroomname: roomname,
         avatarurl: @message.user.avatar.thumb.url,
@@ -76,6 +77,7 @@ def edit
     @message = Message.find(params[:id])
     respond_to do |format|
         format.js {}
+        format.html{ render partial: 'messages/editmessage_form', locals: {message: @message, chatroom: @chatroom}}
     end
 end
 
@@ -107,6 +109,7 @@ def delete
     @message = Message.find(params[:id])
     respond_to do |format|
         format.js {}
+        format.html {render partial: 'messages/delete_form', locals: {message: @message, chatroom: @chatroom}}
     end
 end
 
