@@ -1,0 +1,4 @@
+$('#wolframAlphaForm').html("<%= j (render partial: 'messages/wolframAlpha_form', locals: {message: @message, chatroom: @chatroom}) %>");
+renderThisMessage('messageContent<%=@message.id%>');
+wolframAlpha('messageContent<%=@message.id%>', "information");
+$('#wolframAlphaForm').fadeIn("swing");

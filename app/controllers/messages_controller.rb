@@ -13,7 +13,7 @@ class MessagesController < ApplicationController
 
   def create_image
     @message = Message.new(params.require(:message).permit(:content, :chatroom_id, :user_id, :poster, :imagemessage))
-    @chatroom=Chatroom.find(params[:id])
+    @chatroom=Chatroom.find_by(id: @message.chatroom_id)
     if @message.save
       roomname=@message.chatroom.roomname
       if @message.chatroom.roomname.blank?
@@ -32,6 +32,7 @@ class MessagesController < ApplicationController
         deletelink: delete_message_path(@message),
         id: @message.id,
         timestamp: view_context.local_time_ago(@message.created_at);
+      @message.notify
       redirect_to :back
     else
       if @message.imagemessage.display.url=="THISISNOTANIMAGE"
@@ -63,6 +64,7 @@ class MessagesController < ApplicationController
         currentuser: current_user.username,
         editlink: edit_message_path(message),
         deletelink: delete_message_path(message),
+        wolframlink: wolframAlpha_message_path(message),
         id: message.id,
         timestamp: view_context.local_time_ago(message.created_at);
       head :ok
@@ -122,7 +124,12 @@ def destroy
     @message.destroy
 end
 
-
+def wolframAlpha
+  @message = Message.find(params[:id])
+  respond_to do |format|
+    format.js{}
+  end
+end
 
 
   private

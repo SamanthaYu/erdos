@@ -6,7 +6,7 @@
                     <% if message != @chatroom.messages.first %>
                         <span id="messageActions" style="float:left">
                           <% if message.imagemessage.display.url == "THISISNOTANIMAGE"%>
-                            <a class="wolframAlphaLink" onclick="wolframAlpha('messageContent<%=message.id%>')">WolframAlpha</a> |
+                            <%= link_to "WolframAlpha", wolframAlpha_message_path(message), class: "wolframAlphaLink", remote: true %> |
                             <%= link_to "edit", edit_message_path(message), remote: true, id: "edit_link"%> |
                           <%end%>
                             <%= link_to 'delete', delete_message_path(message), remote: true, id: "delete_link"%>
@@ -39,7 +39,7 @@
                   <span class="username"><strong><%= message.poster %></strong></span>
                   <span class="timeStamp"><%=local_time_ago(message.created_at)%></span>
                   <% if message.imagemessage.display.url == "THISISNOTANIMAGE"%>
-                    <a class="otherWolframAlphaLink" onclick="wolframAlpha('messageContent<%=message.id%>')">WolframAlpha</a>
+                    <%= link_to "WolframAlpha", wolframAlpha_message_path(message), class: "otherWolframAlphaLink", remote: true %>
                   <%end%>
               </p>
             </div>

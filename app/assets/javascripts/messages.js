@@ -20,6 +20,12 @@ $(document).on("click", '#message_content', function () {
     clearImgUploadForm();
 });
 
+function closeWolframAlphaForm() {
+    $('#wolframAlphaForm').fadeOut("swing");
+    $('#information').html("");
+    return false;
+}
+
 function closeEditForm() {
     $('#editForm').fadeOut("swing");
     return false;

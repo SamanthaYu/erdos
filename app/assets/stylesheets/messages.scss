@@ -22,15 +22,27 @@ $footer-height: 200px;
     z-index: 1000;
 }
 
-#imgUploadForm {
-    width: 80%;
-    margin: 0 auto;
-    border: 1px solid #aaa;
-    top: 40vh;
-    z-index: 1000;
+#wolframAlpha_cancel {
+  padding-right: 12%;
+  position:fixed;
+  right: 0;
 }
 
-#deleteForm {
+#wolframAlphaForm {
+  width: 80%;
+  margin: 0 auto;
+  border: 1px solid #aaa;
+  z-index: 1000;
+  margin-top: 80px;
+  max-height: 80vh;
+  overflow-y: scroll;
+}
+
+#information {
+  padding: 30px 50px 30px 50px;
+}
+
+#deleteForm, #imgUploadForm {
     width: 500px;
     margin: 0 auto;
     border: 1px solid #aaa;
