@@ -32,7 +32,7 @@ class UserTests < ActionDispatch::IntegrationTest
     fill_in('message_content', :with => 'This is a message')
     click_on('message_submit')
     visit savedurl
-    assert page.has_content?('This is a message')
+    click_on('edit')
   end
 
 =begin
