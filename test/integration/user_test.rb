@@ -73,4 +73,22 @@ class UserTests < ActionDispatch::IntegrationTest
     assert page.has_content?('Destroy')
   end
 
+  test "any user can change their password" do
+    visit signup_path
+    fill_in "username_area", :with => 'tologout'
+    fill_in "password_area", :with => 'trysix'
+    fill_in "password_confirmation_area", :with => 'trysix'
+    click_button('Create Account')
+    click_on 'Change Password'
+    fill_in "password_area", :with => 'newpass'
+    fill_in "password_confirmation_area", :with => 'newpass'
+    click_button('Change Password')
+    click_on 'Log out'
+    visit login_path
+    fill_in "username_area", :with => 'tologout'
+    fill_in "password_area", :with => 'newpass'
+    click_button('Log in')
+    assert page.has_content?('tologout')
+  end
+
 end

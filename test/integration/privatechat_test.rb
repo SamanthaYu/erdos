@@ -83,7 +83,7 @@ class PrivateChatTests < ActionDispatch::IntegrationTest
     visit chatrooms_path
     fill_in "chatroom[roomname]",   :with => 'PublicTestName'
     visit chatrooms_path
-    assert (page.has_css?('#privateyes', :count => 1) && page.has_css?('#privateno', :count => 1))
+    assert (page.has_css?('#privateyes', :count => 2) && page.has_css?('#privateno', :count => 1))
   end
 
   test "empty private chatroom is deleted" do
