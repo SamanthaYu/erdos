@@ -9,11 +9,12 @@ one:
   username: "gerbil"
   password: "trysix"
   userType: "Regular"
+  requesting_admin: true
 
 two:
   username: "admin"
   password: "trysix"
-  userType: "Admin"
+  userType: "Regular"
 
 three:
   username: "reg"
@@ -26,7 +27,7 @@ four:
 
 five:
   username: "myadmin"
-  userType: "Admin"
+  userType: "Regular"
 
 six:
   username: "barbara"
@@ -35,7 +36,7 @@ six:
 
 seven:
   username: "long_username"
-  userType: "Admin"
+  userType: "Regular"
   password: "123456"
 
 eight:
