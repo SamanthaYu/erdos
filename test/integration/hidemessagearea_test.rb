@@ -10,9 +10,8 @@ class HideMessageAreaTests < ActionDispatch::IntegrationTest
     visit chatrooms_path
     fill_in "chatroom[roomname]",   :with => 'TestName'
     click_button('Create Chatroom')
-    puts find('#message_content')[:bottom]
     find('#messageBoxCloser').click
-    assert !(find('#message_content')[:bottom] == 200)
+    assert page.has_css?("#messageContainer", visible: false)
   end
 
   test "hidden messaging area shows up when toggled" do
@@ -25,7 +24,7 @@ class HideMessageAreaTests < ActionDispatch::IntegrationTest
     click_button('Create Chatroom')
     find('#messageBoxCloser').click
     find('#messageBoxOpener').click
-    assert page.has_content?('Upload Image')
+    assert page.has_css?("#messageContainer", visible: true)
   end
 
 
