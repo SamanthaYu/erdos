@@ -2,3 +2,8 @@
 
 one:
   roomname: "test"
+
+newchatroom:
+  id: 1
+  roomname: "newchatroom"
+  user_id: 1

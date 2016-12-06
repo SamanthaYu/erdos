@@ -39,7 +39,8 @@
     </thead>
     <% userRooms = Array.new(@user.chatrooms.size+1)%>
     <% roomNum = 0 %>
-    <% @user.allChatrooms.each do |room| %>
+    <% @individualChats = @user.chatrooms.uniq.sort_by(&:created_at) %>
+    <% @individualChats.each do |room| %>
         <tr>
             <% if room != userRooms[roomNum] %>
                 <% roomNum += 1 %>
