@@ -28,12 +28,13 @@ class UserTests < ActionDispatch::IntegrationTest
       visit chatrooms_path
       fill_in "chatroom[roomname]",   :with => 'TestName'
       click_button('Create Chatroom')
+      assert page.has_css?('.message', :count => 1)
       savedurl=current_url
       click_on('Upload Image')
-      page.attach_file('imgmessagefield', Rails.root + 'test/thumb_default.png')
+      page.attach_file('message[imagemessage]', Rails.root + 'test/thumb_default.png')
       click_on('imgUpload_submit')
       visit savedurl
-      assert page.has_css?('img', :count => 3) #original was 2
+      assert page.has_css?('.message', :count => 2) #original was 2
     end
 
 
@@ -68,10 +69,10 @@ class UserTests < ActionDispatch::IntegrationTest
     click_button('Create Chatroom')
     savedurl=current_url
     click_on('Upload Image')
-    page.attach_file('imgmessagefield', Rails.root + 'test/thumb_default.png')
+    page.attach_file('message[imagemessage]', Rails.root + 'test/thumb_default.png')
     click_on('imgUpload_submit')
     visit savedurl
-    assert page.has_content?('edit') #original was 2
+    assert page.has_no_content?('edit') #original was 2
   end
 
 

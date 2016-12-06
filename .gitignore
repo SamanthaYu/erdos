@@ -25,3 +25,6 @@ hyylookat.txt
 
 #ignore uploaded files in local
 /public/uploads
+
+#ignore redis server dump
+/dump.rdb
