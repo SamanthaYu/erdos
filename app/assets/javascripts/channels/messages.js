@@ -4,7 +4,6 @@ App.messages = App.cable.subscriptions.create('MessagesChannel', {
         if (data.type == "new"){
           $("#messages").removeClass('hidden');
           $('#messages').append(this.renderMessage(data));
-          scrollBottom();
           renderLastMessage();
           renderLastUsername();
       }
