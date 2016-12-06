@@ -7,7 +7,7 @@ class PrivateChatsController < ApplicationController
   def create
     if Chatroom.find(private_chat_params[:chatroom_id]).private_chatters.empty? && Chatroom.find(private_chat_params[:chatroom_id]).owner != current_user
       flash[:notice] = "Only the owner can make a chatroom private"
-      redirect_to :back
+      redirect_back(fallback_location: '/chatrooms')
     elsif Chatroom.find(private_chat_params[:chatroom_id]).private_chatters.empty?
       @private_chat = PrivateChat.new(private_chat_params)
       Chatroom.find(private_chat_params[:chatroom_id]).users.uniq.each do |user|
@@ -16,16 +16,16 @@ class PrivateChatsController < ApplicationController
         end
       end
       if @private_chat.save
-        redirect_to :back
+        redirect_back(fallback_location: '/chatrooms')
       else
-        redirect_to :back
+        redirect_back(fallback_location: '/chatrooms')
       end
     else
       @private_chat = PrivateChat.new(private_chat_params)
       if @private_chat.save
-        redirect_to :back
+        redirect_back(fallback_location: '/chatrooms')
       else
-        redirect_to :back
+        redirect_back(fallback_location: '/chatrooms')
       end
     end
   end

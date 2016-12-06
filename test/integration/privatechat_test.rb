@@ -70,4 +70,25 @@ class PrivateChatTests < ActionDispatch::IntegrationTest
     assert page.has_css?('li#private_chatters', :count => 2)
   end
 
+  test "see whether chatrooms are public/private" do
+    visit signup_path
+    fill_in "username_area", :with => 'newuser'
+    fill_in "password_area", :with => 'trysix'
+    fill_in "password_confirmation_area", :with => 'trysix'
+    click_button('Create Account')
+    visit chatrooms_path
+    fill_in "chatroom[roomname]",   :with => 'PrivateTestName'
+    click_button('Create Chatroom')
+    click_button('Make Private')
+    visit chatrooms_path
+    fill_in "chatroom[roomname]",   :with => 'PublicTestName'
+    visit chatrooms_path
+    assert page.has_css?('li#privateyes', :count => 1)
+    assert page.has_css?('li#privateno', :count => 1)
+  end
+
+
+
+
+
 end
