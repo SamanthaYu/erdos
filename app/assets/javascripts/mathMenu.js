@@ -67,8 +67,17 @@ function checkButtons(menu, table) {
       table.html(
         "<tr>\
             <td class='mathButton' id='"+menu+"Button"+"'data-val='$\\int$ '>$\\int$</td>\
+            <td class='mathButton' id='"+menu+"Button"+"'data-val='$\\sum$ '>$\\sum$</td>\
+            <td class='mathButton' id='"+menu+"Button"+"'data-val='$\\prod$ '>$\\prod$</td>\
             <td class='mathButton' id='"+menu+"Button"+"'data-val='$\\pm$ '>$\\pm$</td>\
+            <td class='mathButton' id='"+menu+"Button"+"'data-val='$\\times$ '>$\\times$</td>\
+            <td class='mathButton' id='"+menu+"Button"+"'data-val='$\\div$ '>$\\div$</td>\
             <td class='mathButton' id='"+menu+"Button"+"'data-val='$\\exists$ '>$\\exists$</td>\
+            <td class='mathButton' id='"+menu+"Button"+"'data-val='$\\forall$ '>$\\forall$</td>\
+            <td class='mathButton' id='"+menu+"Button"+"'data-val='$\\neg$ '>$\\neg$</td>\
+            <td class='mathButton' id='"+menu+"Button"+"'data-val='$\\pi$ '>$\\pi$</td>\
+            <td class='mathButton' id='"+menu+"Button"+"'data-val='$\\Delta$ '>$\\Delta$</td>\
+            <td class='mathButton' id='"+menu+"Button"+"'data-val='$\\infty$ '>$\\infty$</td>\
         </tr>");
     }
     else if ($('#'+menu+' option:selected').text() == "Operators") {
