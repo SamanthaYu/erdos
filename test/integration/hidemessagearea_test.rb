@@ -14,7 +14,7 @@ class HideMessageAreaTests < ActionDispatch::IntegrationTest
     assert !(find('#message_content')[:bottom] == 200)
   end
 
-  test "can't login again while logged in" do
+  test "hidden messaging area shows up when toggled" do
     visit signup_path
     click_button('Guest Login')
     fill_in "guest_username_area", :with => 'guestuser'

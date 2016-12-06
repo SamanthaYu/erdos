@@ -37,4 +37,19 @@ class PrivateChatTests < ActionDispatch::IntegrationTest
     assert page.has_content?('Access Denied')
   end
 
+  test "add a user to a private chatroom" do
+    visit signup_path
+    fill_in "username_area", :with => 'newuser'
+    fill_in "password_area", :with => 'trysix'
+    fill_in "password_confirmation_area", :with => 'trysix'
+    click_button('Create Account')
+    visit chatrooms_path
+    fill_in "chatroom[roomname]",   :with => 'TestName'
+    click_button('Create Chatroom')
+    click_button('Make Private')
+    select 'gerbil', :from => 'privatechatselector'
+    click_on('Add User')
+    assert page.has_content?('gerbil')
+  end
+
 end

@@ -1,4 +1,4 @@
-require "bcrypt"
+=begin require "bcrypt"
 
 module PasswordDigestHelper
 
@@ -9,3 +9,5 @@ module PasswordDigestHelper
   end
 
 end
+
+=end

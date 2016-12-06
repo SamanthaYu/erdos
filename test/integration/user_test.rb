@@ -61,4 +61,16 @@ class UserTests < ActionDispatch::IntegrationTest
     assert page.has_content?('Destroy Chatroom')
   end
 
+  test "admins can decide to delete users" do
+    visit signup_path
+    fill_in "username_area", :with => 'newadmin'
+    fill_in "password_area", :with => 'trysix'
+    fill_in "password_confirmation_area", :with => 'trysix'
+    click_button('Create Account')
+    user=User.find_by(username: 'newadmin')
+    user.update_attribute :userType, 'Admin'
+    visit users_path
+    assert page.has_content?('Destroy')
+  end
+
 end

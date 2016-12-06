@@ -1,5 +1,4 @@
 function wolframAlpha(messageId, informationDiv) {
-    $("#"+messageId).text($("#"+messageId).attr('content'));
     renderThisMessage(messageId);
 
     var inputUrl = $("#"+messageId).attr('content');
@@ -16,8 +15,10 @@ function wolframAlpha(messageId, informationDiv) {
         url: proxy + wolfram,
         dataType: "xml",
         success: function(result) {
-            $("#"+informationDiv).append("<br/></br>Computing...<br/></br>")
-            var oldContent = $("#"+messageId).attr('content');
+            $("#"+informationDiv).append("<br/></br>Computing...<br/></br>");
+            $(result).find("didyoumean").each(function() {
+                $("#"+informationDiv).append('Wolfram asks, "Did you mean: "' + $(this).html() + '?<br/>');
+            });
 
             $(result).find("pod").each(function() {
                 $("#"+informationDiv).append("<b>" + $(this).attr('title') + "</b>" + "<br />");

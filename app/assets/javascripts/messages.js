@@ -46,24 +46,31 @@ function clearImgUploadForm() {
     $('#imgUploadForm').fadeOut("swing");
     $('#imgUploadForm').html("");
     return false;
-
-// Open message area
 }
-function openMessageBox(){
+
+// Expand message area for drawing
+function expandMessageBox(){
+    $("#messageContainer").css({bottom: 210});
     $("#messageBoxOpener").hide();
-    $("#inputForm").height(200);
+    $("#messageBoxCloser").show();
+    $("#inputForm").height(202);
+
     setTimeout(function() {
-      $("#messageContainer").css({bottom: 200});
-      $("#messageBoxCloser").show();
-    }, 500);
+        $("#mathTyping").height(90);
+    }, 20);
+
+    scrollBottom();
 }
 
-// Close message area
-function closeMessageBox() {
+// Minimize message area
+function minimizeMessagebox() {
+    $("#messageContainer").css({bottom: 135});
     $("#messageBoxCloser").hide();
-    $("#inputForm").height(0);
-    $("#messageContainer").css({bottom: 0});
+    $("#messageBoxOpener").show();
+    $("#inputForm").height(130);
+
     setTimeout(function() {
-        $("#messageBoxOpener").show();
-    }, 500);
+        $("#mathTyping").height(22);
+    }, 20);
+    scrollBottom();
 }
