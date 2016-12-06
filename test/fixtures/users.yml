@@ -20,6 +20,5 @@ three:
 
 four:
   username: "hi"
-  username: "as"
   password: "RegPassword"
   userType: "Regular"
