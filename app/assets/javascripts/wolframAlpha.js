@@ -1,5 +1,4 @@
 function wolframAlpha(messageId, informationDiv) {
-    $("#"+messageId).text($("#"+messageId).attr('content'));
     renderThisMessage(messageId);
 
     var inputUrl = $("#"+messageId).attr('content');
@@ -26,7 +25,6 @@ function wolframAlpha(messageId, informationDiv) {
 
                 $(this).find("img").each(function() {
                   $("#"+informationDiv).append("<img src='"+$(this).attr('src')+"'alt='"+$(this).attr('alt')+"'title ='"+$(this).attr('title')+"'width='"+$(this).attr('width')+"'height='"+$(this).attr('height')+"'</img><br />");
-                  alert('img');
                 });
             });
             $("#"+informationDiv).append("</br>Computing Done!<br/");
