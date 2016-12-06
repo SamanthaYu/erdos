@@ -2,7 +2,7 @@ class Notification < ApplicationRecord
     include Rails.application.routes.url_helpers
 
     acts_as_readable :on => :created_at
-    after_create { notifyUsers }
+    after_create { notifyUser }
 
     belongs_to :message
     belongs_to :user
@@ -13,7 +13,7 @@ class Notification < ApplicationRecord
       end
     end
 
-    def notifyUsers
+    def notifyUser
       @receivingUser = User.find_by(id: self.user_id)
       @receivingUser.notifications << self
       user.notifications.sort_by(&:created_at)
