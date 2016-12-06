@@ -21,7 +21,7 @@ App.messages = App.cable.subscriptions.create('MessagesChannel', {
     }
 
     // Scroll to bottom only if message content is an image
-    if (data.isimage!=0) {
+    if (data.isimage==0) {
         scrollBottom();
     }
     return;
