@@ -46,8 +46,10 @@ class ChatroomTests < ActionDispatch::IntegrationTest
     visit chatrooms_path
     fill_in "chatroom[roomname]",   :with => 'TestName'
     click_button('Create Chatroom')
+    savedurl=current_url
     fill_in('message_content', :with => 'This is a message')
-    #click_button('message_submit')
+    click_on('message_submit')
+    visit savedurl
     assert page.has_content?('This is a message')
   end
 

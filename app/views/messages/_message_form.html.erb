@@ -8,7 +8,7 @@
     <span id="messageBoxMinimizer" onClick="minimizeMessagebox()" class="glyphicon glyphicon-resize-small messageBoxToggle"></span>
     <div id="messageBoxCloser" onClick="closeMessageBox()" class="openCloseToggle">↓</div>
     <div id="messageBoxOpener" onClick="openMessageBox()" class="openCloseToggle">↑</div>
-    
+
     <%=form_for message, remote: true, authenticity_token: true do |f|%>
       <%= f.text_area :content,  class: "form-control", rows: "1", :placeholder => "Enter Message, to use math formatting surround formula with $ signs", data: {textarea: "message"}, id: 'message_content'%>
       <%= f.hidden_field :chatroom_id, value: chatroom.id %>
@@ -16,6 +16,6 @@
         <%= f.hidden_field :poster, value: current_user.username %>
         <%= f.hidden_field :user_id, value: current_user.id %>
       <% end %>
-      <%= f.submit "send", class: "btn", style: "display:none", data: {send: "message"}, id: 'message_submit'%>
+      <%= f.submit "send", class: "btn", style: "position:absolute; bottom:-9999px;", data: {send: "message"}, id: 'message_submit'%>
     <%end%>
 </div>
